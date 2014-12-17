@@ -10,9 +10,13 @@ It can play sound, controle Arduino and Arduino HF prototype for electronique de
  
 To start using the cat
 ====================
--At http://www.le-chat-noir-numerique.fr/whitecat/dokuwiki/doku.php you can find in the wiki a very completed doc on the wiki page, a more short doc in english doc is also available on this page
--on the wesite of whitecat, http://www.le-chat-noir-numerique.fr, the forum is very useful, and there is some vidéo tutorials
--can download the last beta release at http://www.le-chat-noir-numerique.fr/release or from the main page, just uncompress the zip at C:/ and enjoy.
+- At http://www.le-chat-noir-numerique.fr/whitecat/dokuwiki/doku.php you can find :
+    - a complete doc on the wiki page,
+    - and a shorter one in english
+
+- on whitecat's website, http://www.le-chat-noir-numerique.fr, the forum is very useful, and there are some vidéo tutorials
+
+- you can download the last beta release at http://www.le-chat-noir-numerique.fr/release or from the main page, just uncompress the zip at C:/ and enjoy.
 
 Licence
 =======
