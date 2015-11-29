@@ -26,7 +26,7 @@ class whc_hk_input
 		/** Set shift
 		 * \param val New value to set
 		 */
-		void Setshift(bool val) { m_shift = val; }
+		void Setshift(const bool &val) { m_shift = val; }
 		/** Access ctrl
 		 * \return The current value of ctrl
 		 */
@@ -34,7 +34,7 @@ class whc_hk_input
 		/** Set ctrl
 		 * \param val New value to set
 		 */
-		void Setctrl(bool val) { m_ctrl = val; }
+		void Setctrl(const bool &val) { m_ctrl = val; }
 		/** Access alt
 		 * \return The current value of alt
 		 */
@@ -42,7 +42,7 @@ class whc_hk_input
 		/** Set alt
 		 * \param val New value to set
 		 */
-		void Setalt(bool val) { m_alt = val; }
+		void Setalt(const bool &val) { m_alt = val; }
 		/** Access scancode
 		 * \return The current value of scancode
 		 */
@@ -50,7 +50,7 @@ class whc_hk_input
 		/** Set scancode
 		 * \param val New value to set
 		 */
-		void Setscancode(int val) { m_scancode = val; }
+		void Setscancode(const int &val) { m_scancode = val; }
 		/** Access wording
 		 * \return The current value of wording
 		 */
@@ -58,7 +58,7 @@ class whc_hk_input
 		/** Set wording
 		 * \param val New value to set
 		 */
-		void Setwording(std::string val) { m_wording = val; }
+		void Setwording(const std::string &val) { m_wording = val; }
 	protected:
 	private:
 		bool m_shift; //!< Member variable "shift"

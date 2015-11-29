@@ -1310,6 +1310,7 @@ int main(int argc, char* argv[])
 
     //sab 31/01/2015 deb TEST
 	whc_hk_main_init() ;
+	save_load_print_to_screen("Loaded hotkeys");
     //sab 31/01/2015 fin TEST
 
     Canvas::Fill(CouleurFond);

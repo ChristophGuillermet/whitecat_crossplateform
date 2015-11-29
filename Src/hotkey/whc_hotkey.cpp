@@ -73,8 +73,7 @@ int whc_hotkey::collect()
 			}
 		}
 
-        //if(not m_inputIsOn)  //language de commande actif
-        if(signature_allowed)
+        if (m_inputIsOn && signature_allowed) //no command language input is on, and not reserve signature
         {
             if (not(tmp_scancode == KEY_ESC)) //pas de raccourci clavier si Esc ou si input
             {
@@ -224,7 +223,7 @@ void whc_hotkey::load(std::string fic_name)
 
             std::vector<std::string> tokens = tool.split_string(ligne,';');
 
-			if (tokens.size()==8)
+			if (tokens.size()>=8)
 			{
 				tmp_id               = tool.string_to_int (tokens[0]);
 				tmp_module           = tokens[1] ;
@@ -252,18 +251,18 @@ void whc_hotkey::save(std::string fic_name)
     {
         whc_toolbox tool;
 
-		int i = c_list.size();
-		int j = i ;
+		int idx_back = c_list.size();
+		int list_size = idx_back ;
 
-		while (i>0)
+		while (idx_back>0)
 		{
-			int k = j-i;
-			i--;
+			int idx_forward = list_size - idx_back;
+			idx_back--;
 
 			whc_hk_apply list_fonctionality ;
 			whc_hk_input list_signature ;
 			whc_hotkey* hotkey;
-			hotkey = &whc_hotkey::c_list[k];
+			hotkey = &whc_hotkey::c_list[idx_forward];
 			list_fonctionality = hotkey->fonctionality();
 			list_signature     = hotkey->signature();
 
@@ -293,21 +292,20 @@ void whc_hotkey::save(std::string fic_name)
 
 void whc_hotkey::link_fct_hk(int fctid, whc_hk_input signature)
 {
-    int i = c_list.size();
+    int idx_back = c_list.size();
 
-    while (i>0)
+    while (idx_back>0)
     {
-        i--;
+        idx_back--;
         whc_hotkey* hotkey ;
-        hotkey = &whc_hotkey::c_list[i] ;
+        hotkey = &whc_hotkey::c_list[idx_back] ;
         whc_hk_apply fonctionality ;
         fonctionality = hotkey->fonctionality() ;
 
         if (fonctionality.id()==fctid)
         {
-            //whc_hotkey::c_list[i].Setfonctionality(fonctionality);
-            whc_hotkey::c_list[i].Setsignature(signature);
-            i=0;
+            whc_hotkey::c_list[idx_back].Setsignature(signature);
+            idx_back=0;
         }
     }
 }
@@ -317,31 +315,29 @@ void whc_hotkey::replace_link_fct_hk()
     bool oldisclear = false ;
     bool newisset = false ;
 
-    int i = c_list.size();
+    int idx_back = c_list.size();
 
-    while (i>0)
+    while (idx_back>0)
     {
-        i--;
+        idx_back--;
         whc_hotkey* hotkey ;
-        hotkey = &whc_hotkey::c_list[i] ;
+        hotkey = &whc_hotkey::c_list[idx_back] ;
         whc_hk_apply fonctionality ;
         fonctionality = hotkey->fonctionality() ;
 
         if (fonctionality.id()==m_user_selectfunc)
         {
-            //whc_hotkey::c_list[i].Setfonctionality(fonctionality);
-            whc_hotkey::c_list[i].Setsignature(m_user_signature);
+            whc_hotkey::c_list[idx_back].Setsignature(m_user_signature);  //set new link
             newisset = true;
-            if (oldisclear) i=0;
+            if (oldisclear) idx_back=0; //both action done
         }
 
         if (fonctionality.id()==m_user_conflictfunc.id())
         {
-            //whc_hotkey::c_list[i].Setfonctionality(fonctionality);
             whc_hk_input null_signature;
-            whc_hotkey::c_list[i].Setsignature(null_signature);
+            whc_hotkey::c_list[idx_back].Setsignature(null_signature); //clear old link
             oldisclear = true;
-            if (newisset) i=0;
+            if (newisset) idx_back=0;  //both action done
         }
     }
 }

@@ -19,16 +19,16 @@ class whc_hk_apply
 		virtual ~whc_hk_apply();
 
 		int id() { return m_id; }
-		void Setid(int val) { m_id = val; }
+		void Setid(const int &val) { m_id = val; }
 
 		std::string module() { return m_module; }
-		void Setmodule(std::string val) { m_module = val; }
+		void Setmodule(const std::string &val) { m_module = val; }
 
 		std::string description() { return m_description; }
-		void Setdescription(std::string val) { m_description = val; }
+		void Setdescription(const std::string &val) { m_description = val; }
 
 		ptrMthd processOnHotkey() { return m_processOnHotkey; }
-		void SetprocessOnHotkey(ptrMthd val) { m_processOnHotkey = val; }
+		void SetprocessOnHotkey(const ptrMthd &val) { m_processOnHotkey = val; }
 
 	protected:
 	private:

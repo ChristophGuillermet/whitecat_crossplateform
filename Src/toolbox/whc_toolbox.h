@@ -13,7 +13,7 @@
 class whc_toolbox
 {
 	public:
-		bool static fileexist(std::string fic_name);
+		bool static fileexist(const std::string &fic_name);
 		std::vector<std::string> static split_string(const std::string &text, char separator);
 		int static string_to_int(const std::string &text);
 		std::string static int_to_string(const int &number);

@@ -28,16 +28,16 @@ class whc_hotkey
 		virtual ~whc_hotkey();
 
 		whc_hk_apply fonctionality() { return m_fonctionality; }
-		void Setfonctionality(whc_hk_apply val) { m_fonctionality = val; }
+		void Setfonctionality(const whc_hk_apply &val) { m_fonctionality = val; }
 
 		whc_hk_input signature() { return m_signature; }
-		void Setsignature(whc_hk_input val) { m_signature = val; }
+		void Setsignature(const whc_hk_input &val) { m_signature = val; }
 
 		whc_hk_input user_signature() { return m_user_signature; }
-		void Setuser_signature(whc_hk_input val) { m_user_signature = val; }
+		void Setuser_signature(const whc_hk_input &val) { m_user_signature = val; }
 
 		int collect();
-		void inputIsOn_Flag(bool val){m_inputIsOn = &val ; }
+		void link_keyFocusIndicator(bool &val){m_inputIsOn = &val ; }
 		int shortcutprocess(int isreadkey);
 		whc_hk_apply search_fct(whc_hk_input signature);
 		void init(std::string fic_name);

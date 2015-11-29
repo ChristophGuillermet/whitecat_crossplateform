@@ -10,7 +10,7 @@ whc_toolbox::~whc_toolbox()
     //dtor
 }
 
-bool whc_toolbox::fileexist(std::string fic_name)
+bool whc_toolbox::fileexist(const std::string &fic_name)
 {
     return std::ifstream(fic_name.c_str()).good() ;
 }
