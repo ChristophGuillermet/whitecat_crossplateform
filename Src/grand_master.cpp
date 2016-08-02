@@ -78,6 +78,7 @@ attribute_midi_solo_affectation(615,Midi_Faders_Affectation_Mode);
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
 }
   sprintf(string_last_midi_id,"MIDI GRAND MASTER:Ch: %d Pitch: %d Type: %s", miditable[1][615],miditable[2][615],thetypinfo);
 
@@ -124,6 +125,7 @@ break;
 case 1:
 sprintf(string_niveauGMaster,"%d", niveauGMaster);
 break;
+default: break;
 }
 GmaNiv.Draw(CouleurBlind);
 Gma.DrawOutline(CouleurLigne);

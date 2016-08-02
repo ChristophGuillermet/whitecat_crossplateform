@@ -47,24 +47,25 @@ int entetes_confirmation()
   //logicals strings
  if(index_do_delete_mem==1)
  {
-   int mem_to_delete=0;
-   if(numeric_postext>0)
-   {
-   mem_to_delete=(int)(atof(numeric)*10.0001);
-   }
-   else if(numeric_postext==0)
-   {
-   switch(index_blind)
-   {
-   case 0:
-   mem_to_delete=position_onstage;
-   break;
-   case 1:
-   mem_to_delete=position_preset;
-   break;
-   }
-   }
- sprintf(string_confirmation,"Delete Mem %d.%d?", mem_to_delete/10,mem_to_delete%10);
+       int mem_to_delete=0;
+       if(numeric_postext>0)
+       {
+       mem_to_delete=(int)(atof(numeric)*10.0001);
+       }
+       else if(numeric_postext==0)
+       {
+       switch(index_blind)
+       {
+       case 0:
+       mem_to_delete=position_onstage;
+       break;
+       case 1:
+       mem_to_delete=position_preset;
+       break;
+       default: break;
+       }
+       }
+     sprintf(string_confirmation,"Delete Mem %d.%d?", mem_to_delete/10,mem_to_delete%10);
  }
 
  else if(index_do_create_mem==1)
@@ -105,117 +106,114 @@ int entetes_confirmation()
 
  else if(index_do_create_mem_plus_faders==1)
  {
- int mem_to_create=0;
- if(numeric_postext>0)
-   {
-   mem_to_create=(int)(atof(numeric)*10.0001);
-   }
- else
- {
-   for(int l=position_preset/10;l<1000;l++)
-   {
-   if(MemoiresExistantes[l*10]==0)
-   {
-    mem_to_create=l*10;
-    break;
-   }
-   }
- }
- if(MemoiresExistantes[mem_to_create]==0)
- {
-  if(numeric_postext>0)
-   {
- sprintf(string_confirmation,"Create Mem %d.%d ?", mem_to_create/10,mem_to_create%10);
-    }
- else  {
- sprintf(string_confirmation,"Add a Memory to CueList  ?");
-   }
- }
- else if(MemoiresExistantes[mem_to_create]==1)
- {
- sprintf(string_confirmation,"Sure to Over-Record Mem %d.%d ?", mem_to_create/10,mem_to_create%10);
- }
+         int mem_to_create=0;
+         if(numeric_postext>0)
+           {
+           mem_to_create=(int)(atof(numeric)*10.0001);
+           }
+         else
+         {
+           for(int l=position_preset/10;l<1000;l++)
+           {
+           if(MemoiresExistantes[l*10]==0)
+           {
+            mem_to_create=l*10;
+            break;
+           }
+           }
+         }
+         if(MemoiresExistantes[mem_to_create]==0)
+         {
+          if(numeric_postext>0)
+           {
+         sprintf(string_confirmation,"Create Mem %d.%d ?", mem_to_create/10,mem_to_create%10);
+            }
+         else  {
+         sprintf(string_confirmation,"Add a Memory to CueList  ?");
+           }
+         }
+         else if(MemoiresExistantes[mem_to_create]==1)
+         {
+         sprintf(string_confirmation,"Sure to Over-Record Mem %d.%d ?", mem_to_create/10,mem_to_create%10);
+         }
  }
 
   else if(index_do_overecord_mem_plus_faders==1)//CTRL F3
  {
- int mem_to_create=0;
+     int mem_to_create=0;
 
 
 
- switch(index_blind)
- {
- case 0:
-      mem_to_create=position_onstage;
- break;
- case 1:
-      mem_to_create=position_preset;
- break;
+     switch(index_blind)
+     {
+     case 0:
+          mem_to_create=position_onstage;
+     break;
+     case 1:
+          mem_to_create=position_preset;
+     break;
+     default: break;
+     }
+     sprintf(string_confirmation,"OverRecord Mem %d.%d plus faders ?", mem_to_create/10,mem_to_create%10);
  }
- sprintf(string_confirmation,"OverRecord Mem %d.%d plus faders ?", mem_to_create/10,mem_to_create%10);
- }
-
 
 else if(index_copy_mem_in==1)//CTRL c v avec num de mem
    {
-    int mem_to_rec=(int)(atof(numeric)*10.0001);
-    if(MemoiresExistantes[mem_to_rec]==0)
-    {
-     sprintf(string_confirmation,"Create Mem %d.%d from Mem %d.%d ?", mem_to_rec/10,mem_to_rec%10,CTRLC_mem_to_copy/10,CTRLC_mem_to_copy%10);
-    }
-    else
-    {
-      sprintf(string_confirmation,"! Replace Mem %d.%d by Mem %d.%d ?", mem_to_rec/10,mem_to_rec%10,CTRLC_mem_to_copy/10,CTRLC_mem_to_copy%10);
-    }
+        int mem_to_rec=(int)(atof(numeric)*10.0001);
+        if(MemoiresExistantes[mem_to_rec]==0)
+        {
+         sprintf(string_confirmation,"Create Mem %d.%d from Mem %d.%d ?", mem_to_rec/10,mem_to_rec%10,CTRLC_mem_to_copy/10,CTRLC_mem_to_copy%10);
+        }
+        else
+        {
+          sprintf(string_confirmation,"! Replace Mem %d.%d by Mem %d.%d ?", mem_to_rec/10,mem_to_rec%10,CTRLC_mem_to_copy/10,CTRLC_mem_to_copy%10);
+        }
    }
 
  else if(index_do_link_membefore==1)
  {
- if(Links_Memoires[mem_before_one]==0)
- {
- sprintf(string_confirmation,"Link Mem %d.%d ?", mem_before_one/10,mem_before_one%10);
- }
- else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", mem_before_one/10,mem_before_one%10);     }
+     if(Links_Memoires[mem_before_one]==0)
+     {
+     sprintf(string_confirmation,"Link Mem %d.%d ?", mem_before_one/10,mem_before_one%10);
+     }
+     else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", mem_before_one/10,mem_before_one%10);     }
  }
 
  else if(index_do_link_memonstage==1)
  {
- if(Links_Memoires[position_onstage]==0)
- {
- sprintf(string_confirmation,"Link Mem %d.%d ?", position_onstage/10,position_onstage%10);
- }
- else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", position_onstage/10,position_onstage%10);     }
+     if(Links_Memoires[position_onstage]==0)
+     {
+     sprintf(string_confirmation,"Link Mem %d.%d ?", position_onstage/10,position_onstage%10);
+     }
+     else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", position_onstage/10,position_onstage%10);     }
  }
  else if(index_do_link_memonpreset==1)
  {
- if(Links_Memoires[position_preset]==0)
- {
- sprintf(string_confirmation,"Link Mem %d.%d ?", position_preset/10,position_preset%10);
- }
-
-
-
- else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", position_preset/10,position_preset%10);     }
+     if(Links_Memoires[position_preset]==0)
+     {
+     sprintf(string_confirmation,"Link Mem %d.%d ?", position_preset/10,position_preset%10);
+     }
+     else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", position_preset/10,position_preset%10);     }
  }
  else if(index_do_link_memother==1)
  {
- if(Links_Memoires[other_mem_in_loop]==0)
- {
- sprintf(string_confirmation,"Link Mem %d.%d ?", other_mem_in_loop/10,other_mem_in_loop%10);
- }
- else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", other_mem_in_loop/10,other_mem_in_loop%10);     }
+     if(Links_Memoires[other_mem_in_loop]==0)
+     {
+     sprintf(string_confirmation,"Link Mem %d.%d ?", other_mem_in_loop/10,other_mem_in_loop%10);
+     }
+     else {sprintf(string_confirmation,"Unlink Mem %d.%d ?", other_mem_in_loop/10,other_mem_in_loop%10);     }
  }
  else if(index_do_record_on_faders==1)
  {
- if (numeric_postext==0)
- {
- sprintf(string_confirmation,"Record in Fader %d Dock %d ?", (fader_selected_for_record+1),(dock_selected_for_record+1) );
- }
- else if(numeric_postext>0 )
- {
-  int mem_to_load= (int)(atof(numeric)*10.0001);
-  sprintf(string_confirmation,"Store in Fader %d Dock %d Mem %d.%d ?", (fader_selected_for_record+1),(dock_selected_for_record+1),mem_to_load/10,mem_to_load%10 );
- }
+     if (numeric_postext==0)
+     {
+     sprintf(string_confirmation,"Record in Fader %d Dock %d ?", (fader_selected_for_record+1),(dock_selected_for_record+1) );
+     }
+     else if(numeric_postext>0 )
+     {
+      int mem_to_load= (int)(atof(numeric)*10.0001);
+      sprintf(string_confirmation,"Store in Fader %d Dock %d Mem %d.%d ?", (fader_selected_for_record+1),(dock_selected_for_record+1),mem_to_load/10,mem_to_load%10 );
+     }
  }
  else if(index_do_modify_on_faders==1)
  {
@@ -313,6 +311,7 @@ else if(index_copy_mem_in==1)//CTRL c v avec num de mem
  case 3:
   sprintf(string_confirmation,"Export pdf as %s ?", importfile_name);
  break;
+ default: break;
  }
  }
  else if( index_do_import==1)
@@ -328,6 +327,7 @@ else if(index_copy_mem_in==1)//CTRL c v avec num de mem
  case 2:
    sprintf(string_confirmation,"Import %s  as ALQ ?", importfile_name);
  break;
+ default: break;
  }
  }
 
@@ -384,6 +384,7 @@ else if(index_copy_mem_in==1)//CTRL c v avec num de mem
  case 2:
  sprintf(string_confirmation,"Affect PlayerPitch %d to Fader %d Dock%d  ?",(player_to_affect_to_dock+1),(fader_selected_for_record+1),(dock_selected_for_record+1));
  break;
+ default: break;
  }
  }
 
@@ -424,6 +425,7 @@ else if( index_do_banger_membeforeone==1)
  case 1:
  sprintf(string_confirmation,"Do Wizard CH Action on ALL memories ?");
  break;
+ default: break;
  }
  }
 
@@ -437,6 +439,7 @@ else if(index_do_wizard_mem==1)
  case 1:
  sprintf(string_confirmation,"Do Wizard MEM Action on ALL memories ?");
  break;
+ default: break;
  }
 }
 else if(index_wizard_do_reload_from_disk==1)
@@ -593,6 +596,7 @@ break;
 case 1:
 sprintf(string_confirmation,"Copy Grid %d from Step %d to %d in Grid %d Step %d?",grid_to_clear+1,step_grid_to_clear+1 ,from_gridstep_to+1 , destination_grid_for_copy+1,destination_step_for_copy+1);
 break;
+default: break;
 }
 }
 
@@ -742,6 +746,7 @@ case 1:
      sprintf(string_confirmation,"Build Channel View %d from ALL Faders ? ",channel_view_is+1 );
      }
 break;
+default: break;
 }
 }
 
@@ -789,6 +794,12 @@ else if(index_ask_clear_banger==1)
 }
 
 
+else  if( index_affect_wave_to_dock==1)
+{
+    sprintf(string_confirmation,"Affect WAVE Buffer to Fader %d Dock %d ? ",fader_selected_for_record+1, dock_selected_for_record+1 );
+}
+
+
 return(0);
 }
 
@@ -811,6 +822,7 @@ int operations_confirmation()
    case 1:
    mem_to_delete=position_preset;
    break;
+   default: break;
    }
    }
    delete_memory(mem_to_delete);
@@ -882,6 +894,7 @@ int operations_confirmation()
      case 1:
       mem_to_overrec=position_preset;
      break;
+     default: break;
      }
    overrecord_memory_plus_faders(mem_to_overrec);
    }
@@ -1043,6 +1056,7 @@ int operations_confirmation()
  }
  else {sprintf(string_Last_Order,">>This file is not a pdf type file (.PDF) !");}
  break;
+ default: break;
  }
  }
 
@@ -1099,6 +1113,7 @@ int operations_confirmation()
  }
  else {sprintf(string_Last_Order,">>This file is not a Strand ASCII type file (.ALQ) !");}
  break;
+ default: break;
  }
 }
 
@@ -1402,6 +1417,7 @@ break;
 case 1:
 copy_grid_partially(grid_to_clear,step_grid_to_clear,from_gridstep_to,destination_grid_for_copy,destination_step_for_copy);
 break;
+default: break;
 }
 }
 
@@ -1558,6 +1574,7 @@ case 1:
      build_preset_view_from_all_faders(channel_view_is);
      }
 break;
+default: break;
 }
 channel_view_type_of_behaviour[channel_view_is]=0;
 channel_view_mode_builder[channel_view_is]=0;
@@ -1611,6 +1628,11 @@ else if(index_ask_clear_banger==1)
      sprintf(string_Last_Order,"Cleared Banger %d", index_banger_to_copy_in+1);
 }
 
+else if(index_affect_wave_to_dock==1)
+{
+    affect_wave_to_dock(fader_selected_for_record, dock_selected_for_record);
+    sprintf(string_Last_Order,"Affected WAVE buffer to F % Dock %d", fader_selected_for_record, dock_selected_for_record);
+}
 
    reset_indexs_confirmation();
    reset_numeric_entry();

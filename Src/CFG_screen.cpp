@@ -477,6 +477,7 @@ for (int lg=0;lg<3;lg++)
  case 11:
  CouleurUserLoop=CouleurUser12;
  break;
+ default: break;
  }
  ColUser.Draw(CouleurUserLoop);
 
@@ -555,6 +556,7 @@ for (int lg=0;lg<3;lg++)
  sprintf(descriptif_colors_user_conf,"Your color is:Procedure");
  CouleurUser12=TmpColor;
  break;
+ default: break;
  }
  LoadWhiteCatColorProfil();
 }

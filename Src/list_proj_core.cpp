@@ -80,6 +80,7 @@ if(channel_macro_reaction[the_chan][num_macro]==8){audiofile_selected=127-audiof
 if(audiofile_selected<0){audiofile_selected=0;}
 if(audiofile_selected>127){audiofile_selected=127;}
 break;
+default: break;
 }
 sprintf(audiofile_name,list_audio_files[audiofile_selected]);
 AffectSoundFile(channel_macro_val[the_chan][num_macro][1]-1);
@@ -148,6 +149,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 }
 break;
@@ -172,6 +174,7 @@ case 3://PLAYER 4
  player4->setRepeat(true);
  player_is_onloop[channel_macro_val[the_chan][num_macro][1]-1]=1;
 break;
+default: break;
 }
 }
 break;
@@ -196,15 +199,14 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[channel_macro_val[the_chan][num_macro][1]-1]=0;
 break;
+default: break;
 }
 }
 break;
 case 8://Volume A.Pl
 if(channel_macro_reaction[the_chan][num_macro]==7 || channel_macro_reaction[the_chan][num_macro]==8 )//follow pur
 {
-float lev_to_do=0.0;
-
-lev_to_do=((float)MergerArray[the_chan])/255.0;
+float lev_to_do=((float)MergerArray[the_chan])/255.0;
 
 if(channel_macro_reaction[the_chan][num_macro]==8)
 {
@@ -229,6 +231,7 @@ else if(lev_to_do<0.0){lev_to_do=0.0;}
      case 3:
      player4->setVolume(lev_to_do);
      break;
+     default: break;
      }
      player_niveauson[channel_macro_val[the_chan][num_macro][1]-1]=(int)(lev_to_do*127);
      midi_levels[616+channel_macro_val[the_chan][num_macro][1]-1]=(int)(lev_to_do*127);
@@ -240,9 +243,7 @@ break;
 case 9://Pan A.Pl
 if(channel_macro_reaction[the_chan][num_macro]==7 || channel_macro_reaction[the_chan][num_macro]==8  )//follow pur
 {
-float pitc_to_do=0.0;
-
-pitc_to_do=(((float)MergerArray[the_chan])/255.0)*127.0;
+float pitc_to_do=(((float)MergerArray[the_chan])/255.0)*127.0;
 
 if(channel_macro_reaction[the_chan][num_macro]==8)
 {
@@ -269,6 +270,7 @@ if(player_ignited[channel_macro_val[the_chan][num_macro][1]-1]==1 && index_loadi
      case 3:
      player4->setPan((pitc_to_do-64)/64);
      break;
+     default: break;
      }
      player_pan[channel_macro_val[the_chan][num_macro][1]-1]=(int)(pitc_to_do);
      midi_levels[620+channel_macro_val[the_chan][num_macro][1]-1]=(int)(pitc_to_do);
@@ -310,6 +312,7 @@ if(player_ignited[channel_macro_val[the_chan][num_macro][1]-1]==1 && index_loadi
      case 3:
      player4->setPitchShift(pitc_to_do/64);
      break;
+     default: break;
      }
      player_pitch[channel_macro_val[the_chan][num_macro][1]-1]=(int)(pitc_to_do);
      midi_levels[624+channel_macro_val[the_chan][num_macro][1]-1]=(int)(pitc_to_do);
@@ -353,11 +356,13 @@ case 14://FADER LEVEL
 if((channel_macro_reaction[the_chan][num_macro]==7 || channel_macro_reaction[the_chan][num_macro]==8) && channel_macro_val[the_chan][num_macro][1]>0 && channel_macro_val[the_chan][num_macro][1]<49 )//follow pur
 {
 int num_f=(channel_macro_val[the_chan][num_macro][1]-1);
-Fader[ num_f]=MergerArray[the_chan];
+fader_set_level(num_f,MergerArray[the_chan]);
+//Fader[ num_f]=MergerArray[the_chan]; // original
 midi_levels[ num_f]=(int)(MergerArray[the_chan]/2);
 if(channel_macro_reaction[the_chan][num_macro]==8)
 {
-Fader[ num_f]=255-Fader[ num_f];
+//Fader[ num_f]=255-Fader[ num_f]; //original
+fader_set_level(num_f,255-Fader[ num_f]);
 midi_levels[ num_f]=127-midi_levels[ num_f];
 }
 
@@ -523,6 +528,7 @@ channel_macro_val[last_ch_selected][i][0]=temp_val;
 reset_numeric_entry();
 }
 break;
+default: break;
 }
 }
 

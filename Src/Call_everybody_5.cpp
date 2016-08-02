@@ -73,6 +73,7 @@ switch(miditable[0][682])
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
 sprintf(string_last_midi_id,"NumPad ALL is Ch: %d Pitch: %d Typ: %s" ,miditable[1][682],miditable[2][682],thetypinfo);
 attribute_midi_solo_affectation(682,Midi_Faders_Affectation_Mode);
@@ -91,6 +92,7 @@ switch(miditable[0][683])
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
 sprintf(string_last_midi_id,"NumPad INV is Ch: %d Pitch: %d Typ: %s" ,miditable[1][683],miditable[2][683],thetypinfo);
 attribute_midi_solo_affectation(683,Midi_Faders_Affectation_Mode);
@@ -110,6 +112,7 @@ switch(miditable[0][684])
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
 sprintf(string_last_midi_id,"NumPad Thru is Ch: %d Pitch: %d Typ: %s" ,miditable[1][684],miditable[2][684],thetypinfo);
 attribute_midi_solo_affectation(684,Midi_Faders_Affectation_Mode);
@@ -125,6 +128,7 @@ break;
 case 4:
 channel_paste();
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -170,10 +174,8 @@ case 4:
 petitchiffre.Print("  PASTE",fx+5, fy+15 + (df*fhaut)+ (space*df));
 petitpetitchiffre.Print(" Ctrl-V",fx+20, fy+25 + (df*fhaut)+ (space*df));
 break;
-
-
+default: break;
 }
-
 }
 return(0);
 }
@@ -342,9 +344,9 @@ break;
 case 5:
 IDmidi=1829;
 IDcommand=cl+20;
-strcpy(nom_commande,"BazooKAT");
+strcpy(nom_commande,"WAVE");
 strcpy(raccourci_commande,"");
-stae=index_bazoocat_menu_window;
+stae=index_wave_menu_window;
 break;
 default:
 break;
@@ -636,9 +638,9 @@ stae=index_grider_window;
 break;
 case 5:
 IDmidi=1829;
-strcpy(nom_commande,"BazooKAT");
+strcpy(nom_commande,"WAVE");
 strcpy(raccourci_commande,"");
-stae=index_bazoocat_menu_window;
+stae=index_wave_menu_window;
 break;
 default:
 break;

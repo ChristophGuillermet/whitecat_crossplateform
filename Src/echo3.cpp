@@ -102,6 +102,7 @@ echo_way[ech][b]=0;
 tmp_echo[ech][b]=0.001*gravity;
 }
 break;
+default: break;
 }
 
 //ground
@@ -151,7 +152,7 @@ echochanis=echo_grid_channel_position[echo_selected]+sh;
 if(index_enable_edit_echo==1 )
 {
 dragging_channel_in_echo=1;
-mouse_y_level=((float)constrain_data_to_midi_range(mouse_y-ye))/127.0;
+//mouse_y_level=((float)constrain_data_to_midi_range(mouse_y-ye))/127.0;
 mouse_y_level=1.0-((float)constrain_data_to_midi_range(mouse_y-ye))/127.0;
 echo_levels[echo_selected][(echo_channel_manipulate_mode[echo_selected])][echochanis]=mouse_y_level;
 if(echo_channel_manipulate_mode[echo_selected]==0)
@@ -362,6 +363,7 @@ switch(echo_channel_manipulate_mode[echo_selected])
  case 1:
  clear_ground_levels(echo_selected);
  break;
+ default: break;
 }
 index_main_clear=0;
 }
@@ -548,6 +550,7 @@ break;
 case 0:
 sprintf(tcmp,"Level %.2f - %d",echo_levels[echo_selected][0][echo_over_channel],(int)( echo_levels[echo_selected][0][echo_over_channel]*100));
 break;
+default: break;
 }
 petitchiffre.Print(tcmp,xe+500 ,ye+45);
 
@@ -559,6 +562,7 @@ break;
 case 0:
 sprintf(tcmp,"Ground %.2f - %d",echo_levels[echo_selected][1][echo_over_channel],(int)( echo_levels[echo_selected][1][echo_over_channel]*100));
 break;
+default: break;
 }
 petitchiffre.Print(tcmp,xe+500 ,ye+70);
 
@@ -702,6 +706,7 @@ case 1:
      petitchiffre.Print("CH.GRND",xe+507,ye+22);
      sprintf(tcmp,"CH.GROUND");
 break;
+default: break;
 }
 
 ActionTyp.DrawOutline(CouleurLigne.WithAlpha(0.5));

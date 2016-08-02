@@ -81,15 +81,10 @@ set_default_image_size();
 	video_file = fopen("user\\config_video.txt", "rt" );
 	if( !video_file )
 	{
-	 printf("\nPb à ouverture de config_video.txt\n");
-     return 1;
+	  sprintf(string_save_load_report[idf],"! config_video.txt\n");
 	}
 //premiere ligne les args
-	if( !fgets( read_buff_vid , sizeof( read_buff_vid ) ,video_file ) )
-	{
-     printf("\nErreur lors de la lecture de la première ligne de commentaires\n");
-     return 1;
-	}
+	fgets( read_buff_vid , sizeof( read_buff_vid ) ,video_file );
 	fscanf( video_file , "%d\n" ,  &camera_size_settings_is);
 	//2eme ligne args
     fgets( read_buff_vid , sizeof( read_buff_vid ) ,video_file );
@@ -566,6 +561,7 @@ tracking_dock_to_clean=ct;
 index_do_clear_my_video_preset=1;
 index_ask_confirm=1;
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -590,6 +586,7 @@ break;
 case 1:
 edit_tracker=0;
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -605,6 +602,7 @@ break;
 case 1:
 move_tracker=0;
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -637,6 +635,7 @@ switch(miditable[0][498])
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
 }
 sprintf(string_last_midi_id,"DECAY is Ch: %d Pitch: %d Typ: %s" , miditable[1][498],miditable[2][498],thetypinfo);
 

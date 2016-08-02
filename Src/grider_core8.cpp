@@ -157,6 +157,7 @@ if( mouse_released==0)
   bufferBlind[i]=0;
  }
  break;
+ default: break;
  }
  }
   else if(index_affect_time==1 )
@@ -190,6 +191,7 @@ if( mouse_released==0)
  }
  }
  break;
+ default: break;
  }
  index_affect_time=0;
  }
@@ -220,6 +222,7 @@ if( mouse_released==0)
  }
  }
  break;
+ default: break;
  }
  index_do_modify=0;
  }
@@ -261,6 +264,7 @@ grid_levels[index_grider_selected[num_grid_player]][index_grider_step_is[num_gri
  index_clear_a_grid_serie_step=1;
  index_for_grid_stepto=index_StepTo[num_grid_player];
  break;
+ default: break;
  }
  }
  }
@@ -469,6 +473,7 @@ if(lev_to_attr_to_grid>=0 && lev_to_attr_to_grid<=255)
 grid_levels[grid_selected][gr_st_selected][position_grid_editing]=lev_to_attr_to_grid;
 }
 break;
+default: break;
 }
 
 }
@@ -971,6 +976,7 @@ case 1:
 hauteurGlobalGridviewer=100+(grider_nb_row*size_preview_case);
 do_logical_GlobalGridViewer(xb,yb+40,size_preview_case);  //x y taille de previsu de la grille
 break;
+default: break;
 }
 
 if(mouse_x>xb+495 && mouse_x<xb+495+40 && mouse_y>yb+20 && mouse_y<yb+20+10)

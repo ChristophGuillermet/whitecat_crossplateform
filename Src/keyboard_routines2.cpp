@@ -69,6 +69,7 @@ int recall_config_page()
     case 6:
         index_config_general=1;
         break;
+    default: break;
     }
     return(0);
 }
@@ -109,19 +110,10 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
             reset_indexs_confirmation();
             reset_index_actions();
             key_unselect_ch();
+
             Midi_Faders_Affectation_Type=0;
-            if(window_focus_id==W_PLOT )
-            {
-                if(index_menus_lighting_plot==1) unselect_all_shapes();
-                else if( index_menus_lighting_plot==2 || index_menus_lighting_plot==4)
-                {
-                    for(int i=0;i<4;i++)
-                    {
-                         reset_symbols_selected(i);
-                    }
-                }
-            }
-            else if(window_focus_id==W_ASKCONFIRM)
+
+            if(window_focus_id==W_ASKCONFIRM)
             {
                 substract_a_window(W_ASKCONFIRM);
                 substract_a_window(previous_window_focus_id);
@@ -156,7 +148,6 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
                 index_ask_confirm=1;
                 index_do_overrecord_mem=1;
                 clear_keybuf();
-
             }
             else if (key_shifts & KB_SHIFT_FLAG || index_false_shift==1)
             {

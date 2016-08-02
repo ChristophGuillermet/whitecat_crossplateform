@@ -123,6 +123,7 @@ int close_sunlite()
               case -1:
               sprintf(string_display_dmx_params,"Sunlite close=No / Error Command");
               break;
+              default: break;
               }
 
               dasusbcommand(DHC_EXIT,0,NULL);
@@ -154,27 +155,6 @@ for(int z=0;z<512;z++)
 
 if (dasusbcommand >0)
        { dasusbcommand(DHC_DMXOUT,512,DmxBlockSunlite);  }
-  /*     switch (index_is_siudi_8C)
-       {
-       case 0:
-       if(do_send_dmx_on_change_siudi==1)
-                                 {
-                                 dasusbcommand(DHC_DMXOUT,512,DmxBlockSunlite);
-                                 do_send_dmx_on_change_siudi=0;
-                                 }
-       break;
-       case 1:
-       dasusbcommand(DHC_DMXOUT,512,DmxBlockSunlite);
-      break;
-       }
-       }
-if(index_is_siudi_8C==0 )
-{
-for(int z=0;z<512;z++)
-{
-dmxbackup_sunlite[z]=DmxBlockSunlite[z];
-}
-}*/
  return(0);
 }
 
@@ -197,3 +177,4 @@ int reset_dmx_out()
 dasusbcommand(DHC_DMXOUTOFF,0,0);
  return(0);
 }
+

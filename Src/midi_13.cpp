@@ -384,6 +384,7 @@ do_double_go_function();
 else {do_go_function(); }
 index_pause=0;
 break;
+default: break;
 }
 if(index_go==1 && index_pause==0)
 {
@@ -647,6 +648,7 @@ break;
 case 3:
 player4->setVolume(((float)player_niveauson[bum])/127);
 break;
+default: break;
 }
 }
 }
@@ -681,6 +683,7 @@ case 3://PLAYER 4
  else if(player_pan[bum]>127){player_pan[bum]=127;}
  player4->setPan(((float)(player_pan[bum]-64))/63);
 break;
+default: break;
 }
 }
 }
@@ -715,6 +718,7 @@ case 3://PLAYER 4
  else if(player_pitch[bum]>127){player_pitch[bum]=127;}
  player4->setPitchShift((((float)player_pitch[bum])/64));
 break;
+default: break;
 }
 }
 }
@@ -735,6 +739,7 @@ case 0://PLAYER 1
  case 1:
  player1_do_stop();player_is_playing[bum]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -746,6 +751,7 @@ case 1://PLAYER 2
  case 1:
  player2_do_stop();player_is_playing[bum]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -757,6 +763,7 @@ case 2://PLAYER 3
  case 1:
  player3_do_stop();player_is_playing[bum]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -768,8 +775,10 @@ case 3://PLAYER 4
  case 1:
  player4_do_stop();  player_is_playing[bum]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 }
 }
@@ -792,6 +801,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 midi_show_flash_seektouch[bum]=1;
 /*if(enable_launchpad==1){launchpad_impulsion(control, orange);}*/
@@ -816,6 +826,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[bum]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -829,6 +840,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[bum]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -842,6 +854,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[bum]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -855,8 +868,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[bum]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 }
 }
@@ -879,6 +894,7 @@ switch(bum)
     case 3://PLAYER 4
     player4->setPosition(position_of_file_in_player[bum]-100000);
     break;
+    default: break;
 }
 }
 midi_show_flash_backwardtouch[bum]=1;
@@ -903,6 +919,7 @@ switch(bum)
     case 3://PLAYER 4
     player4->setPosition(position_of_file_in_player[bum]+100000);
     break;
+    default: break;
 }
 }
 midi_show_flash_forwardtouch[bum]=1;
@@ -947,6 +964,7 @@ if(player_loop_out_position[bum]<=player_seek_position[bum]){player_loop_out_pos
 }
 else  if(player_loop_out_position[bum]!=player_seek_position[bum]) {player_seek_position[bum]=0;index_main_clear=0;}
 break;
+default: break;
 }
 }
 midi_show_flash_cueIntouch[bum]=1;
@@ -992,6 +1010,7 @@ if(player_loop_out_position[bum]<=player_seek_position[bum]){player_loop_out_pos
 }
 else  if(player_loop_out_position[bum]!=player_seek_position[bum]) {player_loop_out_position[bum]=(player4->getLength());}
 break;
+default: break;
 }
 /*if(enable_launchpad==1){launchpad_impulsion(control, red);}*/
 midi_show_flash_cueOuttouch[bum]=1;
@@ -1015,6 +1034,7 @@ switch(bum)
  player1->setRepeat(false);
  player_is_onloopCue[bum]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1028,6 +1048,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloopCue[bum]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1041,6 +1062,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloopCue[bum]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1054,8 +1076,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloopCue[bum]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 }
 }
@@ -1078,6 +1102,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(player_seek_position[bum]);
 break;
+default: break;
 }
 midi_show_flash_cueSeektouch[bum]=1;
 /*if(enable_launchpad==1){launchpad_impulsion(control, red);}*/
@@ -1140,6 +1165,7 @@ int lStopPos=999;
     case 1:
     lStopPos=atol(numeric);
     break;
+    default: break;
     }
 reset_numeric_entry();
 if (lStopPos>=0 && lStopPos<=255)
@@ -1210,8 +1236,6 @@ if(control>=743 && control<=757)
 switch(control)
 {
 case 743: //DOCK
-
-
 index_do_modify=0;
 index_do_report=0;
 index_main_clear=0;
@@ -1225,6 +1249,7 @@ break;
 case 1:
  sprintf(string_Last_Order,">> No Record");
 break;
+default: break;
 }
 
 switch (window_focus_id)
@@ -1415,6 +1440,7 @@ break;
 case 766://chrono reset
 Chrono_Reset();
 break;
+default: break;
 }
 }
 
@@ -1600,6 +1626,7 @@ break;
 }
 }
 break;
+default: break;
 }
 }
 
@@ -1692,6 +1719,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON Chaser %d",chaser_selected+1);
 break;
+default: break;
 }
 }
 /*
@@ -1852,6 +1880,7 @@ else if ( DockTypeIs[control-1115][dock_used_by_fader_is[control-1115]]==12 )  t
 else if( DockTypeIs[control-1115][dock_used_by_fader_is[control-1115]]==6 ) the_audio_player=DockHasAudioVolume[control-1115][dock_used_by_fader_is[control-1115]]-1;
 else if ( DockTypeIs[control-1115][dock_used_by_fader_is[control-1115]]==7 ) the_audio_player=DockHasAudioPan[control-1115][dock_used_by_fader_is[control-1115]]-1;
 else if ( DockTypeIs[control-1115][dock_used_by_fader_is[control-1115]]==8 ) the_audio_player=DockHasAudioPitch[control-1115][dock_used_by_fader_is[control-1115]]-1;
+
 switch(DockTypeIs[control-1115][dock_used_by_fader_is[control-1115]])
 {
 case 6://vol
@@ -1868,6 +1897,7 @@ case 0://PLAYER 1
  case 1:
  player1_do_stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1879,6 +1909,7 @@ case 1://PLAYER 2
  case 1:
  player2_do_stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1890,6 +1921,7 @@ case 2://PLAYER 3
  case 1:
  player3_do_stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1901,8 +1933,10 @@ case 3://PLAYER 4
  case 1:
  player4_do_stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
@@ -1912,6 +1946,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",control-1115+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -1929,6 +1964,7 @@ case 0://PLAYER 1
  case 1:
  player1_do_stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1940,6 +1976,7 @@ case 1://PLAYER 2
  case 1:
  player2_do_stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1951,6 +1988,7 @@ case 2://PLAYER 3
  case 1:
  player3_do_stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1962,9 +2000,12 @@ case 3://PLAYER 4
  case 1:
  player4_do_stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
+
 switch(player_is_playing[the_audio_player])//inversed by action
 {
 case 0:
@@ -1973,6 +2014,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",control-1115+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -1990,6 +2032,7 @@ case 0://PLAYER 1
  case 1:
  player1_do_stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2001,6 +2044,7 @@ case 1://PLAYER 2
  case 1:
  player2_do_stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2012,6 +2056,7 @@ case 2://PLAYER 3
  case 1:
  player3_do_stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2023,8 +2068,10 @@ case 3://PLAYER 4
  case 1:
  player4_do_stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
@@ -2034,6 +2081,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",control-1115+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -2054,6 +2102,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d Chaser %d",control-1115+1,the_chaser+1);
 break;
+default: break;
 }
 break;
 case 12://grid
@@ -2067,6 +2116,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d GridPl %d",control-1115+1,the_grid_player+1);
 break;
+default: break;
 }
 break;
 default:
@@ -2105,6 +2155,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",control-1164+1,the_audio_player+1);
 }
@@ -2126,6 +2177,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",control-1164+1,the_audio_player+1);
 }
@@ -2155,6 +2207,7 @@ if(player_is_onloopCue[3]==0  ){player4->setPosition(0);}
 else
 {player4->setPosition(player_seek_position[3]);}
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",control-1164+1,the_audio_player+1);
 }
@@ -2205,6 +2258,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2218,6 +2272,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2231,6 +2286,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2244,8 +2300,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -2256,6 +2314,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",control-1213+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -2276,6 +2335,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2289,6 +2349,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2302,6 +2363,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2315,8 +2377,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -2327,6 +2391,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",control-1213+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -2347,6 +2412,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2360,6 +2426,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2373,6 +2440,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2386,8 +2454,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -2398,6 +2468,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",control-1213+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -2412,6 +2483,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Chaser %d",control-1213+1, the_chaser+1);
 break;
+default: break;
 }
 break;
 case 12: //grid
@@ -2424,6 +2496,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> AutoStop ON from Fader %d Gpl %d",control-1213+1, the_grid_player+1);
 break;
+default: break;
 }
 break;
 default:
@@ -2871,6 +2944,7 @@ break;
 case 1:
 add_a_window(W_PLOT);
 break;
+default: break;
 }
 }
 
@@ -3046,6 +3120,7 @@ show_calc_number[calc]=1;
 view_plot_calc_number_is=calc;
 mouse_released=1;
 break;
+default: break;
 }
 plot_generate_appareils_list();
 }
@@ -3333,6 +3408,7 @@ switch(echo_channel_manipulate_mode[echo_selected])
  case 1:
  clear_ground_levels(echo_selected);
  break;
+ default: break;
 }
 index_main_clear=0;
 }
@@ -3467,10 +3543,10 @@ simulate_keypress(KEY_O<<8);index_false_shift=0;index_false_control=0;
 sprintf(string_Last_Order,"Midi simulate FULL");
 }
 
-if(control == 1829 )//window BazooCAT
+if(control == 1829 )//window WAVE
 {
-if(index_bazoocat_menu_window==0){add_a_window(W_BAZOOKAT);}
-else {substract_a_window(W_BAZOOKAT);}
+if(index_wave_menu_window==0){add_a_window(W_WAVE);}
+else {substract_a_window(W_WAVE);}
 rest(midi_keyboard_wait);
 }
 
@@ -3519,6 +3595,7 @@ if(fader_damper_is_on[control-1912]==0)
         Fader_dampered[control-1912].set_target_val(Fader[control-1912]);
     }
     fader_damper_is_on[control-1912]=toggle(fader_damper_is_on[control-1912]);
+    if(fader_damper_is_on[control-1912]==1){index_fader_is_manipulated[control-1912]=1;}
 }
 
 //DAMPER FADER LEVEL DECAY 1960
@@ -3538,7 +3615,42 @@ if(control>=2056 && control <=2113)
     Fader_dampered[control-2056].set_damper_dt((((float)midi_levels[control])/127)/10);
 }
 
+//WAVE
+if(control==2114) //level damper decay wave
+{
+float u=1.0-((float)(midi_levels[control])/127);
+    for(int i=0;i<26;i++)
+    {
+     Wave_Dampered[i].set_damper_decay(u);
+    }
+}
 
+if(control==2115) //level damper delta wave
+{
+float u=(1.0-(((float)midi_levels[control])/127))/10;
+    for(int i=0;i<26;i++)
+    {
+     Wave_Dampered[i].set_damper_dt(u);
+    }
+}
+
+if(control==2116) //mode damper delta wave bouton
+{
+    Wave_Dampered[0].set_damper_mode(Wave_Dampered[0].getdampermode()+1);
+    int u=Wave_Dampered[0].getdampermode();
+    for(int i=1;i<26;i++)
+    {
+    Wave_Dampered[i].set_damper_mode(u);
+    }
+}
+
+if(control==2117) //slider du wave wavecontroller
+{
+        waver_control=((float)midi_levels[control]*2)/10 ;
+        waver_control=constrain_int_data_to_this_range(waver_control, 0,26);
+        wave_calculations();
+
+}
 
 return(0);
 }
@@ -3622,7 +3734,7 @@ if( position_midi_historic>254)
         position_midi_historic=0;
         for(int i=0;i<255;i++)
         {
-        sprintf(midi_historic[i],"");
+        sprintf(midi_historic[i]," ");
         midi_historic_data[i][0]=999;
         midi_historic_data[i][1]=999;
         midi_historic_data[i][2]=999;
@@ -4438,6 +4550,7 @@ case 1:
 WheelMode.Draw(CouleurSurvol);
 petitchiffre.Print("A",xw+rayon_k+13,yw-rayon_k+12);
 break;
+default: break;
 }
 WheelMode.DrawOutline(CouleurLigne);
 
@@ -4528,6 +4641,7 @@ int midi_clock_part(int _x,int _y)
     case 1:
      petitchiffre.Print("/ON", _x+5,_y+28);
     break;
+    default: break;
  }
 
  Rect BPm_(Vec2D(_x,_y+45),Vec2D(60,20));
@@ -4726,6 +4840,7 @@ case 7:
 MidiOption.Draw(CouleurFader.WithAlpha(index_midi_global_thruth)) ;
 petitpetitchiffre.Print("Midi THRU",cfg_midiX+80,cfg_midiY+57+(pm*30));
 break;
+default: break;
 }
 }
 

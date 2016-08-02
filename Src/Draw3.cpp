@@ -353,6 +353,7 @@ break;
 case 1://ligne
   petitchiffrenoir.Print("GridPl.",xw+185, yw+25);
 break;
+default: break;
 }
 
 //SELECTION PRESETS
@@ -421,6 +422,7 @@ break;
 case 1:
 petitchiffre.Print(ol::ToString((int) (draw_level_to_do[draw_preset_selected]*255)),xw+330,yw+54);
 break;
+default: break;
 }
 
 if(window_focus_id==W_DRAW && Midi_Faders_Affectation_Type!=0 && mouse_x>xw+180 && mouse_x<xw+307 && mouse_y>yw+45 && mouse_y<yw+55)//config midi
@@ -472,6 +474,7 @@ break;
 case 1:
 petitchiffre.Print(ol::ToString((int) (draw_ghost_to_do[draw_preset_selected]*255)),xw+330,yw+104);
 break;
+default: break;
 }
 if(window_focus_id==W_DRAW && Midi_Faders_Affectation_Type!=0 && mouse_x>xw+180 && mouse_x<xw+307 && mouse_y>yw+95 && mouse_y<yw+105)//config midi
 {

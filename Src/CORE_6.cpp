@@ -35,7 +35,7 @@ WWWWWWWW           C  WWWWWWWW   |
 
  White Cat {- categorie} {- sous categorie {- sous categorie}}
 
-*   GÃ¨re la plupart des fonctions global du coeur de whitecat
+*   Gère la plupart des fonctions global du coeur de whitecat
 *
 *   Global fonctions for the core of whitecat
 *
@@ -50,6 +50,32 @@ int reset_numeric_entry()
     return(0);
 }
 ///////////////////////////////////////////////////////////////////////////////
+
+
+void write_text_to_log_file( const std::string &text )
+{
+    std::ofstream log_file(
+        "log_file.txt", std::ios_base::out | std::ios_base::app );
+
+    log_file << text ;    log_file << "\n";
+}
+
+
+void clear_log_file()
+{
+     std::ofstream log_file("log_file.txt", std::ios_base::out | std::ios_base::trunc );
+
+    char buff[20];
+    struct tm *sTm;
+
+    time_t now = time (0);
+    sTm = localtime (&now);
+
+    strftime (buff, sizeof(buff), "%Y-%m-%d %H:%M:%S", sTm);
+    write_text_to_log_file( buff);
+
+}
+
 
 int return_lowest(int data1, int data2)
 {
@@ -99,6 +125,27 @@ int constrain_data_to_midi_range(int valeur)
 }
 
 
+
+//18/07/2015
+int unselect_ch_and_symbols()
+{
+             for (int ci=1;ci<514;ci++)
+             {  Selected_Channel[ci]=0;
+                for(int calc=0;calc<4;calc++)
+                    {
+                         for (int i=0;i<nbre_symbol_per_layer;i++)
+                        {symbol_is_selected[calc][i]=0;}
+                    }
+             }
+             last_ch_selected=0;
+             index_type=0;index_level_attribue=0;
+
+
+
+    return(0);
+}
+
+
 int reset_temp_state_for_channel_macros_launch()
 {
  for(int i=0;i<514;i++)
@@ -120,6 +167,9 @@ Fader_dampered[cmptfader].set_target_val(val);
 break;
 case 1:
 Fader_dampered[cmptfader].set_target_val(val);
+index_fader_is_manipulated[cmptfader]=1;
+break;
+default:
 break;
 }
 
@@ -224,7 +274,87 @@ int constrain_int_data_to_this_range(int data, int min, int max)
     return(data);
 }
 
+//wave
 
+int set_new_values_in_wave()
+{
+int _index=0;
+for(int i=waver_control;i<26;i++)//vers la droite
+{
+        if(lead_brush_reading[brush_selected]+_index<26)
+            {
+            Wave_Dampered[i].set_target_val(255*brush_slots[brush_selected][lead_brush_reading[brush_selected]+_index]);
+            _index++;
+            }
+            if(lead_brush_reading[brush_selected]+_index>=26)
+            {break;}
+}
+
+
+_index=0;
+for(int i=waver_control;i>=0;i--)//vers la gauche
+{
+
+            if(lead_brush_reading[brush_selected]-_index<0)//protection
+            {break;}
+            if(lead_brush_reading[brush_selected]-_index>=0)
+            {
+            Wave_Dampered[i].set_target_val(255*brush_slots[brush_selected][lead_brush_reading[brush_selected]-_index]);
+            _index++;
+            }
+}
+return(0);
+}
+
+
+int clear_wave_buffer()
+{
+for(int i=0; i<513;i++)
+    {
+       buffer_wave[i]=0;
+    }
+return(0);
+}
+
+
+
+int clear_wave_brush(int preset)
+{
+for(int i=0; i<26;i++)
+    {
+       brush_slots[preset][i]=0.0;
+    }
+return(0);
+}
+int clear_wave_slots()
+{
+for(int i=0;i<26;i++)
+{
+    Wave_Dampered[i].set_target_val(0.0);
+}
+return(0);
+}
+
+int wave_calculations()
+{
+
+  if(previous_waver_control!=waver_control)
+  {
+   set_new_values_in_wave();
+   previous_waver_control=waver_control;
+  }
+
+return(0);
+}
+
+int seek_to_beg_wave()
+{
+clear_wave_slots();
+waver_control=0;
+set_new_values_in_wave();
+previous_waver_control=waver_control;
+return(0);
+}
 
 int check_echo_bounce_done(int ech)
 {
@@ -352,7 +482,7 @@ int clear_banger(int bg)
     for(int dd=0; dd<6; dd++)
     {
         bangers_type[bg][dd]=0;//127 bangers // 6 events par banger
-        bangers_action[bg][dd]=0;//num action demandÃ©e
+        bangers_action[bg][dd]=0;//num action demandée
         bangers_params[bg][dd][0]=0;//0 param1 / 1 param2
         bangers_params[bg][dd][1]=0;
         bangers_delay[bg][dd]=0.0;//delays
@@ -412,7 +542,7 @@ int clear_echo_preset(int ech)
         tmp_falling_from_level[ech][i]=0.0;
         snap_echo_to_recall[ech][i]=0.0;
     }
-    do_bounce[ech]=0;//dÃ©clencheur
+    do_bounce[ech]=0;//déclencheur
 
     for (int f=0; f<48; f++)
     {
@@ -501,7 +631,7 @@ int Draw_point_and_perform_level_on_area_NEW(int pr, int position_x, int positio
             mouse_released=1;
         }
     }
-//dÃ©saffectation des circuits
+//désaffectation des circuits
     else if(index_do_dock==0 && index_main_clear==1 )
     {
         if(index_enable_edit_Draw==1 && mouse_released==0)
@@ -641,7 +771,7 @@ int reset_index_actions()
     multiple_direct_chan=0;
     index_affect_draw_to_dock=0;
     index_affect_echo_to_dock=0;
-
+    index_affect_wave_to_dock=0;
 
 
     return(0);
@@ -734,7 +864,7 @@ int reset_indexs_confirmation()
     //direct ch
     index_do_record_direct_ch=0;
 
-    //affectation courbe Ã  un fader
+    //affectation courbe à un fader
     index_ask_curv_to_fader=0;
     index_re_init_client_artnet=0;
     index_re_init_serveur_artnet=0;
@@ -805,6 +935,9 @@ int reset_indexs_confirmation()
     index_ask_clear_echo_preset=0;
     index_do_affect_echo_to_dock=0;
 
+    //wave
+    index_affect_wave_to_dock=0;
+
     index_ask_copy_banger=0;
     index_ask_clear_banger=0;
 
@@ -813,6 +946,11 @@ int reset_indexs_confirmation()
     return(0);
 }
 
+int  affect_wave_to_dock(int fd,int dd)
+{
+  DockTypeIs[fd][dd]=17;//WAVE
+  return(0);
+}
 
 int do_clock_level_modification(int level)
 {
@@ -830,11 +968,13 @@ case 0://relatif
     install_int_ex(ticker_midi_clock , ticker_midi_clock_rate);
     }
 break;
-case 1://absolute , on rÃ©cupÃ¨re de toute facon le niveau midi comme base
+case 1://absolute , on récupère de toute facon le niveau midi comme base
     midi_BPM=relativ_encoder_midi_clock_value*level;
     if(midi_BPM<=0){midi_BPM=relativ_encoder_midi_clock_value;}
     ticker_midi_clock_rate=BPM_TO_TIMER(24 * midi_BPM);
     install_int_ex(ticker_midi_clock , ticker_midi_clock_rate);
+break;
+default:
 break;
 }
 
@@ -879,6 +1019,8 @@ int generate_channel_preview_patch_list()//affichage du premier grada
                 case 1:
                     show_more_than_one_dim[ch]=1;
                     break;
+                default:
+                break;
                 }
             }
 
@@ -1370,7 +1512,7 @@ int modify_selection_in(int view_is)//groupes de vues
     clear_selection_in(view_is);
 
     int index_ch=0;
-//clear d'un circuit existant sÃ©lectionnÃ©
+//clear d'un circuit existant sélectionné
     for(int i=1; i<514; i++)
     {
         if(temp_selv[i]==1)
@@ -1689,7 +1831,7 @@ int reset_window_opened_indexes()
 int constrain_banger_type(int lp)
 {
 //famille categorie banger
-    if(bangers_type[index_banger_selected][lp]>18)
+    if(bangers_type[index_banger_selected][lp]>19)
     {
         bangers_type[index_banger_selected][lp]=0;
     }
@@ -1704,13 +1846,13 @@ int constrain_banger_param(int lp)
         bangers_action[index_banger_selected][lp]=0;
         break;
     case 1://faders
-        if(bangers_action[index_banger_selected][lp]>37)
+        if(bangers_action[index_banger_selected][lp]>41)
         {
             bangers_action[index_banger_selected][lp]=0;
         }
         break;
     case 2://midi send
-        if(bangers_action[index_banger_selected][lp]>29)
+        if(bangers_action[index_banger_selected][lp]>30)
         {
             bangers_action[index_banger_selected][lp]=0;
         }
@@ -1795,7 +1937,7 @@ int constrain_banger_param(int lp)
         }
         break;
     case 15://hardware
-        if(bangers_action[index_banger_selected][lp]>2)
+        if(bangers_action[index_banger_selected][lp]>3)
         {
             bangers_action[index_banger_selected][lp]=0;
         }
@@ -1818,8 +1960,14 @@ int constrain_banger_param(int lp)
             bangers_action[index_banger_selected][lp]=0;
         }
         break;
-    default:
+    case 19://wave
+        if(bangers_action[index_banger_selected][lp]>12)
+        {
+            bangers_action[index_banger_selected][lp]=0;
+        }
         break;
+    default:
+    break;
     }
 
     return(0);
@@ -1827,7 +1975,7 @@ int constrain_banger_param(int lp)
 
 int reset_banger_params( int banger_selected, int event)
 {
-//bangers_params[banger_selected][ event][0]=0;//0 param1 pas resetÃ© pour garder le fader
+//bangers_params[banger_selected][ event][0]=0;//0 param1 pas reseté pour garder le fader
     bangers_params[banger_selected][ event][1]=0;//1 param2
     bangers_delay[banger_selected][ event]=0.0;//delays
     return(0);
@@ -1930,6 +2078,8 @@ int refresh_hauteur_fenetre_grider()
     case 1:
         hauteurGlobalGridviewer=100+(grider_nb_row*size_preview_case);
         break;
+    default:
+    break;
     }
     if(grider_nb_row>=10)
     {
@@ -2006,6 +2156,8 @@ int Get_channels_from_memory(int the_mem)
             case 1:
                 bufferBlind[p]=Memoires[the_mem][p];
                 break;
+            default:
+            break;
             }
         }
     }
@@ -2033,7 +2185,7 @@ int search_and_desaffect_previous_midi_signal(int typaction)
             }
         }
     }
-// 8 en ordre numÃ©rique
+// 8 en ordre numérique
     else if(typaction==2 )
     {
         switch(toggle_numerical_midi_way)
@@ -2070,6 +2222,8 @@ int search_and_desaffect_previous_midi_signal(int typaction)
                 }
             }
             break;
+        default:
+        break;
         }
     }
 
@@ -2172,6 +2326,7 @@ int attribute_midi_to_control(int faderis, int typaction, int modeaction)
                     miditable[2][faderis+h]=ispitch;
                 }
                 break;
+            default:break;
             }
         }
     }
@@ -2233,7 +2388,7 @@ if( index_midi_affectation_autoclose==1)
 int process_assign_to_core(int coreis)
 {
     char tmpmondirectory[200];
-    get_executable_name(tmpmondirectory,sizeof(mondirectory)); //recup du patch complet
+    get_executable_name(tmpmondirectory,sizeof(mondirectory)); //recup du path complet
     char nom_exe[200];
     sprintf(nom_exe, get_filename(tmpmondirectory));//recup du nom de l exe
     char tmp_order_call[512];
@@ -2557,8 +2712,10 @@ void save_load_print_to_screen(const std::string label)
     nameAera.DrawOutline(CouleurLigne);
     neuro.Print(string_print_to_screen,((largeur_ecran/2)-150),((hauteur_ecran/2)-60));
 
+    write_text_to_log_file("");
+    write_text_to_log_file(string_print_to_screen);
+    write_text_to_log_file(rep);
     Canvas::Refresh();
-//sab 02/03/2014 return(0);
 }
 
 int minifader_selection_record(int mf_preset_is)
@@ -2587,7 +2744,7 @@ int minifader_lockselection_record(int mf_preset_is)
 {
     for(int f=0; f<core_user_define_nb_faders; f++)
     {
-        FaderLocked_Preset[ mf_preset_is][f]=0;        //reset des Ã©tats avant stockage
+        FaderLocked_Preset[ mf_preset_is][f]=0;        //reset des états avant stockage
         StateOfFaderBeforeLock_Preset[ mf_preset_is][f]=0;
         LockFader_is_FullLevel_Preset[ mf_preset_is][f]=0;
         if ( FaderLocked[f]==1)
@@ -2650,7 +2807,7 @@ int button_midi_out_core(int xmi, int ymi, int control)
 
 int button_midi_out_visu(int xmi, int ymi, int control)
 {
-//midi out enclenchÃ© ou pas FADER
+//midi out enclenché ou pas FADER
     Circle BMidiOut( xmi,ymi, 10);//box du fader
     BMidiOut.SetLineWidth(epaisseur_ligne_fader);
 
@@ -2695,6 +2852,7 @@ int show_who_is_in_dock (int fader, int thedokis)
     case 4:
         sprintf(thetypinfo,"Ctrl Change");
         break;
+     default:break;
     }
 
     sprintf(string_last_midi_id,"FADER is Ch: %d Pitch: %d Typ: %s" , miditable[1][fader],miditable[2][fader],thetypinfo);
@@ -2717,6 +2875,7 @@ int show_who_is_in_dock (int fader, int thedokis)
         case 4:
             sprintf(thetypinfo,"Ctrl Change");
             break;
+            default: break;
         }
 
         sprintf(string_last_midi_id,"DOCK is Ch: %d Pitch: %d Type: %s", miditable[1][48+fader+(thedokis*48)],miditable[2][48+fader+(thedokis*48)],thetypinfo);
@@ -2782,9 +2941,9 @@ int scan_audiofolder()
     if(!al_findfirst("*.*",&f,-1))
     {
         while(!al_findnext(&f))
-        {//19/12/14 correction christoph ruiserge
+        {//18/6/2015 correction christoph  unsigned int a
             int f_name_len = strlen(f.name);
-            for(unsigned int a=0; a< f_name_len; a++)
+            for(int a=0; a< f_name_len; a++)
             {
                 //19/12/14 correction christoph ruiserge
                 if(f.name[a]=='.' && a<=f_name_len-3)
@@ -3045,6 +3204,7 @@ int set_time_cursor_to_time_type(int the_time_wheel_datatype)
     case 2://dixiemes
         angle_timesnap=angle_timesnap_dix;
         break;
+     default:break;
     }
     time_angle=angle_timesnap;
     refresh_time_cursor();
@@ -3107,7 +3267,7 @@ time_secondes=atoi(chaine_multiple[0]);
 time_centiemes=atoi(chaine_multiple[1]);
 }
 
-else if (numeric[0]=='.')//centiemes appelÃ©s uniquement
+else if (numeric[0]=='.')//centiemes appelés uniquement
 {
 char cent_t[4];
 for (int i=0;i<4;i++)
@@ -3181,7 +3341,7 @@ int do_lock_preset(int num_preset)
         lock_preset[num_preset]=1;
         for (int f=0; f<core_user_define_nb_faders; f++)
         {
-            /*ancienne version: le master fader pas mis Ã  full
+            /*ancienne version: le master fader pas mis à full
             FaderLocked[f]=FaderLocked_Preset[ num_preset][f];
             StateOfFaderBeforeLock[f]=StateOfFaderBeforeLock_Preset[num_preset][f];
             LockFader_is_FullLevel[f]=LockFader_is_FullLevel_Preset[num_preset][f];*/
@@ -3491,6 +3651,7 @@ int set_channel_scroll( int ch)
             scroll_channelspace=236;
         }
         break;
+         default:break;
     }
     }
     return(0);
@@ -3561,6 +3722,20 @@ int load_Fader_state_to_midi_array()
 }
 
 
+short midi_send_program_change(int lechannel, short prg_)
+{
+     MidiEvPtr eMid;
+    if ((eMid = MidiNewEv(typeProgChange)))
+    {
+        Port(eMid) = 0;
+        Chan(eMid) = lechannel;
+        MidiSetField(eMid,0,prg_);
+        MidiSendIm(myRefNum, eMid);
+
+    }
+    return(0);
+}
+
 int send_my_midi_note( int letype,  int lechannel, int lanote, int lavelocite, int laduree)
 {
     MidiEvPtr eMid;
@@ -3628,6 +3803,8 @@ int midi_send_type_message(int msgmidi)
 
 int emit_midi_out()
 {
+
+
 //Midi out sur faders
     for(int i=0; i<3072; i++)
     {
@@ -3641,7 +3818,7 @@ int emit_midi_out()
         }
     }
 
-    return(0);
+return(0);
 }
 
 int load_etat_picker_dans_dockcolor(int dcolor_selected )
@@ -3737,7 +3914,7 @@ int LoadWhiteCatColorProfil()
         circuitfaderlevel.SetColor(CouleurGrisAnthracite);
     }
 
-    else if(config_color_style_is==2)//bleutÃ©
+    else if(config_color_style_is==2)//bleuté
     {
         CouleurFond=CouleurBleu1;
         CouleurLigne=CouleurBlanc;
@@ -3832,8 +4009,9 @@ int record_memory(int mem_is)
         {
             Memoires[mem_is][u]=bufferBlind[u];
         }
-        Selected_Channel[u]=0;
     }
+    //christoph 18/07/2015
+    unselect_ch_and_symbols();
     ratio_cross_manuel[mem_is]=ratio_X1X2_together;
     return(0);
 }
@@ -3864,8 +4042,9 @@ int record_memory_plus_faders(int mem_is)
             {
                 Memoires[mem_is][u]=bufferFaders[u];
             }
-            Selected_Channel[u]=0;
-        }
+         }
+         //christoph 18/07/2015
+         unselect_ch_and_symbols();
 //refresh stage
         refresh_mem_onstage(mem_is);
 
@@ -3898,12 +4077,12 @@ int overrecord_memory_plus_faders(int mem_is)
             {
                 Memoires[mem_is][u]=bufferFaders[u];
             }
-            Selected_Channel[u]=0;
         }
-//refresh stage
+        //christoph 18/07/2015
+        unselect_ch_and_symbols();
+
+
         refresh_mem_onstage(mem_is);
-
-
         sprintf(string_Last_Order,">>Over-recorded mem %.1f from faders and stage ", ((float)mem_is)/10);
     }
     else if(index_blind==1)
@@ -4028,6 +4207,24 @@ int detect_mem_preset()
     }
     return(0);
 }
+
+
+int detect_next_mem(int mem_to_detect)//pour import ascii Anton 4 avril 2015
+{
+    for (int k=mem_to_detect+1; k<10000; ++k)
+    {
+        if(k>=9999)
+        {
+    return(0);
+        }
+        if(MemoiresExistantes[k]==1)
+        {
+            return k;
+        }
+    }
+    return(0);
+}
+
 
 int detect_mem_preset_previous()
 {
@@ -4565,7 +4762,7 @@ int scan_for_free_dock()
 
 int detect_dock_used(int numfad)
 {
-    int thedockused;
+    int thedockused=0;
     for (int tt=0; tt<core_user_define_nb_docks; tt++)
     {
         if ( DockIsSelected[numfad][tt]==1)
@@ -4589,10 +4786,10 @@ int refresh_minifader_state_view_core(int cmptfader)
         sprintf(str_tmp_minidock_dock,"Channels");
         break;
 //types des docks
-    case 1://si le doc est reliÃ© aux trichro
+    case 1://si le doc est relié aux trichro
         sprintf(str_tmp_minidock_dock,"Color");
         break;
-    case 2://si le doc est reliÃ© Ã  un artnet
+    case 2://si le doc est relié à un artnet
         sprintf(str_tmp_minidock_dock, "Art-%d",DockNetIs[cmptfader][dokmin]);
         break;
     case 3://si le doc recoit le dmxIN
@@ -4626,6 +4823,7 @@ int refresh_minifader_state_view_core(int cmptfader)
     case 12:
         sprintf(str_tmp_minidock_dock,"GridPl.%d",(faders_dock_grid_affectation[cmptfader][dokmin]+1));
         break;
+     default:break;
     }
     sprintf(str_minifader_feedback[1],"Dock %d %s",(dokmin+1),str_tmp_minidock_dock);
 
@@ -4642,6 +4840,7 @@ int refresh_minifader_state_view_core(int cmptfader)
     case 2:
         sprintf(report_minifader_str,"Status: Down");
         break;
+    default: break;
     }
 
     if(lfo_mode_is[cmptfader]==0 && lfo_cycle_is_on[cmptfader]==1)
@@ -4685,6 +4884,7 @@ int refresh_minifader_state_view_core(int cmptfader)
         case 1:
             niv=LevelStopPos[cmptfader];
             break;
+         default:break;
         }
         sprintf(string_fader_stop_pos[cmptfader],"%d",niv);
         sprintf(str_minifader_feedback[9],"Stop Pos ON: %d",niv);
@@ -4702,7 +4902,7 @@ int refresh_minifader_state_view_core(int cmptfader)
 int do_action_on_selected_minifaders(int action)
 {
 //variables pas incluable ds double boucle
-    bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionnÃ© dans tt le monde
+    bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionné dans tt le monde
     //sab 02/03/2014 unsued var int tpdkval=0;
     int dockused=0;
 
@@ -4738,11 +4938,12 @@ int do_action_on_selected_minifaders(int action)
                     break;
                 case 1:
                     FaderLocked[cmptfader]=0;
-                    //remise Ã  plat du niveau
+                    //remise à plat du niveau
                     Fader[cmptfader]=(unsigned char)((((float)(StateOfFaderBeforeLock[cmptfader]))/255)*locklevel);
                     midi_levels[cmptfader]=(int)(((float)Fader[cmptfader])/2);
                     sprintf(string_Last_Order,">> UNLOCKED Fader %d",cmptfader+1);
                     break;
+                 default:break;
                 }
                 break;
             case 2://loop on off
@@ -4840,7 +5041,7 @@ int do_action_on_selected_minifaders(int action)
                     }
                     break;
                 case 1:
-//tout le monde prend la valeur du dock selectionnÃ©
+//tout le monde prend la valeur du dock selectionné
                     for(int j=0; j<core_user_define_nb_docks; j++)
                     {
                         if(DockIsSelected[cmptfader][j]==1)
@@ -4854,6 +5055,7 @@ int do_action_on_selected_minifaders(int action)
                         }
                     }
                     break;
+                    default:break;
 
                 }
                 break;
@@ -4877,7 +5079,8 @@ int do_action_on_selected_minifaders(int action)
                     is_dock_for_lfo_selected[cmptfader][d]=0;
                 }
 
-                break;
+            break;
+
             case 8://Set pos job
 
                 if(index_do_dock==0 && index_main_clear==0)
@@ -4899,6 +5102,7 @@ int do_action_on_selected_minifaders(int action)
                         case 1:
                             lStopPos=atol(numeric);
                             break;
+                         default:break;
                         }
                         reset_numeric_entry();
                         if (lStopPos>=0 && lStopPos<=255)
@@ -5018,6 +5222,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player1->stop();
                                     player1_do_stop();
                                     break;
+                                     default:break;
                                 }
                                 break;
                             case 1://PLAYER 2
@@ -5030,6 +5235,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player2->stop();
                                     player2_do_stop();
                                     break;
+                                     default:break;
                                 }
                                 break;
                             case 2://PLAYER 3
@@ -5042,6 +5248,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player3->stop();
                                     player3_do_stop();
                                     break;
+                                     default:break;
                                 }
                                 break;
                             case 3://PLAYER 4
@@ -5054,8 +5261,10 @@ int do_action_on_selected_minifaders(int action)
                                     //player4->stop();
                                     player4_do_stop();
                                     break;
+                                     default:break;
                                 }
                                 break;
+                                default: break;
                             }
                             switch(player_is_playing[the_audio_player])//inversed by action
                             {
@@ -5065,6 +5274,7 @@ int do_action_on_selected_minifaders(int action)
                             case 1:
                                 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
                                 break;
+                                 default:break;
                             }
                         }
                         break;
@@ -5083,6 +5293,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player1->stop();
                                     player1_do_stop();
                                     break;
+                                 default:break;
                                 }
                                 break;
                             case 1://PLAYER 2
@@ -5095,6 +5306,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player2->stop();
                                     player2_do_stop();
                                     break;
+                                 default:break;
                                 }
                                 break;
                             case 2://PLAYER 3
@@ -5107,6 +5319,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player3->stop();
                                     player3_do_stop();
                                     break;
+                                     default:break;
                                 }
                                 break;
                             case 3://PLAYER 4
@@ -5119,8 +5332,10 @@ int do_action_on_selected_minifaders(int action)
                                     //player4->stop();
                                     player4_do_stop();
                                     break;
+                                     default:break;
                                 }
                                 break;
+                                default: break;
                             }
                             switch(player_is_playing[the_audio_player])//inversed by action
                             {
@@ -5130,6 +5345,7 @@ int do_action_on_selected_minifaders(int action)
                             case 1:
                                 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
                                 break;
+                                 default:break;
                             }
                         }
                         break;
@@ -5148,6 +5364,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player1->stop();
                                     player1_do_stop();
                                     break;
+                                 default:break;
                                 }
                                 break;
                             case 1://PLAYER 2
@@ -5160,6 +5377,7 @@ int do_action_on_selected_minifaders(int action)
                                     //player2->stop();
                                     player2_do_stop();
                                     break;
+                                     default:break;
                                 }
                                 break;
                             case 2://PLAYER 3
@@ -5172,8 +5390,10 @@ int do_action_on_selected_minifaders(int action)
                                     //player3->stop();
                                     player3_do_stop();
                                     break;
+                                 default:break;
                                 }
                                 break;
+
                             case 3://PLAYER 4
                                 switch(player4->isPlaying())
                                 {
@@ -5184,8 +5404,10 @@ int do_action_on_selected_minifaders(int action)
                                     //player4->stop();
                                     player4_do_stop();
                                     break;
+                                 default:break;
                                 }
                                 break;
+                                 default:break;
                             }
                             switch(player_is_playing[the_audio_player])//inversed by action
                             {
@@ -5195,6 +5417,7 @@ int do_action_on_selected_minifaders(int action)
                             case 1:
                                 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
                                 break;
+                                 default:break;
                             }
                         }
                         break;
@@ -5203,7 +5426,7 @@ int do_action_on_selected_minifaders(int action)
                         if(chaser_is_playing[the_chaser]==1)//snap du temps at beg
                         {
                             chaser_start_time[the_chaser]=actual_time;
-//bug olivier marche arriere arriÃ¨re ligne
+//bug olivier marche arriere arrière ligne
                             if(chaser_step_is[chaser_selected]<0)
                             {
                                 chaser_step_is[chaser_selected]=0;
@@ -5221,6 +5444,7 @@ int do_action_on_selected_minifaders(int action)
                         case 1:
                             sprintf(string_Last_Order,">> PLAY ON from Fader %d Chaser %d",cmptfader+1,the_chaser+1);
                             break;
+                             default:break;
                         }
                         break;
                     case 12://grid
@@ -5237,10 +5461,11 @@ int do_action_on_selected_minifaders(int action)
                         case 1:
                             sprintf(string_Last_Order,">> PLAY ON from Fader %d GridPl %d",cmptfader+1,the_grid_player+1);
                             break;
+                             default:break;
                         }
                         break;
                     default:
-                        break;
+                    break;
                     }
                 }
 
@@ -5311,7 +5536,7 @@ int affect_time_entry_to_mem(int index_t,int mem_set_to_time)
     return(0);
 }
 
-int do_sprintf_job()//report du calcul des affichages de temps dans la boucle des 10Ã¨me de scondes
+int do_sprintf_job()//report du calcul des affichages de temps dans la boucle des 10ème de scondes
 {
 
     if (MemoiresExistantes[mem_before_one]==1)
@@ -5337,8 +5562,8 @@ int do_sprintf_job()//report du calcul des affichages de temps dans la boucle de
     sprintf(string_time_memonstage[3],string_conversion_timeis);
     affichage_time_format(Times_Memoires[position_onstage][1]);//out
     sprintf(string_time_memonstage[1],string_conversion_timeis);
-//positionpreset > cross Ã  venir
-//temps d entree( enregistrÃ© dans le prÃ©set)
+//positionpreset > cross à venir
+//temps d entree( enregistré dans le préset)
     if(Times_Memoires[position_preset][0]>0.00)
     {
         if(crossfade_speed<64)
@@ -5363,7 +5588,7 @@ int do_sprintf_job()//report du calcul des affichages de temps dans la boucle de
     }
 
 
-//temps de delay sortie ( enregistrÃ© dans le prÃ©set)
+//temps de delay sortie ( enregistré dans le préset)
     if(Times_Memoires[position_preset][2]>0.00)
     {
         if(crossfade_speed<64)
@@ -5795,8 +6020,9 @@ int substract_a_window(int id)
             grid_affect_to_dock[i]=0;
         }
         break;
-    case W_BAZOOKAT:
-        index_bazoocat_menu_window=0;
+    case W_WAVE:
+        index_wave_menu_window=0;
+        index_affect_wave_to_dock=0;
         break;
     case W_MY_WINDOW:
         index_my_window=0;
@@ -6037,7 +6263,7 @@ int GlobInit()
                     FaderDockContains[in][dd][c]=0;
                 }
             }
-            DockIsSelected[in][0]=1;//dock 1 enclenchÃ©
+            DockIsSelected[in][0]=1;//dock 1 enclenché
             dock_used_by_fader_is[in]=0;
         }
     }
@@ -6149,7 +6375,7 @@ int GlobInit()
             miditable[1][mi]=999;
             miditable[2][mi]=999;
             midi_levels[mi]=0;
-            midi_send_out[mi]=0;//atribuÃ© ou pas
+            midi_send_out[mi]=0;//atribué ou pas
             index_send_midi_out[mi]=0;
             is_raccrochage_midi_remote[mi]=0;
             val_raccrochage_midi[mi]=0;
@@ -6444,13 +6670,13 @@ int GlobInit()
         sprintf(symbol_nickname[5],"Fresnel 5kw");
         plot_ecartement_legende[5]=40;
         size_symbol[6]=0.4;//source four
-        sprintf(symbol_nickname[6],"SourceFour 26Â°");
+        sprintf(symbol_nickname[6],"SourceFour 26°");
         plot_ecartement_legende[6]=80;
         size_symbol[7]=0.4;//source four
-        sprintf(symbol_nickname[7],"Source Four 36Â°");
+        sprintf(symbol_nickname[7],"Source Four 36°");
         plot_ecartement_legende[7]=80;
         size_symbol[8]=0.4;//source four
-        sprintf(symbol_nickname[8],"Source Four 50Â°");
+        sprintf(symbol_nickname[8],"Source Four 50°");
         plot_ecartement_legende[8]=80;
         size_symbol[9]=0.7;//dec 1kw longue
         sprintf(symbol_nickname[9],"Dec 611SX");
@@ -6548,7 +6774,7 @@ int GlobInit()
         size_symbol[40]=0.8;//Slide Projector
         sprintf(symbol_nickname[40],"Slide Projector");
         plot_ecartement_legende[40]=40;
-        size_symbol[40]=0.9;//rÃ©tro projecteur
+        size_symbol[40]=0.9;//rétro projecteur
         sprintf(symbol_nickname[41],"OverHead");
         plot_ecartement_legende[41]=60;
 
@@ -6582,10 +6808,10 @@ int GlobInit()
         sprintf(symbol_nickname[50],"Motorized mirror");
         plot_ecartement_legende[50]=50;
 
-        size_symbol[51]=0.5;//Machine Ã  fumÃ©e
+        size_symbol[51]=0.5;//Machine à fumée
         sprintf(symbol_nickname[51],"Smoke machine");
         plot_ecartement_legende[51]=30;
-        size_symbol[52]=0.5;//Machine Ã  fumÃ©e
+        size_symbol[52]=0.5;//Machine à fumée
         sprintf(symbol_nickname[52],"Fog machine");
         plot_ecartement_legende[52]=20;
 
@@ -6611,7 +6837,7 @@ int GlobInit()
         size_symbol[59]=0.5;//Barre de couplage
         sprintf(symbol_nickname[59],"Cross Bar");
         plot_ecartement_legende[59]=20;
-        size_symbol[60]=0.7;//Ã©chelle
+        size_symbol[60]=0.7;//échelle
         sprintf(symbol_nickname[60],"Ladder");
         plot_ecartement_legende[60]=240;
 
@@ -6748,6 +6974,16 @@ int GlobInit()
         }
     }
 
+   //////////////WAVE//////////////////////////
+   for(int i=0;i<26;i++)
+   {
+           // Wave_Dampered[i].fix_all_damper_state_value(Fader[in]);
+           // Wave_Dampered[i].set_target_val(Fader[in]);
+            Wave_Dampered[i].set_damper_decay(1.0);
+            Wave_Dampered[i].set_damper_dt(0.1);
+   }
+
+
 ///////////////////////////////////////////////////////////////
 
     if(specify_who_to_save_load[35]==1)//preset de sauvegarde personnalises
@@ -6797,10 +7033,11 @@ int GlobInit()
     {
         sprintf(my_show_is_coming_from,"A complete New show");
         write_show_coming_from();
+        set_all_saves_indexes_at(1);
     }
 /////////////////////////////////////////////
 //sauvegarde chargement, en tout dernier
-    set_all_saves_indexes_at(1);
+    //set_all_saves_indexes_at(1); // a cassé le chargement sélectif 3 mars 2016
     index_menu_save=0;
     substract_a_window(W_SAVE);
     return(0);
@@ -6812,4 +7049,22 @@ int reset_show()
     clear_report_string();
     GlobInit();
     return(0);
+}
+
+
+int substract_channel_selection_to_layers_plot()
+{
+int tmp_ch=0;
+for(int l=0;l<4;l++)
+{
+for(int i=0;i<=nbre_symbols_on_plot[l];i++)
+{
+tmp_ch=symbol_channel_is[l][i];
+if(Selected_Channel[tmp_ch]==0)
+{
+symbol_is_selected[l][i]= 0;
+}
+}
+}
+return(0);
 }

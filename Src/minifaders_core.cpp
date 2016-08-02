@@ -164,6 +164,7 @@ if( Midi_Faders_Affectation_Type!=0)
            do_recall_fadersstate( stockage_all_at_zero_state[0],stockage_all_at_zero_state[1],
            stockage_all_at_zero_state[2],stockage_all_at_zero_state[3],stockage_all_at_zero_state[4]);
            break;
+           default: break;
   }
 
  }
@@ -384,6 +385,7 @@ if(Midi_Faders_Affectation_Type!=0)
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
  }
   sprintf(string_last_midi_id,"FaderPreset %d is Ch: %d Pitch: %d Type: %s",lg+1, miditable[1][794+lg],miditable[2][794+lg],thetypinfo);
 
@@ -444,6 +446,7 @@ if( Midi_Faders_Affectation_Type!=0)
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
  }
   sprintf(string_last_midi_id,"Lock Preset %d is Ch: %d Pitch: %d Type: %s",lck+1, miditable[1][605+lck],miditable[2][605+lck],thetypinfo);
 
@@ -542,7 +545,7 @@ if(index_do_dock==0 && index_do_modify==0  && index_type==0    && index_main_cle
  //store normal
  if(index_do_dock==1 && index_direct_chan==0   && index_affect_chaser_to_dock==0  && index_affect_time==0 && index_affect_color_to_dock==0 && index_do_affect_net_to_dock==0
  && index_affect_dmxin==0 && index_affect_video_tracking_to_dock==0 && index_affect_audio_to_dock==0 && gridplayer_to_affect_is==-1
- && index_do_fgroup==0 && index_affect_to_dock_mover==0 && index_affect_draw_to_dock==0 &&  index_affect_echo_to_dock==0)
+ && index_do_fgroup==0 && index_affect_to_dock_mover==0 && index_affect_draw_to_dock==0 &&  index_affect_echo_to_dock==0 && index_affect_wave_to_dock==0)
  {
  fader_selected_for_record=position_minifader_selected;
  dock_selected_for_record=dock_selected_is;
@@ -675,6 +678,7 @@ if(index_do_dock==0 && index_do_modify==0  && index_type==0    && index_main_cle
  index_ask_confirm=1;
  mouse_released=1;
  }
+//faire wave
 
  //modify
  else if( index_do_modify==1 )
@@ -783,7 +787,9 @@ if(mouse_x>xmf+(cmptfader*larg) && mouse_x<xmf+(cmptfader*larg)+larg-5 && mouse_
                             Fader_dampered[fd].fix_all_damper_state_value(Fader[fd]);
                             Fader_dampered[fd].set_target_val(Fader[fd]);
                         }
+                        else { index_fader_is_manipulated[fd]=1;}
                         fader_damper_is_on[fd]=toggle(fader_damper_is_on[fd]);
+
                         }
                     mouse_released=1;
                     }

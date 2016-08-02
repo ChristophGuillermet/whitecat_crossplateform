@@ -24,14 +24,13 @@ WWWWWWWW           C  WWWWWWWW   |
            WWWWWWWWt             |
                                  |
 ---------------------------------------------------------------------------------------------------------------*/
-
 /**
 
 * \file dmx_functions_13.cpp
 * \brief {global fonctions for all interfaces and artnet}
 * \author Christoph Guillermet
 * \version {0.8.6.3}
-* \date {12/02/2015}
+* \date {6/04/2015}
 
  White Cat {- categorie} {- sous categorie {- sous categorie}}
 
@@ -49,124 +48,144 @@ unsigned char dmxIN[513];
 #include <dmx_enttec_pro.cpp>
 #include <dmx_sunlite.cpp>
 
+//REFONTE AVRIL 2016 DU SYSTEME DE NOMBRES D'INTERFACES EN PERMETTANT UN ENVOI EN SIMULTANNE SUR PLUSIEURS INYTERFACES
+
+int Init_A_specific_dmx_interface(int i)
+{
+switch(i)
+{
+            case 1:
+            initialisation_client_artnet();
+            ConstructArtPoll();
+            ConstructArtPollReply();
+            //ArtPolling message ArtPoll
+            nbrbytessended=sendto(sockartnet, ArtPollBuffer,sizeof( ArtPollBuffer),0,(SOCKADDR*)&sinS,sinsize);
+             //ArtNet
+            ArtDmx();
+            nbrbytessended=sendto(sockartnet, ArtDmxBuffer,sizeof( ArtDmxBuffer),0,(SOCKADDR*)&sinS,sinsize);
+            index_init_dmx_ok[i]=1;
+            break;
+
+            case 2:
+            pUsbDmx = new Open_USB_DMX();
+            if (pUsbDmx == NULL)//creation class
+                {  sprintf(string_display_dmx_params,"Impossible to load DLL");	return(0);}
+                sprintf(string_display_dmx_params,"Pointer Created");
+                rest(100);
+            if (pUsbDmx != NULL)
+                   {
+                          int iRet;
+                          iRet = pUsbDmx->open_dmx_devices();
+                          sprintf(string_display_dmx_params,"Enttec Open Dmx return :%d",iRet);
+                          if (iRet==0)
+                          { sprintf(string_display_dmx_params,"Impossible to open interface, is it PLUGGED ?");
+                            return(0);
+                          }
+                          index_init_dmx_ok[i]=1;
+                           for(int ko=0;ko<513;ko++)
+                           {
+                           DmxBlockEnttecOpen[ko]=DmxBlock[ko+1];
+                           }
+                          pUsbDmx->send_dmx_packet(DmxBlockEnttecOpen);
+
+                    }
+                 else {
+                      sprintf(string_display_dmx_params,"Interface Opened !");
+                      index_init_dmx_ok[i]=1;
+                  }
+            break;
+
+            case 3:
+            //VCOM
+            Detect_EnttecProOut();
+            Open_EnttecProOut();
+            break;
+
+            case 4:
+            //sunlite
+            open_sunlite();
+            index_init_dmx_ok[i]=1;
+            break;
+
+            default:
+            break;
+        }
+
+return(0);
+}
 
 
 int Init_dmx_interface()
 {
-switch(myDMXinterfaceis)
+for(int i=0;i<NB_INTERFACES;i++)
 {
-    case 1:
-    initialisation_client_artnet();
-    ConstructArtPoll();
-    ConstructArtPollReply();
-    //ArtPolling message ArtPoll
-    nbrbytessended=sendto(sockartnet, ArtPollBuffer,sizeof( ArtPollBuffer),0,(SOCKADDR*)&sinS,sinsize);
-     //ArtNet
-    ArtDmx();
-    nbrbytessended=sendto(sockartnet, ArtDmxBuffer,sizeof( ArtDmxBuffer),0,(SOCKADDR*)&sinS,sinsize);
-    index_init_dmx_ok=1;
-    break;
-
-    case 2:
-    pUsbDmx = new Open_USB_DMX();
-	if (pUsbDmx == NULL)//creation class
-		{  sprintf(string_display_dmx_params,"Impossible to load DLL");	return(0);}
-		sprintf(string_display_dmx_params,"Pointer Created");
-		rest(100);
-    if (pUsbDmx != NULL)
-		   {
-				  int iRet;
-				  iRet = pUsbDmx->open_dmx_devices();
-                  sprintf(string_display_dmx_params,"Enttec Open Dmx return :%d",iRet);
-                  if (iRet==0)
-                  { sprintf(string_display_dmx_params,"Impossible to open interface, is it PLUGGED ?");
-                    return(0);
-                  }
-                  index_init_dmx_ok=1;
-                   for(int ko=0;ko<513;ko++)
-                   {
-                   DmxBlockEnttecOpen[ko]=DmxBlock[ko+1];
-                   }
-                  pUsbDmx->send_dmx_packet(DmxBlockEnttecOpen);
-
-        	}
-     	 else {
-              sprintf(string_display_dmx_params,"Interface Opened !");
-              index_init_dmx_ok=1;
-          }
-    break;
-
-
-    case 3:
-    //VCOM
-    Detect_EnttecProOut();
-    Open_EnttecProOut();
-
-    //FTDI
-    /*
-    Num_Devices = FTDI_ListDevices();
-    device_num = 0;
-	device_connected = FTDI_OpenDevice(device_num);*/
-
-    break;
-
-
-    case 4:
-    //sunlite
-    open_sunlite();
-    index_init_dmx_ok=1;
-    break;
-
-    default:
-    break;
+    if(do_DMX_out[i]==1)
+    {
+     Init_A_specific_dmx_interface(i);
+    }
 }
-
 return(0);
 }
+
 ////////////////////////////////////////////////////////////////////////////////
+
+int Close_A_specific_dmx_interface(int i)
+{
+    switch(i)
+        {
+        //art-net
+         case 1:
+              fermeture_client_artnet();
+              index_init_dmx_ok[i]=0;
+         break;
+         //enttec Open
+         case 2:
+         if (pUsbDmx != NULL)
+                {
+                pUsbDmx->close_dmx_devices();
+                }
+                sprintf(string_display_dmx_params,"Interface Closed");
+                rest(100);
+         if (pUsbDmx != NULL)//destruction classe
+            {	delete pUsbDmx;
+                pUsbDmx = NULL;
+                sprintf(string_display_dmx_params,"Pointer Deleted");
+            }
+            index_init_dmx_ok[i]=0;
+         break;
+         //enttec PRO
+         case 3:
+         //VCOM
+         Close_EnttecProOut();
+         index_init_dmx_ok[i]=0;
+         //FTDI_ClosePort();
+         break;
+         //sunlite
+         case 4:
+         close_sunlite();
+         index_init_dmx_ok[i]=0;
+         break;
+         default:
+         break;
+         }
+
+    return(0);
+}
+
+
+
 int Close_dmx_interface()
 {
-
- switch(myDMXinterfaceis)
+for(int i=0;i<NB_INTERFACES;i++)
 {
-//art-net
- case 1:
-      fermeture_client_artnet();
- break;
- //enttec Open
- case 2:
- if (pUsbDmx != NULL)
-		{
-		pUsbDmx->close_dmx_devices();
-		}
-		sprintf(string_display_dmx_params,"Interface Closed");
-		rest(100);
- if (pUsbDmx != NULL)//destruction classe
-	{	delete pUsbDmx;
-		pUsbDmx = NULL;
-		sprintf(string_display_dmx_params,"Pointer Deleted");
-	}
- break;
- //enttec PRO
- case 3:
- //VCOM
- Close_EnttecProOut();
- //FTDI_ClosePort();
- break;
+    if(do_DMX_out[i]==1)
+    {
+     Close_A_specific_dmx_interface(i);
+    }
+}
 
- //sunlite
- case 4:
- close_sunlite();
- break;
- default:
- break;
-
- }
- index_init_dmx_ok=0;
-
- if (index_init_EnttecPROIN_ok==1){Close_ProIn();}
-
- return(0);
+if (index_init_EnttecPROIN_ok==1){Close_ProIn();}
+return(0);
 }
 ////////////////////////////////////////////////////////////////////////////////
 int check_if_dmx_change()
@@ -185,49 +204,51 @@ int check_if_dmx_change()
 
 int SendData_to_interface()
 {
-
-if(index_init_dmx_ok==1 )
+for(int i=0;i<NB_INTERFACES;i++)
 {
-  switch(myDMXinterfaceis)
-  {
-  case 1:
-  ArtDmx();
-  check_if_dmx_change();
-  if(do_send_on_change==1)
-  {
-  nbrbytessended=sendto(sockartnet, ArtDmxBuffer,sizeof( ArtDmxBuffer),0,(SOCKADDR*)&sinS,sinsize);
-  do_send_on_change=0;
-  for(int bup=0;bup<512;bup++)
-  {artnet_backup[bup]=DmxBlock[bup];}
-  }
-  break;
-  //enttec open
-  case 2:
- for(int ko=0;ko<513;ko++)
- {
- DmxBlockEnttecOpen[ko]=DmxBlock[ko+1];
- }
-    if (pUsbDmx!= NULL)
-		{
-	    /*int iRet;
-		iRet = pUsbDmx->get_dmx_device_count();*/
-   	    pUsbDmx->send_dmx_packet(DmxBlockEnttecOpen);
+    if(do_DMX_out[i]==1)
+    {
+    if(index_init_dmx_ok[i]==1 )
+        {
+        switch(i)
+        {
+          case 1:
+          ArtDmx();
+          check_if_dmx_change();
+          if(do_send_on_change==1)
+          {
+          nbrbytessended=sendto(sockartnet, ArtDmxBuffer,sizeof( ArtDmxBuffer),0,(SOCKADDR*)&sinS,sinsize);
+          do_send_on_change=0;
+          for(int bup=0;bup<512;bup++)
+          {artnet_backup[bup]=DmxBlock[bup];}
+          }
+          break;
+          //enttec open
+          case 2:
+         for(int ko=0;ko<513;ko++)
+         {
+         DmxBlockEnttecOpen[ko]=DmxBlock[ko+1];
+         }
+            if (pUsbDmx!= NULL)
+                {
+                pUsbDmx->send_dmx_packet(DmxBlockEnttecOpen);
+                }
+          break;
+         //enttec pro
+         case 3:
+         //VCOM
+          Enttec_Pro_SendData(6, DmxBlock, sizeof(DmxBlock),NULL);
+         break;
+         //sunlite
+         case 4:
+         sunlite_send_data();
+         break;
+         default:
+         break;
+         }
         }
-  break;
- //enttec pro
- case 3:
- //VCOM
-  Enttec_Pro_SendData(6, DmxBlock, sizeof(DmxBlock),NULL);
- break;
- //sunlite
- case 4:
- sunlite_send_data();
- break;
- default:
- break;
- }
+    }
 }
-
 
  return(0);
 }
@@ -1257,12 +1278,13 @@ int Merger()
 ////////////////////////////////////////////////////////////////////////////////
 int load_dmx_conf()
 {
-    /*
+for(int i=0;i<NB_INTERFACES;i++)
+{
+    do_DMX_out[i]=0;
+}
 FILE *cfg_file = NULL ;
 char read_buff[ 512 ] ;
 
-    char motcleinterfaceis[24];
-    //sab 02/03/2014 unused var int it=0;
 	cfg_file = fopen("user\\config_dmx.txt", "rt" );
 	if( !cfg_file )
 	{
@@ -1276,18 +1298,12 @@ char read_buff[ 512 ] ;
      sprintf(string_save_load_report[idf],"! config_dmx.txt");
      return 1;
 	}
-	//sab 02/03/2014 IMPACT
-	fscanf( cfg_file , "%s\n" ,  motcleinterfaceis );
-	fscanf( cfg_file , "%d\n" ,  &index_artnet_doubledmx);
+
+	fscanf( cfg_file , "%d / %d / %d / %d / %d / %d /\n" ,  &do_DMX_out[0],&do_DMX_out[1],&do_DMX_out[2],&do_DMX_out[3],&do_DMX_out[4],&do_DMX_out[5] );
 
 	fclose( cfg_file );
 
-    if (strcmp (motcleinterfaceis,"ART-NET")==0){myDMXinterfaceis=1;}
-    else if (strcmp (motcleinterfaceis,"ENTTEC-OPEN-DMX")==0){myDMXinterfaceis=2;}
-    else if (strcmp (motcleinterfaceis,"ENTTEC-PRO")==0){myDMXinterfaceis=3;}
-    else if (strcmp (motcleinterfaceis,"SUNLITE")==0){myDMXinterfaceis=4;}
 
-*/
 return(0);
 }
 
@@ -1295,37 +1311,31 @@ return(0);
 
 int Save_my_dmx_conf()
 {
-/*
-char motcleinterface[24];
-if( myDMXinterfaceis==1){sprintf(motcleinterface,"ART-NET");}
-else if( myDMXinterfaceis==2){sprintf(motcleinterface,"ENTTEC-OPEN-DMX");}
-else if( myDMXinterfaceis==3){sprintf(motcleinterface,"ENTTEC-PRO");}
-else if( myDMXinterfaceis==4){sprintf(motcleinterface,"SUNLITE");}
+
 FILE *fp;
 char rep_conf_dmx[256];
 sprintf(rep_conf_dmx,"%s\\user\\config_dmx.txt",mondirectory);
 if((fp=fopen(rep_conf_dmx,"w")))
 {
-fprintf(fp,"#arguments: 1st line:  dmxkeyword / 3rd: artnetwith usb ( 0-1) \n");
-fprintf(fp,"%s\n",motcleinterface);
-fprintf(fp,"%d\n",index_artnet_doubledmx);
+fprintf(fp,"#arguments: 1st line:  Unused / Art-Net / Enttec Open / Enttec Pro / Sunlite / Unused / Unused \n");
+fprintf(fp,"%d / %d / %d / %d / %d / %d /\n",do_DMX_out[0],do_DMX_out[1],do_DMX_out[2],do_DMX_out[3],do_DMX_out[4],do_DMX_out[5]);
 }
 fclose(fp);
-if(myDMXinterfaceis==1){save_artnet_conf();}
+save_artnet_conf();
 
-sprintf(string_Last_Order,">>Saved DMX configuration");*/
+sprintf(string_Last_Order,">>Saved DMX configuration");
 return(0);
 }
 
 
 int Receive_DMX_IN()
 {
-if(myDMXinterfaceis==4 ) //sunlite
+if(do_DMX_out[4]==1 ) //sunlite
 {
 Receive_sunlite_dmxIN();
 }
 
-else if (index_init_EnttecPROIN_ok==1 && myDMXinterfaceis!=4)
+else if (index_init_EnttecPROIN_ok==1 && do_DMX_out[4]==0)
 {
 //memset(dmxIN,0,513);
 resIn=Enttec_Pro_ReceiveData(SET_DMX_RX_MODE,dmxIN,513); //etait en 513

@@ -314,7 +314,7 @@ break;
 case 1:
 sprintf(string_ocv_mode," NONE");
 break;
-
+default: break;
 }
 petitchiffre.Print(string_ocv_mode,WindowVideoX+35,WindowVideoY+frame_video_y+170);
 OcvMode.DrawOutline(CouleurLigne);

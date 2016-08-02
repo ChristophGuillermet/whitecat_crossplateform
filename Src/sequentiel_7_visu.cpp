@@ -661,6 +661,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Sequenciel SPEED is Ch: %d Pitch: %d Typ: %s" , miditable[1][493],miditable[2][493],thetypinfo);
 SequencielSpeedFrame.DrawOutline(CouleurBlind);

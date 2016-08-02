@@ -252,6 +252,7 @@ midi_launchpad_state[495]=1;
 launchpad_is_a_cycling_effect[495]=1;
 launchpad_color_defined[495]=lch_red;
 break;
+default: break;
 }
 }
 else if(index_go==0)
@@ -342,6 +343,7 @@ break;
 case 1:
 midi_launchpad_state[981]=0; midi_launchpad_state[982]=1;
 break;
+default: break;
 }
 midi_launchpad_state[983]=chaser_aller_retour[chaser_selected];
 midi_launchpad_state[994]=chaser_time_mode[chaser_selected];
@@ -368,6 +370,7 @@ midi_launchpad_state[991]=0;
 midi_launchpad_state[992]=0;
 midi_launchpad_state[993]=1;
 break;
+default: break;
 }
 
 
@@ -436,6 +439,7 @@ break;
 case 1:
 temp_launchpad= launchpad_color_defined[l];
 break;
+default: break;
 }
 if(miditable[0][l]<5 && miditable[1][l]<128 && miditable[2][l]<128)
 {//mode led fixe

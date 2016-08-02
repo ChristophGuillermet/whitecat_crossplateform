@@ -292,6 +292,8 @@ if(grid_in_preset[grid_pl][1]>1023){grid_in_preset[grid_pl][1]=1023;}
 }
 }
 break;
+default:
+break;
 }
 
 float in_speed,out_speed, in_speed_preset, out_speed_preset;
@@ -519,6 +521,8 @@ grid_counted_times[index_grider_selected[grid_pl]][index_grider_step_is[grid_pl]
 }
 
 }
+break;
+default:
 break;
 }
 }

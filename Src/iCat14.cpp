@@ -288,6 +288,7 @@ break;
 case 1:
 sprintf(str_type_iCat,"   Horizontal");
 break;
+default: break;
 }
 toggling_bar_view(xed+20,yed+55, 0,str_type_iCat);
 
@@ -951,7 +952,6 @@ case 7://draw
       break;
       case 4:
       sprintf(string_temp_familly,"Matrix Draw Mode");
-      break;
       break;
       case 5:
       sprintf(string_temp_familly,"Select Matrix Num:");
@@ -1801,6 +1801,7 @@ iCatPresetO.SetRoundness(5);
     case 4:
     sprintf(thetypinfo,"Ctrl Change");
     break;
+    default: break;
     }
     sprintf(string_last_midi_id,"iCat Page Orientation is Ch: %d Pitch: %d Type: %s", miditable[1][1275],miditable[2][1275],thetypinfo);
   if(mouse_button==1 && mouse_released==0)
@@ -1894,6 +1895,7 @@ if(mouse_x>gx+300 && mouse_x<gx+370 && mouse_y>gy+40 && mouse_y<gy+60 && window_
     case 4:
     sprintf(thetypinfo,"Ctrl Change");
     break;
+    default: break;
     }
     sprintf(string_last_midi_id,"iCat Page Refresh is Ch: %d Pitch: %d Type: %s", miditable[1][1276],miditable[2][1276],thetypinfo);
   if(mouse_button==1 && mouse_released==0)
@@ -1939,6 +1941,7 @@ if(mouse_x>gx+300 && mouse_x<gx+370 && mouse_y>gy+40 && mouse_y<gy+60 && window_
     case 4:
     sprintf(thetypinfo,"Ctrl Change");
     break;
+    default: break;
     }
     sprintf(string_last_midi_id,"iCat Page Minus is Ch: %d Pitch: %d Type: %s", miditable[1][1265],miditable[2][1265],thetypinfo);
   if(mouse_button==1 && mouse_released==0)
@@ -1984,6 +1987,7 @@ if(mouse_x>gx+300 && mouse_x<gx+370 && mouse_y>gy+40 && mouse_y<gy+60 && window_
     case 4:
     sprintf(thetypinfo,"Ctrl Change");
     break;
+    default: break;
     }
     sprintf(string_last_midi_id,"iCat Page Plus is Ch: %d Pitch: %d Type: %s", miditable[1][1266],miditable[2][1266],thetypinfo);
   if(mouse_button==1 && mouse_released==0)
@@ -2036,6 +2040,7 @@ if(mouse_x>gx+300 && mouse_x<gx+370 && mouse_y>gy+40 && mouse_y<gy+60 && window_
     case 4:
     sprintf(thetypinfo,"Ctrl Change");
     break;
+    default: break;
     }
     sprintf(string_last_midi_id,"iCat Page %d is Ch: %d Pitch: %d Type: %s",o+1, miditable[1][1267+o],miditable[2][1267+o],thetypinfo);
   if(mouse_button==1 && mouse_released==0)
@@ -2380,6 +2385,7 @@ else if ( DockTypeIs[fis][dock_used_by_fader_is[fis]]==8 ) the_audio_player=Dock
       Fader[fis]=(unsigned char)((((float)(StateOfFaderBeforeLock[fis]))/255)*locklevel);
       midi_levels[fis]=(int)(((float)Fader[fis])/2);*/
       break;
+      default: break;
       }
       reset_button(iCatPageis,bt, tp);
       break;
@@ -2422,7 +2428,7 @@ else if ( DockTypeIs[fis][dock_used_by_fader_is[fis]]==8 ) the_audio_player=Dock
       }
       }
       break;
-
+      default: break;
       }
       reset_button(iCatPageis,bt, tp);
       break;
@@ -2444,6 +2450,7 @@ case 0://PLAYER 1
  case 1:
  player1->stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2455,6 +2462,7 @@ case 1://PLAYER 2
  case 1:
  player2->stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2466,6 +2474,7 @@ case 2://PLAYER 3
  case 1:
  player3->stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2477,8 +2486,10 @@ case 3://PLAYER 4
  case 1:
  player4->stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
@@ -2488,6 +2499,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",fis+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -2505,6 +2517,7 @@ case 0://PLAYER 1
  case 1:
  player1->stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2516,6 +2529,7 @@ case 1://PLAYER 2
  case 1:
  player2->stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2527,6 +2541,7 @@ case 2://PLAYER 3
  case 1:
  player3->stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2538,8 +2553,10 @@ case 3://PLAYER 4
  case 1:
  player4->stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
@@ -2549,6 +2566,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",fis+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -2566,6 +2584,7 @@ case 0://PLAYER 1
  case 1:
  player1->stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2577,6 +2596,7 @@ case 1://PLAYER 2
  case 1:
  player2->stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2588,6 +2608,7 @@ case 2://PLAYER 3
  case 1:
  player3->stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2599,8 +2620,10 @@ case 3://PLAYER 4
  case 1:
  player4->stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
@@ -2610,6 +2633,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",fis+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -2630,6 +2654,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d Chaser %d",fis+1,the_chaser+1);
 break;
+default: break;
 }
 break;
 case 12://grid
@@ -2643,6 +2668,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d GridPl %d",fis+1,the_grid_player+1);
 break;
+default: break;
 }
 break;
 default:
@@ -2673,6 +2699,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",fis+1,the_audio_player+1);
 }
@@ -2694,6 +2721,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",fis+1,the_audio_player+1);
 }
@@ -2724,6 +2752,7 @@ if(player_is_onloopCue[3]==0  ){player4->setPosition(0);}
 else
 {player4->setPosition(player_seek_position[3]);}
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",fis+1,the_audio_player+1);
 }
@@ -2760,7 +2789,8 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
- }
+ default: break;
+}
 break;
 case 1://PLAYER 2
  switch(player2-> getRepeat())
@@ -2773,6 +2803,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2786,6 +2817,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2799,8 +2831,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -2811,6 +2845,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",fis+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -2831,6 +2866,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2844,6 +2880,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2857,6 +2894,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2870,8 +2908,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -2882,6 +2922,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",fis+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -2902,6 +2943,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -2915,6 +2957,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -2928,6 +2971,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -2941,8 +2985,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -2953,6 +2999,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",fis+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -2967,6 +3014,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Chaser %d",fis+1, the_chaser+1);
 break;
+default: break;
 }
 break;
 case 12: //grid
@@ -2979,6 +3027,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> AutoStop ON from Fader %d Gpl %d",fis+1, the_grid_player+1);
 break;
+default: break;
 }
 break;
 default:
@@ -3070,6 +3119,7 @@ switch(iCat_affectation_bouton_action_is[iCatPageis][bt])
       case 1:
       sprintf(string_Last_Order,"Minifader %d SELected",iCat_affectation_bouton_value_is[iCatPageis][bt]);
       break;
+      default: break;
       }
       dock_selected_is=detect_dock_used(iCat_affectation_bouton_value_is[iCatPageis][bt]-1);
 
@@ -3568,6 +3618,7 @@ case 1:
 fsTestX2=(iCat_pos_slider[iCatPageis][sl][0]*2)+(iCatSlidersizeY*ratio_iCat_slider[iCatPageis][sl]);
 fsTestY2=(iCat_pos_slider[iCatPageis][sl][1]*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][sl]);
 break;
+default: break;
 }
 if ( fsBx>=(iCat_pos_slider[iCatPageis][sl][0]*2)-10 && fsBx<=fsTestX2+10 && fsBy>=(iCat_pos_slider[iCatPageis][sl][1]*2)-10 && fsBy<=fsTestY2+10 )
 {
@@ -3584,6 +3635,7 @@ break;
 case 1://horizontal
 level_from_touch[iCatPageis][sl]=fsMx-(iCat_pos_slider[iCatPageis][sl][0]*2);
 break;
+default: break;
 }
 //level_from_touch[iCatPageis][sl]=(level_from_touch[iCatPageis][sl]/3)*ratio_iCat_slider[iCatPageis][sl];
 switch(ratio_iCat_slider[iCatPageis][sl])
@@ -3787,6 +3839,7 @@ case 1:
 sprintf(StrOrderToiCat, "model t%d color 1.0 0.0 0.0",sl);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 }
 before_slider_is_touched[iCatPageis][sl]=slider_is_touched[iCatPageis][sl];
@@ -4075,6 +4128,7 @@ int fsid=0, fsx=0, fsy=0;
 
       before_nbre_icat_points_detectes=nbre_icat_points_detectes;
       break;
+      default: break;
       }
      }
 

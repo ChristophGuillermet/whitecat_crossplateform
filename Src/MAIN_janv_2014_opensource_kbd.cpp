@@ -30,16 +30,21 @@ WWWWWWWW           C  WWWWWWWW   |
 * \file MAIN_janv_2014_opensource_kbd.cpp
 * \brief {main loop}
 * \author Christoph Guillermet
-* \version {0.8.6.3}
-* \date {12/02/2015}
+* \version {0.8.8.8}
+* \date {04/03/2016}
 
  White Cat {- categorie} {- sous categorie {- sous categorie}}
 
-*   Main loop avec include des libraries et des diffÃ©rents fichiers C++ de whitecat. Whitecat est en fait codÃ© en C.
+*   Main loop avec include des libraries et des différents fichiers C++ de whitecat. Whitecat est en fait codé en C.
 *
 *   Main loop with include of librairies and the C++ files used in whitecat. Whitecat is in fact coded in C.
 *
  **/
+
+
+#include <iostream>
+#include <fstream>
+
 
 
 //pour whitecat solo
@@ -49,17 +54,25 @@ WWWWWWWW           C  WWWWWWWW   |
 
 
 #include <stdio.h>
+
+
+
+
 #include <loadpng.h>
 #include <assert.h>
 #include <Iphlpapi.h>
 #include <audiere.h>
 
 #include <jpgalleg.h>
+
 #include <vector>
 
 #include <SmoothData.cpp>
-//crÃ©ation du damper sur les faders
+//création du damper sur les faders
 std::vector<SmoothData> Fader_dampered(48);
+std::vector<SmoothData> Wave_Dampered(26);
+SmoothData Curseur_Wave;//curseur de controle du wave à faire en place de wave_control
+
 
 using namespace audiere;
 using namespace ol;
@@ -67,7 +80,7 @@ using namespace ol;
 int BPS_RATE=50;//devient dmx rate
 int dmxINrate=25;
 int ARDUINO_RATE=20;
-
+int BPM_WAVE_RATE=100;
 
 #define PIknob  3.14159265358979323846264338327950288419716939937510
 
@@ -82,7 +95,7 @@ volatile int mouse_released;
 volatile int mouse_maintained;
 volatile int mouse_R_button;
 volatile int mouse_R_released;
-
+volatile int ticks_wave=0;
 volatile bool calculation_on_faders_done=0;//pour snap des faders depuis Echo
 //////////////////////////////////////////////////////////////////////////////
 #define PI 3.14116 // pour ok trichro
@@ -98,6 +111,11 @@ template <class T> const T& Tmax ( const T& a, const T& b ) {
 #include <MidiShare.h>
 #include <whitecat.h>
 
+
+#include <Kalman.cpp>
+//kalman pour arduino
+std::vector<Kalman> Arduino_Kalman(analog_limit);
+
 volatile int ticker_midi_clock_rate=BPM_TO_TIMER(24 * midi_BPM);
 /*
       SECS_TO_TIMER(secs)  - give the number of seconds between
@@ -109,6 +127,7 @@ volatile int ticker_midi_clock_rate=BPM_TO_TIMER(24 * midi_BPM);
 24 * 120 MIDI Clocks per minute. So, each MIDI Clock is sent at a rate of 60,000,000/(24 * 120) microseconds).
 So, each MIDI Clock is sent at a rate of 60,000,000/(24 * BPM) microseconds).
 */
+
 
 void ticker_midi_clock()
 {
@@ -131,7 +150,8 @@ void ticker_midi_clock()
 }
 END_OF_FUNCTION(ticker_midi_clock);
 
-#include <my_window_file_sample.h>//ressources juste aprÃ¨s whitecat.h
+
+#include <my_window_file_sample.h>//ressources juste après whitecat.h
 #include <patch_splines_2.cpp>//spline pour curves
 
 
@@ -142,8 +162,6 @@ END_OF_FUNCTION(ticker_midi_clock);
 #include <midi_CORE.cpp>
 
 #include <CORE_6.cpp>
-
-
 
 
 #include <saves_export_pdf2.cpp>
@@ -179,6 +197,20 @@ END_OF_FUNCTION(ticker_midi_clock);
 #include <audio_visu4.cpp>
 #include <icat_core14.cpp>
 
+void ticker_WAVE()
+{
+    ticks_wave++;
+    if(wave_play_state==1)
+    {
+        waver_control++;
+        if(waver_control>25) {waver_control=0;clear_wave_slots;}
+        set_new_values_in_wave();
+        previous_waver_control=waver_control;
+    }
+}
+END_OF_FUNCTION(ticker_WAVE);
+
+
 #include <arduino_device_core.cpp>
 #include <banger_core_8.cpp>
 #include <banger_visu_8.cpp>
@@ -211,7 +243,9 @@ END_OF_FUNCTION(ticker_midi_clock);
 #include <midi_launchpad.cpp>
 
 
-#include <bazooKAT.cpp>
+#include <wave.cpp>
+
+
 
 #include <grider8.cpp>
 #include <sequentiel_7_visu.cpp>
@@ -219,11 +253,11 @@ END_OF_FUNCTION(ticker_midi_clock);
 #include <echo3.cpp>
 
 
-#include <my_window_file_sample.cpp>//creation de fenetres utilisateurs, doit Ãªtre avant proc visuels
+#include <my_window_file_sample.cpp>//creation de fenetres utilisateurs, doit être avant proc visuels
 
 
 #include <procs_visuels_rebuild1.cpp>
-#include <dmx_functions_13.cpp>
+#include <dmx_functions_14.cpp>
 
 #include <midi_13.cpp>
 #include <CFG_screen.cpp>
@@ -231,6 +265,7 @@ END_OF_FUNCTION(ticker_midi_clock);
 
 #include <arduino_core_6_UNO.cpp>
 #include <arduino_6_UNO.cpp>
+
 
 
 
@@ -246,7 +281,7 @@ if(alpha_smooth_blinker>1){alpha_smooth_blinker=0.0;}
 return(0);
 }
 /////////////////TIMER POUR DATA ET REFRESH RATE////////////////////////////////
-void ticker_dmxIn() // nettoyage des ticker pour verifier stabilitÃ©
+void ticker_dmxIn() // nettoyage des ticker pour verifier stabilité
 {
 Receive_DMX_IN();
 }
@@ -279,8 +314,8 @@ switch (i)
       // for (int i=0;i<core_user_define_nb_bangers;i++){do_bang(i);}// dans full loop
        break;
        case 3:
-       //trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separÃ©)
-       break;//obligÃ© dans main loop
+       //trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separé)
+       break;//obligé dans main loop
        case 4:
 
         if(manipulating_camera==0)       ventilation_video_trackers();
@@ -323,12 +358,45 @@ for (int i=0;i<48;i++)
 {
     if(fader_damper_is_on[i]==1)
     {
+        Fader_before[i]=Fader[i];
         Fader_dampered[i].damper();
         Fader[i]=Fader_dampered[i].getdmxvalue_dampered();
         midi_levels[i]=((Fader_dampered[i].getdmxvalue_dampered())/2);
-        index_send_midi_out[1960+i]=1;//???
-        if(Fader_dampered[i].calculating()==1)
-            { index_fader_is_manipulated[i]=1;}//direct chan
+        if(Fader[i]!=Fader_before[i])
+        {
+            index_send_midi_out[1960+i]=1;
+
+        }
+         index_fader_is_manipulated[i]= Fader_dampered[i].calculating(); //pour direct chan
+
+
+      //index_fader_is_manipulated[i]= Fader_dampered[i].calculating(); //pour direct chan
+    }
+}
+//dampers for wave
+
+
+for(int i=0;i<513;i++)
+{
+  there_is_a_previous_wave_higher_level[i]=0;
+}
+
+for(int i=0;i<26;i++)
+{
+    Wave_Dampered[i].damper();
+    int cir_=channel_slots[wave_channel_preset_selected][i];
+    switch(there_is_a_previous_wave_higher_level[cir_])    //LTP
+    {
+     case 0: //LTP
+         buffer_wave[channel_slots[wave_channel_preset_selected][i]]=Wave_Dampered[i].getdmxvalue_dampered();
+         there_is_a_previous_wave_higher_level[cir_]=1;
+     break;
+     case 1: //HTP
+         if(Wave_Dampered[i].getdmxvalue_dampered()>buffer_wave[channel_slots[wave_channel_preset_selected][i]])
+         {
+         buffer_wave[channel_slots[wave_channel_preset_selected][i]]=Wave_Dampered[i].getdmxvalue_dampered();
+         }
+     break;
     }
 }
 
@@ -473,7 +541,7 @@ dock_used_by_fader_is[yr]=detect_dock_used(yr);
 
 do_sprintf_job();//include time_left calculs
 refresh_minifader_state_view_core(position_minifader_selected);//les infos dock temps etc dans fenetre minifaders
-match_minifaders();//verif du preset en cours: correspond ou pas Ã  un des 8 preset
+match_minifaders();//verif du preset en cours: correspond ou pas à un des 8 preset
 nbre_fenetre_actives=check_nbre_opened_windows();
 
       if(index_do_quick_save==1)
@@ -510,11 +578,12 @@ sprintf(string_last_copy_mem,"Mem to copy: %d.%d", CTRLC_mem_to_copy/10,CTRLC_me
 switch(index_patch_window)
 {
 case 0:
-sprintf(string_secondary_feeback,string_last_over_dock);//last over dock: permet de savoir quelle selection orange est allumÃ©e
+sprintf(string_secondary_feeback,string_last_over_dock);//last over dock: permet de savoir quelle selection orange est allumée
 break;
 case 1:
 sprintf(string_secondary_feeback,string_monitor_patch);
 break;
+default: break;
 }
 sprintf(string_mem_onstage,"%d.%d",position_onstage/10, position_onstage%10);
 sprintf(string_mem_preset,"%d.%d",position_preset/10, position_preset%10);
@@ -553,7 +622,7 @@ index_edit_light_plot=1;
 index_enable_edit_Draw=1;
 index_enable_edit_echo=1;
 }
-if(right_click_for_menu==1)//sortie du call back pour Ã©crire correctement fermeture fenetres
+if(right_click_for_menu==1)//sortie du call back pour écrire correctement fermeture fenetres
 {do_mouse_right_click_menu();}
 
 do_audio_midi_function_next_prev_track();//christoph 22/04/14 debugging midi next prev function by outputting it inside the 1/10th second loop
@@ -589,6 +658,7 @@ break;
 case 1:
 move_window(window_focus_id);
 break;
+default: break;
 }
 }
 if(index_quit==0 && index_is_saving==0)
@@ -785,7 +855,7 @@ int main_actions_on_screen()
       if(index_writing_curve==0){Boxes();}
       if(core_do_calculations[3]==1)
       {
-      trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separÃ©)
+      trichro_back_buffer(315/2,550/2,125,15);//calcul trichro ( triangle et saturation dans buffer separé)
       }
       DoMouse();
       previous_ch_selected=last_ch_selected;
@@ -832,10 +902,14 @@ else {Setup::SetupScreen( largeur_ecran, hauteur_ecran,FULLSCREEN, desktop_color
    LOCK_FUNCTION(ticker);
    install_int_ex(ticker , ticker_rate);
 
+   //refonte
    LOCK_VARIABLE(ticks_arduino);
    LOCK_FUNCTION(ticker_arduino);
    install_int_ex(ticker_arduino ,BPS_TO_TIMER(ARDUINO_RATE));
 
+   LOCK_VARIABLE(ticks_wave);
+   LOCK_FUNCTION(ticker_WAVE);
+   install_int_ex(ticker_WAVE ,BPM_TO_TIMER(BPM_WAVE_RATE));
 
     LOCK_FUNCTION(my_callback);
     mouse_callback = my_callback;
@@ -903,7 +977,7 @@ else {Setup::SetupScreen( largeur_ecran, hauteur_ecran,FULLSCREEN, desktop_color
 // generation_Tableau_noms_fonctions() ;
  save_load_print_to_screen("Init Midi");
  InitMidi();//init avant les appels de fichiers
- midi_init_sepecial_case_key_on();//pour rÃ©gler pb de cle flashs et key on key off
+ midi_init_sepecial_case_key_on();//pour régler pb de cle flashs et key on key off
  ////////////////////////////////////////////////////////////
 
  load_onstart_config();
@@ -915,17 +989,7 @@ else {Setup::SetupScreen( largeur_ecran, hauteur_ecran,FULLSCREEN, desktop_color
  load_artnet_conf();
 
  detection_mise_en_place_carte_reseaux();
- //opening double dmx conf
- if(index_artnet_doubledmx==1)
- {
- initialisation_client_artnet();
-         //ConstructArtPoll();
-         ConstructArtPollReply();
-         nbrbytessended=sendto(sockartnet, ArtPollBuffer,sizeof( ArtPollBuffer),0,(SOCKADDR*)&sinS,sinsize);
-         //ArtNet
-         ArtDmx();
- save_load_print_to_screen("Double DMX Art-net ON");
- }
+
  load_network_conf();//icat
  save_load_print_to_screen("Loading Art-netnetwork conf");
 
@@ -993,7 +1057,7 @@ if(there_is_an_error_on_save_load==1){index_show_save_load_report=1;there_is_cha
 
  mouse_released=0;
  entered_main=1;
-//launchpad sÃ©parÃ©
+//launchpad séparé
 if(enable_launchpad==1)
 {reset_launchpad();}
 
@@ -1076,7 +1140,7 @@ for(int i=0;i<4;i++)
 }
 
 
-reset_temp_state_for_channel_macros_launch();//christoph 18/12/14 pour intialisation au dÃ©marrage de wcat des channels macros
+reset_temp_state_for_channel_macros_launch();//christoph 18/12/14 pour intialisation au démarrage de wcat des channels macros
 
 starting_wcat=0;
 
@@ -1087,24 +1151,9 @@ while(index_quit!=1)
 
 
 MemoiresExistantes[0]=1;
-show_im_recording_a_time=0;// met Ã  zÃ©ro l'affichage du stock visuel du time
-
-//must be in main loop to avoid freezing
-if(arduino_device_0_is_ignited==1 &&  ticks_arduino!= old_ticks_arduino
-  && index_is_saving==0 && init_done==1 && index_writing_curve==0 &&  index_quit==0)
-{
+show_im_recording_a_time=0;// met à zéro l'affichage du stock visuel du time
 
 
-    arduino_merge_and_do_data_out();
-    arduino_read();//doit etre posÃ© aprÃ¨s data out
-    serial0.Flush();
-
-    old_ticks_arduino=ticks_arduino;
-
-
-    arduino_do_digital_in_whitecat();arduino_do_analog_in_whitecat();
-
-}
 
  switch(index_art_polling)
  {
@@ -1116,9 +1165,11 @@ if(arduino_device_0_is_ignited==1 &&  ticks_arduino!= old_ticks_arduino
       {      AnalyseArtPollReply();      }
       Procedure("Art-Net Polling","Please wait 3 seconds, polling network ...");
     break;
+    default: break;
    }
 //DEBUG
-sprintf(string_debug,"%d",index_decay_tracker);
+
+//sprintf(string_debug,"%d",arduino_max_digital);
 
 if(there_is_change_on_show_save_state==1)
 {
@@ -1126,16 +1177,9 @@ check_save_load_report_window();
 there_is_change_on_show_save_state=0;
 }
 
+if(index_show_chrono==1){show_foreground_chrono(xtime_window+115,ytime_window-80);}
 
 Canvas::Refresh();
-//19/12/14 bazookat ignition
-
-
-
-
-
-
-
 if(index_do_a_screen_capture==1){do_a_screen_capture();index_do_a_screen_capture=0;}
 if(index_do_a_plot_screen_capture==1 ){do_plot_screen_capture(plot_name_of_capture);index_do_a_plot_screen_capture=0;}
 

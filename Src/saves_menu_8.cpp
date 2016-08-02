@@ -57,7 +57,7 @@ int scan_savesfolder()
             int f_name_len = strlen(f.name);
             isDir=true;
             // check if it's a dir or a file
-            for(unsigned int a=0;a<f_name_len;a++)
+            for( int a=0;a<f_name_len;a++)
             {
                 if(f.name[a]=='.')
                 {
@@ -137,6 +137,7 @@ break;
 case 3:
 Carre.Draw(CouleurYellowFgroup);
 break;
+default: break;
 }
 Carre.DrawOutline(CouleurLigne.WithAlpha(0.5));
 
@@ -204,7 +205,7 @@ else
 //christoph 19/12/14
 int f_name_len = strlen(importfile_name);
             // check if it's a dir or a file
-          for(unsigned int a=0;a<f_name_len;a++)
+          for(int a=0;a<f_name_len;a++)
           {
            if( importfile_name[a]=='.')
            {
@@ -360,7 +361,7 @@ case 3://pdf
 enable_export=1;
 enable_import=0;
 break;
-
+default: break;
 }
 ////////////////////////////////////////////////////////////////////////////////
 if(enable_export==1)
@@ -466,28 +467,6 @@ mouse_released=1;
 }
 
 
-
-/////////////////////////////SAVE LOAD && CONDITIONS////////////////////////////////
-/*switch (index_export_choice)
-{
-case 0://ascii
-enable_export=1;
-enable_import=1;
-break;
-case 1://schwz
-enable_export=0;
-enable_import=1;
-break;
-case 2://alq
-enable_export=0;
-enable_import=1;
-break;
-case 3://pdf
-enable_export=1;
-enable_import=0;
-break;
-
-}*/ //mis dans  affichage
 ////////////////////////////////////////////////////////////////////////////////
 if(enable_export==1)
 {
@@ -516,246 +495,6 @@ mouse_released=1;
 }
 //sab 02/03/2014 return(0);
 }
-/*
-
-int deroule_repertoire_export_import(int xrep, int yrep, char name_of_rep[25])
-{
-
-//////////////////////LISTE DOSSIERS ETC///////////////////////////////////////
-petitchiffre.Print("Content of import_export folder:",xrep+10,yrep+170);
-Rect BackDeroule(Vec2D(xrep,yrep+155),Vec2D(245,185));
-BackDeroule.SetRoundness(15);
-BackDeroule.Draw(CouleurConfig.WithAlpha(0.7));
-
-for (int y=0;y<8;y++)
-{
-Rect OverFile(Vec2D(xrep+5,(yrep+185+(y*20)-10)),Vec2D(200,20));
-OverFile.SetRoundness(7.5);
-
-//affichage qui est selectionné
-if(strcmp(importfile_name,list_import_files[importfile_selected])==0 && (importfile_selected==(y+line_import)))
-{OverFile.Draw(CouleurFond.WithAlpha(0.5));}
-
-
-if(window_focus_id==W_SAVE && mouse_x>xrep+5 && mouse_x<xrep+155 && mouse_y>(yrep+175+(y*20)) && mouse_y<(yrep+190+(y*20)))
-{
-OverFile.DrawOutline(CouleurLigne);
-}
-petitpetitchiffre.Print(list_import_files[line_import+y],xrep+10,yrep+185+(y*20));
-
- //fin des 8 lignes
-}
-
-
-
-//nom fichier save laod
-Rect FrameSelected(Vec2D(xrep+5,yrep+347),Vec2D(240,30));
-FrameSelected.SetRoundness(7.5);
-FrameSelected.Draw(CouleurConfig);
-
-
-
-//selection depuis chaine de caracteres pour export plot
-
-
-if(window_focus_id==W_SAVE && mouse_x>xrep+5 && mouse_x<xrep+5+200 && mouse_y>yrep+347 && mouse_y<yrep+367)
-{
-FrameSelected.DrawOutline(CouleurLigne);
-}
-
-
-
-
-FrameSelected.SetLineWidth(epaisseur_ligne_fader);
-FrameSelected.DrawOutline(CouleurLigne.WithAlpha(alpha_blinker));
-petitchiffre.Print(importfile_name,xrep+10,yrep+365);
-petitpetitchiffre.Print(string_typeexport_view,xrep+150,yrep+375);
-
-petitpetitchiffre.Print("Name must have extension: ",xrep+250,yrep+170 );
-petitchiffre.Print("Ascii: .asc .txt or .alq",xrep+250,yrep+185 );
-petitchiffre.Print("PDF: .pdf",xrep+250,yrep+200 );
-petitpetitchiffre.Print("Schwarzpeter: no extension",xrep+250,yrep+215 );
-
-//////////////////UP DOWN LINE IMPORT/////////////////////
-Circle LineUp(Vec2D(xrep+220,yrep+200),12);
-LineUp.Draw(CouleurFond);
-Circle LineDown(Vec2D(xrep+220,yrep+310),12);
-LineDown.Draw(CouleurFond);
-if(window_focus_id==W_SAVE && mouse_x>xrep+208 && mouse_x<xrep+232)
-{
-if(mouse_y>yrep+188 && mouse_y<yrep+212)
-{
-LineUp.Draw(CouleurSurvol);
-}
-else if(window_focus_id==W_SAVE && mouse_y>yrep+298 && mouse_y<yrep+322)
-{
-LineDown.Draw(CouleurSurvol);
-}
-}
-petitchiffre.Print("-",xrep+216,yrep+205);
-petitchiffre.Print("+",xrep+216,yrep+315);
-LineUp.DrawOutline(CouleurLigne);
-LineDown.DrawOutline(CouleurLigne);
-
-
-/////////////////////////////SAVE LOAD && CONDITIONS////////////////////////////////
-switch (index_export_choice)
-{
-case 0://ascii
-enable_export=1;
-enable_import=1;
-break;
-case 1://schwz
-enable_export=0;
-enable_import=1;
-break;
-case 2://alq
-enable_export=0;
-enable_import=1;
-break;
-case 3://pdf
-enable_export=1;
-enable_import=0;
-break;
-
-}
-////////////////////////////////////////////////////////////////////////////////
-if(enable_export==1)
-{
-Rect SaveExport(Vec2D(xrep+40,yrep+390),Vec2D(70,30));
-SaveExport.SetRoundness(7.5);
-if(window_focus_id==W_SAVE && mouse_x>xrep+40 && mouse_x<xrep+110 && mouse_y>yrep+390 && mouse_y<yrep+420)
-{
-SaveExport.Draw(CouleurSurvol);
-}
-petitchiffre.Print("SAVE",xrep+55,yrep+410);
-SaveExport.DrawOutline(CouleurLigne);
-}
-////////////////////////////////////////////////////////////////////////////////
-if(enable_import==1)
-{
-Rect LoadExport(Vec2D(xrep+140,yrep+390),Vec2D(70,30));
-LoadExport.SetRoundness(7.5);
-if(window_focus_id==W_SAVE && mouse_x>xrep+140 && mouse_x<xrep+210 && mouse_y>yrep+390 && mouse_y<yrep+420)
-{
-LoadExport.Draw(CouleurSurvol);
-}
-petitchiffre.Print("LOAD",xrep+155,yrep+410);
-LoadExport.DrawOutline(CouleurLigne);
-}
-return(0);
-}
-
-
-int do_logical_deroule_repertoire_export_import(int xrep, int yrep, char name_of_rep[25])
-{
-
-//////////////////////LISTE DOSSIERS ETC///////////////////////////////////////
-
-for (int y=0;y<8;y++)
-{
-
-
-if(window_focus_id==W_SAVE && mouse_x>xrep+5 && mouse_x<xrep+155 && mouse_y>(yrep+175+(y*20)) && mouse_y<(yrep+190+(y*20)))
-{
-
-if(mouse_button==1 && mouse_released==0)
-{
-importfile_selected=(y+line_import);
-if(y+line_import<127)
-{sprintf(importfile_name,list_import_files[importfile_selected]);  }
-check_import_type();
-mouse_released=1;
-}
-}
-
- //fin des 8 lignes
-}
-
-
-
-//selection depuis chaine de caracteres pour export plot
-
-
-if(window_focus_id==W_SAVE && mouse_x>xrep+5 && mouse_x<xrep+205 && mouse_y>yrep+347 && mouse_y<yrep+367)
-{
-
-if(mouse_button==1 && mouse_released==0 && index_type==1 )
-{
-for (int tt=0;tt<24;tt++)
-{
-importfile_name[tt]=numeric[tt];
-}
-reset_numeric_entry();
-index_type=0;
-check_import_type();
-mouse_released=1;
-}
-}
-
-
-
-
-//////////////////UP DOWN LINE IMPORT/////////////////////
-
-if(window_focus_id==W_SAVE && mouse_x>xrep+208 && mouse_x<xrep+232)
-{
-if(mouse_y>yrep+188 && mouse_y<yrep+212)
-{
-
-if(mouse_button==1)
-{
-if(line_import>0){line_import--;}
-mouse_released=1;
-}
-}
-else if(window_focus_id==W_SAVE && mouse_y>yrep+298 && mouse_y<yrep+322)
-{
-
-if(mouse_button==1)
-{
-if(line_import<127){line_import++;}
-mouse_released=1;
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////
-if(enable_export==1)
-{
-if(window_focus_id==W_SAVE && mouse_x>xrep+40 && mouse_x<xrep+110 && mouse_y>yrep+390 && mouse_y<yrep+420)
-{
-if(mouse_button==1 && mouse_released==0)
-{
-index_do_export=1;
-index_ask_confirm=1;
-mouse_released=1;
-}
-}
-}
-////////////////////////////////////////////////////////////////////////////////
-if(enable_import==1)
-{
-if(window_focus_id==W_SAVE && mouse_x>xrep+140 && mouse_x<xrep+210 && mouse_y>yrep+390 && mouse_y<yrep+420)
-{
-if(mouse_button==1 && mouse_released==0)
-{
-index_do_import=1;
-index_ask_confirm=1;
-mouse_released=1;
-}
-}
-}
-return(0);
-}
-
-*/
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////BINARY SAVING///////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-
 //sab 02/03/2014 int deroule_repertoire_classical_save(int xrep, int yrep, char name_of_rep[25])
 void deroule_repertoire_classical_save(int xrep, int yrep, const std::string label)
 {
@@ -1114,6 +853,7 @@ case 1:
 SwitchGlobal.Draw(CouleurFader);
 petitchiffre.Print("GLOBAL",xrep+180,yrep-20);
 break;
+default: break;
 }
 SwitchGlobal.DrawOutline(CouleurLigne);
 
@@ -1163,6 +903,7 @@ break;
 case 11:
 sprintf(string_title_sav_spec,"BANGER");
 break;
+default: break;
 }
 petitpetitchiffre.Print(string_title_sav_spec,xrep+20,yrep+(u*15)+10);
 
@@ -1213,6 +954,7 @@ break;
 case 11:
 sprintf(string_title_sav_spec,"iCAT");
 break;
+default: break;
 }
 petitpetitchiffre.Print(string_title_sav_spec,xrep+130,yrep+(u*15)+10);
 
@@ -1261,11 +1003,12 @@ case 9:
 sprintf(string_title_sav_spec,"ECHO");
 break;
 case 10:
-sprintf(string_title_sav_spec,"-");
+sprintf(string_title_sav_spec,"WAVE");
 break;
 case 11:
 sprintf(string_title_sav_spec,"Save Presets");
 break;
+default: break;
 }
 petitpetitchiffre.Print(string_title_sav_spec,xrep+260,yrep+(u*15)+10);
 
@@ -1382,8 +1125,8 @@ TogBSav.Draw(CouleurSurvol);
 petitchiffre.Print("IMP-EXPORT",xsave+325,ysave+30);
 if(isPdf==1) {selecteur_PDF_save_solo_global(xsave+30, ysave+50);   }
 deroule_repertoire_export_import(xsave+20, ysave+85, "import_export");
-
 break;
+default: break;
 }
 TogBSav.DrawOutline(CouleurLigne);
 
@@ -1423,8 +1166,8 @@ break;
 case 1:
 if(isPdf==1) {do_logical_selecteur_PDF_save_solo_global(xsave+30, ysave+50);   }
 do_logical_deroule_repertoire_export_import(xsave+20, ysave+85, "import_export");
-
 break;
+default: break;
 }
 if(window_focus_id==W_SAVE && mouse_x>xsave+300 && mouse_x<xsave+370 && mouse_y>ysave+430 && mouse_y<ysave+455)
 {

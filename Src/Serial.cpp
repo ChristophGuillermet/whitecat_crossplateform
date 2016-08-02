@@ -22,7 +22,7 @@ CSerial::~CSerial()
 BOOL CSerial::Flush( void )
 {
 	if( m_OverlappedRead.hEvent != NULL ) FlushFileBuffers(   m_OverlappedRead.hEvent );
-
+return(0);
 }
 
 BOOL CSerial::Open( int nPort, int nBaud )

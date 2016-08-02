@@ -189,6 +189,7 @@ case 3:
 if(index_fluo_curve==0){dessafect_index_curves();index_fluo_curve=1; }
 else if (index_fluo_curve==1){index_fluo_curve=0; }
 break;
+default: break;
 }
 mouse_released=1;
 }

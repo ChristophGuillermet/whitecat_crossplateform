@@ -7,12 +7,16 @@ SmoothData::SmoothData()
     //damper
     _damper_do_calculation=0;
     _damper_mode=0;
+    _damper_blocking_mode=0;
     _damper_decay_constant = 0.6;
     _damper_vel = 0.1;
     _damper_dt = 0.1;
     _damper_val = 0.0;
     _damper_target_val = 0.0;
     _damper_previous_target=0.0;
+    _data_val=0.0;
+    _dampered_data=0;
+    _dampered_data=0;
 }
 
 ////////////////////////////////////////////////////
@@ -102,6 +106,8 @@ switch(_damper_blocking_mode)
     _damper_do_calculation=0;
     if(tmp!=_damper_previous_target) {_damper_do_calculation=1;}
     break;
+    default:
+    break;
     }
 
 if(_damper_do_calculation==1)
@@ -116,7 +122,6 @@ if(_damper_do_calculation==1)
     _damper_vel = (_damper_target_val - _damper_val) * _damper_decay_constant;
     _damper_val += _damper_vel * _damper_dt;
     break;
-    break;
     case 1://moins veloce
     _damper_vel= ((_damper_target_val-_damper_val)* _damper_decay_constant)/2;
     _damper_val+=(_damper_vel*_damper_dt)* _damper_decay_constant;
@@ -127,6 +132,9 @@ if(_damper_do_calculation==1)
     break;
 
     default:
+        //plus veloce
+    _damper_vel = (_damper_target_val - _damper_val) * _damper_decay_constant;
+    _damper_val += _damper_vel * _damper_dt;
     break;
     }
     if(_damper_val<0.0){_damper_val=0.0; _damper_do_calculation=0;}

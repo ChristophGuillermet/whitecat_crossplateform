@@ -97,6 +97,7 @@ int ChannelScroller( int ScrollX, int ScrollY)
         Line( Vec2D(ScrollX,ScrollY+250), Vec2D( ScrollX+10,ScrollY+250)).Draw( CouleurLigne );
         petitpetitchiffre.Print( "  ->512" ,ScrollX+25,ScrollY+250 );
         break;
+        default: break;
     }
 
     Rect Curseur_ScrollChannel(Vec2D(ScrollX-10,ScrollY+scroll_channelspace-10),Vec2D(100,20));
@@ -207,6 +208,7 @@ int ClassicalChannelSpace( int xchan, int ychan,  int scroll)//les 512 circuits
                             ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));
                         }
                         break;
+                        default: break;
                     }
 
 
@@ -233,6 +235,7 @@ int ClassicalChannelSpace( int xchan, int ychan,  int scroll)//les 512 circuits
                     case 2:
                         petitpetitchiffre.Print("-", (xchan + 15+(xposch)),((ypos_l) + 70 -ypos_ch),RIGHT );
                         break;
+                    default: break;
                     }
 ///////////////////////
 
@@ -335,6 +338,7 @@ int ClassicalChannelSpace( int xchan, int ychan,  int scroll)//les 512 circuits
                             petitchiffre.Print(ol::ToString((int)(freeze_state[num_circ])) ,(xchan + (xposch))+10,((ypos_l) + 70 - ypos_ch),CENTER );
                         }
                         break;
+                        default: break;
                     }
 
                     if(num_circ==go_channel_is && index_go==1 && index_pause==0)
@@ -406,6 +410,7 @@ int ClassicalChannelSpace( int xchan, int ychan,  int scroll)//les 512 circuits
                         case 1:
                             petitpetitchiffre.Print(ol::ToString(channel_level_mofification_while_crossfade[num_circ]),(xchan + xposch+25),((ypos_l) + 80 - ypos_ch),RIGHT );
                             break;
+                        default: break;
                         }
                     }
 
@@ -653,6 +658,7 @@ int Draw_Channel_Preset_View(int xchan, int ychan,  int prst_v)
                             ChannelRect.Draw(CouleurBlind.WithAlpha(alpha_blinker));
                         }
                         break;
+                    default: break;
                     }
 
 
@@ -679,6 +685,7 @@ int Draw_Channel_Preset_View(int xchan, int ychan,  int prst_v)
                     case 2:
                         petitpetitchiffre.Print("-", (xchan + 15+(xposch)),ypos_ch+30,RIGHT );
                         break;
+                    default: break;
                     }
 ///////////////////////
 
@@ -780,6 +787,7 @@ int Draw_Channel_Preset_View(int xchan, int ychan,  int prst_v)
                             petitchiffre.Print(ol::ToString((int)(freeze_state[num_circ])) ,(xchan + (xposch))+10,ypos_ch+30,CENTER );
                         }
                         break;
+                        default: break;
                     }
 
                     if(num_circ==go_channel_is && index_go==1 && index_pause==0)
@@ -852,6 +860,7 @@ int Draw_Channel_Preset_View(int xchan, int ychan,  int prst_v)
                         case 1:
                             petitpetitchiffre.Print(ol::ToString(channel_level_mofification_while_crossfade[num_circ]),(xchan + xposch+25),ypos_ch+40,RIGHT );
                             break;
+                        default: break;
                         }
                     }
 
@@ -928,6 +937,7 @@ int ChannelsMenuSelection(int chx, int chy)
     case 1:
         command_button_view(chx+340,chy+1,index_direct_chan,"Direct x12","",1333);
         break;
+    default: break;
     }
 
     command_button_view(chx+410,chy+1,index_inspekt,"View","",1334);// int x, inty ,bool state, char *textedesc, int midiaffectation

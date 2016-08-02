@@ -154,7 +154,7 @@ int all_at_zero_panel_visu(int xf, int yf)
         case 7:
             sprintf(str_titre,"RECALL");
             break;
-
+        default: break;
         }
         if(window_focus_id==W_MINIFADERS && mouse_x>xf && mouse_x<xf+50 && mouse_y>yf+10+(25*u) && mouse_y<yf+30+(25*u))
         {
@@ -173,6 +173,7 @@ int all_at_zero_panel_visu(int xf, int yf)
             case 4:
                 sprintf(thetypinfo,"Ctrl Change");
                 break;
+            default: break;
             }
             sprintf(string_last_midi_id,"AtZero Command %d is Ch: %d Pitch: %d Type: %s",u, miditable[1][548+u],miditable[2][548+u],thetypinfo);
             //config midi
@@ -284,6 +285,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
             case 4:
                 sprintf(thetypinfo,"Ctrl Change");
                 break;
+            default: break;
             }
             sprintf(string_last_midi_id,"Select All is Ch: %d Pitch: %d Type: %s", miditable[1][96],miditable[2][96],thetypinfo);
 
@@ -314,6 +316,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
             case 4:
                 sprintf(thetypinfo,"Ctrl Change");
                 break;
+            default: break;
             }
             sprintf(string_last_midi_id,"Select Previous is Ch: %d Pitch: %d Type: %s", miditable[1][774],miditable[2][774],thetypinfo);
 
@@ -339,6 +342,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
             case 4:
                 sprintf(thetypinfo,"Ctrl Change");
                 break;
+            default: break;
             }
             sprintf(string_last_midi_id,"Select Next is Ch: %d Pitch: %d Type: %s", miditable[1][775],miditable[2][775],thetypinfo);
 
@@ -369,6 +373,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
             case 4:
                 sprintf(thetypinfo,"Ctrl Change");
                 break;
+            default: break;
             }
             sprintf(string_last_midi_id,"Select is Ch: %d Pitch: %d Type: %s", miditable[1][776],miditable[2][776],thetypinfo);
 
@@ -395,6 +400,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
             case 4:
                 sprintf(thetypinfo,"Ctrl Change");
                 break;
+            default: break;
             }
             sprintf(string_last_midi_id,"UnSelect is Ch: %d Pitch: %d Type: %s", miditable[1][777],miditable[2][777],thetypinfo);
 
@@ -443,6 +449,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
                 case 4:
                     sprintf(thetypinfo,"Ctrl Change");
                     break;
+                default: break;
                 }
                 char tmp_c[36];
                 switch(numcom)
@@ -492,6 +499,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
                 case 14:
                     sprintf(tmp_c,"Play Chaser");
                     break;
+                default: break;
                 }
 
                 sprintf(string_last_midi_id,"%s is Ch: %d Pitch: %d Type: %s",tmp_c, miditable[1][778+numcom],miditable[2][778+numcom],thetypinfo);
@@ -875,6 +883,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
                         petitpetitchiffrerouge.Print(ol::ToString((int)StateOfFaderBeforeLock[cmptfader +(lfad*24)]),xmf+(cmptfader*larg),ymf+170+(lfad*hmfd));
                     }
                     break;
+                default: break;
                 }
                 if(Fader[cmptfader +(lfad*24)]>0)
                 {
@@ -908,6 +917,7 @@ int mini_faders_panel_visu(int xmf, int ymf, int larg)
                         Line(Vec2D(xmf+(cmptfader*larg),(ymf+20+127 - (LevelStopPos[cmptfader+(lfad*24)]/2))),Vec2D(xmf+(cmptfader*larg)+larg-5,(ymf+127+20 - (LevelStopPos[cmptfader+(lfad*24)]/2)))).Draw(CouleurBlind);
                         petitpetitchiffrerouge.Print(string_fader_stop_pos[cmptfader],xmf+(cmptfader*larg)+2,(ymf+127+20 - (LevelStopPos[cmptfader+(lfad*24)]/2)));
                         break;
+                    default: break;
                     }
                 }
 ///////////SELECTION SOURIS SUR FADERS NUMEROS/////////////////////////////////////////////////////////
@@ -937,7 +947,7 @@ if(Midi_Faders_Affectation_Type!=0 && mouse_x>xmf+(cmptfader*larg) && mouse_x<xm
                 }
 
 //flash ou pas
-            if(mouse_x>xmf+(cmptfader*larg) && mouse_x<xmf+(cmptfader*larg)+larg-5 && mouse_y>ymf+175+(lfad*hmfd) && mouse_y<ymf+185+(lfad*hmfd))
+            if( window_focus_id==W_MINIFADERS && mouse_x>xmf+(cmptfader*larg) && mouse_x<xmf+(cmptfader*larg)+larg-5 && mouse_y>ymf+175+(lfad*hmfd) && mouse_y<ymf+185+(lfad*hmfd))
                 {
                     if(mouse_button==1 && FaderIsFlash[cmptfader +(lfad*24)]==0 && mouse_released==0)
                     {
@@ -981,6 +991,7 @@ if(Midi_Faders_Affectation_Type!=0 && mouse_x>xmf+(cmptfader*larg) && mouse_x<xm
                         case 4:
                             sprintf(thetypinfo,"Ctrl Change");
                             break;
+                        default: break;
                         }
                         sprintf(string_last_midi_id,"Fader %d is Ch: %d Pitch: %d Typ: %s" , over_minifader+1,miditable[1][ over_minifader],miditable[2][ over_minifader],thetypinfo);
 

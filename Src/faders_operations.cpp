@@ -168,7 +168,6 @@ for(int p=0;p<6;p++)
   {
   ClearDock(fader_selected_for_record,p);
   FaderDirectChan[fad][p]=0;
-
   }
  //mise a plat niveau
  Fader[fad]=0;
@@ -404,6 +403,7 @@ case 2:
 DockTypeIs[faa][docc]=8;//picth
 DockHasAudioPitch[faa][docc]=player_to_affect_to_dock+1;
 break;
+default: break;
 }
 player_to_affect_to_dock=999;
 audio_type_for_dock_affectation_is=999;

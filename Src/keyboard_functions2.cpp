@@ -180,6 +180,7 @@ for(int ck=1;ck<513;ck++)
     }
 add_channel_selection_to_layers_plot();
 break;
+default: break;
 }
 
 
@@ -281,6 +282,7 @@ case 1:
 
 add_channel_selection_to_layers_plot();
 break;
+default: break;
 }
 return(0);
 }
@@ -371,6 +373,7 @@ for(int ck=1;ck<513;ck++)
     }
 add_channel_selection_to_layers_plot();substract_channel_selection_to_layers_plot();
 break;
+default: break;
 }
 
  return(0);
@@ -465,6 +468,7 @@ case 1:
 
 add_channel_selection_to_layers_plot();substract_channel_selection_to_layers_plot();
 break;
+default: break;
 }
 return(0);
 }
@@ -634,6 +638,7 @@ if(chlevelis<0){chlevelis=0;}
 
 }
 break;
+default: break;
  }
  }
 switch(dmx_view)
@@ -644,6 +649,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> Selection AT %d", chlevelis);
 break;
+default: break;
 }
 reset_numeric_entry();
 index_level_attribue=1;
@@ -733,6 +739,7 @@ reset_numeric_entry();
 set_channel_scroll(last_ch_selected);
 add_channel_selection_to_layers_plot();
 break;
+default: break;
 }
 
 
@@ -792,6 +799,7 @@ reset_numeric_entry();
 set_channel_scroll(last_ch_selected);
 substract_channel_selection_to_layers_plot();
 break;
+default: break;
 }
 
 
@@ -907,6 +915,7 @@ for (int i=1;i<513;i++)
 }
 
 break;
+default: break;
 }
 index_level_attribue=1;//pour déselection lors prochain circuit piqué
 
@@ -1003,11 +1012,13 @@ for (int i=1;i<513;i++)
 }
 
 break;
+default: break;
 }
 
 index_level_attribue=1;//pour déselection lors prochain circuit piqué dominique guesdon 10 aout 2010
 return(0);
 }
+
 
 
 int key_unselect_ch()
@@ -1034,6 +1045,18 @@ else
              last_ch_selected=0;
              index_type=0;index_level_attribue=0;
              substract_channel_selection_to_layers_plot();
+//18/06/2015 christoph
+             if(window_focus_id==W_PLOT )
+             {
+                if(index_menus_lighting_plot==1) unselect_all_shapes();
+                else if( index_menus_lighting_plot==2 || index_menus_lighting_plot==4)
+                {
+                    for(int i=0;i<4;i++)
+                    {
+                         reset_symbols_selected(i);
+                    }
+                }
+              }
 
 
              if(index_ask_confirm==1)
@@ -1143,6 +1166,7 @@ int key_thruth()
              for (int cit=last_ch_selected;cit<=previous_ch_selected;cit++)  {Selected_Channel[cit]=1;}
              }
            break;
+           default: break;
            }
 
            }
@@ -1289,7 +1313,7 @@ int key_time_in_out()
             {
             if(index_type_of_time_to_affect[1]==0 || index_type_of_time_to_affect[3]==0 )
             {index_type_of_time_to_affect[1]=1; index_type_of_time_to_affect[3]=1; }
-            else if(index_type_of_time_to_affect[1]==1 || index_type_of_time_to_affect[1]==1 )
+            else if(index_type_of_time_to_affect[1]==1 || index_type_of_time_to_affect[3]==1 )
             {index_type_of_time_to_affect[1]=0; index_type_of_time_to_affect[3]=0; }
             }
            else //entree directe pour le preset
@@ -1372,6 +1396,7 @@ if(index_blind==0)
            sprintf(string_Last_Order,">> Selected All lighting channels non selected ( INV )");
 add_channel_selection_to_layers_plot();
 break;
+default: break;
 }
 
 

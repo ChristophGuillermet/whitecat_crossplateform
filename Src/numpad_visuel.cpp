@@ -89,6 +89,7 @@ case 1:
 WheelMode.Draw(CouleurSurvol);
 petitchiffre.Print("A",xw+rayon_k+13,yw-rayon_k+12);
 break;
+default: break;
 }
 WheelMode.DrawOutline(CouleurLigne);
 

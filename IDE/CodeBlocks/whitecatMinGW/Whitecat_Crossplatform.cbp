@@ -9,7 +9,7 @@
 		<Build>
 			<Target title="Debug">
 				<Option platforms="Windows;" />
-				<Option output="../../../whitecatbuild/build/white_cat_for_mingw/Whitecat_0_8_7" prefix_auto="1" extension_auto="1" />
+				<Option output="../../../whitecatbuild/build/white_cat_for_mingw/Whitecat_0_8_8_alpha" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../../whitecatbuild/build/white_cat_for_mingw/" />
 				<Option object_output="../../../whitecatbuild" />
 				<Option type="0" />
@@ -20,7 +20,7 @@
 			</Target>
 			<Target title="Release">
 				<Option platforms="Windows;" />
-				<Option output="../../../whitecatbuild/build/white_cat_for_mingw/Whitecat_087" prefix_auto="1" extension_auto="1" />
+				<Option output="../../../whitecatbuild/build/white_cat_for_mingw/Whitecat_08_8_alpha" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../../whitecatbuild/build/white_cat_for_mingw" />
 				<Option object_output="../../../whitecatbuild" />
 				<Option type="0" />
@@ -32,7 +32,7 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wall" />
+			<Add option="-Wswitch-enum" />
 			<Add directory="../../../whitecatlib/lib/windows/audiere-1.9.4-win32/include" />
 			<Add directory="../../../whitecatlib/lib/windows/Cserial" />
 			<Add directory="../../../whitecatlib/lib/windows/dashard" />
@@ -108,6 +108,12 @@
 		<Unit filename="../../../Src/Draw3.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../../../Src/Kalman.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/Kalman.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="../../../Src/MAIN_janv_2014_opensource_kbd.cpp" />
 		<Unit filename="../../../Src/README.md">
 			<Option target="&lt;{~None~}&gt;" />
@@ -149,9 +155,6 @@
 		<Unit filename="../../../Src/banger_visu_8.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="../../../Src/bazooKAT.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="../../../Src/channels_10_visu.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -179,7 +182,7 @@
 		<Unit filename="../../../Src/dmx_ftdi_IN_test_enttec_pro.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="../../../Src/dmx_functions_13.cpp">
+		<Unit filename="../../../Src/dmx_functions_14.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../../../Src/dmx_sunlite.cpp">
@@ -207,9 +210,6 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../../../Src/grand_master.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="../../../Src/graphics_rebuild1.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../../../Src/grider8.cpp">
@@ -348,6 +348,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../../../Src/video_tracking_visu.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/wave.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../../../Src/white_cat to do.txt">

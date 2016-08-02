@@ -297,6 +297,7 @@ case 1://Fader
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((float)(Fader[numfad])/2)*ratio_iCat_slider[iCatPageis][i]);
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         //afffichage niveau + loop dock
@@ -393,6 +394,7 @@ if(iCat_affectation_slider_value_is[iCatPageis][i]==(numfad+1) && ( before_lfo_s
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((float)(lfo_speed[numfad]))*ratio_iCat_slider[iCatPageis][i]);
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i, lfo_speed[numfad]-64 );
@@ -438,6 +440,7 @@ if( niveauX1!=before_niveauX1 || niveauX2!=before_niveauX2 || crossfade_speed!=b
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(valA/2)*ratio_iCat_slider[iCatPageis][i]);
         break;
+        default: break;
         }
 
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -474,6 +477,7 @@ if(niveauGMaster!=previous_niveauGMaster || index_refresh_valeurs_continous==1)
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((float)(niveauGMaster)/2)*ratio_iCat_slider[iCatPageis][i]);
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         if(dmx_view==0){
@@ -498,6 +502,7 @@ if(absolute_level_wheel!=previous_absolute_level_wheel || index_refresh_valeurs_
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((float)(absolute_level_wheel)/2)*ratio_iCat_slider[iCatPageis][i]);
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         if(dmx_view==0){
@@ -527,6 +532,7 @@ if(before_mover_params[numfad][0]!=mover_params[numfad][0] )
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((float)(mover_params[numfad][0]/2))*ratio_iCat_slider[iCatPageis][i]);
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i, mover_params[numfad][0] );
@@ -546,6 +552,7 @@ if(before_mover_params[numfad][1]!=mover_params[numfad][1] )
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((float)(mover_params[numfad][1]/2))*ratio_iCat_slider[iCatPageis][i]);
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i, mover_params[numfad][1] );
@@ -569,6 +576,7 @@ if( draw_level_to_do[drawpr]!=previous_draw_level_to_do[drawpr] || index_refresh
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((draw_level_to_do[drawpr]*127)*ratio_iCat_slider[iCatPageis][i]));
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i,(int) ( draw_level_to_do[drawpr]*127) );
@@ -587,6 +595,7 @@ if( draw_damper_decay_factor[drawpr]!=previous_draw_damper_decay_factor[drawpr] 
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((draw_damper_decay_factor[drawpr]*127)*ratio_iCat_slider[iCatPageis][i]));
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i,(int) ( draw_damper_decay_factor[drawpr]*127) );
@@ -606,6 +615,7 @@ if( draw_ghost_to_do[drawpr]!=previous_draw_ghost_to_do[drawpr] || index_refresh
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((draw_ghost_to_do[drawpr]*127)*ratio_iCat_slider[iCatPageis][i]));
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i,(int) ( draw_ghost_to_do[drawpr]*127) );
@@ -625,6 +635,7 @@ if( draw_level_to_do[drawpr]!=previous_draw_level_to_do[drawpr] || index_refresh
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((draw_level_to_do[drawpr]*127)*ratio_iCat_slider[iCatPageis][i]));
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i,(int) ( draw_level_to_do[drawpr]*127) );
@@ -645,6 +656,7 @@ if( draw_damper_decay_factor[drawpr]!=previous_draw_damper_decay_factor[drawpr] 
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((draw_damper_decay_factor[drawpr]*127)*ratio_iCat_slider[iCatPageis][i]));
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i,(int) ( draw_damper_decay_factor[drawpr]*127) );
@@ -665,6 +677,7 @@ if( draw_ghost_to_do[drawpr]!=previous_draw_ghost_to_do[drawpr] || index_refresh
         case 1://horizontal
         sprintf(StrOrderToiCat,"model level%d position %d 0 0",i,(int)((draw_ghost_to_do[drawpr]*127)*ratio_iCat_slider[iCatPageis][i]));
         break;
+        default: break;
         }
         nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
         sprintf(StrOrderToiCat, "model tlev%d text %d",i,(int) ( draw_ghost_to_do[drawpr]*127) );
@@ -735,6 +748,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lfo_up_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -754,6 +768,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lfo_down_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -771,6 +786,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lfo_saw_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -786,6 +802,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lfo_prev_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -801,6 +818,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lfo_next_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -816,6 +834,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lfo_ar_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -831,6 +850,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lock_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -846,6 +866,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/lfo_flash_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -862,6 +883,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/loop_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -885,7 +907,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 12:
       check_button_state[ck]= grider_is_playing[faders_dock_grid_affectation[iCat_affectation_bouton_value_is[iCatPageis][ck]-1][dock_used_by_fader_is[iCat_affectation_bouton_value_is[iCatPageis][ck]-1]]];
       break;
-
+      default: break;
       }
 
       if(before_check_button_state[ck]!=check_button_state[ck])
@@ -898,6 +920,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/play_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -921,7 +944,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 12:
       check_button_state[ck]= grider_autostopmode[faders_dock_grid_affectation[iCat_affectation_bouton_value_is[iCatPageis][ck]-1][dock_used_by_fader_is[iCat_affectation_bouton_value_is[iCatPageis][ck]-1]]];
       break;
-
+      default: break;
       }
       if(before_check_button_state[ck]!=check_button_state[ck])
       {
@@ -933,6 +956,7 @@ fis=(constrain_int_data_to_this_range(fis,0,47));
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/loop_on.jpg",ck);
       break;
+      default: break;
       }
       }
       break;
@@ -964,6 +988,7 @@ int num_mf;
                        case 1:
                        sprintf(StrOrderToiCat,"model MFnum%d color 1.0 0.0 0.0",ck);
                        break;
+                       default: break;
                      }
                    }
       }
@@ -983,6 +1008,7 @@ int num_mf;
                        case 1:
                        sprintf(StrOrderToiCat,"model MFnum%d color 0.0 0.4 0.3",ck);
                        break;
+                       default: break;
                      }
                    }
       }
@@ -1016,6 +1042,7 @@ switch(iCat_affectation_bouton_action_is[iCatPageis][ck])
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/go_on.jpg",ck);
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       break;
+      default: break;
       }
       }
 
@@ -1042,6 +1069,7 @@ switch(iCat_affectation_bouton_action_is[iCatPageis][ck])
       case 1:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/goback_on.jpg",ck);
       break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       if( index_go_back==1)
@@ -1079,6 +1107,7 @@ case 4://EMULATE
       {
       case 0: sprintf(StrOrderToiCat, "model SimB%d color 1.0 1.0 1.0",ck); break;
       case 1: sprintf(StrOrderToiCat, "model SimB%d color 1.0 0.0 0.0",ck); break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       }
@@ -1091,6 +1120,7 @@ case 4://EMULATE
       {
       case 0: sprintf(StrOrderToiCat, "model SimB%d color 1.0 1.0 1.0",ck); break;
       case 1: sprintf(StrOrderToiCat, "model SimB%d color 1.0 0.0 0.0",ck); break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       }
@@ -1103,6 +1133,7 @@ case 4://EMULATE
       {
       case 0: sprintf(StrOrderToiCat, "model SimB%d color 1.0 1.0 1.0",ck); break;
       case 1: sprintf(StrOrderToiCat, "model SimB%d color 1.0 0.0 0.0",ck); break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       }
@@ -1115,6 +1146,7 @@ case 4://EMULATE
       {
       case 0: sprintf(StrOrderToiCat, "model SimB%d color 1.0 1.0 1.0",ck); break;
       case 1: sprintf(StrOrderToiCat, "model SimB%d color 1.0 0.0 0.0",ck); break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       }
@@ -1128,6 +1160,7 @@ case 4://EMULATE
       {
       case 0: sprintf(StrOrderToiCat, "model SimB%d color 1.0 1.0 1.0",ck); break;
       case 1: sprintf(StrOrderToiCat, "model SimB%d color 1.0 0.0 0.0",ck); break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       break;
@@ -1136,6 +1169,7 @@ case 4://EMULATE
       {
       case 0: sprintf(StrOrderToiCat, "model SimB%d color 1.0 1.0 1.0",ck); break;
       case 1: sprintf(StrOrderToiCat, "model SimB%d color 1.0 0.0 0.0",ck); break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       break;
@@ -1164,6 +1198,7 @@ switch(iCat_affectation_bouton_action_is[iCatPageis][ck])
       case 0:
       sprintf(StrOrderToiCat,"model button%d image http://www.le-chat-noir-numerique.fr/iCat/rond_banger_on.png",ck);
       break;
+      default: break;
       }
       nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
       }
@@ -1349,6 +1384,7 @@ sprintf(StrOrderToiCat,"model slider%d scale %d %.1f 0",id,(ratio_iCat_slider[iC
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 draw_largeur=iCatSlidersizeY; draw_hauteur=iCatSlidersizeX;
 break;
+default: break;
 }
 
 sprintf(StrOrderToiCat,"model slider%d position %d %d 0",id, (x1*2)+((draw_largeur*ratio_iCat_slider[iCatPageis][id])/2), (y1*2)+((draw_hauteur*ratio_iCat_slider[iCatPageis][id])/2));
@@ -1374,6 +1410,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1496,6 +1533,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1537,6 +1575,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1552,6 +1591,7 @@ break;
 case 2:
 sprintf(StrOrderToiCat, "model t%d text Sp",id);
 break;
+default: break;
 }
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 sprintf(StrOrderToiCat, "model t%d position %d %d 0",id, (x1*2), (y1*2)-5);
@@ -1587,6 +1627,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1627,6 +1668,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1673,6 +1715,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1699,6 +1742,7 @@ break;
 case 1:
  value= mover_params[valeur_sl-1][1];
 break;
+default: break;
 }
 //affichage niveau
 sprintf(StrOrderToiCat, "model tlev%d text %d",id,value);
@@ -1728,6 +1772,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1771,6 +1816,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1814,6 +1860,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1860,6 +1907,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1903,6 +1951,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
@@ -1946,6 +1995,7 @@ sprintf(StrOrderToiCat,"model level%d xyz %d %d 0 %d %d 0",id,
 (x1*2), (y1*2),(x1*2),(y1*2)+(iCatSlidersizeX*ratio_iCat_slider[iCatPageis][id]));
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);
 break;
+default: break;
 }
 sprintf(StrOrderToiCat,"model level%d width 100",id);
 nbrbytessendediCat=sendto(sockiCat,  StrOrderToiCat,strlen(StrOrderToiCat)+1,0,(SOCKADDR*)&siniCat,sinsizeiCat);

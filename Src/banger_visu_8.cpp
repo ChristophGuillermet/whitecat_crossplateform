@@ -438,6 +438,18 @@ case 1:
      case 37:
      sprintf(bangers_type_action,"Damper Mode");
      break;
+     case 38:
+     sprintf(bangers_type_action,"Dock --");
+     break;
+     case 39:
+     sprintf(bangers_type_action,"Dock ++");
+     break;
+     case 40://FX MODE
+     sprintf(bangers_type_action,"FX mode");
+     break;
+     case 41://buffer
+     sprintf(bangers_type_action,"Render Buffer");
+     break;
      default:
      sprintf(bangers_type_action,"-");
      break;
@@ -536,6 +548,9 @@ case 2:
      break;
      case 29:
      sprintf(bangers_type_action,"Msg CONTINUE");
+     break;
+     case 30:
+     sprintf(bangers_type_action,"Send Prg Change");
      break;
      default:
      sprintf(bangers_type_action,"-");
@@ -1082,6 +1097,9 @@ sprintf(bangers_type_affiche,"Hardware");
      case 2:
      sprintf(bangers_type_action,"Analog input ON");
      break;
+     case 3:
+     sprintf(bangers_type_action,"Rescan Midi");
+     break;
      default:
      break;
      }
@@ -1415,6 +1433,54 @@ case 18:
      break;
      default:
      sprintf(bangers_type_action,"-");
+     break;
+     }
+break;
+
+case 19://WAVE
+sprintf(bangers_type_affiche,"Wave");
+switch(bangers_action[index_banger_selected][lp])
+     {
+     case 0://set controler_wave
+     sprintf(bangers_type_action,"Set Slider");
+     break;
+     case 1://set pos brush
+     sprintf(bangers_type_action,"Set Pos Brush");
+     break;
+     case 2://set channel preset
+     sprintf(bangers_type_action,"Set Chan.Pr");
+     break;
+     case 3://set brush preset
+     sprintf(bangers_type_action,"Set Brush Pr");
+     break;
+     case 4://set decay
+     sprintf(bangers_type_action,"Set Decay");
+     break;
+     case 5://set delta
+     sprintf(bangers_type_action,"Set Delta");
+     break;
+     case 6://set damper mode
+     sprintf(bangers_type_action,"Set Damper Mod");
+     break;
+     case 7://clear slots
+     sprintf(bangers_type_action,"Clear Wave");
+     break;
+     case 8://clear brush
+     sprintf(bangers_type_action,"Clear Brush");
+     break;
+     case 9://clear buffer
+     sprintf(bangers_type_action,"Clear Buffer");
+     break;
+     case 10://play
+     sprintf(bangers_type_action,"Set Play");
+     break;
+     case 11://seek
+     sprintf(bangers_type_action,"Seek");
+     break;
+     case 12://set BPM
+     sprintf(bangers_type_action,"Set BPM");
+     break;
+     default:
      break;
      }
 break;

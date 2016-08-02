@@ -611,6 +611,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"STAGE Fader is Ch: %d Pitch: %d Typ: %s" , miditable[1][491],miditable[2][491],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0)//config midi
@@ -658,6 +659,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Preset Fader is Ch: %d Pitch: %d Typ: %s" , miditable[1][492],miditable[2][492],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0)//config midi
@@ -795,6 +797,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"GO BACK is Ch: %d Pitch: %d Typ: %s" , miditable[1][494],miditable[2][494],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0)//config midi
@@ -835,6 +838,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"GO BACK is Ch: %d Pitch: %d Typ: %s" , miditable[1][496],miditable[2][496],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0)//config midi
@@ -876,6 +880,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"SpeedFader is Ch: %d Pitch: %d Typ: %s" , miditable[1][493],miditable[2][493],thetypinfo);
 

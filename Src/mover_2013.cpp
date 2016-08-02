@@ -1070,6 +1070,7 @@ if(index_goto_record==1)
 StepActionL1.DrawOutline(CouleurLock);
 StepActionL2.DrawOutline(CouleurBlind);
 break;
+default: break;
 }
 //ligne 1 des actions sur steps
 if( window_focus_id==W_MOVER && mouse_x>x_track+20+(lopt*40) && mouse_x<x_track+20+30+(lopt*40) && mouse_y>track_aera_y+275 && mouse_y<track_aera_y+295)
@@ -1093,6 +1094,7 @@ if(  index_main_clear==0 && index_goto_record==0)
 else if(  index_goto_record==0 && index_main_clear==1)
 {ClearIntoStep(dock_move_selected);index_main_clear=0;}
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -1125,6 +1127,7 @@ ClearGotoStep(dock_move_selected);
 index_main_clear=0;
 }
 break;
+default: break;
 }
 mouse_released=1;
 }

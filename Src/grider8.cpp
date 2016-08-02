@@ -533,6 +533,7 @@ case 1:
 //petitpetitchiffre.Print(ol::ToString(grid_levels[grid_selected][gr_st_selected][temoin_over_grid_channel-1]),mouse_x+10,mouse_y-5);
 sprintf(tmp_st,"OverChan: %d Level: %d",temoin_over_grid_channel,grid_levels[grid_selected][gr_st_selected][temoin_over_grid_channel-1]);
 break;
+default: break;
 }
 neuromoyen.Print(tmp_st,mouse_x+10,mouse_y-5);
 }

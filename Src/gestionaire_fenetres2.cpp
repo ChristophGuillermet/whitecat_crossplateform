@@ -144,8 +144,8 @@ int add_a_window(int id)
  case W_FADERS:
       index_show_faders=1;
  break;
- case W_BAZOOKAT:
-     index_bazoocat_menu_window=1;
+ case W_WAVE:
+     index_wave_menu_window=1;index_affect_wave_to_dock=0;
  break;
  case W_PATCH:
       index_patch_window=1;index_enable_curve_editing=0;
@@ -308,6 +308,7 @@ break;
 case 1:
 add_a_window(W_SAVEREPORT);
 break;
+default: break;
 }
 return(0);
 }

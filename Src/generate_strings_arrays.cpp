@@ -781,7 +781,7 @@ sprintf(TblHelp[post][0],"Selection des circuits par");
 post++;
 sprintf(TblHelp[post][2],"[FLECHE GAUCHE] et [FLECHE DROITE]");
 post++;
-sprintf(TblHelp[post][0],"CHECK GRADA 75%( bypass le patch )");
+sprintf(TblHelp[post][0],"CHECK GRADA 75/100( bypass le patch )");
 post++;
 sprintf(TblHelp[post][2],"[SHIFT][FLECHE GAUCHE]-[SHIFT][FLECHE DROITE]");
 post++;

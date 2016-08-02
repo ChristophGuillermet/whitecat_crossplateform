@@ -327,6 +327,7 @@ break;
 case 1:
 sprintf(header_export,"%d",grid_levels[gr][ste][the_ch] );
 break;
+default: break;
 }
 draw_info(page,xx+(col*6)+1 ,yy-(ligne*6)+5,header_export);
 }
@@ -523,6 +524,7 @@ break;
 case 1:
 sprintf(header_export,"Echo Mode is /ON ");
 break;
+default: break;
 }
 draw_info(page, 100, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
@@ -537,6 +539,7 @@ break;
 case 1:
 sprintf(header_export,"ChanMode is CH/GROUND");
 break;
+default: break;
 }
 draw_info(page, 100, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
@@ -826,6 +829,7 @@ break;
 case 1:
 sprintf(tmp_y,"TimeJoin");
 break;
+default: break;
 }
 sprintf(header_export,"Time Unit: %f Time Mode: %s ", time_unit[chaser_num], tmp_y);
 draw_info(page, 100, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
@@ -839,6 +843,7 @@ break;
 case 1:
 sprintf(tmp_y,"Backward Way");
 break;
+default: break;
 }
 if(chaser_aller_retour[chaser_num]==1)
 {sprintf(header_export,"%s , aller-retour mode", tmp_y);}
@@ -855,6 +860,7 @@ break;
 case 1:
 sprintf(tmp_y,"PLAY ON");
 break;
+default: break;
 }
 if(chaser_is_in_loop[chaser_num]==1)
 {sprintf(header_export,"%s , LOOP ON", tmp_y);}
@@ -925,6 +931,7 @@ break;
 case 3:
 colRt=1.0; colGt=0.0; colBt=0.0;
 break;
+default: break;
 }
 HPDF_Page_SetRGBFill (page,colRt, colGt, colBt);//couleur remplissage
 HPDF_Page_SetRGBStroke (page, colRt, colGt, colBt);//couleur ligne
@@ -965,6 +972,7 @@ break;
 case 1:
 sprintf(tmp_u,"ON");
 break;
+default: break;
 }
 sprintf(header_export,"Tr:%d %s(%d)",ly+1,tmp_u,track_level[chaser_num][ly]);
 draw_info(page, 40, debut_lignes -(position_ligne1 +(cmptline_pdf*12)+(ly*12)),header_export);
@@ -1020,6 +1028,7 @@ break;
 case 1:
 sprintf(little_header,"%d=%d   ",c,TrackContains[chaser_num][t][c]);
 break;
+default: break;
 }
 strcat(header_export,little_header);
 comptch++;
@@ -1570,6 +1579,7 @@ break;
 case 1:
 sprintf(titlemacro3,"ON");
 break;
+default: break;
 }
 sprintf(header_export,"Macro %d: %s / %d / %s / %d / %s\n",m+1,titlemacro,channel_macro_val[cp][m][0],titlemacro2,channel_macro_val[cp][m][1],titlemacro3);
 draw_info(page, 100, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
@@ -2201,6 +2211,7 @@ switch(iCat_affectation_bouton_action_is[prst][sl])
       case 1:
       sprintf(tmpf,"Bang Solo %d",iCat_affectation_bouton_value_is[prst][sl]);
       break;
+      default: break;
       }
 break;
 case 6://icat commandes
@@ -3933,6 +3944,7 @@ break;
 case 1:
 sprintf(header_export,"Damper ON/ D:%d D:%d Mode:%d",  dc,ddt,md);
 break;
+default: break;
 }
 draw_info(page, 50, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
@@ -3947,6 +3959,7 @@ break;
 case 2:
 strcat(header_export," down ");
 break;
+default: break;
 }
 }
 else if(lfo_cycle_is_on[f]==1)
@@ -3979,11 +3992,10 @@ if(LevelStopPos[f]!=0)
 sprintf(header_export,"Stop position:  %d  ",(int)(((float)LevelStopPos[f])/2.55));
 switch(ActionnateStopOn[f])
 {
-case 0:
-break;
 case 1:
 strcat(header_export,"is ON");
 break;
+default: break;
 }
 draw_info(page, 50, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
@@ -4312,6 +4324,7 @@ break;
 case 1:
 sprintf(header_export,"Color Preset %d in Quadrichromy Mode",t+1);
 break;
+default: break;
 }
 draw_title(page, 50, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
@@ -4325,6 +4338,7 @@ break;
 case 1:
 sprintf(header_export,"Actual Color is: R=%d G=%d B=%d Y=%d",picker_trichro[t][0],picker_trichro[t][1],picker_trichro[t][2],picker_trichro[t][3]);
 break;
+default: break;
 }
 draw_info(page, 100, debut_lignes -(position_ligne1 +(cmptline_pdf*12)),header_export);
 cmptline_pdf++;
@@ -4347,6 +4361,7 @@ break;
 case 3:
 sprintf(header_export,"YELLOW: ");
 break;
+default: break;
 }
 
 for(int circ=1;circ<513;circ++)
@@ -4708,6 +4723,7 @@ break;
 case 2://relié à un fader
 sprintf(little_header,"Fader %d >10", arduino_digital_function_output[i][1]);
 break;
+default: break;
 }
 strcat(header_export,little_header);
 }
@@ -4725,6 +4741,7 @@ break;
 case 2://relié à un fader
 sprintf(little_header,"Fader %d >10", arduino_digital_function_output[i][1]);
 break;
+default: break;
 }
 strcat(header_export,little_header);
 }

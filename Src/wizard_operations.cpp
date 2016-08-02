@@ -228,6 +228,7 @@ break;
 case 1:
 sprintf(tmpw,"%d=%d ",w,Memoires[variable_wizard_mem][w]);
 break;
+default: break;
 }
 strcat(tmp_wizbuffer, tmpw);
 }
@@ -449,6 +450,7 @@ switch(wizard_action_mem) // 0 rebuild numerical order / 1 insert me / 2 del mem
    case 2:
    wizard_rebuild(100);
    break;
+   default: break;
    }
    break;
    case 1:// 1 insert mem
@@ -476,6 +478,7 @@ switch(wizard_action_mem) // 0 rebuild numerical order / 1 insert me / 2 del mem
    case 6:// 6 reset times
    wizard_reset_to_default_time();
    break;
+   default: break;
 }
 
 return(0);
@@ -529,6 +532,7 @@ break;
 case 1:
 Memoires[m][co]=wizard_level_is;
 break;
+default: break;
 }
 }
 }
@@ -562,6 +566,7 @@ Memoires[m][co]+=wizard_level_is;
 }
 else  {Memoires[m][co]=255;}
 break;
+default: break;
 }
 }
 }
@@ -596,6 +601,7 @@ Memoires[m][co]-=wizard_level_is;
 }
 else {Memoires[m][co]=0;}
 break;
+default: break;
 }
 }
 }
@@ -728,6 +734,7 @@ swapIN[t]=0;break;
 
 
 break;
+default: break;
 }
 
 refresh_stage();

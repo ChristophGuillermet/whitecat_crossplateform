@@ -598,7 +598,7 @@ int Commandes_faders_generales(int xf, int yf)
         case 7:
             petitchiffre.Print("RECALL",xf+5,yf+15+(50*u));
             break;
-
+        default: break;
         }
 
         if(window_focus_id==W_MINIFADERS && Midi_Faders_Affectation_Type!=0 && mouse_x>xf && mouse_x<xf+72 && mouse_y>yf+(50*u) && mouse_y<yf+(50*u)+25)
@@ -656,6 +656,7 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
                     petitchiffrerouge.Print(ol::ToString((int)StateOfFaderBeforeLock[cmptfader]),x+(cmptfader*espacement)+12,y+273);
                 }
                 break;
+            default: break;
             }
             sprintf(string_channel,"%d", cmptfader+1);
 
@@ -669,6 +670,7 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
             case 1://espace séquenciel
                 RouteMdeFx.Draw(CouleurNiveau.WithAlpha(0.5));
                 break;
+            default: break;
             }
             RouteMdeFx.DrawOutline(CouleurLigne.WithAlpha(0.5));
 
@@ -746,6 +748,9 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
                 case 16://echo
                     FaderNiveau.Draw(Discrete8);
                     break;
+                case 17://wave
+                    FaderNiveau.Draw(CouleurBleu2);
+                    break;
                 }
             }
             else//fader locké
@@ -821,6 +826,7 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
                         case 1:
                             FaderB.DrawOutline(CouleurLock);
                             break;
+                        default: break;
                         }
                     }
                     else if(DockTypeIs[cmptfader][dd]==11)//chaser
@@ -857,6 +863,11 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
                     else if(DockTypeIs[cmptfader][dd]==16)//echo
                     {
                         Dock.Draw( Discrete8);
+                    }
+
+                    else if(DockTypeIs[cmptfader][dd]==17)//echo
+                    {
+                        Dock.Draw(CouleurBleu2);
                     }
 
                     petitpetitchiffre.Print( DockName[cmptfader][dd],x+(cmptfader*espacement)-5,y-10 ) ;
@@ -931,6 +942,9 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
                     sprintf( string_docktypfx,"Echo %d",(echo_affected_to_dock[cmptfader][dd]+1));
                     petitchiffre.Print(string_docktypfx,x+((cmptfader*espacement)+75),  y +15+ (dd*40));
                     break;
+                case 17://WaVE
+                    petitchiffre.Print("WAVE",x+((cmptfader*espacement)+75),  y +15+ (dd*40));
+                    break;
                 default:
                     break;
                 }
@@ -959,6 +973,7 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
                 case 1:
                     niv=LevelStopPos[cmptfader];
                     break;
+                default: break;
                 }
 //ON OFF
                 switch(ActionnateStopOn[cmptfader])
@@ -971,6 +986,7 @@ int FaderSpace(int x, int y, int espacement,int nbr_fader)
                     Line(Vec2D(x+(cmptfader*espacement),(y+255) - LevelStopPos[cmptfader]),Vec2D(x+(cmptfader*espacement)+40,(y+255) - LevelStopPos[cmptfader])).Draw(CouleurBlind);
                     petitpetitchiffrerouge.Print(ol::ToString(niv),x+(cmptfader*espacement)+20,(y+255) - LevelStopPos[cmptfader]);
                     break;
+                default: break;
                 }
             }
 //lettrages du chiffre de fader

@@ -30,8 +30,8 @@ WWWWWWWW           C  WWWWWWWW   |
 * \file whitecat.h
 * \brief {header file for all the global variable in whitecat}
 * \author Christoph Guillermet
-* \version {0.8.7.0}
-* \date {15/05/2015}
+* \version {0.8.8}
+* \date {09/06/2016}
 
  White Cat {- categorie} {- sous categorie {- sous categorie}}
 
@@ -45,12 +45,12 @@ WWWWWWWW           C  WWWWWWWW   |
 
 
 
-char versionis[72]={"ALPHA 0.8.7 - 25 juin 2015"};
+char versionis[72]={"ALPHA 0.8.8 - 4 JUILLET 2016"};
 char nickname_version[48]={"ARDUINO POWER"};
 
 bool init_done=0;//démarrage pour éviter envoyer data pdt procedure d initialisation
 /////////////////////REPERTOIRE/////////////////////////////////////////////////
-char rep[255];//repertoire avec arborescence complete du fichier
+char rep[1024];//repertoire avec arborescence complete du fichier
 //sab 02/03/2014 char mondirectory[200];//endroit de l exe
 /** Directory where is the executable file - Répertoire où se trouve l'exécutable **/
 char mondirectory[512];
@@ -82,7 +82,7 @@ W_FADERS=906,
 W_PATCH=907,
 W_TIME=908,
 W_SEQUENCIEL=909,
-W_BAZOOKAT=910,
+W_WAVE=910,
 W_ASKCONFIRM=911,
 W_PLOT=912,
 W_ECHO=913,
@@ -233,8 +233,13 @@ unsigned char artnet_backup[514];
 bool do_send_on_change=0;
 
 bool client_artnet_is_closed=0;
-int myDMXinterfaceis=0;//0=no device 1=Artnet 2=Enttec Open 3=Enttec PRO 4= Sunlite
-bool index_init_dmx_ok=0;//pour lancer le data ou pas au lancement
+//refonte avril 2016 mode d interfaces DMX
+const int NB_INTERFACES=6;
+bool do_DMX_out[NB_INTERFACES];//transfert de myDMXinterfaceis à un tableau pour allumer différentes interfaces
+bool index_init_dmx_ok[NB_INTERFACES];//pour lancer le data ou pas au lancement
+//sur un tableau concerne UNIQUEMENT 2 et 3 OPEN ET PRO EN OUT
+int dmx_ports_com[NB_INTERFACES];
+bool auto_detect_com_port[NB_INTERFACES];
 
 ////////////////////FADERS//////////////////////////////////////////////////////
 int max_faders=48;
@@ -437,7 +442,7 @@ bool index_art_polling=0;
 char tmp_ip_artnet[17];
 
 //dmx
-int Survol_interface_numero=0;
+
 int window_cfgX=10;
 int window_cfgY=25;
 int largeurCFGwindow=830;
@@ -625,6 +630,7 @@ float angle_timesnap;
 float   vtimex,vtimey;
 int actual_tickers_chrono=0;
 char visu_chrono_str[64];
+char visu_big_chrono[36];
 
 char string_tap_tempo_average[36];
 char string_actual_tap_tempo[36];
@@ -637,6 +643,8 @@ int nbr_steps_tempo=1;//doit etre 1 et pas 0 pour pas provoquer de NIL
 int max_temp_tempo=12;
 int ticks_tap_tempo[16];
 int tempo_interm=0;//pur addition des ticks
+
+bool index_show_chrono=1;//pour affichage chrono discret
 ////////////////////////THRICHRO////////////////////////////////////////////////
 
 #define ACCURACY_DOUBLE  1.e-06
@@ -1038,7 +1046,7 @@ short DataLength=512;
 int Dim (HeaderLength + DataLength) ;//largeur de l envoi
 int Univers=0;
 bool index_do_light_diode_artnet=0;
-int index_artnet_doubledmx=0;
+
 bool artnet_serveur_is_initialized=0;
 //////////////////RESEAUX DETECTION////////////////////////////////////////////
 char IP_detected_dmxOUT[8][24];
@@ -1515,6 +1523,9 @@ int arduino_max_analog=5;
 bool digital_data_is_switch[digital_limit];//pour comportements switch
 bool snap_dig_for_switch[digital_limit];
 
+bool kalman_is_on[analog_limit];
+double kalman_params[3][analog_limit];
+int Kalman_selected=0;
 
 int digital_data_to_arduino[digital_limit];
 int previous_digital_data_to_arduino[digital_limit];
@@ -2100,7 +2111,7 @@ bool index_do_hipass=0;
 int FaderManipulating=0;
 
 //nouvelle structure de groupe de faders
-int fader_mode_with_buffers[48];// 0 NORMAL / 1 OFF RENDERING / 2 SUBSTRACT / 3 ADDITIF / 4 SCREEN / EXCLUSION
+int fader_mode_with_buffers[48];// 0 NORMAL / 1 OFF RENDERING / 2 SUBSTRACT / 3 ADDITIF / 4 SCREEN / 5 EXCLUSION
 bool fader_fx_route[48];/// 1 Buffer séquenciel / 0 Buffer faders
 bool channel_is_touched_by_fader_fx[513];
 int channel_is_touched_by_fader_number[513];
@@ -2559,21 +2570,28 @@ int fader_before_bounce[48];
 float snap_echo_to_recall[24][513];
 
 
-//BAZOOCAT video handler
+//WAVE/////////////////////////////////
 
-bool index_bazoocat_menu_window=1;
-
-
-
-
-int size_x_bazoocat_menus=800;
-int size_y_bazoocat_menus=600;
-int position_x_bazoocat_menus=100;
-int position_y_bazoocat_menus=100;
+bool index_wave_menu_window=0;
+int size_x_wave_menus=350;
+int size_y_wave_menus=300;
+int position_x_wave_menus=100;
+int position_y_wave_menus=100;
+bool index_click_move_wave_window=0;
 
 
-bool index_click_move_bazoocat_window=0;
+bool index_affect_wave_to_dock=0;
+
+int waver_control=16;//la donnée qui pilote la vague
+int previous_waver_control=15;
+int wave_channel_preset_selected=0;
+int channel_slots[4][26];//4 presets de circuits prévus
+int brush_selected=0;
+float brush_slots[4][26];//4 presets de brosse
+int lead_brush_reading[4];
+int previous_lead_brush_reading[4];
+int buffer_wave[513]; //le buffer de 512 circuits à rendre dans un fader
+bool there_is_a_previous_wave_higher_level[513];
+bool wave_play_state=0;
 
 
-
-float une_valeur_de_debug=0.0;

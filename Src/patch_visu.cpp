@@ -169,6 +169,7 @@ case 3:
 if (index_fluo_curve==1){ActToCurve.Draw(CouleurBlind);}
 petitchiffre.Print("fluo.",XCurv+20+(act*70)+15,YCurv+525);
 break;
+default: break;
 }
 ActToCurve.DrawOutline(CouleurLigne);
 }

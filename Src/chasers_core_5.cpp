@@ -113,6 +113,7 @@ break;
 case 3:
 launchpad_color_defined[(1048+(trk*8)+pas)]=lch_red;
 break;
+default: break;
 }
 //correcteur curseur
 int correcteur=0;
@@ -124,6 +125,7 @@ break;
 case 1:
 correcteur=-1;
 break;
+default: break;
 }
 
 //position curseur
@@ -212,6 +214,7 @@ else{break;}
 }
 }
 break;
+default: break;
 }
 }
 return(0);
@@ -254,36 +257,38 @@ if(chaser_is_playing[nch]==1)
 switch(chaser_way[nch])
 {
 case 0://avant
-chaser_time_position[nch]++;
+    chaser_time_position[nch]++;
 
-if(chaser_time_position[nch]>=chaser_end_of_step[nch])
-{
-chaser_calcul_step(nch,0.0);
-chaser_step_is[nch]++;
-if(chaser_step_is[nch]>chaser_end_step_is[nch] )
-{
-switch(chaser_is_in_loop[nch])
-{
-case 0:
-chaser_is_playing[nch]=0;
-break;
-case 1:
-switch( chaser_aller_retour[nch])
-{
-case 0:
-chaser_step_is[nch]=chaser_begin_step_is[nch];
-break;
-case 1:
-chaser_step_is[nch]--;
-chaser_way[nch]=toggle(chaser_way[nch]);
-break;
-}
-break;
-}
-}
-chaser_calcul_time_joint(nch);
-}
-index_progression_chaser_step[nch]=((chaser_time_position[nch]-chaser_start_of_step[nch])/((chaser_end_of_step[nch]-chaser_start_of_step[nch])/chaser_slaviness[nch]));
+    if(chaser_time_position[nch]>=chaser_end_of_step[nch])
+    {
+    chaser_calcul_step(nch,0.0);
+    chaser_step_is[nch]++;
+    if(chaser_step_is[nch]>chaser_end_step_is[nch] )
+    {
+    switch(chaser_is_in_loop[nch])
+        {
+        case 0:
+        chaser_is_playing[nch]=0;
+        break;
+        case 1:
+            switch( chaser_aller_retour[nch])
+                    {
+                    case 0:
+                    chaser_step_is[nch]=chaser_begin_step_is[nch];
+                    break;
+                    case 1:
+                    chaser_step_is[nch]--;
+                    chaser_way[nch]=toggle(chaser_way[nch]);
+                    break;
+                    default: break;
+                    }
+        break;
+        default: break;
+        }
+    }
+    chaser_calcul_time_joint(nch);
+    }
+    index_progression_chaser_step[nch]=((chaser_time_position[nch]-chaser_start_of_step[nch])/((chaser_end_of_step[nch]-chaser_start_of_step[nch])/chaser_slaviness[nch]));
 break;
 case 1://arrière
 chaser_time_position[nch]++;
@@ -308,8 +313,10 @@ case 1:
 chaser_step_is[nch]++;
 chaser_way[nch]=toggle(chaser_way[nch]);
 break;
+default: break;
 }
 break;
+default: break;
 }
 }
 
@@ -317,6 +324,7 @@ chaser_calcul_time_joint(nch);
 }
 index_progression_chaser_step[nch]=((chaser_time_position[nch]-chaser_start_of_step[nch])/((chaser_end_of_step[nch]-chaser_start_of_step[nch])/chaser_slaviness[nch]));
 break;
+default: break;
 }
 }//fin if track is on
 //contenu relié à une mémoire
@@ -367,6 +375,7 @@ TracksBuffer[nch][trkis][io]=(int)(((((float) TrackContains[nch][trkis][io])/127
 ;
 }
 break;
+default: break;
 }
 break;
 case 2://stay
@@ -393,8 +402,10 @@ TracksBuffer[nch][trkis][io]=(int)(((((float) TrackContains[nch][trkis][io])/127
 ;
 }
 break;
+default: break;
 }
 break;
+default: break;
 }
 
 //MERGE ALL  TRACKS OF A CHASER
@@ -618,6 +629,7 @@ break;
 case 1:
 chaser_step_is[numchase]=chaser_end_step_is[numchase];
 break;
+default: break;
 }
 index_progression_chaser_step[numchase]=0.0;
 chaser_calcul_step(numchase,0.0);
@@ -887,6 +899,7 @@ attribute_midi_to_control(1048+((chcase-(chaser_step_is[chaser_selected]-8))-1)+
 }
 }
 break;
+default: break;
 }
 }
 }
@@ -1011,6 +1024,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON Chaser %d",chaser_selected+1);
 break;
+default: break;
 }
 }
 mouse_released=1;
@@ -1429,6 +1443,7 @@ else
 }
 if((Fader_previous[cmptfader]==0 && Fader[cmptfader]>0 )|| ( previous_dock_used[cmptfader]!=dock_used_by_fader_is[cmptfader] )) player4->play();
 break;
+default: break;
 }
 }
 break;
@@ -1478,6 +1493,7 @@ else
 }
 if((Fader_previous[cmptfader]==0 && Fader[cmptfader]>0 )|| ( previous_dock_used[cmptfader]!=dock_used_by_fader_is[cmptfader] )) player4->play();
 break;
+default: break;
 }
 }
         break;
@@ -1528,6 +1544,7 @@ else
 }
 if((Fader_previous[cmptfader]==0 && Fader[cmptfader]>0 )|| ( previous_dock_used[cmptfader]!=dock_used_by_fader_is[cmptfader] )) player4->play();
 break;
+default: break;
 }
 }
         break;

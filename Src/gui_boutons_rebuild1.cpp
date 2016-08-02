@@ -80,10 +80,13 @@ Texn.DrawOutline(CouleurBlind);
 
 float do_logical_rotatif(int xr, int yr, int Rrayon)
 {
+
+/*
 float valeur=0.0;
-//if(mouse_x>=xr-Rrayon && mouse_x<=xr+Rrayon && mouse_y>=yr-Rrayon && mouse_y<=yr+Rrayon)
+if(mouse_x>=xr-Rrayon && mouse_x<=xr+Rrayon && mouse_y>=yr-Rrayon && mouse_y<=yr+Rrayon)
 //{
-valeur=(atan2(xr-(mouse_x-xr), yr-(mouse_y-yr)));
+*/
+float valeur=(atan2(xr-(mouse_x-xr), yr-(mouse_y-yr)));
 //}
  return(valeur);
 }
@@ -829,8 +832,8 @@ case 24://grider
  else {substract_a_window(W_GRID);}
 break;
 case 25:
-     if(index_bazoocat_menu_window==0){add_a_window(W_BAZOOKAT);substract_a_window(W_MAINMENU);}
- else {substract_a_window(W_BAZOOKAT);}
+     if(index_wave_menu_window==0){add_a_window(W_WAVE);substract_a_window(W_MAINMENU);}
+ else {substract_a_window(W_WAVE);}
 break;
 
 

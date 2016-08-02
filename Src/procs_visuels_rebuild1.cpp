@@ -55,6 +55,7 @@ bool wc_askConfirmWindowIsOpen()
 	}
 	return f_bool;
 }
+
 //sab 29/05/2013 fin ------------------------------------------------------
 
 int detection_over_window()
@@ -66,7 +67,7 @@ if(mouse_y>hauteur_ChannelMenu )
 for(int i=0;i<63;i++)
 {
 switch(window_opened[i])
-{
+        {
         case W_SAVEREPORT:
         if( mouse_x>= report_SL_X && mouse_x<= report_SL_X+350 && mouse_y>=report_SL_Y && mouse_y<=report_SL_Y+160)
         {window_is=window_opened[i];stop_detect=1;}
@@ -172,8 +173,8 @@ switch(window_opened[i])
         if( mouse_x>=grider_window_x && mouse_x<=grider_window_x+largeurGrider && mouse_y>=grider_window_y && mouse_y<=grider_window_y+hauteurGrider)
         {window_is=window_opened[i];stop_detect=1;}
         break;
-        case W_BAZOOKAT:
-        if( mouse_x>=position_x_bazoocat_menus && mouse_x<=position_x_bazoocat_menus+size_x_bazoocat_menus && mouse_y>=position_y_bazoocat_menus && mouse_y<=position_y_bazoocat_menus+size_y_bazoocat_menus)
+        case W_WAVE:
+        if( mouse_x>=position_x_wave_menus && mouse_x<=position_x_wave_menus+size_x_wave_menus && mouse_y>=position_y_wave_menus && mouse_y<=position_y_wave_menus+size_y_wave_menus)
         {window_is=window_opened[i];stop_detect=1;}
         break;
         case W_MY_WINDOW:
@@ -182,8 +183,7 @@ switch(window_opened[i])
         break;
         default:
         break;
-break;
-}
+        }
 if(stop_detect==1){break;}
 }
 }
@@ -361,9 +361,9 @@ if(mouse_button==1 && window_focus_id==idwindowis && mouse_y>hauteur_ChannelMenu
  y_Wdraw=mouse_y-25;
  im_moving_a_window=1;
  break;
- case W_BAZOOKAT:
- position_x_bazoocat_menus=mouse_x-(40+15);
- position_y_bazoocat_menus=mouse_y-25;
+ case W_WAVE:
+ position_x_wave_menus=mouse_x-(40+15);
+ position_y_wave_menus=mouse_y-25;
  im_moving_a_window=1;
  break;
  case W_MY_WINDOW:
@@ -599,9 +599,9 @@ case W_MY_WINDOW:
      do_logical_my_window_Box(my_window_x, my_window_y);
      do_logical_MoveCloseBox( my_window_x+20,my_window_y+20,W_MY_WINDOW);
 break;
-case W_BAZOOKAT:
-     do_logical_fenetre_bazookat_menus(position_x_bazoocat_menus, position_y_bazoocat_menus);
-     do_logical_MoveCloseBox( position_x_bazoocat_menus+20,position_y_bazoocat_menus+20,W_BAZOOKAT);
+case W_WAVE:
+     do_logical_fenetre_wave_menus(position_x_wave_menus, position_y_wave_menus);
+     do_logical_MoveCloseBox( position_x_wave_menus+20,position_y_wave_menus+20,W_WAVE);
 break;
 default:
 break;

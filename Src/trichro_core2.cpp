@@ -158,6 +158,7 @@ case 1://use transmission data
     my_green=(int)((((float)rvb_of_gels[manufacturer][gel_position][1])/100)*gel_transimission[manufacturer][gel_position]);
     my_blue=(int)((((float)rvb_of_gels[manufacturer][gel_position][2])/100)*gel_transimission[manufacturer][gel_position]);
 break;
+default: break;
 }
 do_colors();
 sprintf(string_Last_Order,">>Gel list Called Position %d / ref %d",gel_position,refs_of_gels[manufacturer][gel_position]);
@@ -367,6 +368,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"COLOR WHEEL FADER is Ch: %d Pitch: %d Typ: %s" , miditable[1][497],miditable[2][497],thetypinfo);
 
@@ -422,6 +424,7 @@ if(Selected_Channel[p]==1){bufferBlind[p]=my_red;}
 }
 sprintf(string_Last_Order,"Pasted On the Fly RED result");
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -457,6 +460,7 @@ if(Selected_Channel[p]==1){bufferBlind[p]=my_green;}
 }
 sprintf(string_Last_Order,"Pasted On the Fly GREEN result");
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -492,6 +496,7 @@ if(Selected_Channel[p]==1){bufferBlind[p]=my_blue;}
 }
 sprintf(string_Last_Order,"Pasted On the Fly BLUE result");
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -526,6 +531,7 @@ if(Selected_Channel[p]==1){bufferBlind[p]=my_yellow;}
 }
 sprintf(string_Last_Order,"Pasted On the Fly YELLOW result");
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -617,6 +623,7 @@ case 0://numerical order
 break;
 case 1://designer order
 break;
+default: break;
 }
 mouse_released=1;
 }

@@ -112,6 +112,7 @@ break;
 case 1:
 sprintf(titlemacro,"%d",channel_macro_val[last_ch_selected][i][0]);
 break;
+default: break;
 }
 petitchiffre.Print(titlemacro,xlist+95, ylist+38+(25*i));
 if(mouse_x>xlist+90 && mouse_x<xlist+130 && mouse_y>ylist+25+(25*i) && mouse_y<ylist+45+(25*i) && window_focus_id==914)
@@ -214,6 +215,7 @@ case 1:
 onoff_B.Draw(CouleurBlind);
 sprintf(titlemacro,"/On");
 break;
+default: break;
 }
 petitchiffre.Print(titlemacro,xlist+285, ylist+38+(25*i));
 if(mouse_x>xlist+280 && mouse_x<xlist+315 && mouse_y>ylist+25+(25*i) && mouse_y<ylist+45+(25*i) && window_focus_id==914)

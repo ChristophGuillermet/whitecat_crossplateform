@@ -43,46 +43,50 @@ WWWWWWWW           C  WWWWWWWW   |
 
 int do_wheel_level_job(int levelwheelis)
 {
+unsigned char your_level_is;
+
 switch(wheellevel_absolutemode)
-{
-case 0://relatif
-     if(levelwheelis<64){ simulate_keypress(KEY_UP<<8);}
-     else if(levelwheelis>64){ simulate_keypress(KEY_DOWN<<8);}
-break;
-case 1://absolute , on récupère de toute facon le niveau midi comme base
-unsigned char your_level_is=(int)((((float)levelwheelis)/127)*255);
-switch(index_do_hipass)
-{
-case 0://mode normal
-for (int tc=1;tc<514;tc++)
-{
-if (Selected_Channel[tc]==1 && index_blind==0)
-{
-bufferSaisie[tc]=your_level_is;
-}
-else if (Selected_Channel[tc]==1 && index_blind==1)
-{
-bufferBlind[tc]=your_level_is;
-}
-}
-break;
-case 1://mode hipass faders
-for (int i=1;i<513;i++)
-{
- if(Selected_Channel[i]==1)
- {
-  FaderManipulating=highest_level_comes_from_fader[i]-1;
-  if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrés on the fly
-  {
-   FaderDockContains[FaderManipulating][dock_used_by_fader_is[FaderManipulating]][i]  =your_level_is;
-  }
- }
-}
-break;
-}
-absolute_level_wheel=your_level_is;
-break;
-}
+    {
+    case 0://relatif
+        if(levelwheelis<64){ simulate_keypress(KEY_UP<<8);}
+        else if(levelwheelis>64){ simulate_keypress(KEY_DOWN<<8);}
+    break;
+    case 1://absolute , on récupère de toute facon le niveau midi comme base
+        your_level_is=(int)((((float)levelwheelis)/127)*255);
+        switch(index_do_hipass)
+        {
+        case 0://mode normal
+            for (int tc=1;tc<514;tc++)
+            {
+            if (Selected_Channel[tc]==1 && index_blind==0)
+            {
+            bufferSaisie[tc]=your_level_is;
+            }
+            else if (Selected_Channel[tc]==1 && index_blind==1)
+            {
+            bufferBlind[tc]=your_level_is;
+            }
+            }
+        break;
+        case 1://mode hipass faders
+            for (int i=1;i<513;i++)
+            {
+            if(Selected_Channel[i]==1)
+            {
+            FaderManipulating=highest_level_comes_from_fader[i]-1;
+            if(DockTypeIs[FaderManipulating][dock_used_by_fader_is[FaderManipulating]]==0)//pas les contenus dynamiques, juste les circuits enregistrés on the fly
+            {
+            FaderDockContains[FaderManipulating][dock_used_by_fader_is[FaderManipulating]][i]  =your_level_is;
+            }
+            }
+            }
+        break;
+        default: break;
+        }
+        absolute_level_wheel=your_level_is;
+    break;
+    default: break;
+    }
 return(0);
 }
 
@@ -117,6 +121,7 @@ if(Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"LEVELWHEEL FADER is Ch: %d Pitch: %d Typ: %s" , miditable[1][664],miditable[2][664],thetypinfo);
 
@@ -163,6 +168,7 @@ if(Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad %d is Ch: %d Pitch: %d Typ: %s" , (1+loi),miditable[1][671+loi],miditable[2][671+loi],thetypinfo);
   attribute_midi_solo_affectation((671+loi),Midi_Faders_Affectation_Mode);
@@ -191,6 +197,7 @@ if(Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad %d is Ch: %d Pitch: %d Typ: %s" , (4+loi),miditable[1][674+loi],miditable[2][674+loi],thetypinfo);
   attribute_midi_solo_affectation((674+loi),Midi_Faders_Affectation_Mode);
@@ -219,6 +226,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad %d is Ch: %d Pitch: %d Typ: %s" , (7+loi),miditable[1][677+loi],miditable[2][677+loi],thetypinfo);
   attribute_midi_solo_affectation((677+loi),Midi_Faders_Affectation_Mode);
@@ -249,6 +257,7 @@ switch(miditable[0][670])
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
 sprintf(string_last_midi_id,"NumPad 0 is Ch: %d Pitch: %d Typ: %s" ,miditable[1][670],miditable[2][670],thetypinfo);
 attribute_midi_solo_affectation(670,Midi_Faders_Affectation_Mode);
@@ -286,6 +295,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad UP is Ch: %d Pitch: %d Typ: %s" ,miditable[1][668],miditable[2][668],thetypinfo);
   attribute_midi_solo_affectation(668,Midi_Faders_Affectation_Mode);
@@ -310,6 +320,7 @@ if(Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad DOWN is Ch: %d Pitch: %d Typ: %s" , miditable[1][669],miditable[2][669],thetypinfo);
   attribute_midi_solo_affectation(669,Midi_Faders_Affectation_Mode);
@@ -333,6 +344,7 @@ if(Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad ENTER is Ch: %d Pitch: %d Typ: %s" , miditable[1][665],miditable[2][665],thetypinfo);
   attribute_midi_solo_affectation(665,Midi_Faders_Affectation_Mode);
@@ -356,6 +368,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad PLUS is Ch: %d Pitch: %d Typ: %s" , miditable[1][666],miditable[2][666],thetypinfo);
   attribute_midi_solo_affectation(666,Midi_Faders_Affectation_Mode);
@@ -380,6 +393,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad MINUS is Ch: %d Pitch: %d Typ: %s" , miditable[1][667],miditable[2][667],thetypinfo);
   attribute_midi_solo_affectation(667,Midi_Faders_Affectation_Mode);
@@ -404,6 +418,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad AT FULL is Ch: %d Pitch: %d Typ: %s" , miditable[1][1827],miditable[2][1827],thetypinfo);
   attribute_midi_solo_affectation(1827,Midi_Faders_Affectation_Mode);
@@ -426,6 +441,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad AT ZERO is Ch: %d Pitch: %d Typ: %s" , miditable[1][1828],miditable[2][1828],thetypinfo);
   attribute_midi_solo_affectation(1828,Midi_Faders_Affectation_Mode);
@@ -448,6 +464,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad CHECK MINUS is Ch: %d Pitch: %d Typ: %s" , miditable[1][1825],miditable[2][1825],thetypinfo);
   attribute_midi_solo_affectation(1825,Midi_Faders_Affectation_Mode);
@@ -474,6 +491,7 @@ if( Midi_Faders_Affectation_Type!=0)//config midi
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"NumPad CHECK PLUS is Ch: %d Pitch: %d Typ: %s" , miditable[1][1826],miditable[2][1826],thetypinfo);
   attribute_midi_solo_affectation(1826,Midi_Faders_Affectation_Mode);

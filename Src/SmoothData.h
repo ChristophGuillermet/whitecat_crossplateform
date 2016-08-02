@@ -14,7 +14,7 @@ class SmoothData {
     SmoothData ();
     void set_value(int value);//pour passer une donnée à damperiser, venant de la souris, du midi ou arduino ou icat
     void damper();//traitement de la donnée en damper
-    void set_target_val(int val);//specifies la valeur d'arrivée
+    void set_target_val(int val);//specifies la valeur d'arrivée 0-255
     void fix_all_damper_state_value(int val);//raccorde la valeur si elle est manipulée hors mode damper
     //damper specifique
     void set_damper_decay(float value);

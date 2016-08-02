@@ -144,7 +144,7 @@ int Enttec_Pro_SetCommParams()
 
 	SetCommTimeouts(com_handle_, &timeouts);
 
-	return 0;
+	return (0);
 }
 
 
@@ -328,7 +328,7 @@ com_handle_ = NULL;
 
 			if ((!strncmp(KeyName,"\\Device\\VCP",11)) && idmx!=arduino_com0)
 			{
-                index_init_dmx_ok=1;
+                index_init_dmx_ok[3]=1;
                 istheresomeone_in_enttecpro=idmx;
                 break;
 				// we found a serial COM device, COM port "idmx"
@@ -374,7 +374,7 @@ int Open_EnttecProOut()
 	if (iRet<0)
 	{
     com_handle_ = NULL;
-    index_init_dmx_ok=0;
+    index_init_dmx_ok[3]=0;
 	sprintf(string_display_dmx_params,"Impossible to open ENTTEC PRO Out, is it PLUGGED ?");
     return(0);
 	}
@@ -491,3 +491,4 @@ int Close_ProIn()
  index_init_EnttecPROIN_ok=0;
  return(0);
 }
+

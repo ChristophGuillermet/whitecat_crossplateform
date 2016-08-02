@@ -397,6 +397,7 @@ switch(chaser_step_operation[chaser_selected][num_track][chcase])
  case 3:
  TCase.Draw(CouleurRed);
  break;
+ default: break;
 }
 TCase.DrawOutline(CouleurFond);
 
@@ -633,6 +634,7 @@ break;
 case 3:
 sprintf(temp_tunit,"T.Unit:    %.4f",time_unit[chaser_selected]*chaser_slaviness[chaser_selected]);
 break;
+default: break;
 }
 
 petitpetitchiffre.Print(temp_tunit,xcha+200,ycha+64);
@@ -748,6 +750,7 @@ id_way=-1;
 Line(Vec2D(xcha+175+((chaser_step_is[chaser_selected]+1)*12)+(index_progression_chaser_step[chaser_selected]*12*id_way),ycha+115),Vec2D(xcha+175+((chaser_step_is[chaser_selected]+1)*12)+(index_progression_chaser_step[chaser_selected]*12*id_way),ycha+145+(nbre_track_visualisables*40))).Draw(CouleurFader);
 Line(Vec2D(xcha+176+((chaser_step_is[chaser_selected]+1)*12)+(index_progression_chaser_step[chaser_selected]*12*id_way),ycha+115),Vec2D(xcha+176+((chaser_step_is[chaser_selected]+1)*12)+(index_progression_chaser_step[chaser_selected]*12*id_way),ycha+145+(nbre_track_visualisables*40))).Draw(CouleurFader);
 break;
+default: break;
 }
 
 

@@ -106,13 +106,6 @@ return(0);
 
 
 
-
-
-
-
-
-
-
 int Bang_event_back(int banger_num, int event_num)
 {
 int the_fader_is=0;
@@ -146,6 +139,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      if(StateOfFaderBeforeLock[the_fader_is]==255){LockFader_is_FullLevel[the_fader_is]=1;}
      else if(StateOfFaderBeforeLock[the_fader_is]<255){LockFader_is_FullLevel[the_fader_is]=0;}
      break;
+     default: break;
      }
      sprintf(string_event,"BACK:Lock Fader %d",the_fader_is+1);
      break;
@@ -160,6 +154,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      lfo_mode_is[the_fader_is]=2;
      faders_in_float[the_fader_is]=Fader[the_fader_is];
      break;
+     default: break;
      }
      lfo_cycle_is_on[the_fader_is]=0;
      sprintf(string_event,"BACK:UP Fader %d",the_fader_is+1);
@@ -175,6 +170,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      lfo_mode_is[the_fader_is]=1;
      faders_in_float[the_fader_is]=Fader[the_fader_is];
      break;
+     default: break;
      }
      lfo_cycle_is_on[the_fader_is]=0;
      sprintf(string_event,"BACK:Down Fader %d",the_fader_is+1);
@@ -192,6 +188,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      lfo_cycle_is_on[the_fader_is]=0;
      lfo_mode_is[the_fader_is]=2;//descente du fader
      break;
+     default: break;
      }
      sprintf(string_event,"BACK:Saw Fader %d",the_fader_is+1);
      break;
@@ -204,6 +201,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      lfo_do_next_step[the_fader_is][0]=0;
      break;
+     default: break;
      }
      sprintf(string_event,"BACK:Prev Dock Fader %d",the_fader_is+1);
      break;
@@ -217,6 +215,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      lfo_do_next_step[the_fader_is][1]=0;
      break;
+     default: break;
      }
      sprintf(string_event,"BACK:Next Dock Fader %d",the_fader_is+1);
      break;
@@ -229,6 +228,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      lfo_cycle_steps[the_fader_is]=0;
      break;
+     default: break;
      }
      sprintf(string_event,"BACK:Up-Down Fader %d",the_fader_is+1);
      break;
@@ -242,6 +242,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      is_dock_for_lfo_selected[the_fader_is][dock_selected_for_record]=0;
      break;
+     default: break;
      }
      sprintf(string_event,"BACK:Dock looped Fader %d",the_fader_is+1);
      break;
@@ -260,6 +261,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       is_dock_for_lfo_selected[the_fader_is][p]=0;
       }
       break;
+      default: break;
       }
       sprintf(string_event,"BACK:All Looped Fader %d",the_fader_is+1);
      break;
@@ -300,6 +302,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       niv_transforme=remember_state_of_banged_fader[the_fader_is][1];
       }
       break;
+      default: break;
      }
      /*Fader[the_fader_is]= niv_transforme;
      midi_levels[the_fader_is]= niv_transforme/2;
@@ -333,6 +336,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      sprintf(string_event,"BACK: ENDPOS OFF Fader %d",the_fader_is+1);
      break;
+     default: break;
      }
      }
      break;
@@ -349,6 +353,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       case 1:
       midi_send_out[the_fader_is]=0;
       break;
+      default: break;
      }
      sprintf(string_event,"BACK:MidiOut Fader %d",the_fader_is+1);
      break;
@@ -406,6 +411,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       case 1:
       sprintf(string_event,"BACK: STOP Chaser %d in Fader %d Dock %d ",ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])], the_fader_is+1,dock_used_by_fader_is[param1_is]+1);
       break;
+      default: break;
       }
      }
      else {sprintf(string_event,"BACK: No Chaser loaded in Fader %d Dock %d ", the_fader_is+1,dock_used_by_fader_is[param1_is]+1);}
@@ -435,6 +441,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       case 1:
       sprintf(string_event,"BACK: LOOP OFF Chaser %d in Fader %d Dock %d ",ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])], the_fader_is+1,dock_used_by_fader_is[param1_is]+1);
       break;
+      default: break;
       }
      }
      else {sprintf(string_event,"BACK: No Chaser loaded in Fader %d Dock %d ", the_fader_is+1,dock_used_by_fader_is[param1_is]+1);}
@@ -466,6 +473,7 @@ if((param1_is>=0 && param1_is<=15 ) && (param2_is>=0 && param2_is<=127))
      case 1:
      send_my_midi_note( 1,  param1_is, param2_is, 0, 10);//velocite / duree
      break;
+     default: break;
      }
       sprintf(string_event,"BACK:key-on Ch:%d P:%d V:127",param1_is,param2_is);
      break;
@@ -776,6 +784,7 @@ index_alarm_from_banger_num=banger_num;
 substract_a_window(W_ALARM);
 sprintf(string_event,"BACK: Alarm /OFF");
 break;
+default: break;
 }
 break;
 //AUDIO BACK/////////////////////////////////////////////////////////////////
@@ -961,7 +970,7 @@ if(param1_is>=0 && param1_is<5)
      }
      }
      break;
-
+     default: break;
     }
 
 
@@ -993,6 +1002,7 @@ if(param1_is>=0 && param1_is<5)
                            player_is_playing[param1_is]=(player1->isPlaying());
                            sprintf(string_event,"BACK: Player 1 PLAY");}
                            break;
+                           default: break;
                            }
           break;
           case 1:
@@ -1010,6 +1020,7 @@ if(param1_is>=0 && param1_is<5)
                            player_is_playing[param1_is]=(player2->isPlaying());
                            sprintf(string_event,"BACK: Player 2 PLAY");}
                            break;
+                           default: break;
                            }
           break;
           case 2:
@@ -1027,6 +1038,7 @@ if(param1_is>=0 && param1_is<5)
                            player_is_playing[param1_is]=(player3->isPlaying());
                            sprintf(string_event,"BACK: Player 3 PLAY");}
                            break;
+                           default: break;
                            }
           break;
           case 3:
@@ -1044,8 +1056,10 @@ if(param1_is>=0 && param1_is<5)
                            player_is_playing[param1_is]=(player4->isPlaying());
                            sprintf(string_event,"BACK: Player 4 PLAY");}
                            break;
+                           default: break;
                            }
           break;
+          default: break;
      }
      break;
      case 3:
@@ -1118,6 +1132,7 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"BACK: Player 1 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
           case 1:
@@ -1139,6 +1154,7 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"BACK: Player 2 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
           case 2:
@@ -1160,6 +1176,7 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"BACK: Player 3 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
           case 3:
@@ -1181,8 +1198,10 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"BACK: Player 4 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
+          default: break;
           }
 
      break;
@@ -1210,6 +1229,7 @@ if(param1_is>=0 && param1_is<5)
           {player4->setPosition(audio_position_was[param1_is]);
           sprintf(string_event,"BACK: Player 4 SeekToZero");}
           break;
+          default: break;
       }
      break;
      case 6:
@@ -1246,6 +1266,7 @@ if(param1_is>=0 && param1_is<5)
      player4->setVolume(((float)player_niveauson[param1_is])/127);
      sprintf(string_event,"BACK: Player 4 SetVolume at %d", audio_volume_was[param1_is]);
      break;
+     default: break;
      }
      }
 
@@ -1269,6 +1290,7 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"BACK: Player 1 CUE ON");
            break;
+           default: break;
            }
      break;
      case 1://PLAYER 2
@@ -1284,6 +1306,7 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"BACK: Player 2 CUE ON");
            break;
+           default: break;
            }
      break;
      case 2://PLAYER 3
@@ -1299,6 +1322,7 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"BACK: Player 3 CUE ON");
            break;
+           default: break;
            }
      break;
      case 3://PLAYER 4
@@ -1314,8 +1338,10 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"Player 4 CUE ON");
            break;
+           default: break;
            }
      break;
+     default: break;
      }
      }
      break;
@@ -1342,6 +1368,7 @@ if(param1_is>=0 && param1_is<5)
        player4->setPosition(audio_position_was[param1_is]);
        sprintf(string_event,"BACK: Player 4 SeekToCueIn");
        break;
+       default: break;
        }
      }
      break;
@@ -1380,6 +1407,7 @@ if(param1_is>=0 && param1_is<5)
      if(midi_send_out[623]==1){ index_send_midi_out[623]=1;}//PAN
      sprintf(string_event,"BACK: Player 4 SetPan at %d",param2_is);
      break;
+     default: break;
      }
      }
      break;
@@ -1418,6 +1446,7 @@ if(param1_is>=0 && param1_is<5)
      if(midi_send_out[627]==1){ index_send_midi_out[627]=1;}//PICTH
      sprintf(string_event,"BACK: Player 4 SetPitch at %d",param2_is);
      break;
+     default: break;
      }
      }
      break;
@@ -1434,12 +1463,13 @@ if(param1_is>=0 && param1_is<5)
      case 1:
      sprintf(string_event,"BACK: Player %d SetMidiOut ON",param1_is);
      break;
+     default: break;
      }
      break;
      }
 }
 break;
-
+default: break;
 sprintf(string_Last_Order,">> Banged %d Event %d %s", banger_num+1, event_num+1, string_event);
 
 }
@@ -1448,8 +1478,6 @@ sprintf(string_Last_Order,">> Banged %d Event %d %s", banger_num+1, event_num+1,
 return(0);
 
 }
-
-
 
 
 
@@ -1499,6 +1527,7 @@ int param2_is=0;
 int the_fader_is=0;
 int the_icatpage_is=0;
 int numgridpl=0;
+int gimick_param1_is=0;//variable clean sans constraiint
 //sab 02/03/2014 unused var int numgrid=0;
 //sab 02/03/2014 unused var int numstep=0;
 switch (bangers_type[banger_num][event_num])
@@ -1533,6 +1562,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      lfo_mode_is[the_fader_is]=0;
      sprintf(string_event,"LOCKED Fader %d",the_fader_is+1);
      break;
+     default:
+        break;
      }
      break;
      case 1://up
@@ -1552,6 +1583,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      sprintf(string_event,"UP Fader %d ON",the_fader_is+1);
      }
      break;
+     default:
+        break;
      }
      lfo_cycle_is_on[the_fader_is]=0;
      break;
@@ -1572,6 +1605,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      sprintf(string_event,"DOWN Fader %d ON",the_fader_is+1);
      }
      break;
+     default:
+        break;
      }
      lfo_cycle_is_on[the_fader_is]=0;
      break;
@@ -1594,6 +1629,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      sprintf(string_event,"SAW Fader %d ON",the_fader_is+1);
      }
      break;
+     default:
+     break;
      }
      break;
      case 4://to prev dock
@@ -1607,6 +1644,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      lfo_do_next_step[the_fader_is][0]=1;lfo_do_next_step[the_fader_is][1]=0;
      sprintf(string_event,"PREV DOCK Fader %d ON",the_fader_is+1);
+     break;
+     default:
      break;
      }
      break;
@@ -1622,6 +1661,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      lfo_do_next_step[the_fader_is][1]=1;lfo_do_next_step[the_fader_is][0]=0; ;
      sprintf(string_event,"NEXT DOCK Fader %d ON",the_fader_is+1);
      break;
+     default:
+     break;
      }
      break;
      case 6://up down
@@ -1635,6 +1676,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      lfo_cycle_steps[the_fader_is]=1;
      sprintf(string_event,"CYCLE Fader %d ON",the_fader_is+1);
+     break;
+     default:
      break;
      }
      break;
@@ -1650,6 +1693,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      case 1:
      is_dock_for_lfo_selected[the_fader_is][dock_selected_for_record]=1;
      sprintf(string_event,"DOCK LOOPED Fader %d ON",the_fader_is+1);
+     break;
+     default:
      break;
      }
      break;
@@ -1670,6 +1715,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       is_dock_for_lfo_selected[the_fader_is][p]=1;
       }
       sprintf(string_event,"ALL LOOPED Fader %d ON",the_fader_is+1);
+      break;
+      default:
       break;
       }
      break;
@@ -1703,7 +1750,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       case 0:
        if(param2_is>=0 && param2_is<=100)
       {
-      niv_transforme=(int)((float)(param2_is)*2.55)+1;
+      niv_transforme=(int)(((float)(param2_is))*2.55)+1;
       if(param2_is==0){niv_transforme=0;}
       if(param2_is==100){niv_transforme=255;}
       }
@@ -1714,12 +1761,10 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       niv_transforme=param2_is;
       }
       break;
+      default:
+      break;
      }
      do_stock_fadersstate(1,0,0,0,0);
-     /*
-     Fader[the_fader_is]= niv_transforme;
-     midi_levels[the_fader_is]= niv_transforme/2;
-     index_send_midi_out[the_fader_is]=1;*/
      fader_set_level(the_fader_is, niv_transforme);
      if(lfo_mode_is[the_fader_is]==1 || lfo_mode_is[the_fader_is]==2 || lfo_cycle_is_on[the_fader_is]==1)
      {
@@ -1728,7 +1773,6 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      //rafraichissement DChannel
      if(DockTypeIs[the_fader_is][dock_used_by_fader_is[the_fader_is]]==10){index_fader_is_manipulated[the_fader_is]=1;}
      sprintf(string_event,"SET LEVEL %d Fader %d",param2_is,the_fader_is+1);
-
      break;
 
      case 12://end pos pour auto mouvement
@@ -1741,6 +1785,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
            break;
            case 1:
             lStopP=param2_is;
+           break;
+           default:
            break;
           }
           if (lStopP>=0 && lStopP<=255)
@@ -1763,6 +1809,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      break;
      case 1:
      sprintf(string_event,"ENDPOS ON Fader %d",the_fader_is+1);
+     break;
+     default:
      break;
      }
      }
@@ -1788,6 +1836,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       case 1:
       midi_send_out[the_fader_is]=1;
        sprintf(string_event,"MIDI OUT Fader %d ON",the_fader_is+1);
+      break;
+      default:
       break;
       }
      break;
@@ -1884,6 +1934,8 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       {lock_preset[ipo]=0;}
       lock_preset[param1_is]=1;
       break;
+      default:
+      break;
      }
      break;
      case 25://assign curve
@@ -1931,6 +1983,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       else if(chaser_step_is[ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])]]>35){chaser_step_is[ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])]]=35;}
       sprintf(string_event,"PLAY Chaser %d in Fader %d Dock %d ",ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])], the_fader_is+1,dock_used_by_fader_is[param1_is]+1);
       break;
+      default: break;
       }
      }
      else {sprintf(string_event,"No Chaser loaded in Fader %d Dock %d ", the_fader_is+1,dock_used_by_fader_is[param1_is]+1);}
@@ -1961,13 +2014,14 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       case 1:
       sprintf(string_event,"LOOP ON Chaser %d in Fader %d Dock %d ",ChaserAffectedToDck[the_fader_is][(dock_used_by_fader_is[param1_is])], the_fader_is+1,dock_used_by_fader_is[param1_is]+1);
       break;
+      default: break;
       }
      }
      else {sprintf(string_event,"No Chaser loaded in Fader %d Dock %d ", the_fader_is+1,dock_used_by_fader_is[param1_is]+1);}
      }
      else { sprintf(string_event,"LOOP Chaser entry must be 0 or 1");}
      break;
-      case 30://autolaunch chaser
+     case 30://autolaunch chaser
       if( param2_is==0 || param2_is==1)
      {
      if(DockTypeIs[the_fader_is][(dock_used_by_fader_is[the_fader_is])]==11)
@@ -1983,10 +2037,11 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
       case 1:
       sprintf(string_event,"Autolaunch ON  Fader %d Dock %d ", the_fader_is+1,dock_used_by_fader_is[param1_is]+1);
       break;
+      default: break;
       }
      break;
      case 31://"Fader: Set as DCH.");
-     if( param2_is>1 && param2_is<513)
+     if( param2_is>0 && param2_is<513)
      {
      DockTypeIs[the_fader_is][dock_used_by_fader_is[param1_is]]=10;
      FaderDirectChan[the_fader_is][dock_used_by_fader_is[param1_is]]=param2_is;
@@ -2016,6 +2071,7 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
         {
         Fader_dampered[the_fader_is].fix_all_damper_state_value(Fader[the_fader_is]);
         Fader_dampered[the_fader_is].set_target_val(Fader[the_fader_is]);
+        index_fader_is_manipulated[the_fader_is]=1;
         sprintf(string_event,"Fader %d Damper Off", the_fader_is+1);
         }
      else
@@ -2044,9 +2100,80 @@ if(the_fader_is>=0 && the_fader_is<core_user_define_nb_faders)
      sprintf(string_event,"Fader %d Damper Mode is %d", the_fader_is+1, param2_is);
      }
      break;
+     case 38://Dock --
+     for(int i=0;i<6;i++)
+     {
+      if(DockIsSelected[the_fader_is][i]==1)
+      {
+          DockIsSelected[the_fader_is][i]=0;
+          if(i>0){DockIsSelected[the_fader_is][i-1]=1;}
+          else if(i==0){DockIsSelected[the_fader_is][5]=1;}
+          break;
+      }
+     }
+     sprintf(string_event,"Fader %d Dock --", the_fader_is+1);
+     break;
+     case 39://Dock ++
+     for(int i=0;i<6;i++)
+     {
+      if(DockIsSelected[the_fader_is][i]==1)
+      {
+          DockIsSelected[the_fader_is][i]=0;
+          if(i<5){DockIsSelected[the_fader_is][i+1]=1;}
+          else if(i==5){DockIsSelected[the_fader_is][0]=1;}
+          break;
+      }
+     }
+     sprintf(string_event,"Fader %d Dock ++", the_fader_is+1);
+     break;
+     case 40://FX MODE
+         if(param2_is>=0 && param2_is<=5)
+         // 0 NORMAL / 1 OFF RENDERING / 2 SUBSTRACT / 3 ADDITIF / 4 SCREEN / 5 EXCLUSION
+         {
+         fader_mode_with_buffers[the_fader_is]=param2_is;
+         switch(param2_is)
+             {
+                 case 0:
+                    sprintf(string_event,"Fader %d FX Normal", the_fader_is+1);
+                 break;
+                 case 1:
+                    sprintf(string_event,"Fader %d FX OFF", the_fader_is+1);
+                 break;
+                 case 2:
+                    sprintf(string_event,"Fader %d FX Substract", the_fader_is+1);
+                 break;
+                 case 3:
+                    sprintf(string_event,"Fader %d FX Add", the_fader_is+1);
+                 break;
+                 case 4:
+                    sprintf(string_event,"Fader %d FX Screen", the_fader_is+1);
+                 break;
+                 case 5:
+                    sprintf(string_event,"Fader %d FX Exclusion", the_fader_is+1);
+                 break;
+                 default:
+                 break;
+             }
+         }
+
+
+
+     break;
+     case 41://Buffer is
+         if(param2_is>1){param2_is=1;}
+         fader_fx_route[the_fader_is]=param2_is;// 1 Buffer séquenciel / 0 Buffer faders
+         switch(fader_fx_route[the_fader_is])
+         {
+         case 0:
+              sprintf(string_event,"Fader %d render to Faders", the_fader_is+1);
+         break;
+         case 1:
+              sprintf(string_event,"Fader %d render to Cuelist", the_fader_is+1);
+         break;
+         }
      default:
      break;
-}
+    }
 }
 break;
 ///////////////FIN FADERS///////////////////////////////////////////////////////
@@ -2214,6 +2341,10 @@ switch(bangers_action[banger_num][event_num])
      case 29:
      midi_send_type_message(typeContinue);
      sprintf(string_event,"Midi Msg CONTINUE");
+     break;
+     case 30:
+     midi_send_program_change(param1_is,param2_is);
+     sprintf(string_event,"Midi Prg Change %d CH %d",param2_is, param1_is);
      break;
      default:
      break;
@@ -2603,6 +2734,7 @@ if(param1_is>=0 && param1_is<5)
       player4->setRepeat(false);
       player4->setVolume(((float)player_niveauson[param1_is])/127);
       break;
+      default: break;
       }
 
      strcpy(audiofile_name,"");
@@ -2646,6 +2778,7 @@ if(param1_is>=0 && param1_is<5)
                            case 1:
                            if(player_ignited[param1_is]==1){player1->play();sprintf(string_event,"Player 1 PLAY");}
                            break;
+                           default: break;
                            }
           break;
           case 1:
@@ -2657,6 +2790,7 @@ if(param1_is>=0 && param1_is<5)
                            case 1:
                            if(player_ignited[param1_is]==1){player2->play();sprintf(string_event,"Player 2 PLAY");}
                            break;
+                           default: break;
                            }
           break;
           case 2:
@@ -2668,6 +2802,7 @@ if(param1_is>=0 && param1_is<5)
                            case 1:
                            if(player_ignited[param1_is]==1){player3->play();sprintf(string_event,"Player 3 PLAY");}
                            break;
+                           default: break;
                            }
           break;
           case 3:
@@ -2679,8 +2814,10 @@ if(param1_is>=0 && param1_is<5)
                            case 1:
                            if(player_ignited[param1_is]==1){player4->play();sprintf(string_event,"Player 4 PLAY");}
                            break;
+                           default: break;
                            }
           break;
+          default: break;
      }
      break;
 
@@ -2711,6 +2848,7 @@ if(param1_is>=0 && param1_is<5)
           case 3:
           if(player_ignited[param1_is]==1){player4->play();sprintf(string_event,"Player 4 PLAY");}
           break;
+          default: break;
      }
 
      break;
@@ -2738,6 +2876,7 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"Player 1 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
           case 1:
@@ -2759,6 +2898,7 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"Player 2 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
           case 2:
@@ -2780,6 +2920,7 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"Player 3 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
           case 3:
@@ -2801,8 +2942,10 @@ if(param1_is>=0 && param1_is<5)
                            sprintf(string_event,"Player 4 Loop ON");
                            }
                            break;
+                           default: break;
                            }
           break;
+          default: break;
           }
 
      break;
@@ -2830,6 +2973,7 @@ if(param1_is>=0 && param1_is<5)
           {audio_position_was[param1_is]=position_of_file_in_player[param1_is];
           player4->setPosition(0); sprintf(string_event,"Player 4 SeekToZero");}
           break;
+          default: break;
       }
       midi_show_flash_seektouch[param1_is]=1;
      break;
@@ -2868,9 +3012,9 @@ if(param1_is>=0 && param1_is<5)
      player4->setVolume(((float)player_niveauson[param1_is])/127);
      sprintf(string_event,"Player 4 SetVolume at %d", param2_is);
      break;
+     default: break;
      }
      }
-
      break;
      case 7:
      //sprintf(bangers_type_action,"Set Cue Player");
@@ -2891,6 +3035,7 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"Player 1 CUE ON");
            break;
+           default: break;
            }
      break;
      case 1://PLAYER 2
@@ -2906,6 +3051,7 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"Player 2 CUE ON");
            break;
+           default: break;
            }
      break;
      case 2://PLAYER 3
@@ -2921,6 +3067,7 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"Player 3 CUE ON");
            break;
+           default: break;
            }
      break;
      case 3://PLAYER 4
@@ -2936,8 +3083,10 @@ if(param1_is>=0 && param1_is<5)
            player_is_onloopCue[param1_is]=1;
            sprintf(string_event,"Player 4 CUE ON");
            break;
+           default: break;
            }
      break;
+     default: break;
      }
      }
      break;
@@ -2964,6 +3113,7 @@ if(param1_is>=0 && param1_is<5)
        player4->setPosition(player_seek_position[param1_is]);
        sprintf(string_event,"Player 4 SeekToCueIn");
        break;
+       default: break;
        }
      }
      break;
@@ -3002,6 +3152,7 @@ if(param1_is>=0 && param1_is<5)
      if(midi_send_out[623]==1){ index_send_midi_out[623]=1;}//PAN
      sprintf(string_event,"Player 4 SetPan at %d",param2_is);
      break;
+     default: break;
      }
      }
      break;
@@ -3040,6 +3191,7 @@ if(param1_is>=0 && param1_is<5)
      if(midi_send_out[627]==1){ index_send_midi_out[627]=1;}//PICTH
      sprintf(string_event,"Player 4 SetPitch at %d",param2_is);
      break;
+     default: break;
      }
      }
      break;
@@ -3074,6 +3226,7 @@ if(param1_is>=0 && param1_is<5)
      case 1:
      sprintf(string_event,"Player %d Autoload ON",param1_is);
      break;
+     default: break;
      }
      break;
      case 14:     //"AutoPause Player");
@@ -3095,6 +3248,7 @@ if(param1_is>=0 && param1_is<5)
      case 1:
      sprintf(string_event,"Player %d SetMidiOut ON",param1_is);
      break;
+     default: break;
      }
      break;
      default:
@@ -3156,6 +3310,7 @@ switch(bangers_action[banger_num][event_num])
      index_link_is_on=1;
       sprintf(string_event,"Link on ");
      break;
+     default: break;
      }
      break;
      case 4://Set Banger mode sequenciel
@@ -3170,6 +3325,7 @@ switch(bangers_action[banger_num][event_num])
      index_banger_is_on=1;
      sprintf(string_event,"Banger on ");
      break;
+     default: break;
      }
      break;
      case 5://refresh stage
@@ -3193,6 +3349,7 @@ switch(bangers_action[banger_num][event_num])
      else {do_go_function(); }
      index_pause=0;
      break;
+     default: break;
      }
      if(index_go==1 && index_pause==0)
      {
@@ -3238,6 +3395,7 @@ switch(bangers_action[banger_num][event_num])
       if(chaser_step_is[param1_is-1]<0){chaser_step_is[param1_is-1]=0;}
       else if(chaser_step_is[param1_is-1]>35){chaser_step_is[param1_is-1]=35;}
       break;
+      default: break;
       }
       }
       break;
@@ -3260,6 +3418,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Chaser %d LOOP ON",param1_is);
       break;
+      default: break;
       }
       }
       break;
@@ -3275,6 +3434,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Chaser %d BACKWARD way",param1_is);
       break;
+      default: break;
       }
       }
       break;
@@ -3290,6 +3450,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Chaser %d ON aller-retour",param1_is);
       break;
+      default: break;
       }
       }
       break;
@@ -3305,6 +3466,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Chaser %d TimeJoin ",param1_is);
       break;
+      default: break;
       }
       }
       break;
@@ -3320,6 +3482,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Chaser %d Slaviness ON",param1_is);
       break;
+      default: break;
       }
       }
       break;
@@ -3356,6 +3519,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Chaser %d Track %d ON ",param1_is,param2_is);
       break;
+      default: break;
       }
       }
       break;
@@ -3394,6 +3558,7 @@ switch(bangers_action[banger_num][event_num])
       sprintf(string_event,"Selected Chaser track %d at Level %d",param1_is,param2_is);
       }
       break;
+      default: break;
       }
 break;
 case 8://minifaders
@@ -3430,6 +3595,7 @@ switch(bangers_action[banger_num][event_num])
       case 1:
       sprintf(string_event,"Selected Minif. FLASH ON");
       break;
+      default: break;
       }
       break;
       case 3://"Selected Lock"
@@ -3496,6 +3662,7 @@ switch(bangers_action[banger_num][event_num])
       sprintf(string_Last_Order,"Called MiniF.Preset %d", the_fader_is+1);
       }
       break;
+      default: break;
 }
 }
 break;
@@ -3578,6 +3745,7 @@ case 10: //chrono
       index_play_chrono=1;
       sprintf(string_event,"Played Chrono");
       break;
+      default: break;
       }
       break;
       case 2:
@@ -3608,6 +3776,7 @@ if(bang_the_chan_is>0 && bang_the_chan_is<513)
        bufferBlind[bang_the_chan_is]=(int)(( (float)bang_val_the_chan_is*2.55)+1);// + 1 pour arrondir le pourcentage lors de la conversion % -> dmx
        if(bufferBlind[bang_the_chan_is]>=255){bufferBlind[bang_the_chan_is]=255;}
        break;
+       default: break;
       }
       sprintf(string_event,"SetChan %d at %d/100",bang_the_chan_is,bang_val_the_chan_is);
       break;
@@ -3629,6 +3798,7 @@ if(bang_the_chan_is>0 && bang_the_chan_is<513)
        }
        else {bufferBlind[bang_the_chan_is]=255;}
        break;
+       default: break;
       }
       sprintf(string_event,"SetChan %d + %d/100",bang_the_chan_is,bang_val_the_chan_is);
       break;
@@ -3650,6 +3820,7 @@ if(bang_the_chan_is>0 && bang_the_chan_is<513)
        else
       {bufferBlind[bang_the_chan_is]=0;}
        break;
+       default: break;
       }
       sprintf(string_event,"SetChan %d - %d/100",bang_the_chan_is,bang_val_the_chan_is);
 
@@ -3665,6 +3836,7 @@ if(bang_the_chan_is>0 && bang_the_chan_is<513)
        bufferBlind[bang_the_chan_is]=bang_val_the_chan_is;// + 1 pour arrondir le pourcentage lors de la conversion % -> dmx
        if(bufferBlind[bang_the_chan_is]>=255){bufferBlind[bang_the_chan_is]=255;}
        break;
+       default: break;
       }
       sprintf(string_event,"SetChan %d at %d/255",bang_the_chan_is,bang_val_the_chan_is);
       break;
@@ -3685,6 +3857,7 @@ if(bang_the_chan_is>0 && bang_the_chan_is<513)
        }
        else {bufferBlind[bang_the_chan_is]=255;}
        break;
+       default: break;
       }
       sprintf(string_event,"SetChan %d + %d/255",bang_the_chan_is,bang_val_the_chan_is);
       break;
@@ -3705,6 +3878,7 @@ if(bang_the_chan_is>0 && bang_the_chan_is<513)
        }
        else {bufferBlind[bang_the_chan_is]=0;}
        break;
+       default: break;
       }
       sprintf(string_event,"SetChan %d - %d/255",bang_the_chan_is,bang_val_the_chan_is);
       break;
@@ -3819,6 +3993,7 @@ param2_is=bangers_params[banger_num][event_num][1];
      {end_time_for_banger[param1_is]=bangers_delay[param1_is][o];}
      }
       break;
+      default: break;
       }
       break;
       case 1://"RollBack"); > go back
@@ -4266,6 +4441,7 @@ param2_is=bangers_params[banger_num][event_num][1];
      if(param2_is==0)
      {
      arduino_close(0);
+     arduino_device_0_is_ignited=0;
      sprintf(string_event,"Arduino COM %d /Off",param1_is);
      }
      else if(param2_is==1)
@@ -4294,8 +4470,13 @@ param2_is=bangers_params[banger_num][event_num][1];
          sprintf(string_event,"Arduino Analog %d ON",param1_is);
          }
          else {sprintf(string_event,"Arduino Analog %d OFF",param1_is);}
-         ventilate_analog_data[param1_is]=param2_is;
+         ventilate_analog_data[param1_is-1]=param2_is;
      }
+     break;
+     case 3://rescan midi
+        QuitMidi() ;
+        InitMidi();
+        sprintf(string_event,"Midi Rescan done !");
      break;
      default:
      break;
@@ -4766,6 +4947,87 @@ param2_is=bangers_params[banger_num][event_num][1];
      break;
      }
 break;
+
+case 19://WAVE
+param1_is=bangers_params[banger_num][event_num][0];
+param2_is=bangers_params[banger_num][event_num][1];
+
+     switch(bangers_action[banger_num][event_num])
+     {
+     case 0://set controler_wave
+        param1_is=constrain_int_data_to_this_range(param1_is-1,0,25);
+        waver_control=param1_is;
+        midi_levels[2117]=waver_control*5;
+        clear_wave_slots();
+        previous_waver_control=waver_control-1;
+        wave_calculations();
+     break;
+     case 1://set pos brush
+         param1_is=constrain_int_data_to_this_range(param1_is-1,0,25);
+         lead_brush_reading[brush_selected]=param1_is;
+         set_new_values_in_wave();
+         previous_lead_brush_reading[brush_selected]=lead_brush_reading[brush_selected];
+     break;
+     case 2://set channel preset
+        param1_is=constrain_int_data_to_this_range(param1_is-1,0,3);
+        wave_channel_preset_selected=param1_is;
+     break;
+     case 3://set brush preset
+         param1_is=constrain_int_data_to_this_range(param1_is-1,0,3);
+         brush_selected=param1_is;
+         set_new_values_in_wave();
+     break;
+     case 4://set decay
+           param1_is=constrain_int_data_to_this_range(param1_is,0,127);
+           for(int i=0;i<26;i++)
+           {
+           Wave_Dampered[i].set_damper_decay((((float)(param1_is))/127));
+           }
+            midi_levels[2114]=param1_is;
+            index_send_midi_out[2114]=1;
+     break;
+     case 5://set delta
+         param1_is=constrain_int_data_to_this_range(param1_is-1,0,127);
+          param1_is=constrain_int_data_to_this_range(param1_is,0,127);
+           for(int i=0;i<26;i++)
+           {
+           Wave_Dampered[i].set_damper_dt((((float)(param1_is))/127)/10);
+           }
+            midi_levels[2115]=param1_is;
+            index_send_midi_out[2115]=1;
+     break;
+     case 6://set damper mode
+         param1_is=constrain_int_data_to_this_range(param1_is,0,2);
+         for(int i=0;i<26;i++)
+                {
+                Wave_Dampered[i].set_damper_mode(param1_is);
+                }
+     break;
+     case 7://clear slots
+        clear_wave_slots();
+     break;
+     case 8://clear brush
+         clear_wave_brush(brush_selected);
+     break;
+     case 9://clear buffer
+         clear_wave_buffer();
+     break;
+     case 10://play
+        param1_is=constrain_int_data_to_this_range(param1_is,0,1);
+        wave_play_state=param1_is;
+     break;
+     case 11://seek
+          seek_to_beg_wave();
+     break;
+     case 12://set BPM
+         param1_is=constrain_int_data_to_this_range(param1_is,1,6000);
+         BPM_WAVE_RATE=param1_is;
+         install_int_ex(ticker_WAVE ,BPM_TO_TIMER(BPM_WAVE_RATE));
+     break;
+     default:
+     break;
+     }
+break;
 default:
 break;
 }
@@ -4795,7 +5057,7 @@ if(do_loop_banger[banger_is]==1 && time_loop_banger[banger_is]>0.0 && ticker_loo
 
 int do_bang(int banger_is)
 {
-if( bang_is_sended[banger_is]==0 && banger_is<127)
+if(banger_is<127 && bang_is_sended[banger_is]==0 )
 {
 end_time_for_banger[banger_is]=0;//reinit pour pierre groupe laps
 //calcul bang time de fin
@@ -4920,6 +5182,7 @@ if(bangers_type[banger_overoll][y]!=0 )
 }
 bang_is_sended[banger_overoll]=1;//bloquage de l envoi des autres évènements
 break;
+default: break;
 }
 }
 }
@@ -4979,6 +5242,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Banger Plus is Ch: %d Pitch: %d Typ: %s",miditable[1][742],miditable[2][742],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0)//config midi
@@ -5012,6 +5276,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Banger Minus is Ch: %d Pitch: %d Typ: %s",miditable[1][741],miditable[2][741],thetypinfo);
 if(Midi_Faders_Affectation_Type!=0 )//config midi
@@ -5089,6 +5354,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Bang It Button is Ch: %d Pitch: %d Typ: %s" , miditable[1][734],miditable[2][734],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0 )//config midi
@@ -5151,6 +5417,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"BangSolo %d is Ch: %d Pitch: %d Typ: %s",lp+1 , miditable[1][735+lp],miditable[2][735+lp],thetypinfo);
 

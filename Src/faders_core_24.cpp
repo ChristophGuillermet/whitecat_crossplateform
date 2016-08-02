@@ -113,8 +113,10 @@ else
     {
         Fader_dampered[fd].fix_all_damper_state_value(Fader[fd]);
         Fader_dampered[fd].set_target_val(Fader[fd]);
+
     }
     fader_damper_is_on[fd]=toggle(fader_damper_is_on[fd]);
+
 }
 mouse_released=1;
 }
@@ -135,6 +137,7 @@ if( Midi_Faders_Affectation_Type!=0)
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
 }
   sprintf(string_last_midi_id,"Damper ON/OFF is Ch: %d Pitch: %d Type: %s", miditable[1][1912+fd],miditable[2][1912+fd],thetypinfo);
 }
@@ -176,6 +179,7 @@ if( Midi_Faders_Affectation_Type!=0)
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
 }
   sprintf(string_last_midi_id,"Damper Decay is Ch: %d Pitch: %d Type: %s", miditable[1][1960+fd],miditable[2][1960+fd],thetypinfo);
 }
@@ -218,6 +222,7 @@ if( Midi_Faders_Affectation_Type!=0)
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
 }
   sprintf(string_last_midi_id,"Damper DT is Ch: %d Pitch: %d Type: %s", miditable[1][2056+fd],miditable[2][2056+fd],thetypinfo);
 }
@@ -257,6 +262,7 @@ if( Midi_Faders_Affectation_Type!=0)
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
 }
   sprintf(string_last_midi_id,"Damper Mode is Ch: %d Pitch: %d Type: %s", miditable[1][2008+fd],miditable[2][2008+fd],thetypinfo);
 }
@@ -308,6 +314,7 @@ for (int cm=0;cm<2;cm++)
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
  }
   sprintf(string_last_midi_id,"Lock Preset %d is Ch: %d Pitch: %d Type: %s",calcul_lock+1, miditable[1][605+calcul_lock],miditable[2][605+calcul_lock],thetypinfo);
 
@@ -409,6 +416,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"LFO SPEED is Ch: %d Pitch: %d Typ: %s" , miditable[1][196+cmptfader],miditable[2][196+cmptfader],thetypinfo);
 
@@ -466,6 +474,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"StopPos is Ch: %d Pitch: %d Typ: %s" , miditable[1][685+cmptfader],miditable[2][685+cmptfader],thetypinfo);
 
@@ -495,6 +504,7 @@ int lStopPos=999;
     case 1:
     lStopPos=atol(numeric);
     break;
+    default: break;
     }
 reset_numeric_entry();
 if (lStopPos>=0 && lStopPos<=255)
@@ -542,6 +552,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"LFO UP is Ch: %d Pitch: %d Typ: %s" , miditable[1][245+cmptfader],miditable[2][245+cmptfader],thetypinfo);
 
@@ -587,6 +598,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"LFO DOWN is Ch: %d Pitch: %d Typ: %s" , miditable[1][294+cmptfader],miditable[2][294+cmptfader],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0)
@@ -634,6 +646,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"LFO SAW is Ch: %d Pitch: %d Typ: %s" , miditable[1][343+cmptfader],miditable[2][343+cmptfader],thetypinfo);
 
@@ -687,6 +700,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"LFO DOCK MINUS is Ch: %d Pitch: %d Typ: %s" , miditable[1][392+cmptfader],miditable[2][392+cmptfader],thetypinfo);
 
@@ -727,6 +741,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"LFO DOCK PLUS is Ch: %d Pitch: %d Typ: %s" , miditable[1][441+cmptfader],miditable[2][441+cmptfader],thetypinfo);
 
@@ -768,6 +783,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
   sprintf(string_last_midi_id,"LFO LOOP STEPS is Ch: %d Pitch: %d Typ: %s" , miditable[1][499+cmptfader],miditable[2][499+cmptfader],thetypinfo);
 
@@ -806,6 +822,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"LFO LOOP ONE is Ch: %d Pitch: %d Typ: %s" , miditable[1][802+cmptfader],miditable[2][802+cmptfader],thetypinfo);
 
@@ -845,6 +862,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"LFO LOOP ALL is Ch: %d Pitch: %d Typ: %s" , miditable[1][851+cmptfader],miditable[2][851+cmptfader],thetypinfo);
 
@@ -890,7 +908,7 @@ break;
 }
 }
 break;
-
+default: break;
 }
 mouse_released=1;
 }
@@ -1007,8 +1025,8 @@ if( index_main_clear==0)
 //NIVEAU
 int val=((y+255)-mouse_y);
 fader_set_level(cmptfader,val);
-//index_fader_is_manipulated[cmptfader]=1;
-//if(midi_send_out[cmptfader]==1){ index_send_midi_out[cmptfader]=1;}
+index_fader_is_manipulated[cmptfader]=1;
+if(midi_send_out[cmptfader]==1){ index_send_midi_out[cmptfader]=1;}
 if(lfo_mode_is[cmptfader]==1 || lfo_mode_is[cmptfader]==2 || lfo_cycle_is_on[cmptfader]==1)
 {
 lfo_mode_is[cmptfader]=0; lfo_mode_is[cmptfader]=0; lfo_cycle_is_on[cmptfader]=0;
@@ -1028,6 +1046,7 @@ lfo_mode_is[cmptfader]=0; lfo_mode_is[cmptfader]=0; lfo_cycle_is_on[cmptfader]=0
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
 }
   sprintf(string_last_midi_id,"Fader is Ch: %d Pitch: %d Type: %s", miditable[1][cmptfader],miditable[2][cmptfader],thetypinfo);
 
@@ -1065,6 +1084,7 @@ mouse_y>y-35 && mouse_y<y-35+15 )
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
 }
   sprintf(string_last_midi_id,"MIDI DO ORDER BUTTON:Ch: %d Pitch: %d Type: %s", miditable[1][556+cmptfader],miditable[2][556+cmptfader],thetypinfo);
 if( Midi_Faders_Affectation_Type!=0)
@@ -1130,7 +1150,7 @@ if(mouse_x>=(x+(cmptfader*espacement)+(largeur+30)) && mouse_x<=(x+(cmptfader*es
  //store normal
  else if(index_do_dock==1 && index_direct_chan==0   && index_affect_chaser_to_dock==0  && index_affect_time==0 && index_affect_color_to_dock==0 && index_do_affect_net_to_dock==0
  && index_affect_dmxin==0 && index_affect_video_tracking_to_dock==0 && index_affect_audio_to_dock==0 && gridplayer_to_affect_is==-1
- && index_do_fgroup==0 && index_affect_to_dock_mover==0 && index_affect_draw_to_dock==0 &&  index_affect_echo_to_dock==0)
+ && index_do_fgroup==0 && index_affect_to_dock_mover==0 && index_affect_draw_to_dock==0 &&  index_affect_echo_to_dock==0 && index_affect_wave_to_dock==0)
  {
  fader_selected_for_record=cmptfader;
  dock_selected_for_record=dd;
@@ -1261,6 +1281,14 @@ if(mouse_x>=(x+(cmptfader*espacement)+(largeur+30)) && mouse_x<=(x+(cmptfader*es
  index_ask_confirm=1;
  mouse_released=1;
  }
+ //Wave
+ else if(index_do_dock==1 && index_affect_wave_to_dock==1)
+ {
+ fader_selected_for_record=cmptfader;
+ dock_selected_for_record=dd;
+ index_ask_confirm=1;
+ mouse_released=1;
+ }
  //modify
  else if( index_do_modify==1 )
  {
@@ -1337,6 +1365,7 @@ if(mouse_y>(y+280) && mouse_y<(y+280+(largeur/2)+7) && mouse_x>x+(cmptfader*espa
   case 4:
   sprintf(thetypinfo,"Ctrl Change");
   break;
+  default: break;
  }
   sprintf(string_last_midi_id,"LOCK is Ch: %d Pitch: %d Type: %s", miditable[1][146+cmptfader],miditable[2][146+cmptfader],thetypinfo);
 
@@ -1369,6 +1398,7 @@ if(Midi_Faders_Affectation_Type!=0)
    midi_levels[cmptfader]=(int)(((float)Fader[cmptfader])/2);
    sprintf(string_Last_Order,">> UNLOCKED Fader %d",cmptfader+1);
    break;
+  default: break;
    }
    mouse_released=1;
   }
@@ -1440,6 +1470,7 @@ case 0://PLAYER 1
  case 1:
  player1->stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1451,6 +1482,7 @@ case 1://PLAYER 2
  case 1:
  player2->stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1462,6 +1494,7 @@ case 2://PLAYER 3
  case 1:
  player3->stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1473,8 +1506,10 @@ case 3://PLAYER 4
  case 1:
  player4->stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
 switch(player_is_playing[the_audio_player])//inversed by action
 {
@@ -1484,6 +1519,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -1501,6 +1537,7 @@ case 0://PLAYER 1
  case 1:
  player1->stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1512,6 +1549,7 @@ case 1://PLAYER 2
  case 1:
  player2->stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1523,6 +1561,7 @@ case 2://PLAYER 3
  case 1:
  player3->stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1534,9 +1573,12 @@ case 3://PLAYER 4
  case 1:
  player4->stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
+
 switch(player_is_playing[the_audio_player])//inversed by action
 {
 case 0:
@@ -1545,6 +1587,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -1562,6 +1605,7 @@ case 0://PLAYER 1
  case 1:
  player1->stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1573,6 +1617,7 @@ case 1://PLAYER 2
  case 1:
  player2->stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1584,6 +1629,7 @@ case 2://PLAYER 3
  case 1:
  player3->stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1595,9 +1641,12 @@ case 3://PLAYER 4
  case 1:
  player4->stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
+
 switch(player_is_playing[the_audio_player])//inversed by action
 {
 case 0:
@@ -1606,6 +1655,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY OFF from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
+default: break;
 }
 }
 break;
@@ -1626,6 +1676,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d Chaser %d",cmptfader+1,the_chaser+1);
 break;
+default: break;
 }
 break;
 case 12://grid
@@ -1639,6 +1690,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> PLAY ON from Fader %d GridPl %d",cmptfader+1,the_grid_player+1);
 break;
+default: break;
 }
 break;
 default:
@@ -1679,6 +1731,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",cmptfader+1,the_audio_player+1);
 }
@@ -1700,6 +1753,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",cmptfader+1,the_audio_player+1);
 }
@@ -1730,6 +1784,7 @@ if(player_is_onloopCue[3]==0  ){player4->setPosition(0);}
 else
 {player4->setPosition(player_seek_position[3]);}
 break;
+default: break;
 }
 sprintf(string_Last_Order,">> Seek from Fader %d AudioPl %d",cmptfader+1,the_audio_player+1);
 }
@@ -1778,6 +1833,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1791,6 +1847,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1804,6 +1861,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1817,8 +1875,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -1829,6 +1889,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -1849,6 +1910,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1862,6 +1924,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1875,6 +1938,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1888,8 +1952,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -1900,6 +1966,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -1920,6 +1987,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1933,6 +2001,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1946,6 +2015,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1959,8 +2029,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[the_audio_player]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 
 switch(player_is_onloop[the_audio_player])//inversed by action
@@ -1971,6 +2043,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Audio %d",cmptfader+1,the_audio_player+1);
 break;
+default: break;
 }
 
 }
@@ -1985,6 +2058,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> LOOP ON from Fader %d Chaser %d",cmptfader+1, the_chaser+1);
 break;
+default: break;
 }
 break;
 case 12: //grid
@@ -1997,6 +2071,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> AutoStop ON from Fader %d Gpl %d",cmptfader+1, the_grid_player+1);
 break;
+default: break;
 }
 break;
 default:
@@ -2026,6 +2101,7 @@ break;
 case 1:
 sprintf(string_Last_Order,">> AUTOLAUNCH ON Fader %d",cmptfader+1);
 break;
+default: break;
 }
 }
 

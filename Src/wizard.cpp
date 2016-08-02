@@ -206,6 +206,7 @@ break;
 case 1:
 Allmem.Draw(CouleurFader);
 break;
+default: break;
 }
 
 if(window_focus_id==W_WIZARD && mouse_x>xb+270 && mouse_x<xb+320 )
@@ -421,6 +422,7 @@ break;
 case 6:
      sprintf(templim,"Reset to default Time");
 break;
+default: break;
 }
 petitchiffre.Print(templim,xb+80,yb+75+(li*30));
 }
@@ -454,6 +456,7 @@ case 0://REBUILD
      case 2:
      petitchiffre.Print("20 /30 /40 ...", xb+360 , yb+210+(wizard_action_mem*30)+(mod*20));
      break;
+     default: break;
      }
      if(mod==mode_rebuild){choose_mode_rebuild.DrawOutline(CouleurLevel); }
      if(window_focus_id==W_WIZARD &&mouse_x>xb+300 && mouse_x<xb+330 && mouse_y> yb+200+(wizard_action_mem*30)+(mod*20) && mouse_y<yb+215+(wizard_action_mem*30)+(mod*20))
@@ -675,6 +678,7 @@ break;
 case 3:
 sprintf(templi,"Replace");
 break;
+default: break;
 }
 petitchiffre.Print(templi,xb+80,yb+165+(li*30));
 }
@@ -712,6 +716,7 @@ case 1:
 if(wizard_level_is>255){wizard_level_is=255;}
 else if (wizard_level_is<0){wizard_level_is=0;}
 break;
+default: break;
 }
 }
 }
@@ -779,6 +784,7 @@ break;
 case 1:
 index_do_wizard_ch=1;
 break;
+default: break;
 }
 index_ask_confirm=1;
 

@@ -274,7 +274,8 @@ int scan_planfolder()//plot
             int f_name_len = strlen(f.name);
             isSomeone=true; // we've found a directory!
             bool index_check_is_supported=0;
-            for(unsigned int a=0;a<f_name_len;a++)
+            //christoph 20/06/2015 unsigned int
+            for(int a=0;a<f_name_len;a++)
            {
            if( f.name[a]=='.' && a<=f_name_len-3)
            {
@@ -361,6 +362,7 @@ if(shape_selected[i]==1){shape_groups[i]=0;}
 number_of_shapes_groups--;
 if(number_of_shapes_groups<0){number_of_shapes_groups=0;}
 break;
+default: break;
 }
 return(0);
 }
@@ -820,22 +822,6 @@ break;
 return(0);
 }
 
-int substract_channel_selection_to_layers_plot()
-{
-int tmp_ch=0;
-for(int l=0;l<4;l++)
-{
-for(int i=0;i<=nbre_symbols_on_plot[l];i++)
-{
-tmp_ch=symbol_channel_is[l][i];
-if(Selected_Channel[tmp_ch]==0)
-{
-symbol_is_selected[l][i]= 0;
-}
-}
-}
-return(0);
-}
 
 int  search_affect_first_dimmer_to_symbole(int calc, int symb)
 {
@@ -2680,6 +2666,7 @@ for(int j=0;j<5;j++)
 {adjust_xy_type[j]=0;}
 adjust_xy_type[i]=1;
 break;
+default: break;
 }
 }
 mouse_released=1;
@@ -3023,6 +3010,7 @@ show_calc_number[i]=1;
 view_plot_calc_number_is=i;
 mouse_released=1;
 break;
+default: break;
 }
 plot_generate_appareils_list();
 }
@@ -3061,6 +3049,7 @@ show_calc_number[i]=1;
 view_plot_calc_number_is=i;
 mouse_released=1;
 break;
+default: break;
 }
 plot_generate_appareils_list();
 }

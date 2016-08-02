@@ -353,8 +353,8 @@ sur les 4 gridplayers
 1827 > at full
 1828 > at zero
 
-//BAZOOKAT Window for video rendering
-1829 > window BazooCAT in menu
+//WAVE Window
+1829 > window WAVE in menu
 
 
 1830 > 1893  arduino analogic on/off
@@ -367,6 +367,9 @@ sur les 4 gridplayers
 2008 > 2055 DamperFader Mode
 2056 > 2113 DamperFader Dt
 
-
-
+//WAVE
+2114 > Decay for wave
+2115 > Dt for Wave
+2116 > MODE damper for WAVE
+2117 > Slider for Wave controler
 */

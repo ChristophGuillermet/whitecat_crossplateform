@@ -184,6 +184,7 @@ case 1:
 AllowIn.Draw(CouleurFader);
 petitchiffre.Print("/On",(cfgnetw_X+155), (cfgnetw_Y));
 break;
+default: break;
 }
 
 if(mouse_x>cfgnetw_X+140 && mouse_x<cfgnetw_X+190 && mouse_y> cfgnetw_Y-13 && mouse_y< cfgnetw_Y+7  && window_focus_id==W_CFGMENU )
@@ -200,6 +201,7 @@ break;
 case 1:
      initialisation_serveur_artnet();
 break;
+default: break;
 }
 mouse_released=1;
 }

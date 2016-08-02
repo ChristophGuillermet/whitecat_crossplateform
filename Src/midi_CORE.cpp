@@ -30,8 +30,8 @@ WWWWWWWW           C  WWWWWWWW   |
 * \file midi_CORE.cpp
 * \brief {midi Core}
 * \author Christoph Guillermet
-* \version {0.8.6.3}
-* \date {12/02/2015}
+* \version {0.8.8?8}
+* \date {09/03/2016}
 
  White Cat {- categorie} {- sous categorie {- sous categorie}}
 
@@ -47,6 +47,8 @@ WWWWWWWW           C  WWWWWWWW   |
 pascal void MSALARMAPI ReceiveEvents(short r);
 pascal void MSALARMAPI ReceivePolling ( long date, short r, long a, long b, long c);
 
+
+MidiName	AppliName = "WhiteCat";
 /////////////////////////////////////////////////////////////////////////////////
 int midi_init_sepecial_case_key_on()
 {
@@ -132,6 +134,7 @@ pascal void InstallFilter( short refNum, MidiFilterPtr filter )
 	MidiAcceptType(myFilter,typeKeyOff, true);
 	MidiAcceptType(myFilter,typeCtrlChange, true);
  	MidiAcceptType(myFilter,typePitchWheel, true);
+ 	MidiAcceptType(myFilter,typeProgChange, true);
  	//midi clock
 /*  MidiAcceptType(myFilter,typeClock, true);
     MidiAcceptType(myFilter,typeQuarterFrame, true);
@@ -165,19 +168,20 @@ void  Sleep(short r)
 
 int InitMidi()
 {
-if ( !MidiShare())
+/*if ( !MidiShare())
 {
 sprintf (string_Last_Order,"MidiShare not available\n");
 }
 InitTblLibEv();
 
 myRefNum = MidiOpen("WhiteCat"); //ouverture classique
-
+*/
 //driver nouveau code
 /*		TDriverInfos infos = { "WhiteCat", 100, 0, { 0, 0 } };
 		TDriverOperation op = { WakeUp, Sleep, {0, 0 } };
 		myRefnum = MidiRegisterDriver(&infos, &op);*/
-if (myRefNum < 0) {sprintf(string_Last_Order,"MidiOpen failed!");}
+
+/*if (myRefNum < 0) {sprintf(string_Last_Order,"MidiOpen failed!");}
 
 
 MidiSetRcvAlarm(myRefNum,ReceiveEvents);
@@ -187,6 +191,21 @@ MidiConnect(myRefNum,0,true);//out
 
 myFilter = MidiNewFilter();
 InstallFilter( myRefNum,myFilter ); //filtrage
+*/
+if ( !MidiShare())
+{
+sprintf (string_Last_Order,"MidiShare not available\n");
+}
+InitTblLibEv();
+myRefNum = MidiOpen(AppliName);
+if (myRefNum < 0) {sprintf(string_Last_Order,"MidiOpen failed!");}
+
+MidiSetRcvAlarm(myRefNum,ReceiveEvents);
+MidiConnect(0, myRefNum, true);//in
+MidiConnect(myRefNum,0,true);//out
+myFilter = MidiNewFilter();
+InstallFilter( myRefNum,myFilter ); //filtrage
+
 
 return(0);
 }

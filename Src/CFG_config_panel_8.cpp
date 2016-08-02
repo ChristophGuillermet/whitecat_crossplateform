@@ -105,6 +105,7 @@ break;
 case 4:
 sprintf(str_iskeyfunct,"CLEAR");
 break;
+default: break;
 }
 if(mouse_x>cfgnetw_X+60 && mouse_x<cfgnetw_X+60+50 && mouse_y>cfgnetw_Y+25+(oi*30) && mouse_y<cfgnetw_Y+25+(oi*30)+25)
 {
@@ -181,6 +182,7 @@ petitchiffre.Print("Echo", x_cfg_sc+15,y_cfg_sc+75+(l*30));
 petitchiffre.Print(ol::ToString(core_user_define_nb_echo), x_cfg_sc+135,y_cfg_sc+75+(l*30));
 def_param_max=24;
 break;
+default: break;
 }
 if(window_focus_id==920 && mouse_x>x_cfg_sc+120 && mouse_x<x_cfg_sc+120+50 && mouse_y>y_cfg_sc+60+(l*30) && mouse_y<y_cfg_sc+60+(l*30)+25)
 {
@@ -224,6 +226,7 @@ break;
 case 6:
 core_user_define_nb_echo=def_param;
 break;
+default: break;
 }
 mouse_released=1;
 reset_numeric_entry();
@@ -249,6 +252,7 @@ case 1:
 BParam.Draw(CouleurFader);
 sprintf(tmp_state_core,"/On");
 break;
+default: break;
 }
 switch(l)
 {
@@ -338,6 +342,7 @@ install_int_ex(ticker_dmxIn , ticker_dmxIn_rate);
 reset_numeric_entry();
 }
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -438,6 +443,7 @@ case 1:
 param_data_in=atoi(numeric);
 reset_numeric_entry();
 break;
+default: break;
 }
 switch(oi)
 {
@@ -456,6 +462,7 @@ break;
 case 4:
 index_blink_change_memories=toggle(index_blink_change_memories);
 break;
+default: break;
 }
 UnderParam.Draw(CouleurBlind);
 mouse_released=1;
@@ -474,6 +481,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/255");
 break;
+default: break;
 }
 petitchiffre.Print(string_cfg_main, (cfgnetw_X+170), (cfgnetw_Y+70) );
 
@@ -490,6 +498,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"%d", check_channel_level);
 break;
+default: break;
 }
 petitchiffre.Print("Check channels level:", (cfgnetw_X+20), (cfgnetw_Y+130) );
 petitchiffre.Print(string_cfg_main ,(cfgnetw_X+170), (cfgnetw_Y+130));
@@ -502,6 +511,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"%d", dimmer_check_level);
 break;
+default: break;
 }
 petitchiffre.Print("Check dimmers level:", (cfgnetw_X+20), (cfgnetw_Y+160) );
 petitchiffre.Print(string_cfg_main ,(cfgnetw_X+170), (cfgnetw_Y+160));
@@ -516,6 +526,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/On");
 break;
+default: break;
 }
 petitchiffre.Print("Show Change/Mem:", (cfgnetw_X+20), (cfgnetw_Y+190) );
 petitchiffre.Print(string_cfg_main ,(cfgnetw_X+170), (cfgnetw_Y+190));
@@ -580,6 +591,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/On");
 break;
+default: break;
 }
 petitchiffre.Print(string_cfg_main,(cfgnetw_X+170), (cfgnetw_Y+280));
 
@@ -685,6 +697,7 @@ break;
 case 1:
 petitchiffre.Print("/On",cfgnetw_X+380,cfgnetw_Y+70+(oi*30));
 break;
+default: break;
 }
 break;
 case 5:
@@ -731,6 +744,7 @@ break;
 case 1:
 InitVideo();
 break;
+default: break;
 }
 }
 }
@@ -742,6 +756,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/On");
 break;
+default: break;
 }
 petitchiffre.Print(string_cfg_main,cfgnetw_X+540,cfgnetw_Y+70);
 
@@ -771,6 +786,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/On");
 break;
+default: break;
 }
 petitchiffre.Print(string_cfg_main,cfgnetw_X+540,cfgnetw_Y+100);
 
@@ -798,6 +814,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/On");
 break;
+default: break;
 }
 petitchiffre.Print(string_cfg_main,cfgnetw_X+540,cfgnetw_Y+130);
 
@@ -852,6 +869,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/On");
 break;
+default: break;
 }
 petitchiffre.Print(string_cfg_main,(cfgnetw_X+540), (cfgnetw_Y+203));
 petitchiffre.Print("Affect to Core:",cfgnetw_X+430,cfgnetw_Y+228);
@@ -921,6 +939,7 @@ break;
 case 1:
 sprintf(string_cfg_main,"/On");
 break;
+default: break;
 }
 petitchiffre.Print(string_cfg_main,(cfgnetw_X+750), (cfgnetw_Y+240));
 
@@ -944,14 +963,16 @@ return(0);
 
 int SelectDmxDevice(int interfacedmx)
 {
-Close_dmx_interface();
-myDMXinterfaceis=interfacedmx;
-if(interfacedmx!=1)
+do_DMX_out[interfacedmx]=toggle(do_DMX_out[interfacedmx]);
+switch(do_DMX_out[interfacedmx])
 {
-index_art_polling=0;
+    case 0:
+        Close_A_specific_dmx_interface(interfacedmx);
+    break;
+    case 1:
+        Init_A_specific_dmx_interface(interfacedmx);
+    break;
 }
-
-Init_dmx_interface();
 return(0);
 }
 
@@ -1027,12 +1048,6 @@ ArtNetBroadcastMode.SetRoundness(15);
 Rect ArtNetPollforDevices( Vec2D((cfgdmx_X+670),(cfgdmx_Y+50)),Vec2D(100,30));
 ArtNetPollforDevices.SetRoundness(15);
 
-//SPEC ARTNET DOUBLE DMX
-Rect ArtNetDoubleDMX( Vec2D((cfgdmx_X+770),(cfgdmx_Y+50)),Vec2D(60,30));
-ArtNetDoubleDMX.SetRoundness(15);
-
-
-
 //SPEC ENTTEC PROIN
 Rect EnttecProIN( Vec2D((cfgdmx_X+240),(cfgdmx_Y+110)),Vec2D(170,30));
 EnttecProIN.SetRoundness(15);
@@ -1045,49 +1060,44 @@ SunliteAllowsIN.SetRoundness(15);
 
 
 
-
-
-{
-
 //SELECTION DE L INTERFACE
 if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+20 && mouse_x<cfgdmx_X+200 )
 {
    if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80)) //artnet
    {
    DeviceArtNetDevice.Draw(CouleurFond.WithAlpha(0.5));
-   Survol_interface_numero=1;
    if(mouse_button==1 && mouse_released==0 )
    {
    SelectDmxDevice(1);
+   mouse_released=1;
    }
    }
    else if( mouse_y>(cfgdmx_Y+90) && mouse_y< (cfgdmx_Y+110)) //enttec open
    {
    DeviceEnttecOpen.Draw(CouleurFond.WithAlpha(0.5));
-   Survol_interface_numero=2;
    if(mouse_button==1 && mouse_released==0  )
    {
    SelectDmxDevice(2);
-
+   mouse_released=1;
    }
    }
    else if( mouse_y>(cfgdmx_Y+120) && mouse_y< (cfgdmx_Y+140)) //enttec pro
    {
    DeviceEnttecPro.Draw(CouleurFond.WithAlpha(0.5));
-   Survol_interface_numero=3;
    if(mouse_button==1 && mouse_released==0 )
    {
    SelectDmxDevice(3);
+   mouse_released=1;
    }
    }
 
     else if( mouse_y>(cfgdmx_Y+170) && mouse_y< (cfgdmx_Y+200)) //sunlite
    {
    DeviceSunlite.Draw(CouleurFond.WithAlpha(0.5));
-   Survol_interface_numero=4;
    if(mouse_button==1 && mouse_released==0  )
    {
    SelectDmxDevice(4);
+   mouse_released=1;
    }
    }
 }
@@ -1095,7 +1105,7 @@ if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+20 && mouse_x<cfgdmx_X+200 )
 //SELECTION DE L UNIVERS
 if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+230 && mouse_x<cfgdmx_X+300 )
 {
-   if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80) && myDMXinterfaceis==1) //artnet
+   if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80) && do_DMX_out[1]==1) //artnet
    {
    ArtNetSendUniverse.DrawOutline(CouleurLigne.WithAlpha(0.5));
    if(mouse_button==1 &&  mouse_released==0 )
@@ -1113,15 +1123,15 @@ if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+230 && mouse_x<cfgdmx_X+300 )
 //SELECTION DE L ADRESSE OUT ARTNET OU DU VCOM POUR LES INTERFACES DMX
 if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+320 && mouse_x<cfgdmx_X+490 )
 {
-   if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80) && myDMXinterfaceis==1) //artnet
+   if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80)  && do_DMX_out[1]==1) //artnet
    {
    ArtNetSendAdress.DrawOutline(CouleurLigne.WithAlpha(0.7));
    if(mouse_button==1 &&  mouse_released==0  && numeric_postext>0)
    {
-   Close_dmx_interface();
+   Close_A_specific_dmx_interface(1);
    sprintf(ip_artnet,numeric);
    reset_numeric_entry();
-   Init_dmx_interface();
+   Init_A_specific_dmx_interface(1);
    mouse_released=1;
    }
    }
@@ -1132,23 +1142,24 @@ if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+320 && mouse_x<cfgdmx_X+490 )
 //SPECIFIC A CHAQUE INTERFACE
 if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+520 && mouse_x<cfgdmx_X+620 )
 {
-   if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80) && myDMXinterfaceis==1) //artnet BROADCAST MODE   ON OFF
+   if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80) && do_DMX_out[1]==1) //artnet BROADCAST MODE   ON OFF
    {
    ArtNetBroadcastMode.DrawOutline(CouleurLigne.WithAlpha(0.7));
 
    if(mouse_button==1 &&  mouse_released==0 )
    {
    ArtNetBroadcastMode.DrawOutline(CouleurLigne.WithAlpha(0.7));
-   Close_dmx_interface();
+   Close_A_specific_dmx_interface(1);
    if(index_broadcast==0)
    {
    index_broadcast=1;
-   Init_dmx_interface();
+   Init_A_specific_dmx_interface(1);
    }
    else if(index_broadcast==1)
    {
    index_broadcast=0;
-   Init_dmx_interface();
+   //Init_dmx_interface();
+   Init_A_specific_dmx_interface(1);
    }
    mouse_released=1;
    }
@@ -1164,7 +1175,7 @@ if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+670 && mouse_x<cfgdmx_X+770 )
 
    if(mouse_button==1 &&  mouse_released==0 )
    {
-   if (myDMXinterfaceis!=1)//dans le cas d un art poll avec interface usb
+   if (do_DMX_out[1]==0)//dans le cas d un art poll avec interface usb
    {
     initialisation_client_artnet();
     ConstructArtPoll();
@@ -1181,7 +1192,7 @@ if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+670 && mouse_x<cfgdmx_X+770 )
   else if(index_art_polling==1)
    {
    index_art_polling=0;
-   if (myDMXinterfaceis!=1)//dans le cas d un art poll avec interface usb
+   if (do_DMX_out[1]==0)//dans le cas d un art poll avec interface usb
    {fermeture_client_artnet();}
    }
    mouse_released=1;
@@ -1189,36 +1200,7 @@ if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+670 && mouse_x<cfgdmx_X+770 )
 
    }
 }
-//DOUBLE DMX
-if(window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+770 && mouse_x<cfgdmx_X+830 )
-{
-   if( mouse_y>(cfgdmx_Y+60) && mouse_y< (cfgdmx_Y+80) ) //double dmx
-   {
-   ArtNetDoubleDMX.DrawOutline(CouleurLigne.WithAlpha(0.7));
 
-   if(mouse_button==1 &&  mouse_released==0 &&  myDMXinterfaceis!=1)
-   {
-   index_artnet_doubledmx=toggle(index_artnet_doubledmx);
-   mouse_released=1;
-   switch(index_artnet_doubledmx)
-   {
-   case 0:
-         fermeture_client_artnet();
-   break;
-   case 1:
-         initialisation_client_artnet();
-         //ConstructArtPoll();
-         ConstructArtPollReply();
-         nbrbytessended=sendto(sockartnet, ArtPollBuffer,sizeof( ArtPollBuffer),0,(SOCKADDR*)&sinS,sinsize);
-         //ArtNet
-         ArtDmx();
-         //nbrbytessended=sendto(sockartnet, ArtDmxBuffer,sizeof( ArtDmxBuffer),0,(SOCKADDR*)&sinS,sinsize);
-   break;
-
-   }
-    }
-    }
-}
 //ENTTEC PRO IN MODULE
 
 if (window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+270 && mouse_x<cfgdmx_X+420 && mouse_y>cfgdmx_Y+120 && mouse_y<cfgdmx_Y+140 )
@@ -1240,7 +1222,7 @@ EnttecProIN.Draw(CouleurFond.WithAlpha(0.5));
 }
 
 //sunlite allows IN
-if (window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+240 && mouse_x<cfgdmx_X+390 && mouse_y>cfgdmx_Y+180 && mouse_y<cfgdmx_Y+210 && myDMXinterfaceis==5)
+if (window_focus_id==W_CFGMENU && mouse_x>cfgdmx_X+240 && mouse_x<cfgdmx_X+390 && mouse_y>cfgdmx_Y+180 && mouse_y<cfgdmx_Y+210 && do_DMX_out[4]==1)
 {
 SunliteAllowsIN.Draw(CouleurFond.WithAlpha(0.5));
 if(mouse_button==1 &&  mouse_released==0 &&  window_focus_id==920)
@@ -1252,32 +1234,48 @@ if(mouse_button==1 &&  mouse_released==0 &&  window_focus_id==920)
 
 
 
-}//fin condition etre 920 fenetre maitre
-
 
 /////////////////////////////////////////////////////////////////////////////////////
-if(myDMXinterfaceis==1){   DeviceArtNetDevice.DrawOutline(CouleurLevel); }
-else if(myDMXinterfaceis==2){   DeviceEnttecOpen.DrawOutline(CouleurLevel); }
-else if(myDMXinterfaceis==3){   DeviceEnttecPro.DrawOutline(CouleurLevel); }
-else if(myDMXinterfaceis==4)
+
+for(int i=0;i<NB_INTERFACES;i++)
 {
-DeviceSunlite.DrawOutline(CouleurLevel);
-petitchiffre.Print("Version:",cfgdmx_X+400, cfgdmx_Y+190);
-petitchiffre.Print(ol::ToString(sunlite_version_number),cfgdmx_X+460, cfgdmx_Y+190);
-petitchiffre.Print("Serial:",cfgdmx_X+500, cfgdmx_Y+190);
-petitchiffre.Print(ol::ToString(sunlite_serial_number),cfgdmx_X+550, cfgdmx_Y+190);
-petitchiffre.Print(string_sunlite_is,cfgdmx_X+670, cfgdmx_Y+190);
+  if(do_DMX_out[i]==1)
+    {
+    switch(i)
+    {
+       default:
+       break;
+       case 1:
+       DeviceArtNetDevice.Draw(CouleurBleu10.WithAlpha(index_init_dmx_ok[i]*0.6));
+       DeviceArtNetDevice.DrawOutline(CouleurLevel);
+       break;
+       case 2:
+       DeviceEnttecOpen.DrawOutline(CouleurLevel);
+       break;
+       case 3:
+       DeviceEnttecPro.DrawOutline(CouleurLevel);
+       break;
+       case 4:
+        DeviceSunlite.DrawOutline(CouleurLevel);
+        petitchiffre.Print("Version:",cfgdmx_X+400, cfgdmx_Y+190);
+        petitchiffre.Print(ol::ToString(sunlite_version_number),cfgdmx_X+460, cfgdmx_Y+190);
+        petitchiffre.Print("Serial:",cfgdmx_X+500, cfgdmx_Y+190);
+        petitchiffre.Print(ol::ToString(sunlite_serial_number),cfgdmx_X+550, cfgdmx_Y+190);
+        petitchiffre.Print(string_sunlite_is,cfgdmx_X+670, cfgdmx_Y+190);
+       break;
+    }
+    }
 }
+
+
+
 
 if(index_art_polling==1)
 {
   ArtNetPollforDevices.DrawOutline(CouleurLevel);
 }
 
-if(index_artnet_doubledmx==1)
-{
-ArtNetDoubleDMX.Draw(CouleurFader);
-}
+
 //////////////////////////////////////////////
 
 if (index_init_EnttecPROIN_ok==1)
@@ -1297,7 +1295,7 @@ case 1:
 SunliteAllowsIN.Draw(CouleurSurvol);
 petitchiffre.Print("DMX-IN ON", cfgdmx_X+250, cfgdmx_Y+190);
 break;
-
+default: break;
 }
 
 
@@ -1319,8 +1317,7 @@ if(index_broadcast==0)
 else if (index_broadcast==1)
 {petitchiffre.Print("BROADCAST" ,(cfgdmx_X+540), (cfgdmx_Y+70));}
 petitchiffre.Print("ART-POLL",(cfgdmx_X+690), (cfgdmx_Y+70));
-petitpetitchiffre.Print("Double",(cfgdmx_X+780), (cfgdmx_Y+65));
-petitpetitchiffre.Print("DMX",(cfgdmx_X+790), (cfgdmx_Y+75));
+
 ////////////////////////////////////////////////////////////////////////////////
 petitchiffre.Print("ENTTEC-OPEN-DMX" ,(cfgdmx_X+20), (cfgdmx_Y+100));
 petitchiffre.Print("ENTTEC-PRO OUT /VCOM" ,(cfgdmx_X+20), (cfgdmx_Y+130));
@@ -1382,15 +1379,13 @@ char read_buff[ 512 ] ;
 	cfg_file = fopen("user\\config_network.txt", "rt" );
 	if( !cfg_file )
 	{
-	 printf("\nPb à ouverture de config_network.txt\n");
-     return (1);
+	  sprintf(string_save_load_report[idf],"! config_network.txt\n");
 	}
 
     //premiere ligne les args
 	if( !fgets( read_buff , sizeof( read_buff ) ,cfg_file ) )
 	{
      sprintf(string_save_load_report[idf],"! config_network.txt");
-     return (1);
 	}
 	//sab 02/03/2014 fscanf( cfg_file , "%s\n" ,  &IP_artnet_IN );
 	fscanf( cfg_file , "%s\n" ,  IP_artnet_IN );
@@ -1635,6 +1630,7 @@ mouse_released=1;
 }
 }
 break;
+default: break;
 }
 }
 do_panel_config(window_cfgX,window_cfgY+40);

@@ -131,6 +131,7 @@ switch(player_is_onloop[player])
  case 1:
  player1->setRepeat(true);
  break;
+ default: break;
  }
 }
 break;
@@ -165,6 +166,7 @@ switch(player_is_onloop[player])
  case 1:
  player2->setRepeat(true);
  break;
+ default: break;
  }
 }
 break;
@@ -198,6 +200,7 @@ switch(player_is_onloop[player])
  case 1:
  player3->setRepeat(true);
  break;
+ default: break;
  }
 }
 break;
@@ -231,6 +234,7 @@ switch(player_is_onloop[player])
  case 1:
  player4->setRepeat(true);
  break;
+ default: break;
  }
 }
 break;
@@ -581,6 +585,7 @@ case 0://VOLUME
      case 3:
      player4->setVolume(((float)player_niveauson[player_to_remote])/127);
      break;
+     default: break;
      }
      }
 break;
@@ -604,6 +609,7 @@ case 1://PAN
      case 3://PLAYER 4
      player4->setPan(((float)(player_pan[player_to_remote]-64))/63);
      break;
+     default: break;
      }
      }
 break;
@@ -627,10 +633,11 @@ case 2://PITCH
      case 3://PLAYER 4
      player4->setPitchShift((((float)player_pitch[player_to_remote])/64));
      break;
+     default: break;
      }
      }
 break;
-
+default: break;
 }
 
 
@@ -710,6 +717,7 @@ break;
 case 3:
 player4->setVolume(((float)player_niveauson[numero])/127);
 break;
+default: break;
 }
 midi_levels[616+numero]=player_niveauson[numero];
 if(midi_send_out[616+numero]==1){ index_send_midi_out[616+numero]=1;}//vol
@@ -774,6 +782,7 @@ case 0://PLAYER 1
  //player1->stop();
  player1_do_stop();
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -786,6 +795,7 @@ case 1://PLAYER 2
  //player2->stop();
  player2_do_stop();
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -798,6 +808,7 @@ case 2://PLAYER 3
  //player3->stop();
  player3_do_stop();
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -810,8 +821,10 @@ case 3://PLAYER 4
  //player4->stop();
  player4_do_stop();
  break;
+ default: break;
  }
 break;
+default: break;
 }
 }
  mouse_released=1;
@@ -854,6 +867,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(0);
 break;
+default: break;
 }
 }
  mouse_released=1;
@@ -896,6 +910,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloop[numero]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -909,6 +924,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloop[numero]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -922,6 +938,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloop[numero]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -935,8 +952,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloop[numero]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 mouse_released=1;
 }
@@ -1023,6 +1042,7 @@ else {
     case 3://PLAYER 4
     player4->setPosition(position_of_file_in_player[numero]-100000);
     break;
+    default: break;
    }
    mouse_released=1;
    }
@@ -1065,6 +1085,7 @@ else {
     case 3://PLAYER 4
     player4->setPosition(position_of_file_in_player[numero]+100000);
     break;
+    default: break;
    }
    mouse_released=1;
    }
@@ -1263,6 +1284,7 @@ if(player_loop_out_position[numero]<=player_seek_position[numero]){player_loop_o
 }
 else  if(player_loop_out_position[numero]!=player_seek_position[numero]) {player_seek_position[numero]=0;index_main_clear=0;}
 break;
+default: break;
 }
 audiofile_cue_in_out_pos[(player_has_file_coming_from_pos[numero])][0]=player_seek_position[numero];
 }
@@ -1327,6 +1349,7 @@ if(player_loop_out_position[numero]<=player_seek_position[numero]){player_loop_o
 }
 else  if(player_loop_out_position[numero]!=player_seek_position[numero]) {player_loop_out_position[numero]=(player4->getLength());}
 break;
+default: break;
 }
 audiofile_cue_in_out_pos[(player_has_file_coming_from_pos[numero])][1]=player_loop_out_position[numero];
 }
@@ -1367,6 +1390,7 @@ case 0://PLAYER 1
  player1->setRepeat(false);
  player_is_onloopCue[numero]=0;
  break;
+ default: break;
  }
 break;
 case 1://PLAYER 2
@@ -1380,6 +1404,7 @@ case 1://PLAYER 2
  player2->setRepeat(false);
  player_is_onloopCue[numero]=0;
  break;
+ default: break;
  }
 break;
 case 2://PLAYER 3
@@ -1393,6 +1418,7 @@ case 2://PLAYER 3
  player3->setRepeat(false);
  player_is_onloopCue[numero]=0;
  break;
+ default: break;
  }
 break;
 case 3://PLAYER 4
@@ -1406,8 +1432,10 @@ case 3://PLAYER 4
  player4->setRepeat(false);
  player_is_onloopCue[numero]=0;
  break;
+ default: break;
  }
 break;
+default: break;
 }
 }
  mouse_released=1;
@@ -1449,6 +1477,7 @@ break;
 case 3://PLAYER 4
  player4->setPosition(player_seek_position[numero]);
 break;
+default: break;
 }
 }
  mouse_released=1;
@@ -1504,6 +1533,7 @@ case 3://PLAYER 4
  else if(player_pitch[numero]>127){player_pitch[numero]=127;}
  player4->setPitchShift((((float)player_pitch[numero])/64));
 break;
+default: break;
 }
 }
 }
@@ -1559,6 +1589,7 @@ case 3://PLAYER 4
  else if(player_pan[numero]>127){player_pan[numero]=127;}
  player4->setPan(((float)(player_pan[numero]-64))/63);
 break;
+default: break;
 }
 }
 }

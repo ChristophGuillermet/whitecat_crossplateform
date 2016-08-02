@@ -67,6 +67,7 @@ if(mouse_x>xtime+150  && mouse_x< xtime+150+100 && mouse_y>ytime+150 && mouse_y<
   case 1: sprintf(thetypinfo,"Key On");break;
   case 2: sprintf(thetypinfo,"Key Off");break;
   case 4: sprintf(thetypinfo,"Ctrl Change");break;
+  default: break;
   }
   sprintf(string_last_midi_id,"TIMEWHEEL FADER is Ch: %d Pitch: %d Typ: %s" , miditable[1][758],miditable[2][758],thetypinfo);
 
@@ -117,7 +118,15 @@ for(time_angle = 0 ; time_angle <5.980005; time_angle+=0.01)//radians
 
 
 //////////////////////////CHRONO//////////////////////////////////////////////////
+//big chrono foreground
 
+if(mouse_x>xtime+20 && mouse_x<xtime+30 && mouse_y>ytime+280 && mouse_y<ytime+290 && mouse_button==1 && mouse_released==0)
+{
+index_show_chrono=toggle(index_show_chrono);
+mouse_released=1;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
 if(mouse_x>xtime+140-15 && mouse_x<xtime+140+15 && mouse_y>ytime+190-15 && mouse_y<ytime+190+15)
 {
 
@@ -136,6 +145,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"ChronoPlay is Ch: %d Pitch: %d Typ: %s",miditable[1][765],miditable[2][765],thetypinfo);
 
@@ -169,6 +179,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"ChronoReset is Ch: %d Pitch: %d Typ: %s",miditable[1][766],miditable[2][766],thetypinfo);
 
@@ -205,6 +216,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"TimeType is Ch: %d Pitch: %d Typ: %s",miditable[1][759],miditable[2][759],thetypinfo);
 
@@ -248,6 +260,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"DelayIn Button is Ch: %d Pitch: %d Typ: %s",miditable[1][760],miditable[2][760],thetypinfo);
 
@@ -282,6 +295,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"In Button is Ch: %d Pitch: %d Typ: %s",miditable[1][761],miditable[2][761],thetypinfo);
 
@@ -316,6 +330,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"DelayOut Button is Ch: %d Pitch: %d Typ: %s",miditable[1][762],miditable[2][762],thetypinfo);
 
@@ -350,6 +365,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Out Button is Ch: %d Pitch: %d Typ: %s",miditable[1][763],miditable[2][763],thetypinfo);
 
@@ -386,6 +402,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Send Tap is Ch: %d Pitch: %d Typ: %s",miditable[1][1328],miditable[2][1328],thetypinfo);
 
@@ -437,6 +454,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Record Tap is Ch: %d Pitch: %d Typ: %s",miditable[1][1327],miditable[2][1327],thetypinfo);
 
@@ -482,6 +500,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Tap Tempo is Ch: %d Pitch: %d Typ: %s",miditable[1][1326],miditable[2][1326],thetypinfo);
 
@@ -517,6 +536,7 @@ break;
 case 4:
 sprintf(thetypinfo,"Ctrl Change");
 break;
+default: break;
 }
 sprintf(string_last_midi_id,"Affect Time Button is Ch: %d Pitch: %d Typ: %s",miditable[1][764],miditable[2][764],thetypinfo);
 

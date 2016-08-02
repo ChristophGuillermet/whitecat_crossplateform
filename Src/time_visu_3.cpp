@@ -79,7 +79,17 @@ petitpetitchiffre.Print("90",xtime_window+210,ytime_window+69);
  return(0);
 }
 
+int show_foreground_chrono(int xtime, int ytime)
+{
+Rect Bckg_b(Vec2D(xtime-10,ytime),Vec2D(270,60));
+Bckg_b.SetRoundness(15);
+Bckg_b.Draw(CouleurFond.WithAlpha(0.7));
+Bckg_b.SetLineWidth(triple_epaisseur_ligne_fader);
+Bckg_b.DrawOutline( CouleurLigne.WithAlpha(0.5) );
+neuroTitle.Print(visu_big_chrono, xtime+15, ytime+50,240,RIGHT);
 
+return(0);
+}
 
 int Time_Window(int xtime, int ytime, int timerayon)
 {
@@ -97,6 +107,13 @@ else
 {
 TimeWindow.DrawOutline(CouleurLigne);
 }
+
+//////////////////////////////////////////////
+
+Rect BigChrono(Vec2D(xtime+20,ytime+280),Vec2D(10,10));
+BigChrono.Draw(CouleurBlind.WithAlpha(index_show_chrono));
+BigChrono.DrawOutline(CouleurLigne.WithAlpha(0.5));
+petitchiffre.Print("Chrono foreground",xtime+40,ytime+290);
 /////////////////////////////////////////////////////////////////////////////////
 Circle monTrajetTime0( Vec2D(xtime+150, ytime+150), 115);
  monTrajetTime0.SetLineWidth(epaisseur_ligne_fader);

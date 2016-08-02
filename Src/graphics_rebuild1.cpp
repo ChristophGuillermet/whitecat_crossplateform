@@ -64,11 +64,12 @@ int RetourInfos(int x_info,int y_info)
     petitchiffre.Print("Time Is:",x_info,y_info+90);
     petitchiffre.Print(tmp_time,x_info+60,y_info+90);
     sprintf(visu_chrono_str,"Chrono: %d..%d.%d",time_minutes,time_secondes, time_centiemes);
+    sprintf(visu_big_chrono,"%d..%d",time_minutes,time_secondes);
     petitchiffre.Print(visu_chrono_str,x_info+170,y_info+90);
     petitchiffrerouge.Print(string_Last_Order,x_info, y_info+105);//last order
     diodes_artnet(x_info,y_info+120);
     if(index_do_light_diode_artnet==1){light_temoin_universe(incoming_universe,x_info,y_info+120);index_do_light_diode_artnet=0;  }
-    if((myDMXinterfaceis==1 && index_init_dmx_ok==1) || index_artnet_doubledmx==1) {light_temoin_emission(Univers,x_info,y_info+120);}
+    if((do_DMX_out[1]==1 && index_init_dmx_ok[1]==1) ) {light_temoin_emission(Univers,x_info,y_info+120);}
 
 
 
@@ -128,14 +129,18 @@ show_windows_list_id(1100, 50);//debug windows
 petitchiffre.Print(versionis,680,195);
 petitchiffre.Print(nickname_version,680,205);
 
-petitchiffre.Print(string_debug,680, 210);
+
 
 
 //focus window
 petitchiffre.Print("Focus: ",680,220);
-petitchiffre.Print(ol::ToString(window_focus_id),730,220);
+petitchiffre.Print(ol::ToString(window_focus_id),720,220);
 petitchiffre.Print("Over Window: ",680,230);
 petitchiffre.Print(ol::ToString(index_over_A_window),770,230);
+//debug
+petitchiffre.Print("Debug: ",760,220);
+petitchiffre.Print(string_debug,800, 220);
+
 //retour sauvegarde
 Rect RetourConduite(Vec2D(680,240),Vec2D(270,40));
 RetourConduite.SetRoundness(5);
@@ -155,6 +160,15 @@ False.Draw(CouleurBlind.WithAlpha(index_false_control*alpha_blinker));
 False.DrawOutline(CouleurLigne.WithAlpha(0.5));
 petitchiffre.Print("F-Ctrl",980,277);
 
+//temporaire affichage rep pour debug chargement sauvegarde
+/*
+petitchiffre.Print(rep,685,300);
+petitchiffre.Print(mondirectory,685,310);
+petitchiffre.Print(working_nameis,685,320);
+petitchiffre.Print(nomduspectacle,685,330);
+petitchiffre.Print(my_show_is_coming_from,685,340);
+petitchiffre.Print(video_folder,685,350);
+*/
 //////////////AFFICHAGES CONDITIONNES//////////////////////////////////////////////
 
 for (int f=63;f>=0;f--)
@@ -226,9 +240,9 @@ for (int f=63;f>=0;f--)
         Save_Menu(xsave_window,ysave_window);
         MoveCloseBox(xsave_window+20,ysave_window+25,W_SAVE);
         break;
-        case W_BAZOOKAT:
-        fenetre_bazookat_menus(position_x_bazoocat_menus,position_y_bazoocat_menus);
-        MoveCloseBox(position_x_bazoocat_menus+20,position_y_bazoocat_menus+25,W_BAZOOKAT);
+        case W_WAVE:
+        fenetre_wave_menus(position_x_wave_menus,position_y_wave_menus);
+        MoveCloseBox(position_x_wave_menus+20,position_y_wave_menus+25,W_WAVE);
         break;
         case W_BANGER:
         fenetre_banger(X_banger,Y_banger);
