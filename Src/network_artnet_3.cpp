@@ -108,7 +108,7 @@ return(0);
 //box artpollreply received
 int reset_poll_list()
 {
-for(int rt=0;rt<17;rt++)
+for(int rt=0;rt<16;rt++)//etait 17 aout 2016
 {strcpy(PollReplyIs[rt],"");}
 count_artopoll_received=0;
 return(0);
@@ -124,7 +124,7 @@ ArtPollReplyPanel.Draw(CouleurFond.WithAlpha(0.9));
 ArtPollReplyPanel.DrawOutline(CouleurLigne);
 petitchiffre.Print( "ARTPOLLREPLY from ( up to 16 devices ):",(apr_X+10), (apr_Y+20));
 
-for(int co=0;co<17;co++)
+for(int co=0;co<16;co++)//etait 17 aout 2016
 {
 petitchiffre.Print( PollReplyIs[co],(apr_X+10), (apr_Y+40+(10*co)));
 }

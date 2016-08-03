@@ -617,7 +617,7 @@ chdir(rep);
                     }
 
                  //group
-				if (strncmp(line, "Group",4)==0)
+				if (strncmp(line, "Group",5)==0)
 				{
                   sprintf(string_save_load_report[4],"Importing Groups");
                   //sab 02/03/2014 unused	flaggroup=1;

@@ -55,7 +55,7 @@ for (int i=0;i<48;i++)
 dock_move_xy[j][i][0]=0;
 dock_move_xy[j][i][1]=0;
 dock_time[j][i]=0;
-for(int z=0;z<32;z++)
+for(int z=0;z<16;z++)
 {
 dock_asservis[j][i][z]=0;
 }

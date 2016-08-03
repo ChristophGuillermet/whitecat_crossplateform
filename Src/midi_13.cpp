@@ -215,7 +215,7 @@ if(control>=48 && control <96 )
 }
 
 //dock +
-if(control>=96 && control <145 )
+if(control>=96 && control <144 )//etait 145 pouvait poser un débordement de pointeur aout 2016
 {
                int dockused=detect_dock_used(control-96);
                DockIsSelected[control-96][dockused]=0;
@@ -274,7 +274,7 @@ do_light_minifaders_commands[23]=1;
 }
 
 ////BOUTTON LOCK
-if(control>=146 && control <195)
+if(control>=146 && control <194)//etait 195 peut etre un debordement de pointeur
 {
 if(FaderLocked[control-146]==1)
 {
@@ -295,7 +295,7 @@ rest(midi_keyboard_wait);
 }
 }
 ////SPEED LFO
-if(control>=196 && control <245)
+if(control>=196 && control <244)//etait 245 pouvait poser pb de debordement aout 2016
 {
 lfo_speed[control-196]=midi_levels[control];
 
@@ -306,7 +306,7 @@ asservissement_gridplayer(control-196,dock_used_by_fader_is[control-196]);
 
 }
 /////LFO UP
-if(control>=245 && control <294)
+if(control>=245 && control <293)//etait 294 possible debordement aout 2016
 {
 if(lfo_mode_is[control-245]!=1 && (FaderLocked[control-245]==0 || LockFader_is_FullLevel[control-245]==1))//rajout lock 0.7.6)//up
 {
@@ -320,7 +320,7 @@ lfo_cycle_is_on[control-245]=0;
 rest(midi_keyboard_wait);
 }
 //LFO DOWN
-if(control>=294 && control <343)
+if(control>=294 && control <342)//etait 343 possible debordement aout 2016
 {
 if(lfo_mode_is[control-294]!=2 && (FaderLocked[control-294]==0 || LockFader_is_FullLevel[control-294]==1))//rajout lock 0.7.6)//down
 {
@@ -1145,7 +1145,8 @@ if(control==681){simulate_keypress(KEY_ESC<<8);}//ESC
 if(control==682){simulate_keypress(KEY_Y<<8);}//ALL
 if(control==683){simulate_keypress(KEY_U<<8);}//INV
 if(control==684){simulate_keypress(KEY_TAB<<8);}
-if(control>=685 && control<=733) //STOPOS FADERS
+
+if(control>=685 && control<=732) //STOPOS FADERS //etait 732 possible debordement aout 2016
 {
 if(index_do_dock==0 && index_main_clear==0)
 {
@@ -1586,7 +1587,7 @@ sprintf(string_Last_Order,"Called Fader Selection from Preset %d", log+1);
 ////////SUITE FADERS//////////////////////////
 
 //Loop the dock
-if(control>=802 && control<851 )
+if(control>=802 && control<850 )//etait 850 possible debordement aout 2016
 {
 int docktotouch=(dock_used_by_fader_is[control-802]);
 is_dock_for_lfo_selected[control-802][docktotouch]=toggle(is_dock_for_lfo_selected[control-802][docktotouch]);
@@ -1594,7 +1595,7 @@ is_dock_for_lfo_selected[control-802][docktotouch]=toggle(is_dock_for_lfo_select
 
 
 //Loop ALL the dock
-if(control>=851 && control<900 )
+if(control>=851 && control<859 )//etait 900 possible debordement aout 2016
 {
 bool index_choose_mode_dkloop=0;//0 toggle tt le monde / 1 copie l etat du dck selctionné dans tt le monde
 
@@ -1631,7 +1632,7 @@ default: break;
 }
 
 //FLASH
-if(control>=900 && control<949)
+if(control>=900 && control<948)//etait 949 possible debordement aout 2016
 {
 if(midi_levels[control]>0)
 {
@@ -1826,12 +1827,12 @@ chaser_calcul_time_joint(chaser_selected);
 
 /*998 -> 1022 ON OFF tracks
 1023 -> 1047 Level tracks*/
-if(control>=998 && control<1023 && midi_levels[control]>0)
+if(control>=998 && control<1022 && midi_levels[control]>0)//etait 1023 possible debordement aout 2016
 {
 track_is_on[chaser_selected][control-998]=toggle(track_is_on[chaser_selected][control-998]);
 }
 
-if(control>=1023 && control<1048 )
+if(control>=1023 && control<1047 )//etait 1048 possible debordement aout 2016
 {
 track_level[chaser_selected][control-1023]=midi_levels[control];
 }
@@ -1869,7 +1870,7 @@ if(chaser_step_launchpad[chaser_selected]>nbre_de_cases_par_track-8 ) {chaser_st
 }
 
 //commandes faders pour chasers
-if(control>=1115 && control <=1163  && midi_levels[control]>0)//Faders: Play embeded chaser
+if(control>=1115 && control <=1162  && midi_levels[control]>0)//Faders: Play embeded chaser //etait 1163 possible debordement aout 2016
 {
 int the_chaser;
 int the_grid_player;
@@ -2124,7 +2125,7 @@ break;
 }
 
 }
-if(control>=1164 && control <=1212  && midi_levels[control]>0)//Faders: Seek to beg embeded chaser
+if(control>=1164 && control <=1211  && midi_levels[control]>0)//Faders: Seek to beg embeded chaser //etait 1212 possible debordement aout 2016
 {
 int the_chaser;
 int the_grid_player;
@@ -2226,7 +2227,7 @@ break;
 }
 
 
-if(control>=1213 && control <=1264  && midi_levels[control]>0)//Faders: Seek to beg embeded chaser
+if(control>=1213 && control <=1263  && midi_levels[control]>0)//Faders: Seek to beg embeded chaser //etait 1264 possible debordement aout 2016
 {
 
 

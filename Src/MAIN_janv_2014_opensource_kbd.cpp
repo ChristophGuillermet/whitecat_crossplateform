@@ -203,7 +203,7 @@ void ticker_WAVE()
     if(wave_play_state==1)
     {
         waver_control++;
-        if(waver_control>25) {waver_control=0;clear_wave_slots;}
+        if(waver_control>25) {waver_control=0;clear_wave_slots();}
         set_new_values_in_wave();
         previous_waver_control=waver_control;
     }

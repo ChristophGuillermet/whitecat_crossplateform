@@ -819,7 +819,7 @@ case 0://mode normal
 if(index_blind==0)
 {
 
-                  for (int tc=1;tc<514;tc++)
+                  for (int tc=1;tc<513;tc++)//était 514 aout 2016
                   {
                   if (Selected_Channel[tc]==1)
                   {
@@ -857,7 +857,7 @@ if(index_blind==0)
 else if (index_blind==1)//blind
 {
 
-               for (int tb=1;tb<514;tb++)
+               for (int tb=1;tb<513;tb++)//etait 514 aout 2016
                {
                if (Selected_Channel[tb]==1)
                {

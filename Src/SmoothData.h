@@ -45,7 +45,7 @@ class SmoothData {
     float _damper_val; //value
     float _damper_target_val;
     float _damper_previous_target;
-    float _damper_accel;
+    //float _damper_accel;
 
 };
 

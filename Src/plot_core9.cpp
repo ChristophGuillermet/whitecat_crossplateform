@@ -144,7 +144,7 @@ nbre_ligne_pour_gelats=0;
 int plot_reset_list_appareils()
 {
 nbre_symbols_differents_sur_plot=0;
-for (int i=0;i<=nbre_symbol_per_layer;i++)
+for (int i=0;i<nbre_symbol_per_layer;i++)
 {
 plot_list_appareils[i]=0;
 plot_show_typ_appareil[i]=0;
@@ -997,10 +997,13 @@ if( symbol_is_selected[calc][i]==1)
  pos_symbol[calc][new_position][1]=pos_symbol[calc][i][1]+10;
  symbol_channel_is[calc][new_position]=symbol_channel_is[calc][i];
 
- for(int opt=0;opt<5;opt++)
+ for(int opt=0;opt<3;opt++)//aout 2016 était 5
  {
  gelat[calc][new_position][opt]=gelat[calc][i][opt];
  gelat_family[calc][new_position][opt]=gelat_family[calc][i][opt];
+ }
+  for(int opt=0;opt<5;opt++)
+ {
  relatif_plot_xy[calc][new_position][opt][0]=relatif_plot_xy[calc][i][opt][0];
  relatif_plot_xy[calc][new_position][opt][1]=relatif_plot_xy[calc][i][opt][1];
  }
@@ -1012,6 +1015,7 @@ if( symbol_is_selected[calc][i]==1)
 }
 }
 nbre_symbols_on_plot[calc]+=compteur;
+if(nbre_symbols_on_plot[calc]>127){nbre_symbols_on_plot[calc]=127;}//rajout aout 2016
 last_selected_symbol_is=nbre_symbols_on_plot[calc];
 plot_generate_appareils_list();
 
@@ -1144,7 +1148,6 @@ if( nbre_symbols_on_plot[calc]<nbre_symbol_per_layer-1)
 {
 nbre_symbols_on_plot[calc]++;
 copy_symbol_to_emply_slot(calc,nbre_symbols_on_plot[calc],i);
-
 }
 }
 }

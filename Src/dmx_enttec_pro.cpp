@@ -314,7 +314,7 @@ com_handle_ = NULL;
 		HKEY        hKey;
         DWORD       DeviceNameLen, KeyNameLen;
         char		KeyName[256];
-		int idmx ;
+		intptr_t idmx ;//modification 2 aout était int idmx; pb de pointeur 32 vers 64
         if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, "HARDWARE\\DEVICEMAP\\SERIALCOMM", 0, KEY_QUERY_VALUE, &hKey) != ERROR_SUCCESS)
         {
 			 sprintf(string_display_dmx_params,"No VCOM drivers installed !");
@@ -409,7 +409,7 @@ com_handle_IN = NULL;
 		HKEY        hKeyIN;
         DWORD       DeviceNameLenIN, KeyNameLenIN;
         char		KeyNameIN[256];
-		int idmxIN ;
+		intptr_t idmxIN ;//modification 2 aout était int idmx; pb de pointeur 32 vers 64
         if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, "HARDWARE\\DEVICEMAP\\SERIALCOMM", 0, KEY_QUERY_VALUE, &hKeyIN) != ERROR_SUCCESS)
         {
 			 sprintf(string_display_dmx_params,"Impossible to load DLL");return(0);

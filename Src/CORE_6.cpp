@@ -309,7 +309,7 @@ return(0);
 
 int clear_wave_buffer()
 {
-for(int i=0; i<513;i++)
+for(int i=0; i<512;i++)
     {
        buffer_wave[i]=0;
     }
@@ -2353,7 +2353,7 @@ int attribute_midi_solo_affectation(int faderis, int modeaction)
         istyp=999;
         ischan=999;
         ispitch=999;
-        modeaction=0;
+        Midi_Faders_Affectation_Mode=0;//modeaction=0;
     }
     else if(Midi_Faders_Affectation_Mode==2)//generated fake midi
     {
@@ -2362,7 +2362,7 @@ int attribute_midi_solo_affectation(int faderis, int modeaction)
             istyp=fakemiditype;
             ischan=fakemidichan;
             ispitch=fakemidipitch;
-            modeaction=0;
+            Midi_Faders_Affectation_Mode=0;//modeaction=0;
         }
     }
 
@@ -4685,7 +4685,7 @@ int set_to_default_my_roi(int dkprpreset, int dkpr)
         tracking_coordonates[dkprpreset][dkpr][3]=25;//hauteur
     }
 
-    for(int affe=1; affe<513; affe++)
+    for(int affe=1; affe<512; affe++)//était 513 aout 2016
     {
         tracking_contents[dkprpreset][dkpr][affe]=0;
     }
@@ -5683,9 +5683,17 @@ int do_sprintf_job()//report du calcul des affichages de temps dans la boucle de
 
     if((index_go==1 || index_go_back==1)&& index_pause==0)
     {
-        time_left=((crossfade_done_time-totalTimeCrossfade)/BPS_RATE);
-        affichage_time_format(time_left);
+            //sab 27/01/2015 deb
+        //Affichage du temps du crossfade en cours : l'affichage du temps restant, commence souvent à moins "quelque chose".
+        //time_left=((crossfade_done_time-totalTimeCrossfade)/BPS_RATE);
+        //affichage_time_format(time_left);
+                //sprintf(string_time_left_is,"%s",string_conversion_timeis);
+
+        float f_time_left = totalTimeCrossfade - float (crossfade_done_time) / BPS_RATE ;
+        affichage_time_format(f_time_left);
         sprintf(string_time_left_is,"%s",string_conversion_timeis);
+
+        //sab 27/01/2015 fin
     }
 
 

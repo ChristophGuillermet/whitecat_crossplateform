@@ -724,7 +724,7 @@ else
 remapX1[mop]=(int)(remapis);
 }
 }
-for(int mop=0;mop<256;mop++)
+for(int mop=0;mop<255;mop++)//etait 256 aout 2016
 {
 remapis+=fract_remplaX2;
 if (remapis>255){remapX2[mop]=255;}

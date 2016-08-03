@@ -44,7 +44,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include <odmxusb.h>
 Open_USB_DMX *pUsbDmx = NULL;
 unsigned char DmxBlockEnttecOpen[513];
-unsigned char dmxIN[513];
+unsigned char dmxIN[514];//etait 513 aout 2016
 #include <dmx_enttec_pro.cpp>
 #include <dmx_sunlite.cpp>
 
@@ -403,8 +403,11 @@ grid_niveauX2[0]=(int)grid_floatX2[0];
 
 if(niveauX1==255 && niveauX2==0)
 {
-//sab 02/03/2014 crossfade_done_time=0;sprintf(string_time_left_is,"");
-crossfade_done_time=0;
+//sab 27/01/2015 deb
+//Affichage du temps du crossfade en cours : l'affichage du temps restant, commence souvent à moins "quelque chose".
+        //crossfade_done_time=0;
+        crossfade_done_time--;
+        //sab 27/01/2015 fin
 strcpy(string_time_left_is,"");
 
 index_go_back=0;
@@ -1021,21 +1024,21 @@ FaderIsFlashBefore[f]= FaderIsFlash[f];
           break;
           //DMX IN
          case 3:
-          for (int ppin=0;ppin<513;ppin++)
+          for (int ppin=0;ppin<512;ppin++)//etait 513 aout 2016
              {
              FaderDockContains[f][d][ppin]=(int)dmxIN[ppin+1];
              }
           break;
            //VIDEO TRACKING
          case 4:
-          for (int ppin=0;ppin<514;ppin++)
+          for (int ppin=0;ppin<513;ppin++)//était 514 aout 2016
              {
              FaderDockContains[f][d][ppin]=(int)buffer_tracker[ppin];
            }
            break;
             // MEMOIRES
           case 5:
-             for (int ppin=0;ppin<514;ppin++)
+             for (int ppin=0;ppin<513;ppin++)//était 514 aout 2016
              {
              FaderDockContains[f][d][ppin]=Memoires[(DockHasMem[f][d])][ppin];
              }

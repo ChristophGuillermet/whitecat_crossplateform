@@ -1511,7 +1511,7 @@ if(midi_BPM<=0){midi_BPM=120;}
 ticker_midi_clock_rate=BPM_TO_TIMER(24 * midi_BPM);
 install_int_ex(ticker_midi_clock , ticker_midi_clock_rate);
 if(relativ_encoder_midi_clock_value<=0){relativ_encoder_midi_clock_value=1;}
-if(clocklevel_absolutemode<0){clocklevel_absolutemode=0;}
+
 return(0);
 }
 

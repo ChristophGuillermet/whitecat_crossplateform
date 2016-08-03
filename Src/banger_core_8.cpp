@@ -791,7 +791,7 @@ break;
 case 5: //param 1 player param 2 action 0 1
 param1_is=bangers_params[banger_num][event_num][0]-1;
 param2_is=bangers_params[banger_num][event_num][1];
-if(param1_is>=0 && param1_is<5)
+if(param1_is>=0 && param1_is<4)//etait 5 ! aout 2016
 {
      switch(bangers_action[banger_num][event_num])
      {
@@ -2677,7 +2677,7 @@ break;
 case 5: //param 1 player param 2 action 0 1
 param1_is=bangers_params[banger_num][event_num][0]-1;
 param2_is=bangers_params[banger_num][event_num][1];
-if(param1_is>=0 && param1_is<5)
+if(param1_is>=0 && param1_is<4)//etait 5 ! aout 2016
 {
      switch(bangers_action[banger_num][event_num])
      {
@@ -4462,7 +4462,7 @@ param2_is=bangers_params[banger_num][event_num][1];
      }
      break;
      case 2://on off analog input
-     if(param1_is>=0 && param1_is<64)
+     if(param1_is>=0 && param1_is<63)//était à 64 analog limit aout 2016
      {
          if(param2_is!=0)
          {
@@ -4687,7 +4687,7 @@ break;
 case 17://DRAW
 param1_is=bangers_params[banger_num][event_num][0]-1;
 param2_is=bangers_params[banger_num][event_num][1];
-if(param1_is>=0 && param1_is<=6)
+if(param1_is>=0 && param1_is<6)//etait <=6 aout 2016
 {
      switch(bangers_action[banger_num][event_num])
      {

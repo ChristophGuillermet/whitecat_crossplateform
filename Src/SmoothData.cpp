@@ -16,7 +16,6 @@ SmoothData::SmoothData()
     _damper_previous_target=0.0;
     _data_val=0.0;
     _dampered_data=0;
-    _dampered_data=0;
 }
 
 ////////////////////////////////////////////////////

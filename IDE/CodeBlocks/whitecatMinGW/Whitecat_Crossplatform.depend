@@ -1156,18 +1156,18 @@
 1390400902 c:\whitecat_crossplateform\lib\windows\midishare\include\midishare.h
 	"windows.h"
 
-1467647726 c:\whitecat_crossplateform\src\whitecat.h
+1470220074 c:\whitecat_crossplateform\src\whitecat.h
 	"Crossplateform.h"
 
 1417600107 c:\whitecat_crossplateform\src\my_window_file_sample.h
 
 1423574912 c:\whitecat_crossplateform\src\patch_splines_2.cpp
 
-1437314319 c:\whitecat_crossplateform\src\grider_calculs8.cpp
+1470221353 c:\whitecat_crossplateform\src\grider_calculs8.cpp
 
 1458933283 c:\whitecat_crossplateform\src\midi_core.cpp
 
-1467647923 c:\whitecat_crossplateform\src\core_6.cpp
+1470225106 c:\whitecat_crossplateform\src\core_6.cpp
 
 1437343098 c:\whitecat_crossplateform\src\saves_export_pdf2.cpp
 	<setjmp.h>
@@ -1176,7 +1176,7 @@
 1379886120 c:\mingw\include\setjmp.h
 	<_mingw.h>
 
-1437298129 c:\whitecat_crossplateform\src\saves_export_import.cpp
+1470219152 c:\whitecat_crossplateform\src\saves_export_import.cpp
 
 1457349044 c:\whitecat_crossplateform\src\saves_menu_8.cpp
 
@@ -1188,23 +1188,23 @@
 
 1437343141 c:\whitecat_crossplateform\src\wizard_operations.cpp
 
-1437511253 c:\whitecat_crossplateform\src\faders_operations.cpp
+1470225332 c:\whitecat_crossplateform\src\faders_operations.cpp
 
 1437343153 c:\whitecat_crossplateform\src\chasers_core_5.cpp
 
 1437747755 c:\whitecat_crossplateform\src\mover_spline6.cpp
 
-1437342818 c:\whitecat_crossplateform\src\mover_2013.cpp
+1470225437 c:\whitecat_crossplateform\src\mover_2013.cpp
 
-1437342872 c:\whitecat_crossplateform\src\plot_core9.cpp
+1470225960 c:\whitecat_crossplateform\src\plot_core9.cpp
 
 1437343572 c:\whitecat_crossplateform\src\plot9.cpp
 
 1437433012 c:\whitecat_crossplateform\src\audio_core5.cpp
 
-1459934301 c:\whitecat_crossplateform\src\save_show_13.cpp
+1470219850 c:\whitecat_crossplateform\src\save_show_13.cpp
 
-1423574885 c:\whitecat_crossplateform\src\network_artnet_3.cpp
+1470227071 c:\whitecat_crossplateform\src\network_artnet_3.cpp
 	<winsock2.h>
 
 1379886998 c:\mingw\include\winsock2.h
@@ -1235,7 +1235,7 @@
 
 1390400902 c:\whitecat_crossplateform\lib\windows\cserial\serial.h
 
-1467792747 c:\whitecat_crossplateform\src\banger_core_8.cpp
+1470226579 c:\whitecat_crossplateform\src\banger_core_8.cpp
 
 1467647917 c:\whitecat_crossplateform\src\banger_visu_8.cpp
 
@@ -1257,7 +1257,7 @@
 
 1437430196 c:\whitecat_crossplateform\src\numpad_visuel.cpp
 
-1437602390 c:\whitecat_crossplateform\src\keyboard_functions2.cpp
+1470227088 c:\whitecat_crossplateform\src\keyboard_functions2.cpp
 
 1437430423 c:\whitecat_crossplateform\src\keyboard_routines2.cpp
 	<allegro.h>
@@ -1746,7 +1746,7 @@
 
 1437430957 c:\whitecat_crossplateform\src\list_proj_visu.cpp
 
-1437430991 c:\whitecat_crossplateform\src\sequentiel_6_core.cpp
+1470226784 c:\whitecat_crossplateform\src\sequentiel_6_core.cpp
 
 1437602352 c:\whitecat_crossplateform\src\icat14.cpp
 
@@ -1781,7 +1781,7 @@
 
 1390400902 c:\whitecat_crossplateform\lib\windows\odmxusb_terry\ftd2xx.h
 
-1459951234 c:\whitecat_crossplateform\src\dmx_enttec_pro.cpp
+1470220330 c:\whitecat_crossplateform\src\dmx_enttec_pro.cpp
 	<process.h>
 	<assert.h>
 	<tchar.h>
@@ -1805,12 +1805,12 @@
 	<_mingw.h>
 	<stddef.h>
 
-1459951291 c:\whitecat_crossplateform\src\dmx_sunlite.cpp
+1470226851 c:\whitecat_crossplateform\src\dmx_sunlite.cpp
 	<_DasHard.h>
 
 1390400902 c:\whitecat_crossplateform\lib\windows\dashard\_dashard.h
 
-1457359354 c:\whitecat_crossplateform\src\midi_13.cpp
+1470228018 c:\whitecat_crossplateform\src\midi_13.cpp
 
 1437432072 c:\whitecat_crossplateform\src\cfg_screen.cpp
 
@@ -2181,7 +2181,7 @@
 
 1392832037 c:\users\bibi\documents\github\whitecat_crossplateform\src\arduino_6_uno.cpp
 
-1460043677 source:c:\whitecat_crossplateform\src\main_janv_2014_opensource_kbd.cpp
+1470218260 source:c:\whitecat_crossplateform\src\main_janv_2014_opensource_kbd.cpp
 	<iostream>
 	<fstream>
 	<allegro.h>
@@ -2378,10 +2378,10 @@
 
 1431175447 c:\whitecat_crossplateform\src\synchro.c
 
-1442912298 c:\whitecat_crossplateform\src\smoothdata.cpp
+1470218813 c:\whitecat_crossplateform\src\smoothdata.cpp
 	<SmoothData.h>
 
-1457177905 c:\whitecat_crossplateform\src\smoothdata.h
+1470218384 c:\whitecat_crossplateform\src\smoothdata.h
 
 1457443633 c:\whitecat_crossplateform\src\wave.cpp
 
@@ -2390,7 +2390,7 @@
 
 1435852152 c:\whitecat_crossplateform\src\kalman.h
 
-1459961299 c:\whitecat_crossplateform\src\dmx_functions_14.cpp
+1470227012 c:\whitecat_crossplateform\src\dmx_functions_14.cpp
 	<odmxusb.cpp>
 	<odmxusb.h>
 	<dmx_enttec_pro.cpp>

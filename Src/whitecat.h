@@ -45,7 +45,7 @@ WWWWWWWW           C  WWWWWWWW   |
 
 
 
-char versionis[72]={"ALPHA 0.8.8 - 4 JUILLET 2016"};
+char versionis[72]={"ALPHA 0.8.8 - 2 AOUT 2016"};
 char nickname_version[48]={"ARDUINO POWER"};
 
 bool init_done=0;//démarrage pour éviter envoyer data pdt procedure d initialisation
@@ -1013,10 +1013,10 @@ bool index_listen_for_artnet=1;
 //bool index_allow_to_write_universe[17];
 bool index_show_artpoll_reply_content=0;
 int artpoll_replyX= 485, artpoll_replyY=110;
-char PollReplyIs[16][100];//affichage
+char PollReplyIs[16][128];//affichage
 char nodefirmware_versinfo[12];
 char shortname_device[18];
-char subnetis[6];
+char subnetis[12];//modif aout 2016 était 6, donc overflow par sprintf dans network artnet 3
 char paste_reply[16][100];
 char ip_artnet[17];
 char string_ip[30];
