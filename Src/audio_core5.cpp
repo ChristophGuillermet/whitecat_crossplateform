@@ -51,7 +51,7 @@ int Load_audiofiles_cues()
 	cfg_file = fopen(tmp_audio_f, "rt" );
 
 	if( !cfg_file )
-	{	 sprintf(string_save_load_report[idf],"Error on opening %s",tmp_audio_f); b_report_error[idf]=1;	}
+	{	 sprintf(string_save_load_report[idf],"Error on opening %s",audio_folder); b_report_error[idf]=1;	}
 
 	else
     {

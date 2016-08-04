@@ -1156,7 +1156,7 @@
 1390400902 c:\whitecat_crossplateform\lib\windows\midishare\include\midishare.h
 	"windows.h"
 
-1470220074 c:\whitecat_crossplateform\src\whitecat.h
+1470313448 c:\whitecat_crossplateform\src\whitecat.h
 	"Crossplateform.h"
 
 1417600107 c:\whitecat_crossplateform\src\my_window_file_sample.h
@@ -1167,7 +1167,7 @@
 
 1458933283 c:\whitecat_crossplateform\src\midi_core.cpp
 
-1470225106 c:\whitecat_crossplateform\src\core_6.cpp
+1470313198 c:\whitecat_crossplateform\src\core_6.cpp
 
 1437343098 c:\whitecat_crossplateform\src\saves_export_pdf2.cpp
 	<setjmp.h>
@@ -1200,11 +1200,11 @@
 
 1437343572 c:\whitecat_crossplateform\src\plot9.cpp
 
-1437433012 c:\whitecat_crossplateform\src\audio_core5.cpp
+1470312776 c:\whitecat_crossplateform\src\audio_core5.cpp
 
 1470219850 c:\whitecat_crossplateform\src\save_show_13.cpp
 
-1470227071 c:\whitecat_crossplateform\src\network_artnet_3.cpp
+1470313071 c:\whitecat_crossplateform\src\network_artnet_3.cpp
 	<winsock2.h>
 
 1379886998 c:\mingw\include\winsock2.h
@@ -1818,7 +1818,7 @@
 
 1391548145 c:\whitecat_crossplateform\src\arduino_6_uno_anton2.cpp
 
-1459962748 c:\whitecat_crossplateform\src\cfg_config_panel_8.cpp
+1470312820 c:\whitecat_crossplateform\src\cfg_config_panel_8.cpp
 
 1437432378 c:\whitecat_crossplateform\src\chasers_visu.cpp
 
@@ -2390,7 +2390,7 @@
 
 1435852152 c:\whitecat_crossplateform\src\kalman.h
 
-1470227012 c:\whitecat_crossplateform\src\dmx_functions_14.cpp
+1470313034 c:\whitecat_crossplateform\src\dmx_functions_14.cpp
 	<odmxusb.cpp>
 	<odmxusb.h>
 	<dmx_enttec_pro.cpp>

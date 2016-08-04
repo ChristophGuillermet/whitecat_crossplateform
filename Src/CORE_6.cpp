@@ -6518,7 +6518,6 @@ int GlobInit()
         index_visual_pad=0;
         index_time=0;
         index_window_sequentiel=0;
-        index_config_dmx=0;
         index_config_midi=0;
         midi_page=0;
         index_list_projecteurs=0;

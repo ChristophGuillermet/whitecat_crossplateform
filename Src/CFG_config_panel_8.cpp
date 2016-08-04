@@ -1345,7 +1345,7 @@ return(0);
 int save_network_settings()
 {
 FILE *fp;
-char rep_conf_ntwk[256];
+char rep_conf_ntwk[512];
 sprintf(rep_conf_ntwk,"%s\\user\\config_network.txt",mondirectory);
 if((fp=fopen(rep_conf_ntwk,"w")))
 {

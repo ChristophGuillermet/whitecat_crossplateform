@@ -236,7 +236,7 @@ return(0);
 int save_artnet_conf()
 {
 FILE *fp;
-char rep_conf_dmx[256];
+char rep_conf_dmx[1024];
 sprintf(rep_conf_dmx,"%s\\user\\config_artnet.txt",mondirectory);
 if((fp=fopen(rep_conf_dmx,"w")))
 {

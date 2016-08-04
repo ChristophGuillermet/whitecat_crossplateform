@@ -31,7 +31,7 @@ WWWWWWWW           C  WWWWWWWW   |
 * \brief {header file for all the global variable in whitecat}
 * \author Christoph Guillermet
 * \version {0.8.8}
-* \date {09/06/2016}
+* \date {04/08/2016}
 
  White Cat {- categorie} {- sous categorie {- sous categorie}}
 
@@ -148,7 +148,7 @@ char tmp_time[24];
 char string_Last_Order[256];
 char string_xy_mouse[12];
 char string_display_fps[5];
-char string_display_dmx_params[64];
+char string_display_dmx_params[127];
 char string_niveau[4];
 char string_channel[3];
 char string_function[8];
@@ -698,7 +698,7 @@ int default_report_SL_Y=30 ;
 bool there_is_an_error_on_save_load=0;
 bool index_show_save_load_report=0;
 bool b_report_error[256];
-char string_save_load_report[256][64];//256 slot de report de 64 char
+char string_save_load_report[256][128];//256 slot de report de 64 char
 int position_view_line=0; //pour defilement affichage
 char string_typeexport_view[24];
 bool index_is_saving=0;//pour eviter de planter les pointeurs en faisant deux saves simulatnnés
@@ -1329,7 +1329,7 @@ char list_audio_files[128][72];//128 audio files possibles
 int line_audio=0;
 int audiofile_selected=0;//pour affectation a un lecteur
 char audiofile_name[72];
-char rep_audio[256];
+char rep_audio[1024];
 char audio_folder[25]={"demo"};
 char temp_audio_folder[25];
 char sound_files[4][72];
