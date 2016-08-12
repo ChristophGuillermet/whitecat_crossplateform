@@ -1156,7 +1156,7 @@
 1390400902 c:\whitecat_crossplateform\lib\windows\midishare\include\midishare.h
 	"windows.h"
 
-1470313448 c:\whitecat_crossplateform\src\whitecat.h
+1471000299 c:\whitecat_crossplateform\src\whitecat.h
 	"Crossplateform.h"
 
 1417600107 c:\whitecat_crossplateform\src\my_window_file_sample.h
@@ -1202,7 +1202,7 @@
 
 1470312776 c:\whitecat_crossplateform\src\audio_core5.cpp
 
-1470219850 c:\whitecat_crossplateform\src\save_show_13.cpp
+1470999630 c:\whitecat_crossplateform\src\save_show_13.cpp
 
 1470313071 c:\whitecat_crossplateform\src\network_artnet_3.cpp
 	<winsock2.h>
@@ -2181,7 +2181,7 @@
 
 1392832037 c:\users\bibi\documents\github\whitecat_crossplateform\src\arduino_6_uno.cpp
 
-1470218260 source:c:\whitecat_crossplateform\src\main_janv_2014_opensource_kbd.cpp
+1471000155 source:c:\whitecat_crossplateform\src\main_janv_2014_opensource_kbd.cpp
 	<iostream>
 	<fstream>
 	<allegro.h>
@@ -2194,6 +2194,7 @@
 	<audiere.h>
 	<jpgalleg.h>
 	<vector>
+	"whc_toolbox.cpp"
 	<SmoothData.cpp>
 	<hpdf.h>
 	<MidiShare.h>
@@ -2395,4 +2396,16 @@
 	<odmxusb.h>
 	<dmx_enttec_pro.cpp>
 	<dmx_sunlite.cpp>
+
+1471000112 c:\whitecat_crossplateform\src\whc_toolbox.cpp
+	"whc_toolbox.h"
+
+1471000071 c:\whitecat_crossplateform\src\whc_toolbox.h
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+	<sstream>
+	<cstdlib>
+	<windows.h>
 

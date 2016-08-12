@@ -1276,7 +1276,19 @@ int Load_Plot_Plan_config()
 	{     sprintf(string_save_load_report[idf],"Error on reading plot_plan_config.txt");b_report_error[idf]=1; 	}
     else {sprintf(string_save_load_report[idf],"plot_plan_config.txt readed");}
 //2eme ligne
-	fscanf( cfg_file , "%s\n" , Name_of_plane_is);
+	//sab 05/08/2016 deb - nom du plan avec espace mets un bazar dans la lecture des datas de plot ( pb de scanf )
+                    //fscanf( cfg_file , "%s\n" , Name_of_plane_is);
+                    Name_of_plane_is [0]=0;
+                    if( !fgets( read_buff_winfil, sizeof( read_buff_winfil ) ,cfg_file ) )
+                    {
+                     sprintf(string_save_load_report[idf],"Error plot_plan_config.txt");
+                    }
+                    else
+                    {
+                     whc_toolbox tool ;
+                     tool.copy_until_eol(Name_of_plane_is,sizeof( Name_of_plane_is ),read_buff_winfil);
+                    }
+                    //sab 05/08/2016 fin
 //args
 	if( !fgets( read_buff_winfil, sizeof( read_buff_winfil ) ,cfg_file ) )
 	{

@@ -353,6 +353,12 @@
 		<Unit filename="../../../Src/wave.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../../../Src/whc_toolbox.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/whc_toolbox.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="../../../Src/white_cat to do.txt">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

@@ -31,7 +31,7 @@ WWWWWWWW           C  WWWWWWWW   |
 * \brief {header file for all the global variable in whitecat}
 * \author Christoph Guillermet
 * \version {0.8.8}
-* \date {04/08/2016}
+* \date {12/08/2016}
 
  White Cat {- categorie} {- sous categorie {- sous categorie}}
 
@@ -45,7 +45,7 @@ WWWWWWWW           C  WWWWWWWW   |
 
 
 
-char versionis[72]={"ALPHA 0.8.8 - 2 AOUT 2016"};
+char versionis[72]={"ALPHA 0.8.8 - 12 AOUT 2016"};
 char nickname_version[48]={"ARDUINO POWER"};
 
 bool init_done=0;//démarrage pour éviter envoyer data pdt procedure d initialisation
