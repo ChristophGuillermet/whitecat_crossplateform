@@ -56,6 +56,7 @@ void save_config_hotkey()
 void replace_config_hotkey()
 {
     hk_manager.replace_link_fct_hk();
+	hk_manager.updateFilter(config_hotkeys_active_tab_id); // recharge la liste pour l'affichage des fonctions de la catégorie choisie
 }
 
 void hotkey_esc_button_press()
