@@ -19,6 +19,7 @@ class whc_toolbox
 		std::string static int_to_string(const int &number);
 		std::string static bool_to_string(const bool &eval);
 		std::string static executablePath();
+		void copy_until_eol(char* target, unsigned int target_size, char* line);
 
 		/** Default constructor */
 		whc_toolbox();

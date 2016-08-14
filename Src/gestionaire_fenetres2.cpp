@@ -441,6 +441,11 @@ int add_a_window(int id)
     case W_MY_WINDOW:
         index_my_window=1;
         break;
+	//sab - 07/08/2015 DEB - Hotkeys -
+	case W_ID_WRKSPC_DIR_WINDOW:
+		wrkspc_dir_window_isListening=true;
+		break;
+	//sab - 07/08/2015 FIN - Hotkeys -
     default:
         break;
     }

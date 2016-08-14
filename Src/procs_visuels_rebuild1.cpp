@@ -265,6 +265,15 @@ int detection_over_window()
                     stop_detect=1;
                 }
                 break;
+			//sab 07/08/2016 deb - Hotkeys-window
+			case W_ID_WRKSPC_DIR_WINDOW:
+                if (wrkspc_dir_window_isMouseOver(mouse_x,mouse_y))
+                {
+                    window_is=window_opened[i];
+                    stop_detect=1;
+                }
+                break;
+			//sab 07/08/2016 fin - Hotkeys-window
             default:
                 break;
             }
@@ -462,6 +471,11 @@ int move_window(int idwindowis)
             my_window_y=mouse_y-25;
             im_moving_a_window=1;
             break;
+		//sab 07/08/2016 deb - Hotkeys-window
+		case W_ID_WRKSPC_DIR_WINDOW:
+            im_moving_a_window=wrkspc_dir_window_moveTo(mouse_x,mouse_y);
+            break;
+		//sab 07/08/2016 fin - Hotkeys-window
         default:
             break;
         }
@@ -767,6 +781,11 @@ void mouseWheel_handle_onAltOver()
     case W_MY_WINDOW:
 
         break;
+	//sab 07/08/2016 deb - Hotkeys-window
+	case W_ID_WRKSPC_DIR_WINDOW:
+
+            break;
+	//sab 07/08/2016 fin - Hotkeys-window
     default:
         break;
     }
@@ -904,6 +923,11 @@ int check_graphics_mouse_handling()
             do_logical_my_window_Box(my_window_x, my_window_y);
             do_logical_MoveCloseBox( my_window_x+20,my_window_y+20,W_MY_WINDOW);
             break;
+		//sab 07/08/2016 deb - Hotkeys-window
+		case W_ID_WRKSPC_DIR_WINDOW:
+            wrkspc_dir_window_mouseLeftHandle();
+            break;
+		//sab 07/08/2016 fin - Hotkeys-window
         case W_BAZOOKAT:
             do_logical_fenetre_bazookat_menus(position_x_bazoocat_menus, position_y_bazoocat_menus);
             do_logical_MoveCloseBox( position_x_bazoocat_menus+20,position_y_bazoocat_menus+20,W_BAZOOKAT);

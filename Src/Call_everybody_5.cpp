@@ -223,7 +223,7 @@ int do_logical_Menus( int xmenu, int ymenu)
         char nom_commande[24];
         char raccourci_commande[24];
         bool stae=0;
-        for(int cl=0; cl<5; cl++)
+        for(int cl=0; cl<6; cl++) //sab - 07/08/2015 MOD (5 -> 6)-
         {
             switch(cl)
             {
@@ -262,6 +262,15 @@ int do_logical_Menus( int xmenu, int ymenu)
                 strcpy(raccourci_commande,"");
                 stae=index_menu_save;
                 break;
+			//sab - 07/08/2015 DEB - Hotkeys -
+            case 5://test sab répertoire
+                IDmidi=menu_window_addbutton_wrkspc_dir_IDmidi; // +1 par rapport dernière commande ! n° de commande midi à ajouter dans le tableau affectations midi
+                IDcommand=cl;
+                strcpy(nom_commande,menu_window_addbutton_wrkspc_dir_Name);
+                strcpy(raccourci_commande,menu_window_addbutton_wrkspc_dir_Shortcut);
+                stae= wrkspc_dir_window_isListening;
+                break;
+			//sab - 07/08/2015 FIN - Hotkeys -
             default:
                 break;
             }
@@ -523,7 +532,7 @@ int Menus( int xmenu, int ymenu)
 
 
 //1ere colonne Sequenciel relatif
-    for(int cl=0; cl<5; cl++)
+    for(int cl=0; cl<6; cl++) 			//sab - 07/08/2016 MOD (5 -> 6) - Hotkeys-window
     {
         switch(cl)
         {
@@ -562,6 +571,14 @@ int Menus( int xmenu, int ymenu)
             strcpy(raccourci_commande,"");
             stae=index_menu_save;
             break;
+		//sab - 07/08/2016 DEB - Hotkeys-window
+        case 5://test sab <-- 5 = 0 + 5 = (menu_window_addbutton_wrkspc_dir_GridCol -1 ) + menu_window_addbutton_wrkspc_dir_GridLig
+            IDmidi=menu_window_addbutton_wrkspc_dir_IDmidi; // +1 par rapport dernière commande ! n° de commande midi à ajouter dans le tableau affectations midi
+            strcpy(nom_commande,menu_window_addbutton_wrkspc_dir_Name);
+            strcpy(raccourci_commande,menu_window_addbutton_wrkspc_dir_Shortcut);
+            stae= wrkspc_dir_window_isListening;
+		//sab - 07/08/2016 FIN - Hotkeys-window
+
         default:
             break;
         }

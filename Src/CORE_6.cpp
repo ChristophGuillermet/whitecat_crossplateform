@@ -2761,6 +2761,9 @@ void close_all_windows()
     index_window_sequentiel=0;
     index_show_banger_window=0;
     index_menu_save=0;
+	//sab - 07/08/2015 DEB - Hotkeys -
+	wrkspc_dir_window_isListening=false;
+	//sab - 07/08/2015 FIN - Hotkeys -
     index_show_faders=0;
     index_show_minifaders=0;
     index_window_chasers=0;
@@ -2860,6 +2863,11 @@ void write_window_indexes_from_list_of_windows()
         case W_MY_WINDOW:
             index_my_window=1;
             break;
+		//sab - 07/08/2015 DEB - Hotkeys -
+		case W_ID_WRKSPC_DIR_WINDOW:
+			wrkspc_dir_window_isListening=true;
+			break;
+		//sab - 07/08/2015 FIN - Hotkeys -
         default:
             break;
         }
@@ -5513,6 +5521,18 @@ int remember_config_page()
     {
         config_page_is=7;
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// sab 12/08/2016 - Onglet des Hot Keys ////////////////////////////////////////////
+    else if(index_config_tab_hotkeys==1)
+    {
+        config_page_is=8;
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     return(0);
 }
 
@@ -5687,6 +5707,11 @@ void substract_a_window(int id)
     case W_MY_WINDOW:
         index_my_window=0;
         break;
+		//sab - 07/08/2015 DEB - Hotkeys -
+		case W_ID_WRKSPC_DIR_WINDOW:
+			wrkspc_dir_window_isListening=false;
+			break;
+		//sab - 07/08/2015 FIN - Hotkeys -
     default:
         break;
     }

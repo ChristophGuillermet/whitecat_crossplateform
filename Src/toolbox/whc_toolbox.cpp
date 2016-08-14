@@ -63,3 +63,20 @@ std::string whc_toolbox::executablePath()
 	path.resize(i);
 	return  path;
 }
+
+void whc_toolbox::copy_until_eol(char* final_target, unsigned int max_size, char* line)
+{
+    std::string wrk_target(line);
+    int copy_index = wrk_target.size();
+    while (wrk_target[copy_index]!='\n')
+    {
+        copy_index--;
+    }
+    if (copy_index>max_size)
+    {
+        copy_index=max_size;
+    }
+    wrk_target.resize(copy_index);
+    final_target[wrk_target.size()]=0;
+    memcpy(final_target,wrk_target.c_str(),wrk_target.size());
+}

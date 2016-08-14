@@ -78,7 +78,18 @@ int recall_config_page()
 
 int commandes_clavier()//la fonction sprintf tue l acces clavier
 {
-//++sab+++ 31/01/2015 deb TEST
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- ANCRAGE : si le service est inactif, hk_manager rend chi>0                              ///////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ràf :
+// - conserver l'existant dans une fct à part pour l'appeler si le service est inactif
+// - réécrire l'existant
+// 		-- reporter les fonctions pour avoir une fonction  = une hotkey
+// 		-- traiter les hotkeys non redéfinissables - ex : les chiffres du pad (sans alt / ctrl) ==> alimente le input
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //    if ( keypressed())
 //    {
 //        int chi = readkey();
@@ -86,6 +97,12 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
 	int chi = hk_manager.collect();
 	if (chi>0) // dans les cas : keypressed + pas un raccourcis clavier ou une définition
     {
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN - ANCRAGE -- FIN - ANCRAGE  -- FIN - ANCRAGE  -- FIN - ANCRAGE  -- FIN - ANCRAGE    ///////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//++sab+++ 31/01/2015 deb
     	if (not ((chi >> 8)==KEY_ESC))
 		{
 			if (show_test_log)
@@ -434,16 +451,16 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
             }
             break;
 
-
-        case KEY_UP:
-            key_up();
-            sprintf(string_key_id,list_keyname[1]);
-            break;
-
-        case KEY_DOWN:
-            key_down();
-            sprintf(string_key_id,list_keyname[2]);
-            break;
+// sab 07/08/2016 hk manager
+//        case KEY_UP:
+//            key_up();
+//            sprintf(string_key_id,list_keyname[1]);
+//            break;
+//
+//        case KEY_DOWN:
+//            key_down();
+//            sprintf(string_key_id,list_keyname[2]);
+//            break;
 
         case KEY_ENTER :
             key_affectation();
@@ -674,11 +691,12 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
             break;
 
         case KEY_I:
-            if(index_type==0) //full
-            {
-                key_full();
-            }
-            else if(index_type==1)
+//sab 07/08/2014 hk_manager intercepte sauf si inputIsOn (= index_type)
+//            if(index_type==0) //full
+//            {
+//                key_full();
+//            }
+//            else if(index_type==1)
             {
                 numeric[keyboardStorage_numeric_postext]='I';
                 keyboardStorage_numeric_postext++;
@@ -763,13 +781,12 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
             break;
 
         case KEY_O:
-
-
-            if(index_type==0)
-            {
-                key_at_zero();
-            }
-            else if (index_type==1)
+//sab 07/08/2014 hk_manager intercepte sauf si inputIsOn (= index_type)
+//            if(index_type==0)
+//            {
+//                key_at_zero();
+//            }
+//            else if (index_type==1)
             {
                 numeric[keyboardStorage_numeric_postext]='O';
                 keyboardStorage_numeric_postext++;
@@ -884,11 +901,12 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
             break;
 
         case KEY_U://inverse selection
-            if (index_type==0)
-            {
-                key_select_inv();
-            }
-            else if (index_type==1)
+//sab 07/08/2014 hk_manager intercepte sauf si inputIsOn (= index_type)
+//            if (index_type==0)
+//            {
+//                key_select_inv();
+//            }
+//            else if (index_type==1)
             {
                 numeric[keyboardStorage_numeric_postext]='U';
                 keyboardStorage_numeric_postext++;
@@ -968,12 +986,12 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
             break;
 
         case KEY_Y://select all
-
-            if (index_type==0)
-            {
-                key_select_all();
-            }
-            else if (index_type==1)
+//sab 07/08/2014 hk_manager intercepte sauf si inputIsOn (= index_type)
+//            if (index_type==0)
+//            {
+//                key_select_all();
+//            }
+//            else if (index_type==1)
             {
                 numeric[keyboardStorage_numeric_postext]='Y';
                 keyboardStorage_numeric_postext++;
@@ -1010,15 +1028,16 @@ int commandes_clavier()//la fonction sprintf tue l acces clavier
             sprintf(string_key_id,list_keyname[35]);
             break;
 
-        case KEY_LEFT:
-            key_left();
-            sprintf(string_key_id,list_keyname[36]);
-            break;
-
-        case KEY_RIGHT:
-            key_right();
-            sprintf(string_key_id,list_keyname[37]);
-            break;
+//sab 07/08/2014 hk_manager intercepte sauf si inputIsOn (= index_type)
+//        case KEY_LEFT:
+//            key_left();
+//            sprintf(string_key_id,list_keyname[36]);
+//            break;
+//
+//        case KEY_RIGHT:
+//            key_right();
+//            sprintf(string_key_id,list_keyname[37]);
+//            break;
 
         case KEY_DEL:
             if (key_shifts & KB_SHIFT_FLAG || index_false_shift==1)

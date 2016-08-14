@@ -40,7 +40,6 @@ WWWWWWWW           C  WWWWWWWW   |
 *   Main loop with include of librairies and the C++ files used in whitecat. Whitecat is in fact coded in C.
 *
  **/
-
 #include <allegro.h>
 #include <winalleg.h>
 #include <OpenLayer.hpp>
@@ -88,6 +87,18 @@ bufferSaisiesnamp=0;
 
 #include <hpdf.h>
 #include <MidiShare.h>
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <cmath>  //sab calcul de la part entière : int partieEntiere = (int)floor(m/n)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include <whc_mouse.h>
 #include <whitecat.h>
 #include <my_window_file_sample.h>//ressources juste après whitecat.h
@@ -96,6 +107,11 @@ bufferSaisiesnamp=0;
 #include <whitecat_Fct.h>
 
 #include <patch_splines_2.cpp>//spline pour curves
+
+//sab 07/08/2016 deb - w
+#include <wrkspc_dir.cpp>
+//sab 07/08/2016 fin -
+
 
 #include <grider_calculs8.cpp>
 
@@ -190,9 +206,20 @@ bufferSaisiesnamp=0;
 
 #include <debug_log.cpp>
 
-//sab 01/02/2015 deb TEST
-#include <hotkey_global.cpp>
-//sab 01/02/2015 fin TEST
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Vient après tous les autres include car déclenche des fonctions, des services, écrans etc des fichiers précédents -
+// -- en attendant qu'il y ait un fichier de des déclarations des fonctions globales
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <hotkey_triggers.cpp>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 int time_doing()
 {
@@ -400,6 +427,17 @@ void my_callback(int flags)
         {
             window_focus_id=W_ASKCONFIRM;
         }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS                                                                                            ///////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // sab 12/08/2016 hotkey -- DEB -- keep focus while waiting an answer
+        else if (hk_manager.waiting_user_confirmation_on_a_choice())
+		{
+			window_focus_id=W_CFGMENU;
+		}
+        // sab 12/08/2016 hotkey -- FIN --
         else
         {
             window_focus_id=detection_over_window();
@@ -1309,7 +1347,7 @@ int main(int argc, char* argv[])
     /*sab 28/11/2014 fin */
 
     //sab 31/01/2015 deb TEST
-	whc_hk_main_init() ;
+	whc_hotkeys_init("whc_hotkey_user.txt","whc_hotkey_standard.txt") ;  // 1er ficher recherché dans le répertoire \user - s'l n'existe pas encore on prend le 2d fichier qui est cherché dans ressources
 	save_load_print_to_screen("Loaded hotkeys");
     //sab 31/01/2015 fin TEST
 

@@ -290,6 +290,12 @@ int Boxes()
             my_window_Box(my_window_x, my_window_y);
             MoveCloseBox( my_window_x+20,my_window_y+20,W_MY_WINDOW);
             break;
+		//sab 07/08/2016 deb - Hotkeys-window
+        case W_ID_WRKSPC_DIR_WINDOW:
+            wrkspc_dir_window_show();
+            MoveCloseBox( wrkspc_dir_window_pos_x+20,wrkspc_dir_window_pos_y+20,W_ID_WRKSPC_DIR_WINDOW);
+            break;
+		//sab 07/08/2016 fin - Hotkeys-window
         default:
             break;
         }

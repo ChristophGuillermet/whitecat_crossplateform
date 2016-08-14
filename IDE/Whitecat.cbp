@@ -14,7 +14,7 @@
 				<Option object_output="../whitecatbuild/obj" />
 				<Option type="0" />
 				<Option compiler="gcc" />
-				<Option parameters="--test --veil" />
+				<Option parameters="--test --veil --border" />
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
@@ -46,12 +46,14 @@
 			<Add directory="../Src/csv" />
 			<Add directory="../Src/hotkey" />
 			<Add directory="../Src/toolbox" />
+			<Add directory="../Src/window" />
 			<Add directory="C:/MinGW/opencv2.4.8/include" />
 			<Add directory="C:/MinGW/include/libharu" />
 			<Add directory="../whitecatlib/" />
 		</Compiler>
 		<Linker>
 			<Add option="-lopenlayer -lglyph-agl -lfreetype -llogg -lvorbis -lalleggl -ljpgalleg -lalleg44.dll -luser32 -lgdi32 -lglu32 -lopengl32 -lpthreadGC2 -lwsock32 -liphlpapi -lpng12.dll -lz -lhpdf" />
+			<Add option="-lsqlite3" />
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 			<Add library="winmm" />
@@ -358,11 +360,21 @@
 		<Unit filename="../Src/whitecat_opensource.ico">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../Src/window/whc_graphicalObj.cpp" />
+		<Unit filename="../Src/window/whc_graphicalObj.h" />
+		<Unit filename="../Src/window/whc_window.cpp" />
+		<Unit filename="../Src/window/whc_window.h" />
 		<Unit filename="../Src/wizard.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/wizard_operations.cpp">
 			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../Src/wrkspc_dir.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../Src/wrkspc_dir.h">
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="../whitecatlib/lib/windows/odmxusb_terry/FTD2XX.H" />
 		<Extensions>

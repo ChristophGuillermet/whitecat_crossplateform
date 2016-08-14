@@ -41,6 +41,16 @@ WWWWWWWW           C  WWWWWWWW   |
 *
  **/
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+/// sab 12/08/2016 - Onglet des Hot Keys ////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+#include <hotkey_config_tab.cpp>
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// FIN sab 12/08/2016 - Onglet des Hot Keys - FIN ////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 int init_kbd_custom()
 {
     for(int i=0; i<256; i++)
@@ -126,7 +136,6 @@ int do_keyboard_conf(int cfgnetw_X, int cfgnetw_Y)//ancienne version
 
     return(0);
 }
-
 
 
 int do_core_config( int x_cfg_sc,int y_cfg_sc, int largeur_cfg_sc, int hauteur_cfg_sc)
@@ -978,7 +987,6 @@ int do_main_config(int cfgnetw_X, int cfgnetw_Y, int largeurCFGdmxwindow,int hau
 
 
 
-
 ////////////////DMX/////////////////////////////////////////////////////////////
 
 int SelectDmxDevice(int interfacedmx)
@@ -1491,10 +1499,10 @@ int load_network_conf()
 int do_panel_config(int cfg_X,int cfg_Y)
 {
 
-    Rect ConfigPanel(Vec2D(cfg_X,  cfg_Y), Vec2D( largeurCFGwindow,hauteurCFGwindow));
-    ConfigPanel.SetRoundness(15);
-    ConfigPanel.Draw(CouleurConfig);
-    ConfigPanel.DrawOutline(CouleurLigne);
+//    Rect ConfigPanel(Vec2D(cfg_X,  cfg_Y), Vec2D( largeurCFGwindow,hauteurCFGwindow));
+//    ConfigPanel.SetRoundness(15);
+//    ConfigPanel.Draw(CouleurConfig);
+//    ConfigPanel.DrawOutline(CouleurLigne);
 
     if(index_config_dmx==1)
     {
@@ -1539,6 +1547,17 @@ int do_panel_config(int cfg_X,int cfg_Y)
         sprintf(string_title_panel_config,"CORE CONFIGURATION");
         petitchiffre.Print( string_title_panel_config,cfg_X+20, cfg_Y+20);
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    else if(index_config_tab_hotkeys==true)
+    {
+        do_hotkey_config(cfg_X,cfg_Y);
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //BOUTON DE SAUVEGARDE DE CONF
     if( index_config_dmx==1 || index_config_network==1 || index_config_general==1 ||  index_config_core==1)
     {
@@ -1581,15 +1600,33 @@ int do_panel_config(int cfg_X,int cfg_Y)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ici : - REECRITURE DES ONGLETS DE L'ECRAN DE CONFIGURATION POUR AJOUTER PLUS RAPIDEMENT UN NOUVEL ONGLET          ///////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+bool mouseOverTab_W_CFGMENU(int tabNum, int mysetupx, int largeur_onglet, int largeur_onglet_visu)
+{
+    int espace_depuis_bord_fenetre = 5 ;
+    int hauteur_onglet = 40 ;
+
+    return  (window_focus_id==W_CFGMENU
+			&& mouse_x > (mysetupx + tabNum * largeur_onglet)
+			&& mouse_x < (mysetupx + tabNum * largeur_onglet + largeur_onglet_visu)
+			&& mouse_y > (window_cfgY + espace_depuis_bord_fenetre)
+			&& mouse_y < (window_cfgY + espace_depuis_bord_fenetre + hauteur_onglet) );
+}
 
 int config_general_menu()
 {
+    //Dessine le cadre de fond avec couleur du pourtour selon que la fenêtre a le focus ou non
     Rect CadreGeneralConfig(Vec2D(window_cfgX,window_cfgY),Vec2D(largeurCFGwindow,hauteurCFGwindow+40));
     CadreGeneralConfig.SetRoundness(15);
     CadreGeneralConfig.SetLineWidth(triple_epaisseur_ligne_fader);
     CadreGeneralConfig.Draw(CouleurConfig);
-    if(window_focus_id==920)
+
+    if(window_focus_id==W_CFGMENU)
     {
         CadreGeneralConfig.DrawOutline(CouleurBlind);
     }
@@ -1597,137 +1634,99 @@ int config_general_menu()
     {
         CadreGeneralConfig.DrawOutline(CouleurLigne);
     }
-    int mysetupx=window_cfgX+100;
-    for (int choix=0; choix<7; choix++)
+
+    //Dessine les onglets de la fenêtre de configuration et détecte si l'on a cliqué sur l'un d'eux
+    int nbr_onglets = 8; // sab 12/08/2016 :  nbr_onglets (7 -> 8)
+    std::vector <char*> onglet_libelle (nbr_onglets);
+    onglet_libelle[0]= "DMX cfg";
+    onglet_libelle[1]= "Midi cfg";
+    onglet_libelle[2]= "Network";
+    onglet_libelle[3]= "Screen";
+    onglet_libelle[4]= "Arduino";
+    onglet_libelle[5]= "GENERAL";
+    onglet_libelle[6]= "Core cfg";
+    onglet_libelle[7]= "Hot keys";
+
+    int largeur_onglet = int(740 / nbr_onglets) ;
+    int largeur_onglet_visu = largeur_onglet -10;
+
+
+    int mysetupx=window_cfgX+largeur_onglet;
+
+    for (int choix=0; choix<nbr_onglets; choix++)
     {
-        Rect MySetup(Vec2D( mysetupx+(choix*100), window_cfgY+5),Vec2D(90,40));
+        Rect MySetup(Vec2D( mysetupx+(choix*largeur_onglet), window_cfgY+5),Vec2D(largeur_onglet_visu,40));
         MySetup.SetRoundness(7.5);
         MySetup.Draw(CouleurBleuProcedure.WithAlpha(0.8));
-        switch(choix)
+
+        if(config_page_is==choix+1)
         {
-        case 0:
-            if(config_page_is==1)
-            {
-                MySetup.Draw(CouleurSurvol);
-            }
-            neuromoyen.Print("   dmx cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-            if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-            {
-                if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==920)
-                {
-                    reset_indexes_conf();
-                    index_config_dmx=1;
-                    config_page_is=1;
-                    mouseClicLeft.SetProcessed();
-                }
-            }
-            break;
-        case 1:
-            if(config_page_is==2)
-            {
-                MySetup.Draw(CouleurSurvol);
-            }
-            neuromoyen.Print("  midi cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-            if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-            {
-                if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==920)
-                {
-                    reset_indexes_conf();
-                    index_config_midi=1;
-                    config_page_is=2;
-                    mouseClicLeft.SetProcessed();
-                }
-            }
-            break;
-        case 2:
-            if(config_page_is==3)
-            {
-                MySetup.Draw(CouleurSurvol);
-            }
-            neuromoyen.Print("network cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-            if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-            {
-                if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==920)
-                {
-                    reset_indexes_conf();
-                    index_config_network=1;
-                    config_page_is=3;
-                    mouseClicLeft.SetProcessed();
-                }
-            }
-            break;
-        case 3:
-            if(config_page_is==4)
-            {
-                MySetup.Draw(CouleurSurvol);
-            }
-            neuromoyen.Print("screen cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-            if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-            {
-                if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==920)
-                {
-                    reset_indexes_conf();
-                    index_setup_gfx=1;
-                    config_page_is=4;
-                    mouseClicLeft.SetProcessed();
-                }
-            }
-            break;
-        case 4:
-            if(config_page_is==5)
-            {
-                MySetup.Draw(CouleurSurvol);
-            }
-            neuromoyen.Print("arduino cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-            if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-            {
-                if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==920)
-                {
-                    reset_indexes_conf();
-                    index_config_arduino=1;
-                    config_page_is=5;
-                    mouseClicLeft.SetProcessed();
-                }
-            }
-            break;
-        case 5:
-            if(config_page_is==6)
-            {
-                MySetup.Draw(CouleurSurvol);
-            }
-            neuromoyen.Print(" GENERAL",mysetupx+(choix*100)+5,window_cfgY+30);
-            if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-            {
-                if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==920)
-                {
-                    reset_indexes_conf();
-                    index_config_general=1;
-                    config_page_is=6;
-                    mouseClicLeft.SetProcessed();
-                }
-            }
-            break;
-        case 6:
-            if(config_page_is==7)
-            {
-                MySetup.Draw(CouleurSurvol);
-            }
-            neuromoyen.Print("  core cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-            if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-            {
-                if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==920)
-                {
-                    reset_indexes_conf();
-                    index_config_core=1;
-                    config_page_is=7;
-                    mouseClicLeft.SetProcessed();
-                }
-            }
-            break;
+            MySetup.SetLineWidth(epaisseur_ligne_fader/2);
+            MySetup.DrawOutline(CouleurLigne);//CouleurBlind
+            MySetup.Draw(CouleurConfig.WithAlpha(1)); //CouleurBleuProcedureDefaut
         }
+        if((hk_manager.hk_user_update_isOn()!=true) && // pas de mouse effect si en attente de saisie d'une hotkey pou redefinir le lien avec une fonction
+                mouseOverTab_W_CFGMENU(choix, mysetupx, largeur_onglet, largeur_onglet_visu))
+        {
+            if(config_page_is!=choix+1)
+            {
+                MySetup.Draw(CouleurSurvol);
+            }
+
+            if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==W_CFGMENU)
+            {
+                config_page_is=choix+1;
+
+                reset_indexes_conf();
+                switch(choix)
+                {
+                case 0 :
+                	index_config_dmx=1;
+                    break;
+                case 1 :
+                    index_config_midi=1;
+                    break;
+                case 2 :
+                    index_config_network=1;
+                    break;
+                case 3 :
+                    index_setup_gfx=1;
+                    break;
+                case 4 :
+                    index_config_arduino=1;
+                    break;
+                case 5 :
+                    index_config_general=1;
+                    break;
+                case 6 :
+                    index_config_core=1;
+                    break;
+                case 7 :
+                    index_config_tab_hotkeys = true;
+                    break;
+                }
+                mouseClicLeft.SetProcessed();
+            }
+        }
+        neuromoyen.Print(onglet_libelle[choix],mysetupx+(choix*largeur_onglet)+5,window_cfgY+30);
     }
+
+    //fond panneau de l'onglet
+    Rect ConfigPanel(Vec2D(window_cfgX,  window_cfgY+40), Vec2D( largeurCFGwindow,hauteurCFGwindow));
+    ConfigPanel.SetRoundness(15);
+    ConfigPanel.Draw(CouleurConfig);
+    ConfigPanel.DrawOutline(CouleurLigne);
+    //efface ligne entre onglet actif et son panneau
+    Rect MySetup_clean(Vec2D( mysetupx+((config_page_is-1)*largeur_onglet), window_cfgY+40-epaisseur_ligne_fader),Vec2D(largeur_onglet_visu,epaisseur_ligne_fader*4));
+    MySetup_clean.Draw(CouleurBleuProcedure.WithAlpha(1));
+    MySetup_clean.Draw(CouleurConfig.WithAlpha(1)); //CouleurBleuProcedureDefaut
+
     do_panel_config(window_cfgX,window_cfgY+40);
 
     return(0);
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
