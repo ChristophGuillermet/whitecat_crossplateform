@@ -412,7 +412,10 @@ void whc_hotkeys_init(std::string user_dir_file, std::string ressources_dir_file
     }
     else hk_manager.init(strd_file) ;
 
-    hk_manager.link_keyFocusIndicator(index_type);
+    // ATTENTION si la déclaration de index_type change il faut en faire de même avec son homonyme c_inputIsOn
+    hk_manager.link_keyFocusIndicator(index_type); // lie c_inputIsOn à index_type via l'adresses mémoire : pour connaitre l'état de index_type sans qu'il soit dans l'objet
+
+    hk_manager.updateFilter(0); //filtre la liste pour l'affichage dans le panneau de config
 
 
     hk_manager.connect_fct(1,&hotkey_assign_to_save);

@@ -4,6 +4,7 @@
 //initialistion des variables statiques communes à tous les objets de la classe
 int whc_hk_manage::c_nbr = 0;
 std::vector<whc_hk_manage> whc_hk_manage::c_list;
+std::vector<whc_hk_manage> whc_hk_manage::c_catlist;
 bool whc_hk_manage::c_hk_user_madeChanges=false;
 bool whc_hk_manage::c_hk_user_update_isOn=false ; // on lit pour mettre à jour un lien : ne rien déclencher en attendant confirmation ou ESC
 bool whc_hk_manage::c_hk_user_hasToConfirmChoice=false;
@@ -464,8 +465,39 @@ int whc_hk_manage::read_db_row(void *NotUsed, int row_nbr_col, char **row_data_c
     return 0;
 }
 
-//	std::string whc_hk_manage::current_choice_fct_description {return hk_manager.c_list[hk_manager.user_hasSelectThisFunc()-1].fonctionality().description();}
+void whc_hk_manage::updateFilter(int tab_idx)
+{
+	c_catlist.clear();
 
-//	std::string whc_hk_manage::current_choice_fct_accessible_with { return hk_manager.c_list[hk_manager.user_hasSelectThisFunc()-1].signature().wording();}
+	int nbr_category = 6;
+    std::vector <char*> filter (nbr_category);
+    filter[0]= "Global functions";
+    filter[1]= "Transverse commands";
+    filter[2]= "Channels";
+    filter[3]= "CueList and memories";
+    filter[4]= "Patch";
+    filter[5]= "VideoTracking";
 
-//std::string whc_hk_manage::last_hk_wording() {c_user_signature.wording();}
+    int idx_back = c_list.size();
+
+	if (tab_idx<nbr_category)
+	{
+		while (idx_back>0)
+		{
+			idx_back--;
+			whc_hk_manage* hotkey ;
+			hotkey = &whc_hk_manage::c_list[idx_back] ;
+			whc_hk_apply fonctionality ;
+			fonctionality = hotkey->fonctionality() ;
+
+			if (fonctionality.module()==filter[tab_idx])
+			{
+				c_catlist.push_back(c_list[idx_back]);
+			}
+		}
+		if (c_catlist.size()>0)
+		{
+			std::reverse(c_catlist.begin(),c_catlist.end());
+		}
+	}
+}

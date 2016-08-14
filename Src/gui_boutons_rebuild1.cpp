@@ -887,7 +887,7 @@ void command_button_logical( int xcom, int ycom, int isstate, const std::string 
                     substract_a_window(W_SAVE);
                 }
                 break;
-            //sab 07/08/2016 deb - Hotkeys-window
+            //sab 07/08/2016 deb -
             case 5://hotkey
 
                 if(wrkspc_dir_window_isListening==false)
@@ -900,7 +900,7 @@ void command_button_logical( int xcom, int ycom, int isstate, const std::string 
                     substract_a_window(W_ID_WRKSPC_DIR_WINDOW);
                 }
                 break;
-			//sab 07/08/2016 fin - Hotkeys-window
+			//sab 07/08/2016 fin -
 
 //2eme colonne
             case 10://patch

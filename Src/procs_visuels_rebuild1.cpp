@@ -265,7 +265,7 @@ int detection_over_window()
                     stop_detect=1;
                 }
                 break;
-			//sab 07/08/2016 deb - Hotkeys-window
+			//sab 07/08/2016 deb -
 			case W_ID_WRKSPC_DIR_WINDOW:
                 if (wrkspc_dir_window_isMouseOver(mouse_x,mouse_y))
                 {
@@ -273,7 +273,7 @@ int detection_over_window()
                     stop_detect=1;
                 }
                 break;
-			//sab 07/08/2016 fin - Hotkeys-window
+			//sab 07/08/2016 fin -
             default:
                 break;
             }
@@ -471,11 +471,11 @@ int move_window(int idwindowis)
             my_window_y=mouse_y-25;
             im_moving_a_window=1;
             break;
-		//sab 07/08/2016 deb - Hotkeys-window
+		//sab 07/08/2016 deb -
 		case W_ID_WRKSPC_DIR_WINDOW:
             im_moving_a_window=wrkspc_dir_window_moveTo(mouse_x,mouse_y);
             break;
-		//sab 07/08/2016 fin - Hotkeys-window
+		//sab 07/08/2016 fin -
         default:
             break;
         }
@@ -781,11 +781,11 @@ void mouseWheel_handle_onAltOver()
     case W_MY_WINDOW:
 
         break;
-	//sab 07/08/2016 deb - Hotkeys-window
+	//sab 07/08/2016 deb -
 	case W_ID_WRKSPC_DIR_WINDOW:
 
             break;
-	//sab 07/08/2016 fin - Hotkeys-window
+	//sab 07/08/2016 fin -
     default:
         break;
     }

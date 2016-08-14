@@ -300,7 +300,7 @@ void do_hotkey_config_liste_pagination (int cfg_X,int cfg_Y)
     }
 
     //numéros de page
-    int max_page_visu=(int)ceil(hk_manager.c_list.size()/10)+1;
+    int max_page_visu=(int)ceil(hk_manager.c_catlist.size()/10)+1;
     int num_page_visu=num_page_list_hotkeys+1;
 
     std::string pagination = whc_toolbox::int_to_string(num_page_visu) +" / "+ whc_toolbox::int_to_string(max_page_visu);
@@ -352,7 +352,7 @@ void do_hotkey_config_liste (int cfg_X,int cfg_Y)
     std::string last_keyinput = "Last key input : " + hk_manager.c_user_signature.wording();
     neuromoyen.Print(last_keyinput,	cfg_X+largeurCFGwindow -20 - 14 * last_keyinput.size(),	cfg_Y+ 30, 14 * last_keyinput.size(),	RIGHT);
 
-    int nbr_hk = hk_manager.c_list.size();
+    int nbr_hk = hk_manager.c_catlist.size();
     //Canvas::SetClipping( cfg_X, cfg_Y, largeurCFGwindow, hauteurCFGwindow - 35);
 
     int deb_liste_ligne = num_page_list_hotkeys * 10;
@@ -382,13 +382,13 @@ void do_hotkey_config_liste (int cfg_X,int cfg_Y)
                     && index_config_tab_hotkeys==true)
             {
                 int visu_line_to_list_idx = num_ligne_visu + ((num_page_list_hotkeys) * 10);
-                int update_hotkey_idx = hk_manager.c_list[visu_line_to_list_idx].fonctionality().id();
+                int update_hotkey_idx = hk_manager.c_catlist[visu_line_to_list_idx].fonctionality().id();
                 hk_manager.user_start_update_link(update_hotkey_idx);
             }
         }
 
-        petitpetitchiffre.Print(hk_manager.c_list[num_ligne].fonctionality().description(),	cfg_X+ 150,	cfg_Y+ 70 + num_ligne_visu * 20, 375, RIGHT);
-        neuromoyen.Print(hk_manager.c_list[num_ligne].signature().wording(),				cfg_X+ 555,	cfg_Y+ 70 + num_ligne_visu * 20);
+        petitpetitchiffre.Print(hk_manager.c_catlist[num_ligne].fonctionality().description(),	cfg_X+ 150,	cfg_Y+ 70 + num_ligne_visu * 20, 375, RIGHT);
+        neuromoyen.Print(hk_manager.c_catlist[num_ligne].signature().wording(),				cfg_X+ 555,	cfg_Y+ 70 + num_ligne_visu * 20);
 
     }
     //Canvas::DisableClipping();
@@ -465,6 +465,9 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
                 }
                 index_active_tab_config_hotkeys[tab_idx]=true;
                 config_hotkeys_active_tab_id=tab_idx;
+
+                num_page_list_hotkeys=0; // la liste va être rechargée
+                hk_manager.updateFilter(tab_idx); // recharge la liste pour l'affichage des fonctions de la catégorie choisie
             }
             mouseClicLeft.SetProcessed();
         }

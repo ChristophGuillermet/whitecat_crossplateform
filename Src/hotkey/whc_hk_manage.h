@@ -51,6 +51,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 // gestion de base de données désactivée #include <sqlite3.h>
 //
 #include <whc_hk_input.h>
@@ -65,7 +66,8 @@ class whc_hk_manage
 
 public:
     int static c_nbr;
-    std::vector<whc_hk_manage> static c_list;
+    std::vector<whc_hk_manage> static c_list;		/**<  liste de toutes les fonctions avec leurs hotkeys associées */
+    std::vector<whc_hk_manage> static c_catlist;  	/**<  liste limitée à la catégorie sélectionnée */
     whc_hk_input static c_user_signature ;
 
     bool static * c_inputIsOn; // (variable associée par référence de la variable externe) la zone de saisie texte est ouverte : elle est prioritaire
@@ -146,6 +148,8 @@ public:
 
     int collect();
     void user_start_update_link(int val);
+
+    void updateFilter(int tab_idx);
 
     int shortcutprocess(int isreadkey);
     whc_hk_apply search_fct(whc_hk_input signature);
