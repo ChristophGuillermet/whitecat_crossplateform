@@ -16,6 +16,9 @@ build/
 # ignore folders
 DEVKIT/
 doc_ol/
+docAPIwhitecat/html
+docAPIwhitecat/latex
+docAPIwhitecat/xml
 
 # Compiled Object files
 *.slo
