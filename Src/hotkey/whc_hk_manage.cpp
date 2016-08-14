@@ -13,6 +13,7 @@ whc_hk_apply whc_hk_manage::c_user_other_func_allready_link_to_hotkey;
 whc_hk_input whc_hk_manage::c_user_signature ;
 bool* whc_hk_manage::c_inputIsOn;
 bool whc_hk_manage::c_hk_service_isInit=false;
+int whc_hk_manage::c_filter_idx=0;
 
 // objet non terminé whc_report whc_hk_manage::c_report;
 
@@ -118,6 +119,7 @@ int whc_hk_manage::collect()
                     {
                         link_fct_hk(c_hk_user_hasSelect_applyId,c_user_signature);
                         user_redefine_hk_link_init() ;
+                        updateFilter(c_filter_idx);
                         c_hk_user_madeChanges=true;   // pour faire apparaître le save button
                     }
                     else   //la hotkey choisie par l'ulisateur est déjà associée à une autre fonction : demander confirmation de l'association
@@ -468,6 +470,7 @@ int whc_hk_manage::read_db_row(void *NotUsed, int row_nbr_col, char **row_data_c
 void whc_hk_manage::updateFilter(int tab_idx)
 {
 	c_catlist.clear();
+	c_filter_idx=tab_idx;
 
 	int nbr_category = 6;
     std::vector <char*> filter (nbr_category);
@@ -478,26 +481,24 @@ void whc_hk_manage::updateFilter(int tab_idx)
     filter[4]= "Patch";
     filter[5]= "VideoTracking";
 
+    if(not(c_filter_idx<nbr_category)){c_filter_idx=0;}
+
     int idx_back = c_list.size();
-
-	if (tab_idx<nbr_category)
+	while (idx_back>0)
 	{
-		while (idx_back>0)
-		{
-			idx_back--;
-			whc_hk_manage* hotkey ;
-			hotkey = &whc_hk_manage::c_list[idx_back] ;
-			whc_hk_apply fonctionality ;
-			fonctionality = hotkey->fonctionality() ;
+		idx_back--;
+		whc_hk_manage* hotkey ;
+		hotkey = &whc_hk_manage::c_list[idx_back] ;
+		whc_hk_apply fonctionality ;
+		fonctionality = hotkey->fonctionality() ;
 
-			if (fonctionality.module()==filter[tab_idx])
-			{
-				c_catlist.push_back(c_list[idx_back]);
-			}
-		}
-		if (c_catlist.size()>0)
+		if (fonctionality.module()==filter[c_filter_idx])
 		{
-			std::reverse(c_catlist.begin(),c_catlist.end());
+			c_catlist.push_back(c_list[idx_back]);
 		}
+	}
+	if (c_catlist.size()>0)
+	{
+		std::reverse(c_catlist.begin(),c_catlist.end());
 	}
 }

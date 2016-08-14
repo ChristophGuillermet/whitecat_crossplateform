@@ -175,6 +175,7 @@ private:
     bool static c_hk_user_update_isOn ; // on lit pour mettre à jour un lien : ne rien déclencher en attendant confirmation ou ESC
     bool static c_hk_user_hasToConfirmChoice ; // on demande confirmation, si signature déjà attribuée à une autre fonction
     int static c_hk_user_hasSelect_applyId ; // fonctionality->id() = l'utilisateur a sélectionné une fonction pour lui associer une nouvelle hotkey
+    int static c_filter_idx;
 };
 
 #endif // WHC_HK_MANAGE_H
