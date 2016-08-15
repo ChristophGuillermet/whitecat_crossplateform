@@ -470,9 +470,12 @@ int whc_hk_manage::read_db_row(void *NotUsed, int row_nbr_col, char **row_data_c
 void whc_hk_manage::updateFilter(int tab_idx)
 {
 	c_catlist.clear();
-	c_filter_idx=tab_idx;
-
-	int nbr_category = 7;
+	c_filter_idx = tab_idx;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	int nbr_category = 7;  				// <-- !!! à mettre à jour = dénombrement vrai
+										// idem pour nbr_tab_config_hotkeys
+										// TODO : variable de classe c_hk_nbr_category + accès pour initialiser nbr_tab_config_hotkeys=hk_manager.category_nbr()
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     std::vector <char*> filter (nbr_category);
     filter[0]= "Global functions";
     filter[1]= "Transverse commands";
