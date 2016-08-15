@@ -217,18 +217,24 @@
 		<Unit filename="../Src/gui_boutons_rebuild1.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="../Src/hotkey/hotkey_global.cpp">
+		<Unit filename="../Src/hotkey/hotkey_config_tab.cpp">
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="../Src/hotkey/hotkey_global.h">
+		<Unit filename="../Src/hotkey/hotkey_config_tab.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../Src/hotkey/hotkey_triggers.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../Src/hotkey/hotkey_triggers.h">
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="../Src/hotkey/whc_hk_apply.cpp" />
 		<Unit filename="../Src/hotkey/whc_hk_apply.h" />
 		<Unit filename="../Src/hotkey/whc_hk_input.cpp" />
 		<Unit filename="../Src/hotkey/whc_hk_input.h" />
-		<Unit filename="../Src/hotkey/whc_hotkey.cpp" />
-		<Unit filename="../Src/hotkey/whc_hotkey.h" />
+		<Unit filename="../Src/hotkey/whc_hk_manage.cpp" />
+		<Unit filename="../Src/hotkey/whc_hk_manage.h" />
 		<Unit filename="../Src/iCat14.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

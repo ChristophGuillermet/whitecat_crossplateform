@@ -45,6 +45,7 @@ void loadfile_config_hotkey(std::string file_name)
 {
     hk_manager.init(file_name) ;
 }
+
 void save_config_hotkey()
 {
     whc_toolbox tool;
@@ -53,6 +54,7 @@ void save_config_hotkey()
 
     hk_manager.save(user_file);
 }
+
 void replace_config_hotkey()
 {
     hk_manager.replace_link_fct_hk();
@@ -64,7 +66,6 @@ void hotkey_esc_button_press()
     hk_manager.reset_user_choice();
     simulate_keypress(KEY_ESC);
 }
-
 
 void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int button_hight, int text_to_border_X, int text_to_border_Y, std::string button_label, bool hasfocus)
 {
@@ -139,7 +140,6 @@ void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int 
         }
     }
 }
-
 
 void draw_logical_hotkey_config_inactive (int cfg_X,int cfg_Y )
 {
@@ -416,17 +416,22 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
     libelle_tab_config_hotkeys[3]= "CueList";
     libelle_tab_config_hotkeys[4]= "Patch";
     libelle_tab_config_hotkeys[5]= "Video";
+    libelle_tab_config_hotkeys[6]= "Banger";
 
     int largeur_onglet = 200 ;
     //int largeur_espace_entre_onglet= 0;
 
-    int hauteur_onglet = 40 ;
+    //Variables globales : largeurCFGwindow, hauteurCFGwindow
+
+    int hauteur_onglet(floor(hauteurCFGwindow/(nbr_tab_config_hotkeys -1)));
+    hauteur_onglet = hauteur_onglet - 10;
     int hauteur_espace_entre_onglet = 0;
 
     int largeur_espace_onglet_au_bord = 8;
     int hauteur_espace_onglet_au_bord = 8;
+    int hauteur_font = 12 ;
     int largeur_texte_au_bord  = 5;
-    int hauteur_texte_au_bord  = 5;
+    int hauteur_texte_au_bord  = (hauteur_onglet / 2) + (hauteur_font / 2) ;
 
     for (int tab_idx=0; tab_idx<nbr_tab_config_hotkeys; tab_idx++)
     {
@@ -474,7 +479,7 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
         }
         neuromoyen.Print(libelle_tab_config_hotkeys[tab_idx],
                          cfg_X + largeur_espace_onglet_au_bord + largeur_texte_au_bord,
-                         cfg_Y + hauteur_espace_onglet_au_bord + hauteur_texte_au_bord - (hauteur_onglet/2) + (tab_idx+1) * (hauteur_onglet + hauteur_espace_entre_onglet));
+                         cfg_Y + hauteur_espace_onglet_au_bord + hauteur_texte_au_bord + (tab_idx) * (hauteur_onglet + hauteur_espace_entre_onglet));
 
     }
 
@@ -488,10 +493,10 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
     Cadre_List.DrawOutline(CouleurLigne);//CouleurBlind
     Cadre_List.Draw(CouleurConfig.WithAlpha(1));
 //pour effacer la ligne entre le cadre et l'onglet actif
-    Rect Cadre_Select(Vec2D ( cfg_X + largeur_espace_onglet_au_bord + (largeur_onglet/2),
-                              cfg_Y + hauteur_espace_onglet_au_bord + (epaisseur_ligne_fader/2) + config_hotkeys_active_tab_id * (hauteur_onglet + hauteur_espace_entre_onglet)),
-                      Vec2D ( (largeur_onglet/2), hauteur_onglet    - epaisseur_ligne_fader));
-    Cadre_Select.Draw(CouleurConfig.WithAlpha(1));
+    Rect CleanLine( Vec2D ( cfg_X + largeur_espace_onglet_au_bord + (largeur_onglet/2),
+							cfg_Y + hauteur_espace_onglet_au_bord + config_hotkeys_active_tab_id * (hauteur_onglet + hauteur_espace_entre_onglet)),
+					Vec2D ( largeur_onglet, hauteur_onglet - epaisseur_ligne_fader/2 ) );
+    CleanLine.Draw(CouleurConfig.WithAlpha(1));
 }
 
 void do_hotkey_config (int cfg_X,int cfg_Y)

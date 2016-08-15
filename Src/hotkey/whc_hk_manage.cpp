@@ -472,7 +472,7 @@ void whc_hk_manage::updateFilter(int tab_idx)
 	c_catlist.clear();
 	c_filter_idx=tab_idx;
 
-	int nbr_category = 6;
+	int nbr_category = 7;
     std::vector <char*> filter (nbr_category);
     filter[0]= "Global functions";
     filter[1]= "Transverse commands";
@@ -480,6 +480,7 @@ void whc_hk_manage::updateFilter(int tab_idx)
     filter[3]= "CueList and memories";
     filter[4]= "Patch";
     filter[5]= "VideoTracking";
+    filter[6]= "Bangers";
 
     if(not(c_filter_idx<nbr_category)){c_filter_idx=0;}
 

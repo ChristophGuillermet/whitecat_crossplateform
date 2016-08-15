@@ -44,9 +44,9 @@ WWWWWWWW           C  WWWWWWWW   |
 #ifndef HOTKEY_CONFIG_TAB_H
 #define HOTKEY_CONFIG_TAB_H
 
-    int nbr_tab_config_hotkeys = 6;												/**< nombre de onglets latéraux dans le panneau de configuration des hotkeys */
+    int nbr_tab_config_hotkeys = 7;												/**< nombre de onglets latéraux dans le panneau de configuration des hotkeys */
     int config_hotkeys_active_tab_id = 0;										/**< parmi les onglets latéraux sur lequel travaillons nous actuellement */
-	bool index_active_tab_config_hotkeys[6]; 									/**< état d'activité de chaque onglet latéral dans le panneau de configuration des hotkeys */
+	bool index_active_tab_config_hotkeys[7]; 									/**< état d'activité de chaque onglet latéral dans le panneau de configuration des hotkeys */
     std::vector <char*> libelle_tab_config_hotkeys (nbr_tab_config_hotkeys);   	/**< libellé des onglets latéraux = nom des catégories dans le fichier */
     int num_page_list_hotkeys=0;
 

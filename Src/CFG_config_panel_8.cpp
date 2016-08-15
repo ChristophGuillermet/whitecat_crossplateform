@@ -1606,16 +1606,17 @@ int do_panel_config(int cfg_X,int cfg_Y)
 // ici : - REECRITURE DES ONGLETS DE L'ECRAN DE CONFIGURATION POUR AJOUTER PLUS RAPIDEMENT UN NOUVEL ONGLET          ///////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-bool mouseOverTab_W_CFGMENU(int tabNum, int mysetupx, int largeur_onglet, int largeur_onglet_visu)
+bool mouseOverTab_W_CFGMENU(int tabNum, int espace_au_bord_X, int espace_entre_onglet, int largeur_onglet, int hauteur_onglet, int espace_au_bord_Y)
 {
-    int espace_depuis_bord_fenetre = 5 ;
-    int hauteur_onglet = 40 ;
+//    int espace_au_bord_Y = 5 ;
+//    int hauteur_onglet = 40 ;
+    int onglet_zone_X = espace_entre_onglet + largeur_onglet;
 
     return  (window_focus_id==W_CFGMENU
-			&& mouse_x > (mysetupx + tabNum * largeur_onglet)
-			&& mouse_x < (mysetupx + tabNum * largeur_onglet + largeur_onglet_visu)
-			&& mouse_y > (window_cfgY + espace_depuis_bord_fenetre)
-			&& mouse_y < (window_cfgY + espace_depuis_bord_fenetre + hauteur_onglet) );
+			&& mouse_x > (espace_au_bord_X + tabNum * onglet_zone_X)
+			&& mouse_x < (espace_au_bord_X + tabNum * onglet_zone_X + largeur_onglet)
+			&& mouse_y > (window_cfgY + espace_au_bord_Y)
+			&& mouse_y < (window_cfgY + espace_au_bord_Y + hauteur_onglet) );
 }
 
 int config_general_menu()
@@ -1635,7 +1636,7 @@ int config_general_menu()
         CadreGeneralConfig.DrawOutline(CouleurLigne);
     }
 
-    //Dessine les onglets de la fenêtre de configuration et détecte si l'on a cliqué sur l'un d'eux
+    // Groupe d'onglets
     int nbr_onglets = 8; // sab 12/08/2016 :  nbr_onglets (7 -> 8)
     std::vector <char*> onglet_libelle (nbr_onglets);
     onglet_libelle[0]= "DMX cfg";
@@ -1645,32 +1646,47 @@ int config_general_menu()
     onglet_libelle[4]= "Arduino";
     onglet_libelle[5]= "GENERAL";
     onglet_libelle[6]= "Core cfg";
-    onglet_libelle[7]= "Hot keys";
+    onglet_libelle[7]= "Hotkeys";
 
-    int largeur_onglet = int(740 / nbr_onglets) ;
-    int largeur_onglet_visu = largeur_onglet -10;
+    int grp_tab_espace_bord_left_X  = 90;
+    int grp_tab_espace_bord_right_X = 10;
+    int grp_tab_espace_bord_top_Y   = 5;
 
+    //Dessine les onglets de la fenêtre de configuration et détecte si l'on a cliqué sur l'un d'eux
+	int grp_tab_largeur 	= largeurCFGwindow - grp_tab_espace_bord_left_X - grp_tab_espace_bord_right_X;
+	//
+    int zone_onglet_largeur(floor(grp_tab_largeur / nbr_onglets)) ;  // floor --> arrondi inférieur ; ceil--> arrondi supérieur
+    int espace_entre_onglet = 10 ;
+    //
+    int onglet_largeur 		= zone_onglet_largeur - espace_entre_onglet;
+    int onglet_hauteur		= 40 ;
+	//
+    int grp_tab_X 			= window_cfgX + zone_onglet_largeur;  //position X sur l'écran  du groupe d'onglets
+	//
+	int espace_bord_txt_X 	= 5; //position du texte par rapport au bord ue l'onglet
+	int espace_bord_txt_Y   = 25 ;
 
-    int mysetupx=window_cfgX+largeur_onglet;
-
-    for (int choix=0; choix<nbr_onglets; choix++)
+    for (int choix=0; choix < nbr_onglets ; choix++)
     {
-        Rect MySetup(Vec2D( mysetupx+(choix*largeur_onglet), window_cfgY+5),Vec2D(largeur_onglet_visu,40));
-        MySetup.SetRoundness(7.5);
-        MySetup.Draw(CouleurBleuProcedure.WithAlpha(0.8));
-
+        Rect CadreOnglet(Vec2D( grp_tab_X+(choix * zone_onglet_largeur),
+								window_cfgY + grp_tab_espace_bord_top_Y),
+						 Vec2D( onglet_largeur, onglet_hauteur));
+        CadreOnglet.SetRoundness(7.5);
+        CadreOnglet.Draw(CouleurBleuProcedure.WithAlpha(0.8));
+		//
         if(config_page_is==choix+1)
         {
-            MySetup.SetLineWidth(epaisseur_ligne_fader/2);
-            MySetup.DrawOutline(CouleurLigne);//CouleurBlind
-            MySetup.Draw(CouleurConfig.WithAlpha(1)); //CouleurBleuProcedureDefaut
+            CadreOnglet.SetLineWidth(epaisseur_ligne_fader/2);
+            CadreOnglet.DrawOutline(CouleurLigne);
+            CadreOnglet.Draw(CouleurConfig.WithAlpha(1));
         }
-        if((hk_manager.hk_user_update_isOn()!=true) && // pas de mouse effect si en attente de saisie d'une hotkey pou redefinir le lien avec une fonction
-                mouseOverTab_W_CFGMENU(choix, mysetupx, largeur_onglet, largeur_onglet_visu))
+        // Logical
+        if((hk_manager.hk_user_update_isOn()!=true)  // pas de mouse effect si en attente de saisie d'une hotkey pou redefinir le lien avec une fonction
+			&& mouseOverTab_W_CFGMENU(choix, grp_tab_X, espace_entre_onglet, onglet_largeur, onglet_hauteur, grp_tab_espace_bord_top_Y))
         {
             if(config_page_is!=choix+1)
             {
-                MySetup.Draw(CouleurSurvol);
+                CadreOnglet.Draw(CouleurSurvol);
             }
 
             if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==W_CFGMENU)
@@ -1708,20 +1724,27 @@ int config_general_menu()
                 mouseClicLeft.SetProcessed();
             }
         }
-        neuromoyen.Print(onglet_libelle[choix],mysetupx+(choix*largeur_onglet)+5,window_cfgY+30);
+        neuromoyen.Print(onglet_libelle[choix],
+						 grp_tab_X + (choix*zone_onglet_largeur) + espace_bord_txt_X,
+						 window_cfgY + grp_tab_espace_bord_top_Y + espace_bord_txt_Y,
+						 onglet_largeur - 2 * espace_bord_txt_X,	//espace dispo en largeur pour le texte
+						 CENTER);
     }
 
     //fond panneau de l'onglet
-    Rect ConfigPanel(Vec2D(window_cfgX,  window_cfgY+40), Vec2D( largeurCFGwindow,hauteurCFGwindow));
+    Rect ConfigPanel(Vec2D( window_cfgX, window_cfgY + onglet_hauteur), 			//recouvre le bas des onglets
+					 Vec2D( largeurCFGwindow, hauteurCFGwindow));
     ConfigPanel.SetRoundness(15);
     ConfigPanel.Draw(CouleurConfig);
     ConfigPanel.DrawOutline(CouleurLigne);
     //efface ligne entre onglet actif et son panneau
-    Rect MySetup_clean(Vec2D( mysetupx+((config_page_is-1)*largeur_onglet), window_cfgY+40-epaisseur_ligne_fader),Vec2D(largeur_onglet_visu,epaisseur_ligne_fader*4));
-    MySetup_clean.Draw(CouleurBleuProcedure.WithAlpha(1));
-    MySetup_clean.Draw(CouleurConfig.WithAlpha(1)); //CouleurBleuProcedureDefaut
+    Rect CleanLine( Vec2D( 	grp_tab_X + ((config_page_is-1) * zone_onglet_largeur),
+								window_cfgY + onglet_hauteur - epaisseur_ligne_fader),
+						Vec2D(  onglet_largeur, epaisseur_ligne_fader * 4 ));
+    CleanLine.Draw(CouleurBleuProcedure.WithAlpha(1));
+    CleanLine.Draw(CouleurConfig.WithAlpha(1));
 
-    do_panel_config(window_cfgX,window_cfgY+40);
+    do_panel_config(window_cfgX, window_cfgY + onglet_hauteur);
 
     return(0);
 }
