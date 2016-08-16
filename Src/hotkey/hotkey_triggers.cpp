@@ -43,6 +43,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include "hotkey_triggers.h"
 #include "whc_toolbox.h"
 #include <windows.h>
+#include <iostream>
 
 void hk_trigger_01_save() //01 Sauvegarde générale - Quick save
 {
@@ -360,7 +361,7 @@ void hk_trigger_26_selectedAllChannels() //26;Channels;selected all channels;0;0
 {
 	//key_select_all();
 	//index_ask_confirm=true;
-	cout << "fonction de trigger pas encore traitée : hk_trigger_34_Check_Channel_left " << endl;
+	std::cout << "fonction de trigger pas encore traitée : hk_trigger_34_Check_Channel_left " << std::endl;
 
 }
 
@@ -402,1497 +403,1497 @@ void hk_trigger_33_minusPercentForTheSelection() //33;Channels;minus % (for the 
 //
 void hk_trigger_34_Check_Channel_left()     //34;Channels;Check Channel left;0;1;0;82;[CTRL]+[<-]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_34_Check_Channel_left " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_34_Check_Channel_left " << std::endl;
 }
 //
 void hk_trigger_35_Check_Channel_right()     //35;Channels;Check Channel right;0;1;0;83;[CTRL]+[->]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_35_Check_Channel_right " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_35_Check_Channel_right " << std::endl;
 }
 //
 void hk_trigger_36_Copy_to_the_Clipboard_Select_channels()     //36;Channels;Copy to the Clipboard Select channels;0;1;0;3;[CTRL]+[C]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_36_Copy_to_the_Clipboard_Select_channels " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_36_Copy_to_the_Clipboard_Select_channels " << std::endl;
 }
 //
 void hk_trigger_37_Paste_channels_from_clipboard()     //37;Channels;Paste channels from clipboard;0;1;0;22;[CTRL]+[V]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_37_Paste_channels_from_clipboard " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_37_Paste_channels_from_clipboard " << std::endl;
 }
 //
 void hk_trigger_38_Get_Import_channels_from_a_memory()     //38;Channels;Get (Import channels from a memory);0;1;0;7;[CTRL]+[G]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_38_Get_Import_channels_from_a_memory " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_38_Get_Import_channels_from_a_memory " << std::endl;
 }
 //
 void hk_trigger_39_Memory_recording_deleting___Create_or_over_record_a_memory_number()     //39;CueList and memories;Memory recording/deleting - Create or over record a memory number;1;0;0;47;[SHIFT]+[F1]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_39_Memory_recording_deleting___Create_or_over_record_a_memory_number " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_39_Memory_recording_deleting___Create_or_over_record_a_memory_number " << std::endl;
 }
 //
 void hk_trigger_40_Memory_recording_deleting___Create_memory_adding_the_faders()     //40;CueList and memories;Memory recording/deleting - Create memory adding the faders;1;0;0;49;[SHIFT]+[F3]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_40_Memory_recording_deleting___Create_memory_adding_the_faders " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_40_Memory_recording_deleting___Create_memory_adding_the_faders " << std::endl;
 }
 //
 void hk_trigger_41_Memory_recording_deleting___Delete_memory()     //41;CueList and memories;Memory recording/deleting - Delete memory;1;0;0;77;[SHIFT]+[F3]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_41_Memory_recording_deleting___Delete_memory " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_41_Memory_recording_deleting___Delete_memory " << std::endl;
 }
 //
 void hk_trigger_42_Memory_recording_deleting___Over_record_on_stage_or_blind()     //42;CueList and memories;Memory recording/deleting - Over record on stage or blind;0;1;0;47;[CTRL]+[F1]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_42_Memory_recording_deleting___Over_record_on_stage_or_blind " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_42_Memory_recording_deleting___Over_record_on_stage_or_blind " << std::endl;
 }
 //
 void hk_trigger_43_Memory_recording_deleting___Over_record_on_stage_or_blind_with_faders()     //43;CueList and memories;Memory recording/deleting - Over record on stage or blind with faders;0;1;0;49;[CTRL]+[F3]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_43_Memory_recording_deleting___Over_record_on_stage_or_blind_with_faders " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_43_Memory_recording_deleting___Over_record_on_stage_or_blind_with_faders " << std::endl;
 }
 //
 void hk_trigger_44_Memory_recording_deleting___Reload_a_memory()     //44;CueList and memories;Memory recording/deleting - Reload a memory;0;1;0;23;[CTRL]+[Z]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_44_Memory_recording_deleting___Reload_a_memory " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_44_Memory_recording_deleting___Reload_a_memory " << std::endl;
 }
 //
 void hk_trigger_45_Memory_recording_deleting___Reload_a_deleted_mem()     //45;CueList and memories;Memory recording/deleting - Reload a deleted mem;1;0;0;23;[SHIFT]+[Z]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_45_Memory_recording_deleting___Reload_a_deleted_mem " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_45_Memory_recording_deleting___Reload_a_deleted_mem " << std::endl;
 }
 //
 void hk_trigger_46_GET_level_of_selected_channels_from_memory()     //46;CueList and memories;GET level of selected channels from memory;0;1;0;7;[CTRL]+[G]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_46_GET_level_of_selected_channels_from_memory " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_46_GET_level_of_selected_channels_from_memory " << std::endl;
 }
 //
 void hk_trigger_47_Navigating_thru_memories___Previous_mem_on_stage()     //47;CueList and memories;Navigating thru memories - Previous mem on stage;0;1;0;26;[CTRL]+[W]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_47_Navigating_thru_memories___Previous_mem_on_stage " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_47_Navigating_thru_memories___Previous_mem_on_stage " << std::endl;
 }
 //
 void hk_trigger_48_Navigating_thru_memories___Next_mem_on_stage()     //48;CueList and memories;Navigating thru memories - Next mem on stage;0;1;0;24;[CTRL]+[X]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_48_Navigating_thru_memories___Next_mem_on_stage " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_48_Navigating_thru_memories___Next_mem_on_stage " << std::endl;
 }
 //
 void hk_trigger_49_Navigating_thru_memories___Previous_mem_on_preset()     //49;CueList and memories;Navigating thru memories - Previous mem on preset;1;0;0;26;[SHIFT]+[W]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_49_Navigating_thru_memories___Previous_mem_on_preset " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_49_Navigating_thru_memories___Previous_mem_on_preset " << std::endl;
 }
 //
 void hk_trigger_50_Navigating_thru_memories___Next_mem_on_preset()     //50;CueList and memories;Navigating thru memories - Next mem on preset;1;0;0;24;[SHIFT]+[X]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_50_Navigating_thru_memories___Next_mem_on_preset " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_50_Navigating_thru_memories___Next_mem_on_preset " << std::endl;
 }
 //
 void hk_trigger_51_Crossfade_GO_PAUSE()     //51;CueList and memories;Crossfade GO/PAUSE;0;0;0;75;[SPACE]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_51_Crossfade_GO_PAUSE " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_51_Crossfade_GO_PAUSE " << std::endl;
 }
 //
 void hk_trigger_52_Crossfade_GO_BACK()     //52;CueList and memories;Crossfade GO BACK;0;1;0;75;[CTRL]+[SPACE]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_52_Crossfade_GO_BACK " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_52_Crossfade_GO_BACK " << std::endl;
 }
 //
 void hk_trigger_53_Crossfade_DOUBLE_GO()     //53;CueList and memories;Crossfade DOUBLE GO;1;0;0;75;[SHIFT]+[SPACE]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_53_Crossfade_DOUBLE_GO " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_53_Crossfade_DOUBLE_GO " << std::endl;
 }
 //
 void hk_trigger_54_Patch()     //54;Transverse commands;Patch;1;0;0;16;[SHIFT]+[P]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_54_Patch " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_54_Patch " << std::endl;
 }
 //
 void hk_trigger_55_Numpad()     //55;Transverse commands;Numpad;0;0;0;16;[P]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_55_Numpad " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_55_Numpad " << std::endl;
 }
 //
 void hk_trigger_56_Dimmers_selection___select_all_dimmers()     //56;Patch;Dimmers selection - select all dimmers;1;0;0;25;[SHIFT]+[Y]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_56_Dimmers_selection___select_all_dimmers " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_56_Dimmers_selection___select_all_dimmers " << std::endl;
 }
 //
 void hk_trigger_57_Dimmers_selection___unselect_all_dimmers()     //57;Patch;Dimmers selection - unselect all dimmers;1;0;0;21;[SHIFT]+[U]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_57_Dimmers_selection___unselect_all_dimmers " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_57_Dimmers_selection___unselect_all_dimmers " << std::endl;
 }
 //
 void hk_trigger_58_Check_Dimmer___left()     //58;Patch;Check Dimmer - (left);1;0;0;82;[SHIFT]+[<-]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_58_Check_Dimmer___left " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_58_Check_Dimmer___left " << std::endl;
 }
 //
 void hk_trigger_59_Check_Dimmer___right()     //59;Patch;Check Dimmer - (right);1;0;0;83;[SHIFT]+[->]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_59_Check_Dimmer___right " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_59_Check_Dimmer___right " << std::endl;
 }
 //
 void hk_trigger_60_Select_Presets_1()     //60;VideoTracking;Select Presets 1;0;0;0;26;[W]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_60_Select_Presets_1 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_60_Select_Presets_1 " << std::endl;
 }
 //
 void hk_trigger_61_Select_Presets_2()     //61;VideoTracking;Select Presets 2;0;0;0;24;[X]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_61_Select_Presets_2 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_61_Select_Presets_2 " << std::endl;
 }
 //
 void hk_trigger_62_Select_Presets_3()     //62;VideoTracking;Select Presets 3;0;0;0;3;[C]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_62_Select_Presets_3 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_62_Select_Presets_3 " << std::endl;
 }
 //
 void hk_trigger_63_Select_Presets_4()     //63;VideoTracking;Select Presets 4;0;0;0;22;[V]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_63_Select_Presets_4 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_63_Select_Presets_4 " << std::endl;
 }
 //
 void hk_trigger_64_Select_Presets_5()     //64;VideoTracking;Select Presets 5;0;0;0;2;[B]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_64_Select_Presets_5 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_64_Select_Presets_5 " << std::endl;
 }
 //
 void hk_trigger_65_Select_Presets_6()     //65;VideoTracking;Select Presets 6;0;0;0;14;[N]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_65_Select_Presets_6 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_65_Select_Presets_6 " << std::endl;
 }
 //
 void hk_trigger_66_Select_roi_1()     //66;VideoTracking;Select roi 1;0;0;0;17;[A]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_66_Select_roi_1 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_66_Select_roi_1 " << std::endl;
 }
 //
 void hk_trigger_67_Select_roi_2()     //67;VideoTracking;Select roi 2;0;0;0;23;[Z]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_67_Select_roi_2 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_67_Select_roi_2 " << std::endl;
 }
 //
 void hk_trigger_68_Select_roi_3()     //68;VideoTracking;Select roi 3;0;0;0;5;[E]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_68_Select_roi_3 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_68_Select_roi_3 " << std::endl;
 }
 //
 void hk_trigger_69_Select_roi_4()     //69;VideoTracking;Select roi 4;0;0;0;18;[R]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_69_Select_roi_4 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_69_Select_roi_4 " << std::endl;
 }
 //
 void hk_trigger_70_Select_roi_5()     //70;VideoTracking;Select roi 5;0;0;0;20;[T]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_70_Select_roi_5 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_70_Select_roi_5 " << std::endl;
 }
 //
 void hk_trigger_71_Select_roi_6()     //71;VideoTracking;Select roi 6;0;0;0;25;[Y]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_71_Select_roi_6 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_71_Select_roi_6 " << std::endl;
 }
 //
 void hk_trigger_72_Select_roi_7()     //72;VideoTracking;Select roi 7;0;0;0;1;[Q]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_72_Select_roi_7 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_72_Select_roi_7 " << std::endl;
 }
 //
 void hk_trigger_73_Select_roi_8()     //73;VideoTracking;Select roi 8;0;0;0;19;[S]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_73_Select_roi_8 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_73_Select_roi_8 " << std::endl;
 }
 //
 void hk_trigger_74_Select_roi_9()     //74;VideoTracking;Select roi 9;0;0;0;4;[D]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_74_Select_roi_9 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_74_Select_roi_9 " << std::endl;
 }
 //
 void hk_trigger_75_Select_roi_10()     //75;VideoTracking;Select roi 10;0;0;0;6;[F]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_75_Select_roi_10 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_75_Select_roi_10 " << std::endl;
 }
 //
 void hk_trigger_76_Select_roi_11()     //76;VideoTracking;Select roi 11;0;0;0;7;[G]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_76_Select_roi_11 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_76_Select_roi_11 " << std::endl;
 }
 //
 void hk_trigger_77_Select_roi_12()     //77;VideoTracking;Select roi 12;0;0;0;8;[H]
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_77_Select_roi_12 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_77_Select_roi_12 " << std::endl;
 }
 //
 void hk_trigger_78_Bang_01()     //78;Bangers;Bang 01;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_78_Bang_01 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_78_Bang_01 " << std::endl;
 }
 //
 void hk_trigger_79_Bang_02()     //79;Bangers;Bang 02;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_79_Bang_02 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_79_Bang_02 " << std::endl;
 }
 //
 void hk_trigger_80_Bang_03()     //80;Bangers;Bang 03;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_80_Bang_03 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_80_Bang_03 " << std::endl;
 }
 //
 void hk_trigger_81_Bang_04()     //81;Bangers;Bang 04;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_81_Bang_04 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_81_Bang_04 " << std::endl;
 }
 //
 void hk_trigger_82_Bang_05()     //82;Bangers;Bang 05;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_82_Bang_05 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_82_Bang_05 " << std::endl;
 }
 //
 void hk_trigger_83_Bang_06()     //83;Bangers;Bang 06;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_83_Bang_06 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_83_Bang_06 " << std::endl;
 }
 //
 void hk_trigger_84_Bang_07()     //84;Bangers;Bang 07;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_84_Bang_07 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_84_Bang_07 " << std::endl;
 }
 //
 void hk_trigger_85_Bang_08()     //85;Bangers;Bang 08;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_85_Bang_08 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_85_Bang_08 " << std::endl;
 }
 //
 void hk_trigger_86_Bang_09()     //86;Bangers;Bang 09;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_86_Bang_09 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_86_Bang_09 " << std::endl;
 }
 //
 void hk_trigger_87_Bang_10()     //87;Bangers;Bang 10;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_87_Bang_10 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_87_Bang_10 " << std::endl;
 }
 //
 void hk_trigger_88_Bang_11()     //88;Bangers;Bang 11;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_88_Bang_11 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_88_Bang_11 " << std::endl;
 }
 //
 void hk_trigger_89_Bang_12()     //89;Bangers;Bang 12;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_89_Bang_12 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_89_Bang_12 " << std::endl;
 }
 //
 void hk_trigger_90_Bang_13()     //90;Bangers;Bang 13;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_90_Bang_13 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_90_Bang_13 " << std::endl;
 }
 //
 void hk_trigger_91_Bang_14()     //91;Bangers;Bang 14;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_91_Bang_14 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_91_Bang_14 " << std::endl;
 }
 //
 void hk_trigger_92_Bang_15()     //92;Bangers;Bang 15;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_92_Bang_15 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_92_Bang_15 " << std::endl;
 }
 //
 void hk_trigger_93_Bang_16()     //93;Bangers;Bang 16;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_93_Bang_16 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_93_Bang_16 " << std::endl;
 }
 //
 void hk_trigger_94_Bang_17()     //94;Bangers;Bang 17;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_94_Bang_17 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_94_Bang_17 " << std::endl;
 }
 //
 void hk_trigger_95_Bang_18()     //95;Bangers;Bang 18;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_95_Bang_18 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_95_Bang_18 " << std::endl;
 }
 //
 void hk_trigger_96_Bang_19()     //96;Bangers;Bang 19;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_96_Bang_19 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_96_Bang_19 " << std::endl;
 }
 //
 void hk_trigger_97_Bang_20()     //97;Bangers;Bang 20;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_97_Bang_20 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_97_Bang_20 " << std::endl;
 }
 //
 void hk_trigger_98_Bang_21()     //98;Bangers;Bang 21;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_98_Bang_21 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_98_Bang_21 " << std::endl;
 }
 //
 void hk_trigger_99_Bang_22()     //99;Bangers;Bang 22;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_99_Bang_22 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_99_Bang_22 " << std::endl;
 }
 //
 void hk_trigger_100_Bang_23()     //100;Bangers;Bang 23;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_100_Bang_23 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_100_Bang_23 " << std::endl;
 }
 //
 void hk_trigger_101_Bang_24()     //101;Bangers;Bang 24;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_101_Bang_24 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_101_Bang_24 " << std::endl;
 }
 //
 void hk_trigger_102_Bang_25()     //102;Bangers;Bang 25;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_102_Bang_25 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_102_Bang_25 " << std::endl;
 }
 //
 void hk_trigger_103_Bang_26()     //103;Bangers;Bang 26;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_103_Bang_26 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_103_Bang_26 " << std::endl;
 }
 //
 void hk_trigger_104_Bang_27()     //104;Bangers;Bang 27;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_104_Bang_27 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_104_Bang_27 " << std::endl;
 }
 //
 void hk_trigger_105_Bang_28()     //105;Bangers;Bang 28;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_105_Bang_28 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_105_Bang_28 " << std::endl;
 }
 //
 void hk_trigger_106_Bang_29()     //106;Bangers;Bang 29;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_106_Bang_29 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_106_Bang_29 " << std::endl;
 }
 //
 void hk_trigger_107_Bang_30()     //107;Bangers;Bang 30;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_107_Bang_30 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_107_Bang_30 " << std::endl;
 }
 //
 void hk_trigger_108_Bang_31()     //108;Bangers;Bang 31;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_108_Bang_31 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_108_Bang_31 " << std::endl;
 }
 //
 void hk_trigger_109_Bang_32()     //109;Bangers;Bang 32;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_109_Bang_32 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_109_Bang_32 " << std::endl;
 }
 //
 void hk_trigger_110_Bang_33()     //110;Bangers;Bang 33;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_110_Bang_33 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_110_Bang_33 " << std::endl;
 }
 //
 void hk_trigger_111_Bang_34()     //111;Bangers;Bang 34;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_111_Bang_34 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_111_Bang_34 " << std::endl;
 }
 //
 void hk_trigger_112_Bang_35()     //112;Bangers;Bang 35;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_112_Bang_35 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_112_Bang_35 " << std::endl;
 }
 //
 void hk_trigger_113_Bang_36()     //113;Bangers;Bang 36;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_113_Bang_36 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_113_Bang_36 " << std::endl;
 }
 //
 void hk_trigger_114_Bang_37()     //114;Bangers;Bang 37;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_114_Bang_37 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_114_Bang_37 " << std::endl;
 }
 //
 void hk_trigger_115_Bang_38()     //115;Bangers;Bang 38;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_115_Bang_38 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_115_Bang_38 " << std::endl;
 }
 //
 void hk_trigger_116_Bang_39()     //116;Bangers;Bang 39;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_116_Bang_39 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_116_Bang_39 " << std::endl;
 }
 //
 void hk_trigger_117_Bang_40()     //117;Bangers;Bang 40;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_117_Bang_40 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_117_Bang_40 " << std::endl;
 }
 //
 void hk_trigger_118_Bang_41()     //118;Bangers;Bang 41;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_118_Bang_41 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_118_Bang_41 " << std::endl;
 }
 //
 void hk_trigger_119_Bang_42()     //119;Bangers;Bang 42;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_119_Bang_42 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_119_Bang_42 " << std::endl;
 }
 //
 void hk_trigger_120_Bang_43()     //120;Bangers;Bang 43;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_120_Bang_43 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_120_Bang_43 " << std::endl;
 }
 //
 void hk_trigger_121_Bang_44()     //121;Bangers;Bang 44;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_121_Bang_44 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_121_Bang_44 " << std::endl;
 }
 //
 void hk_trigger_122_Bang_45()     //122;Bangers;Bang 45;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_122_Bang_45 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_122_Bang_45 " << std::endl;
 }
 //
 void hk_trigger_123_Bang_46()     //123;Bangers;Bang 46;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_123_Bang_46 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_123_Bang_46 " << std::endl;
 }
 //
 void hk_trigger_124_Bang_47()     //124;Bangers;Bang 47;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_124_Bang_47 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_124_Bang_47 " << std::endl;
 }
 //
 void hk_trigger_125_Bang_48()     //125;Bangers;Bang 48;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_125_Bang_48 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_125_Bang_48 " << std::endl;
 }
 //
 void hk_trigger_126_Bang_49()     //126;Bangers;Bang 49;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_126_Bang_49 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_126_Bang_49 " << std::endl;
 }
 //
 void hk_trigger_127_Bang_50()     //127;Bangers;Bang 50;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_127_Bang_50 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_127_Bang_50 " << std::endl;
 }
 //
 void hk_trigger_128_Bang_51()     //128;Bangers;Bang 51;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_128_Bang_51 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_128_Bang_51 " << std::endl;
 }
 //
 void hk_trigger_129_Bang_52()     //129;Bangers;Bang 52;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_129_Bang_52 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_129_Bang_52 " << std::endl;
 }
 //
 void hk_trigger_130_Bang_53()     //130;Bangers;Bang 53;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_130_Bang_53 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_130_Bang_53 " << std::endl;
 }
 //
 void hk_trigger_131_Bang_54()     //131;Bangers;Bang 54;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_131_Bang_54 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_131_Bang_54 " << std::endl;
 }
 //
 void hk_trigger_132_Bang_55()     //132;Bangers;Bang 55;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_132_Bang_55 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_132_Bang_55 " << std::endl;
 }
 //
 void hk_trigger_133_Bang_56()     //133;Bangers;Bang 56;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_133_Bang_56 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_133_Bang_56 " << std::endl;
 }
 //
 void hk_trigger_134_Bang_57()     //134;Bangers;Bang 57;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_134_Bang_57 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_134_Bang_57 " << std::endl;
 }
 //
 void hk_trigger_135_Bang_58()     //135;Bangers;Bang 58;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_135_Bang_58 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_135_Bang_58 " << std::endl;
 }
 //
 void hk_trigger_136_Bang_59()     //136;Bangers;Bang 59;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_136_Bang_59 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_136_Bang_59 " << std::endl;
 }
 //
 void hk_trigger_137_Bang_60()     //137;Bangers;Bang 60;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_137_Bang_60 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_137_Bang_60 " << std::endl;
 }
 //
 void hk_trigger_138_Bang_61()     //138;Bangers;Bang 61;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_138_Bang_61 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_138_Bang_61 " << std::endl;
 }
 //
 void hk_trigger_139_Bang_62()     //139;Bangers;Bang 62;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_139_Bang_62 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_139_Bang_62 " << std::endl;
 }
 //
 void hk_trigger_140_Bang_63()     //140;Bangers;Bang 63;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_140_Bang_63 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_140_Bang_63 " << std::endl;
 }
 //
 void hk_trigger_141_Bang_64()     //141;Bangers;Bang 64;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_141_Bang_64 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_141_Bang_64 " << std::endl;
 }
 //
 void hk_trigger_142_Bang_65()     //142;Bangers;Bang 65;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_142_Bang_65 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_142_Bang_65 " << std::endl;
 }
 //
 void hk_trigger_143_Bang_66()     //143;Bangers;Bang 66;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_143_Bang_66 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_143_Bang_66 " << std::endl;
 }
 //
 void hk_trigger_144_Bang_67()     //144;Bangers;Bang 67;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_144_Bang_67 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_144_Bang_67 " << std::endl;
 }
 //
 void hk_trigger_145_Bang_68()     //145;Bangers;Bang 68;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_145_Bang_68 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_145_Bang_68 " << std::endl;
 }
 //
 void hk_trigger_146_Bang_69()     //146;Bangers;Bang 69;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_146_Bang_69 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_146_Bang_69 " << std::endl;
 }
 //
 void hk_trigger_147_Bang_70()     //147;Bangers;Bang 70;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_147_Bang_70 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_147_Bang_70 " << std::endl;
 }
 //
 void hk_trigger_148_Bang_71()     //148;Bangers;Bang 71;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_148_Bang_71 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_148_Bang_71 " << std::endl;
 }
 //
 void hk_trigger_149_Bang_72()     //149;Bangers;Bang 72;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_149_Bang_72 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_149_Bang_72 " << std::endl;
 }
 //
 void hk_trigger_150_Bang_73()     //150;Bangers;Bang 73;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_150_Bang_73 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_150_Bang_73 " << std::endl;
 }
 //
 void hk_trigger_151_Bang_74()     //151;Bangers;Bang 74;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_151_Bang_74 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_151_Bang_74 " << std::endl;
 }
 //
 void hk_trigger_152_Bang_75()     //152;Bangers;Bang 75;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_152_Bang_75 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_152_Bang_75 " << std::endl;
 }
 //
 void hk_trigger_153_Bang_76()     //153;Bangers;Bang 76;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_153_Bang_76 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_153_Bang_76 " << std::endl;
 }
 //
 void hk_trigger_154_Bang_77()     //154;Bangers;Bang 77;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_154_Bang_77 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_154_Bang_77 " << std::endl;
 }
 //
 void hk_trigger_155_Bang_78()     //155;Bangers;Bang 78;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_155_Bang_78 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_155_Bang_78 " << std::endl;
 }
 //
 void hk_trigger_156_Bang_79()     //156;Bangers;Bang 79;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_156_Bang_79 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_156_Bang_79 " << std::endl;
 }
 //
 void hk_trigger_157_Bang_80()     //157;Bangers;Bang 80;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_157_Bang_80 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_157_Bang_80 " << std::endl;
 }
 //
 void hk_trigger_158_Bang_81()     //158;Bangers;Bang 81;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_158_Bang_81 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_158_Bang_81 " << std::endl;
 }
 //
 void hk_trigger_159_Bang_82()     //159;Bangers;Bang 82;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_159_Bang_82 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_159_Bang_82 " << std::endl;
 }
 //
 void hk_trigger_160_Bang_83()     //160;Bangers;Bang 83;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_160_Bang_83 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_160_Bang_83 " << std::endl;
 }
 //
 void hk_trigger_161_Bang_84()     //161;Bangers;Bang 84;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_161_Bang_84 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_161_Bang_84 " << std::endl;
 }
 //
 void hk_trigger_162_Bang_85()     //162;Bangers;Bang 85;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_162_Bang_85 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_162_Bang_85 " << std::endl;
 }
 //
 void hk_trigger_163_Bang_86()     //163;Bangers;Bang 86;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_163_Bang_86 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_163_Bang_86 " << std::endl;
 }
 //
 void hk_trigger_164_Bang_87()     //164;Bangers;Bang 87;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_164_Bang_87 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_164_Bang_87 " << std::endl;
 }
 //
 void hk_trigger_165_Bang_88()     //165;Bangers;Bang 88;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_165_Bang_88 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_165_Bang_88 " << std::endl;
 }
 //
 void hk_trigger_166_Bang_89()     //166;Bangers;Bang 89;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_166_Bang_89 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_166_Bang_89 " << std::endl;
 }
 //
 void hk_trigger_167_Bang_90()     //167;Bangers;Bang 90;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_167_Bang_90 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_167_Bang_90 " << std::endl;
 }
 //
 void hk_trigger_168_Bang_91()     //168;Bangers;Bang 91;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_168_Bang_91 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_168_Bang_91 " << std::endl;
 }
 //
 void hk_trigger_169_Bang_92()     //169;Bangers;Bang 92;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_169_Bang_92 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_169_Bang_92 " << std::endl;
 }
 //
 void hk_trigger_170_Bang_93()     //170;Bangers;Bang 93;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_170_Bang_93 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_170_Bang_93 " << std::endl;
 }
 //
 void hk_trigger_171_Bang_94()     //171;Bangers;Bang 94;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_171_Bang_94 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_171_Bang_94 " << std::endl;
 }
 //
 void hk_trigger_172_Bang_95()     //172;Bangers;Bang 95;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_172_Bang_95 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_172_Bang_95 " << std::endl;
 }
 //
 void hk_trigger_173_Bang_96()     //173;Bangers;Bang 96;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_173_Bang_96 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_173_Bang_96 " << std::endl;
 }
 //
 void hk_trigger_174_Bang_97()     //174;Bangers;Bang 97;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_174_Bang_97 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_174_Bang_97 " << std::endl;
 }
 //
 void hk_trigger_175_Bang_98()     //175;Bangers;Bang 98;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_175_Bang_98 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_175_Bang_98 " << std::endl;
 }
 //
 void hk_trigger_176_Bang_99()     //176;Bangers;Bang 99;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_176_Bang_99 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_176_Bang_99 " << std::endl;
 }
 //
 void hk_trigger_177_Bang_100()     //177;Bangers;Bang 100;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_177_Bang_100 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_177_Bang_100 " << std::endl;
 }
 //
 void hk_trigger_178_Bang_101()     //178;Bangers;Bang 101;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_178_Bang_101 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_178_Bang_101 " << std::endl;
 }
 //
 void hk_trigger_179_Bang_102()     //179;Bangers;Bang 102;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_179_Bang_102 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_179_Bang_102 " << std::endl;
 }
 //
 void hk_trigger_180_Bang_103()     //180;Bangers;Bang 103;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_180_Bang_103 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_180_Bang_103 " << std::endl;
 }
 //
 void hk_trigger_181_Bang_104()     //181;Bangers;Bang 104;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_181_Bang_104 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_181_Bang_104 " << std::endl;
 }
 //
 void hk_trigger_182_Bang_105()     //182;Bangers;Bang 105;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_182_Bang_105 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_182_Bang_105 " << std::endl;
 }
 //
 void hk_trigger_183_Bang_106()     //183;Bangers;Bang 106;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_183_Bang_106 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_183_Bang_106 " << std::endl;
 }
 //
 void hk_trigger_184_Bang_107()     //184;Bangers;Bang 107;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_184_Bang_107 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_184_Bang_107 " << std::endl;
 }
 //
 void hk_trigger_185_Bang_108()     //185;Bangers;Bang 108;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_185_Bang_108 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_185_Bang_108 " << std::endl;
 }
 //
 void hk_trigger_186_Bang_109()     //186;Bangers;Bang 109;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_186_Bang_109 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_186_Bang_109 " << std::endl;
 }
 //
 void hk_trigger_187_Bang_110()     //187;Bangers;Bang 110;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_187_Bang_110 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_187_Bang_110 " << std::endl;
 }
 //
 void hk_trigger_188_Bang_111()     //188;Bangers;Bang 111;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_188_Bang_111 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_188_Bang_111 " << std::endl;
 }
 //
 void hk_trigger_189_Bang_112()     //189;Bangers;Bang 112;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_189_Bang_112 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_189_Bang_112 " << std::endl;
 }
 //
 void hk_trigger_190_Bang_113()     //190;Bangers;Bang 113;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_190_Bang_113 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_190_Bang_113 " << std::endl;
 }
 //
 void hk_trigger_191_Bang_114()     //191;Bangers;Bang 114;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_191_Bang_114 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_191_Bang_114 " << std::endl;
 }
 //
 void hk_trigger_192_Bang_115()     //192;Bangers;Bang 115;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_192_Bang_115 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_192_Bang_115 " << std::endl;
 }
 //
 void hk_trigger_193_Bang_116()     //193;Bangers;Bang 116;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_193_Bang_116 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_193_Bang_116 " << std::endl;
 }
 //
 void hk_trigger_194_Bang_117()     //194;Bangers;Bang 117;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_194_Bang_117 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_194_Bang_117 " << std::endl;
 }
 //
 void hk_trigger_195_Bang_118()     //195;Bangers;Bang 118;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_195_Bang_118 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_195_Bang_118 " << std::endl;
 }
 //
 void hk_trigger_196_Bang_119()     //196;Bangers;Bang 119;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_196_Bang_119 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_196_Bang_119 " << std::endl;
 }
 //
 void hk_trigger_197_Bang_120()     //197;Bangers;Bang 120;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_197_Bang_120 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_197_Bang_120 " << std::endl;
 }
 //
 void hk_trigger_198_Bang_121()     //198;Bangers;Bang 121;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_198_Bang_121 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_198_Bang_121 " << std::endl;
 }
 //
 void hk_trigger_199_Bang_122()     //199;Bangers;Bang 122;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_199_Bang_122 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_199_Bang_122 " << std::endl;
 }
 //
 void hk_trigger_200_Bang_123()     //200;Bangers;Bang 123;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_200_Bang_123 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_200_Bang_123 " << std::endl;
 }
 //
 void hk_trigger_201_Bang_124()     //201;Bangers;Bang 124;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_201_Bang_124 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_201_Bang_124 " << std::endl;
 }
 //
 void hk_trigger_202_Bang_125()     //202;Bangers;Bang 125;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_202_Bang_125 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_202_Bang_125 " << std::endl;
 }
 //
 void hk_trigger_203_Bang_126()     //203;Bangers;Bang 126;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_203_Bang_126 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_203_Bang_126 " << std::endl;
 }
 //
 void hk_trigger_204_Bang_127()     //204;Bangers;Bang 127;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_204_Bang_127 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_204_Bang_127 " << std::endl;
 }
 //
 void hk_trigger_205_Bang_128()     //205;Bangers;Bang 128;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_205_Bang_128 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_205_Bang_128 " << std::endl;
 }
 //
 void hk_trigger_206_Bang_129()     //206;Bangers;Bang 129;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_206_Bang_129 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_206_Bang_129 " << std::endl;
 }
 //
 void hk_trigger_207_Bang_130()     //207;Bangers;Bang 130;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_207_Bang_130 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_207_Bang_130 " << std::endl;
 }
 //
 void hk_trigger_208_Bang_131()     //208;Bangers;Bang 131;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_208_Bang_131 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_208_Bang_131 " << std::endl;
 }
 //
 void hk_trigger_209_Bang_132()     //209;Bangers;Bang 132;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_209_Bang_132 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_209_Bang_132 " << std::endl;
 }
 //
 void hk_trigger_210_Bang_133()     //210;Bangers;Bang 133;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_210_Bang_133 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_210_Bang_133 " << std::endl;
 }
 //
 void hk_trigger_211_Bang_134()     //211;Bangers;Bang 134;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_211_Bang_134 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_211_Bang_134 " << std::endl;
 }
 //
 void hk_trigger_212_Bang_135()     //212;Bangers;Bang 135;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_212_Bang_135 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_212_Bang_135 " << std::endl;
 }
 //
 void hk_trigger_213_Bang_136()     //213;Bangers;Bang 136;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_213_Bang_136 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_213_Bang_136 " << std::endl;
 }
 //
 void hk_trigger_214_Bang_137()     //214;Bangers;Bang 137;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_214_Bang_137 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_214_Bang_137 " << std::endl;
 }
 //
 void hk_trigger_215_Bang_138()     //215;Bangers;Bang 138;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_215_Bang_138 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_215_Bang_138 " << std::endl;
 }
 //
 void hk_trigger_216_Bang_139()     //216;Bangers;Bang 139;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_216_Bang_139 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_216_Bang_139 " << std::endl;
 }
 //
 void hk_trigger_217_Bang_140()     //217;Bangers;Bang 140;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_217_Bang_140 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_217_Bang_140 " << std::endl;
 }
 //
 void hk_trigger_218_Bang_141()     //218;Bangers;Bang 141;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_218_Bang_141 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_218_Bang_141 " << std::endl;
 }
 //
 void hk_trigger_219_Bang_142()     //219;Bangers;Bang 142;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_219_Bang_142 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_219_Bang_142 " << std::endl;
 }
 //
 void hk_trigger_220_Bang_143()     //220;Bangers;Bang 143;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_220_Bang_143 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_220_Bang_143 " << std::endl;
 }
 //
 void hk_trigger_221_Bang_144()     //221;Bangers;Bang 144;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_221_Bang_144 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_221_Bang_144 " << std::endl;
 }
 //
 void hk_trigger_222_Bang_145()     //222;Bangers;Bang 145;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_222_Bang_145 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_222_Bang_145 " << std::endl;
 }
 //
 void hk_trigger_223_Bang_146()     //223;Bangers;Bang 146;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_223_Bang_146 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_223_Bang_146 " << std::endl;
 }
 //
 void hk_trigger_224_Bang_147()     //224;Bangers;Bang 147;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_224_Bang_147 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_224_Bang_147 " << std::endl;
 }
 //
 void hk_trigger_225_Bang_148()     //225;Bangers;Bang 148;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_225_Bang_148 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_225_Bang_148 " << std::endl;
 }
 //
 void hk_trigger_226_Bang_149()     //226;Bangers;Bang 149;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_226_Bang_149 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_226_Bang_149 " << std::endl;
 }
 //
 void hk_trigger_227_Bang_150()     //227;Bangers;Bang 150;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_227_Bang_150 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_227_Bang_150 " << std::endl;
 }
 //
 void hk_trigger_228_Bang_151()     //228;Bangers;Bang 151;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_228_Bang_151 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_228_Bang_151 " << std::endl;
 }
 //
 void hk_trigger_229_Bang_152()     //229;Bangers;Bang 152;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_229_Bang_152 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_229_Bang_152 " << std::endl;
 }
 //
 void hk_trigger_230_Bang_153()     //230;Bangers;Bang 153;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_230_Bang_153 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_230_Bang_153 " << std::endl;
 }
 //
 void hk_trigger_231_Bang_154()     //231;Bangers;Bang 154;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_231_Bang_154 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_231_Bang_154 " << std::endl;
 }
 //
 void hk_trigger_232_Bang_155()     //232;Bangers;Bang 155;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_232_Bang_155 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_232_Bang_155 " << std::endl;
 }
 //
 void hk_trigger_233_Bang_156()     //233;Bangers;Bang 156;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_233_Bang_156 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_233_Bang_156 " << std::endl;
 }
 //
 void hk_trigger_234_Bang_157()     //234;Bangers;Bang 157;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_234_Bang_157 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_234_Bang_157 " << std::endl;
 }
 //
 void hk_trigger_235_Bang_158()     //235;Bangers;Bang 158;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_235_Bang_158 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_235_Bang_158 " << std::endl;
 }
 //
 void hk_trigger_236_Bang_159()     //236;Bangers;Bang 159;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_236_Bang_159 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_236_Bang_159 " << std::endl;
 }
 //
 void hk_trigger_237_Bang_160()     //237;Bangers;Bang 160;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_237_Bang_160 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_237_Bang_160 " << std::endl;
 }
 //
 void hk_trigger_238_Bang_161()     //238;Bangers;Bang 161;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_238_Bang_161 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_238_Bang_161 " << std::endl;
 }
 //
 void hk_trigger_239_Bang_162()     //239;Bangers;Bang 162;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_239_Bang_162 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_239_Bang_162 " << std::endl;
 }
 //
 void hk_trigger_240_Bang_163()     //240;Bangers;Bang 163;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_240_Bang_163 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_240_Bang_163 " << std::endl;
 }
 //
 void hk_trigger_241_Bang_164()     //241;Bangers;Bang 164;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_241_Bang_164 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_241_Bang_164 " << std::endl;
 }
 //
 void hk_trigger_242_Bang_165()     //242;Bangers;Bang 165;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_242_Bang_165 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_242_Bang_165 " << std::endl;
 }
 //
 void hk_trigger_243_Bang_166()     //243;Bangers;Bang 166;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_243_Bang_166 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_243_Bang_166 " << std::endl;
 }
 //
 void hk_trigger_244_Bang_167()     //244;Bangers;Bang 167;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_244_Bang_167 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_244_Bang_167 " << std::endl;
 }
 //
 void hk_trigger_245_Bang_168()     //245;Bangers;Bang 168;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_245_Bang_168 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_245_Bang_168 " << std::endl;
 }
 //
 void hk_trigger_246_Bang_169()     //246;Bangers;Bang 169;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_246_Bang_169 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_246_Bang_169 " << std::endl;
 }
 //
 void hk_trigger_247_Bang_170()     //247;Bangers;Bang 170;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_247_Bang_170 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_247_Bang_170 " << std::endl;
 }
 //
 void hk_trigger_248_Bang_171()     //248;Bangers;Bang 171;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_248_Bang_171 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_248_Bang_171 " << std::endl;
 }
 //
 void hk_trigger_249_Bang_172()     //249;Bangers;Bang 172;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_249_Bang_172 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_249_Bang_172 " << std::endl;
 }
 //
 void hk_trigger_250_Bang_173()     //250;Bangers;Bang 173;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_250_Bang_173 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_250_Bang_173 " << std::endl;
 }
 //
 void hk_trigger_251_Bang_174()     //251;Bangers;Bang 174;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_251_Bang_174 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_251_Bang_174 " << std::endl;
 }
 //
 void hk_trigger_252_Bang_175()     //252;Bangers;Bang 175;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_252_Bang_175 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_252_Bang_175 " << std::endl;
 }
 //
 void hk_trigger_253_Bang_176()     //253;Bangers;Bang 176;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_253_Bang_176 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_253_Bang_176 " << std::endl;
 }
 //
 void hk_trigger_254_Bang_177()     //254;Bangers;Bang 177;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_254_Bang_177 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_254_Bang_177 " << std::endl;
 }
 //
 void hk_trigger_255_Bang_178()     //255;Bangers;Bang 178;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_255_Bang_178 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_255_Bang_178 " << std::endl;
 }
 //
 void hk_trigger_256_Bang_179()     //256;Bangers;Bang 179;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_256_Bang_179 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_256_Bang_179 " << std::endl;
 }
 //
 void hk_trigger_257_Bang_180()     //257;Bangers;Bang 180;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_257_Bang_180 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_257_Bang_180 " << std::endl;
 }
 //
 void hk_trigger_258_Bang_181()     //258;Bangers;Bang 181;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_258_Bang_181 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_258_Bang_181 " << std::endl;
 }
 //
 void hk_trigger_259_Bang_182()     //259;Bangers;Bang 182;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_259_Bang_182 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_259_Bang_182 " << std::endl;
 }
 //
 void hk_trigger_260_Bang_183()     //260;Bangers;Bang 183;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_260_Bang_183 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_260_Bang_183 " << std::endl;
 }
 //
 void hk_trigger_261_Bang_184()     //261;Bangers;Bang 184;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_261_Bang_184 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_261_Bang_184 " << std::endl;
 }
 //
 void hk_trigger_262_Bang_185()     //262;Bangers;Bang 185;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_262_Bang_185 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_262_Bang_185 " << std::endl;
 }
 //
 void hk_trigger_263_Bang_186()     //263;Bangers;Bang 186;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_263_Bang_186 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_263_Bang_186 " << std::endl;
 }
 //
 void hk_trigger_264_Bang_187()     //264;Bangers;Bang 187;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_264_Bang_187 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_264_Bang_187 " << std::endl;
 }
 //
 void hk_trigger_265_Bang_188()     //265;Bangers;Bang 188;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_265_Bang_188 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_265_Bang_188 " << std::endl;
 }
 //
 void hk_trigger_266_Bang_189()     //266;Bangers;Bang 189;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_266_Bang_189 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_266_Bang_189 " << std::endl;
 }
 //
 void hk_trigger_267_Bang_190()     //267;Bangers;Bang 190;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_267_Bang_190 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_267_Bang_190 " << std::endl;
 }
 //
 void hk_trigger_268_Bang_191()     //268;Bangers;Bang 191;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_268_Bang_191 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_268_Bang_191 " << std::endl;
 }
 //
 void hk_trigger_269_Bang_192()     //269;Bangers;Bang 192;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_269_Bang_192 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_269_Bang_192 " << std::endl;
 }
 //
 void hk_trigger_270_Bang_193()     //270;Bangers;Bang 193;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_270_Bang_193 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_270_Bang_193 " << std::endl;
 }
 //
 void hk_trigger_271_Bang_194()     //271;Bangers;Bang 194;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_271_Bang_194 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_271_Bang_194 " << std::endl;
 }
 //
 void hk_trigger_272_Bang_195()     //272;Bangers;Bang 195;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_272_Bang_195 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_272_Bang_195 " << std::endl;
 }
 //
 void hk_trigger_273_Bang_196()     //273;Bangers;Bang 196;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_273_Bang_196 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_273_Bang_196 " << std::endl;
 }
 //
 void hk_trigger_274_Bang_197()     //274;Bangers;Bang 197;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_274_Bang_197 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_274_Bang_197 " << std::endl;
 }
 //
 void hk_trigger_275_Bang_198()     //275;Bangers;Bang 198;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_275_Bang_198 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_275_Bang_198 " << std::endl;
 }
 //
 void hk_trigger_276_Bang_199()     //276;Bangers;Bang 199;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_276_Bang_199 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_276_Bang_199 " << std::endl;
 }
 //
 void hk_trigger_277_Bang_200()     //277;Bangers;Bang 200;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_277_Bang_200 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_277_Bang_200 " << std::endl;
 }
 //
 void hk_trigger_278_Bang_201()     //278;Bangers;Bang 201;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_278_Bang_201 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_278_Bang_201 " << std::endl;
 }
 //
 void hk_trigger_279_Bang_202()     //279;Bangers;Bang 202;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_279_Bang_202 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_279_Bang_202 " << std::endl;
 }
 //
 void hk_trigger_280_Bang_203()     //280;Bangers;Bang 203;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_280_Bang_203 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_280_Bang_203 " << std::endl;
 }
 //
 void hk_trigger_281_Bang_204()     //281;Bangers;Bang 204;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_281_Bang_204 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_281_Bang_204 " << std::endl;
 }
 //
 void hk_trigger_282_Bang_205()     //282;Bangers;Bang 205;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_282_Bang_205 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_282_Bang_205 " << std::endl;
 }
 //
 void hk_trigger_283_Bang_206()     //283;Bangers;Bang 206;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_283_Bang_206 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_283_Bang_206 " << std::endl;
 }
 //
 void hk_trigger_284_Bang_207()     //284;Bangers;Bang 207;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_284_Bang_207 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_284_Bang_207 " << std::endl;
 }
 //
 void hk_trigger_285_Bang_208()     //285;Bangers;Bang 208;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_285_Bang_208 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_285_Bang_208 " << std::endl;
 }
 //
 void hk_trigger_286_Bang_209()     //286;Bangers;Bang 209;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_286_Bang_209 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_286_Bang_209 " << std::endl;
 }
 //
 void hk_trigger_287_Bang_210()     //287;Bangers;Bang 210;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_287_Bang_210 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_287_Bang_210 " << std::endl;
 }
 //
 void hk_trigger_288_Bang_211()     //288;Bangers;Bang 211;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_288_Bang_211 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_288_Bang_211 " << std::endl;
 }
 //
 void hk_trigger_289_Bang_212()     //289;Bangers;Bang 212;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_289_Bang_212 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_289_Bang_212 " << std::endl;
 }
 //
 void hk_trigger_290_Bang_213()     //290;Bangers;Bang 213;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_290_Bang_213 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_290_Bang_213 " << std::endl;
 }
 //
 void hk_trigger_291_Bang_214()     //291;Bangers;Bang 214;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_291_Bang_214 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_291_Bang_214 " << std::endl;
 }
 //
 void hk_trigger_292_Bang_215()     //292;Bangers;Bang 215;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_292_Bang_215 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_292_Bang_215 " << std::endl;
 }
 //
 void hk_trigger_293_Bang_216()     //293;Bangers;Bang 216;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_293_Bang_216 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_293_Bang_216 " << std::endl;
 }
 //
 void hk_trigger_294_Bang_217()     //294;Bangers;Bang 217;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_294_Bang_217 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_294_Bang_217 " << std::endl;
 }
 //
 void hk_trigger_295_Bang_218()     //295;Bangers;Bang 218;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_295_Bang_218 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_295_Bang_218 " << std::endl;
 }
 //
 void hk_trigger_296_Bang_219()     //296;Bangers;Bang 219;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_296_Bang_219 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_296_Bang_219 " << std::endl;
 }
 //
 void hk_trigger_297_Bang_220()     //297;Bangers;Bang 220;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_297_Bang_220 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_297_Bang_220 " << std::endl;
 }
 //
 void hk_trigger_298_Bang_221()     //298;Bangers;Bang 221;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_298_Bang_221 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_298_Bang_221 " << std::endl;
 }
 //
 void hk_trigger_299_Bang_222()     //299;Bangers;Bang 222;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_299_Bang_222 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_299_Bang_222 " << std::endl;
 }
 //
 void hk_trigger_300_Bang_223()     //300;Bangers;Bang 223;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_300_Bang_223 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_300_Bang_223 " << std::endl;
 }
 //
 void hk_trigger_301_Bang_224()     //301;Bangers;Bang 224;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_301_Bang_224 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_301_Bang_224 " << std::endl;
 }
 //
 void hk_trigger_302_Bang_225()     //302;Bangers;Bang 225;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_302_Bang_225 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_302_Bang_225 " << std::endl;
 }
 //
 void hk_trigger_303_Bang_226()     //303;Bangers;Bang 226;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_303_Bang_226 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_303_Bang_226 " << std::endl;
 }
 //
 void hk_trigger_304_Bang_227()     //304;Bangers;Bang 227;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_304_Bang_227 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_304_Bang_227 " << std::endl;
 }
 //
 void hk_trigger_305_Bang_228()     //305;Bangers;Bang 228;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_305_Bang_228 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_305_Bang_228 " << std::endl;
 }
 //
 void hk_trigger_306_Bang_229()     //306;Bangers;Bang 229;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_306_Bang_229 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_306_Bang_229 " << std::endl;
 }
 //
 void hk_trigger_307_Bang_230()     //307;Bangers;Bang 230;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_307_Bang_230 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_307_Bang_230 " << std::endl;
 }
 //
 void hk_trigger_308_Bang_231()     //308;Bangers;Bang 231;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_308_Bang_231 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_308_Bang_231 " << std::endl;
 }
 //
 void hk_trigger_309_Bang_232()     //309;Bangers;Bang 232;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_309_Bang_232 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_309_Bang_232 " << std::endl;
 }
 //
 void hk_trigger_310_Bang_233()     //310;Bangers;Bang 233;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_310_Bang_233 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_310_Bang_233 " << std::endl;
 }
 //
 void hk_trigger_311_Bang_234()     //311;Bangers;Bang 234;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_311_Bang_234 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_311_Bang_234 " << std::endl;
 }
 //
 void hk_trigger_312_Bang_235()     //312;Bangers;Bang 235;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_312_Bang_235 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_312_Bang_235 " << std::endl;
 }
 //
 void hk_trigger_313_Bang_236()     //313;Bangers;Bang 236;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_313_Bang_236 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_313_Bang_236 " << std::endl;
 }
 //
 void hk_trigger_314_Bang_237()     //314;Bangers;Bang 237;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_314_Bang_237 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_314_Bang_237 " << std::endl;
 }
 //
 void hk_trigger_315_Bang_238()     //315;Bangers;Bang 238;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_315_Bang_238 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_315_Bang_238 " << std::endl;
 }
 //
 void hk_trigger_316_Bang_239()     //316;Bangers;Bang 239;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_316_Bang_239 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_316_Bang_239 " << std::endl;
 }
 //
 void hk_trigger_317_Bang_240()     //317;Bangers;Bang 240;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_317_Bang_240 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_317_Bang_240 " << std::endl;
 }
 //
 void hk_trigger_318_Bang_241()     //318;Bangers;Bang 241;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_318_Bang_241 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_318_Bang_241 " << std::endl;
 }
 //
 void hk_trigger_319_Bang_242()     //319;Bangers;Bang 242;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_319_Bang_242 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_319_Bang_242 " << std::endl;
 }
 //
 void hk_trigger_320_Bang_243()     //320;Bangers;Bang 243;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_320_Bang_243 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_320_Bang_243 " << std::endl;
 }
 //
 void hk_trigger_321_Bang_244()     //321;Bangers;Bang 244;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_321_Bang_244 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_321_Bang_244 " << std::endl;
 }
 //
 void hk_trigger_322_Bang_245()     //322;Bangers;Bang 245;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_322_Bang_245 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_322_Bang_245 " << std::endl;
 }
 //
 void hk_trigger_323_Bang_246()     //323;Bangers;Bang 246;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_323_Bang_246 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_323_Bang_246 " << std::endl;
 }
 //
 void hk_trigger_324_Bang_247()     //324;Bangers;Bang 247;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_324_Bang_247 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_324_Bang_247 " << std::endl;
 }
 //
 void hk_trigger_325_Bang_248()     //325;Bangers;Bang 248;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_325_Bang_248 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_325_Bang_248 " << std::endl;
 }
 //
 void hk_trigger_326_Bang_249()     //326;Bangers;Bang 249;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_326_Bang_249 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_326_Bang_249 " << std::endl;
 }
 //
 void hk_trigger_327_Bang_250()     //327;Bangers;Bang 250;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_327_Bang_250 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_327_Bang_250 " << std::endl;
 }
 //
 void hk_trigger_328_Bang_251()     //328;Bangers;Bang 251;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_328_Bang_251 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_328_Bang_251 " << std::endl;
 }
 //
 void hk_trigger_329_Bang_252()     //329;Bangers;Bang 252;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_329_Bang_252 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_329_Bang_252 " << std::endl;
 }
 //
 void hk_trigger_330_Bang_253()     //330;Bangers;Bang 253;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_330_Bang_253 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_330_Bang_253 " << std::endl;
 }
 //
 void hk_trigger_331_Bang_254()     //331;Bangers;Bang 254;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_331_Bang_254 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_331_Bang_254 " << std::endl;
 }
 //
 void hk_trigger_332_Bang_255()     //332;Bangers;Bang 255;0;0;0;0;--unset--
 {
-      cout << "fonction de trigger pas encore traitée : hk_trigger_332_Bang_255 " << endl;
+      std::cout << "fonction de trigger pas encore traitée : hk_trigger_332_Bang_255 " << std::endl;
 }
 //
 
