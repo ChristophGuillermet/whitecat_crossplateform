@@ -44,7 +44,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include "whc_toolbox.h"
 #include <windows.h>
 
-void hotkey_assign_to_save() //01 Sauvegarde générale - Quick save
+void hk_trigger_01_save() //01 Sauvegarde générale - Quick save
 {
     if(index_is_saving==0)
     {
@@ -59,7 +59,7 @@ void hotkey_assign_to_save() //01 Sauvegarde générale - Quick save
     hk_manager.save(user_file);
 }
 
-void hotkey_assign_to_save_and_quit() //02  Quitter avec sauvegarde - Quit and save
+void hk_trigger_02_save_and_quit() //02  Quitter avec sauvegarde - Quit and save
 {
     index_ask_confirm=1;
     index_do_quit_with_save=1;
@@ -72,7 +72,7 @@ void hotkey_assign_to_save_and_quit() //02  Quitter avec sauvegarde - Quit and s
     hk_manager.save(user_file);
 }
 
-void hotkey_assign_to_quit() //03 Quitter sans sauvegarde - Quit without save
+void hk_trigger_03_quit() //03 Quitter sans sauvegarde - Quit without save
 {
     for (int i=0; i<12; i++)
     {
@@ -83,30 +83,30 @@ void hotkey_assign_to_quit() //03 Quitter sans sauvegarde - Quit without save
     index_do_quit_without_save=1;
 }
 
-void hotkey_assign_to_snapshot_close_windows() //04 Snapshot et extinction des fenêtres - Snapshot and closing windows [SHIFT][PRINT SCREEN]
+void hk_trigger_04_snapshot_close_windows() //04 Snapshot et extinction des fenêtres - Snapshot and closing windows [SHIFT][PRINT SCREEN]
 {
     snapshot_windows();
     close_all_windows();
 }
 
-void hotkey_assign_to_snapshot_open_windows() //05 Rappel du Snapshot des fenêtres - Recall windows snapshot [CTRL][PRINT SCREEN]
+void hk_trigger_05_snapshot_open_windows() //05 Rappel du Snapshot des fenêtres - Recall windows snapshot [CTRL][PRINT SCREEN]
 {
     recall_windows();
 }
 
-void hotkey_assign_to_cycle_forward_open_windows() //06 Circulation dans les principales fenêtres - Cycle forward thru open windows	[PGUP]
+void hk_trigger_06_cycle_forward_open_windows() //06 Circulation dans les principales fenêtres - Cycle forward thru open windows	[PGUP]
 {
     sprintf(string_key_id,list_keyname[0]);
     back_window_push_to_front();
 }
 
-void hotkey_assign_to_cycle_backward_open_windows() //07 Circulation dans les principales fenêtres - Cycle backward thru open windows [PGDOWN]
+void hk_trigger_07_cycle_backward_open_windows() //07 Circulation dans les principales fenêtres - Cycle backward thru open windows [PGDOWN]
 {
     sprintf(string_key_id,list_keyname[0]);
     front_window_push_to_back();
 }
 
-void hotkey_assign_to_open_forward_solo_windows() //08 Appel solo dans les principales fenêtres - Open windows in solo mode [CTRL][PGDOWN]
+void hk_trigger_08_open_forward_solo_windows() //08 Appel solo dans les principales fenêtres - Open windows in solo mode [CTRL][PGDOWN]
 {
     pos_focus_window=window_focus_id;
     substract_a_window(pos_focus_window);
@@ -122,7 +122,7 @@ void hotkey_assign_to_open_forward_solo_windows() //08 Appel solo dans les princ
     add_a_window(pos_focus_window);
 }
 
-void hotkey_assign_to_open_backward_solo_windows() //09 Appel solo dans les principales fenêtres - Open windows in solo mode [CTRL][PGDOWN]
+void hk_trigger_09_open_backward_solo_windows() //09 Appel solo dans les principales fenêtres - Open windows in solo mode [CTRL][PGDOWN]
 {
     pos_focus_window=window_focus_id;
     substract_a_window(pos_focus_window);
@@ -138,7 +138,7 @@ void hotkey_assign_to_open_backward_solo_windows() //09 Appel solo dans les prin
     add_a_window(pos_focus_window);
 }
 
-void hotkey_assign_to_Store_mode() // 10;Transverse commands;Store mode;0;0;0;47;[F1]
+void hk_trigger_10_Store_mode() // 10;Transverse commands;Store mode;0;0;0;47;[F1]
 {
     index_do_report=0;
     index_do_modify=0;
@@ -198,7 +198,7 @@ void hotkey_assign_to_Store_mode() // 10;Transverse commands;Store mode;0;0;0;47
     }
 }
 
-void hotkey_assign_to_Modify_mode() // 11;Transverse commands;Modify mode;0;0;0;48;[F2]
+void hk_trigger_11_Modify_mode() // 11;Transverse commands;Modify mode;0;0;0;48;[F2]
 {
     index_do_dock=0;
     index_do_report=0;
@@ -206,7 +206,7 @@ void hotkey_assign_to_Modify_mode() // 11;Transverse commands;Modify mode;0;0;0;
     index_do_modify=toggle(index_do_modify);
 }
 
-void hotkey_assign_to_Report_mode() //12;Transverse commands;Report mode;0;0;0;49;[F3]
+void hk_trigger_12_Report_mode() //12;Transverse commands;Report mode;0;0;0;49;[F3]
 {
     index_do_dock=0;
     index_do_modify=0;
@@ -214,7 +214,7 @@ void hotkey_assign_to_Report_mode() //12;Transverse commands;Report mode;0;0;0;4
     index_do_report=toggle(index_do_report);
 }
 
-void hotkey_assign_to_Clear_mode() //13;Transverse commands;Clear Mode;0;0;0;50;[F4]
+void hk_trigger_13_Clear_mode() //13;Transverse commands;Clear Mode;0;0;0;50;[F4]
 {
     index_do_dock=0;
     index_do_modify=0;
@@ -222,14 +222,14 @@ void hotkey_assign_to_Clear_mode() //13;Transverse commands;Clear Mode;0;0;0;50;
     index_main_clear=toggle(index_main_clear);
 }
 
-void hotkey_assign_to_Name() //14;Transverse commands;Name (key input zone);0;0;0;51;[F5]
+void hk_trigger_14_Name() //14;Transverse commands;Name (key input zone);0;0;0;51;[F5]
 {
     index_type=toggle(index_type);
     strcpy(numeric,"");
     keyboardStorage_numeric_postext=0;
 }
 
-void hotkey_assign_to_Time()  //15;Transverse commands;Time;0;0;0;52;[F6]
+void hk_trigger_15_Time()  //15;Transverse commands;Time;0;0;0;52;[F6]
 {
     if(index_time==0)
     {
@@ -241,7 +241,7 @@ void hotkey_assign_to_Time()  //15;Transverse commands;Time;0;0;0;52;[F6]
     }
 }
 
-void hotkey_assign_to_Trichromy() //16;Transverse commands;Trichromy;0;0;0;53;[F7]
+void hk_trigger_16_Trichromy() //16;Transverse commands;Trichromy;0;0;0;53;[F7]
 {
     if(index_trichro_window==0)
     {
@@ -253,7 +253,7 @@ void hotkey_assign_to_Trichromy() //16;Transverse commands;Trichromy;0;0;0;53;[F
     }
 }
 
-void hotkey_assign_to_Video_Tracking() //17;Transverse commands;Video Tracking;0;0;0;54;[F8]
+void hk_trigger_17_Video_Tracking() //17;Transverse commands;Video Tracking;0;0;0;54;[F8]
 {
     if(index_video_window==0)
     {
@@ -265,7 +265,7 @@ void hotkey_assign_to_Video_Tracking() //17;Transverse commands;Video Tracking;0
     }
 }
 
-void hotkey_assign_to_CueList() //18;Transverse commands;CueList;0;0;0;55;[F9]
+void hk_trigger_18_CueList() //18;Transverse commands;CueList;0;0;0;55;[F9]
 {
     if(index_window_sequentiel==0)
     {
@@ -277,7 +277,7 @@ void hotkey_assign_to_CueList() //18;Transverse commands;CueList;0;0;0;55;[F9]
     }
 }
 
-void hotkey_assign_to_Faders() //19;Transverse commands;Faders;0;0;0;56;[F10]
+void hk_trigger_19_Faders() //19;Transverse commands;Faders;0;0;0;56;[F10]
 {
     if(index_show_faders==0)
     {
@@ -289,7 +289,7 @@ void hotkey_assign_to_Faders() //19;Transverse commands;Faders;0;0;0;56;[F10]
     }
 }
 
-void hotkey_assign_to_MiniFaders() //20;Transverse commands;MiniFaders;1;0;0;56;[SHIFT]+[F10]
+void hk_trigger_20_MiniFaders() //20;Transverse commands;MiniFaders;1;0;0;56;[SHIFT]+[F10]
 {
     if(index_show_minifaders==0)
     {
@@ -301,7 +301,7 @@ void hotkey_assign_to_MiniFaders() //20;Transverse commands;MiniFaders;1;0;0;56;
     }
 }
 
-void hotkey_assign_to_Banger() //21;Transverse commands;Banger;0;0;0;57;[F11]
+void hk_trigger_21_Banger() //21;Transverse commands;Banger;0;0;0;57;[F11]
 {
     if(index_show_banger_window==0)
     {
@@ -315,12 +315,12 @@ void hotkey_assign_to_Banger() //21;Transverse commands;Banger;0;0;0;57;[F11]
     }
 }
 
-void hotkey_assign_to_Blind_mode() //22;Transverse commands;Blind mode;0;1;0;57;[CTRL]+[F11]
+void hk_trigger_22_Blind_mode() //22;Transverse commands;Blind mode;0;1;0;57;[CTRL]+[F11]
 {
     index_blind=toggle(index_blind);
 }
 
-void hotkey_assign_to_CFG_Menu() //23;Transverse commands;CFG Menu;1;0;0;57;[SHIFT]+[F11]
+void hk_trigger_23_CFG_Menu() //23;Transverse commands;CFG Menu;1;0;0;57;[SHIFT]+[F11]
 {
     if(index_show_config_window==0)
     {
@@ -332,7 +332,7 @@ void hotkey_assign_to_CFG_Menu() //23;Transverse commands;CFG Menu;1;0;0;57;[SHI
     }
 }
 
-void hotkey_assign_to_Chasers() //24;Transverse commands;Chasers;1;0;0;3;[SHIFT]+[C]
+void hk_trigger_24_Chasers() //24;Transverse commands;Chasers;1;0;0;3;[SHIFT]+[C]
 {
     if(index_window_chasers==0)
     {
@@ -344,7 +344,7 @@ void hotkey_assign_to_Chasers() //24;Transverse commands;Chasers;1;0;0;3;[SHIFT]
     }
 }
 
-void hotkey_assign_to_Mover() //25;Transverse commands;Mover;1;0;0;105;[SHIFT]+[M]
+void hk_trigger_25_Mover() //25;Transverse commands;Mover;1;0;0;105;[SHIFT]+[M]
 {
     if(index_show_mover_window==0)
     {
@@ -356,43 +356,45 @@ void hotkey_assign_to_Mover() //25;Transverse commands;Mover;1;0;0;105;[SHIFT]+[
     }
 }
 
-void hotkey_assign_to_selectedAllChannels() //26;Channels;selected all channels;0;0;0;25;[Y]
+void hk_trigger_26_selectedAllChannels() //26;Channels;selected all channels;0;0;0;25;[Y]
 {
-	key_select_all();
+	//key_select_all();
+	index_ask_confirm=true;
+
 }
 
-void hotkey_assign_to_unselectedChannels() //27;Channels;unselected channels;0;0;0;21;[U]
+void hk_trigger_27_unselectedChannels() //27;Channels;unselected channels;0;0;0;21;[U]
 {
 	key_select_inv();
 }
 
-void hotkey_assign_to_movingSelectionLeft() //28;Channels;moving selection (left);0;0;0;82;[<-]
+void hk_trigger_28_movingSelectionLeft() //28;Channels;moving selection (left);0;0;0;82;[<-]
 {
 	key_left();
 }
 
-void hotkey_assign_to_movingSelectionRight() //29;Channels;moving selection (right);0;0;0;83;[->]
+void hk_trigger_29_movingSelectionRight() //29;Channels;moving selection (right);0;0;0;83;[->]
 {
 	key_right();
 }
 
-void hotkey_assign_to_fullLevel() //30;Channels;Full level (for the selection);0;0;0;9;[I]
+void hk_trigger_30_fullLevel() //30;Channels;Full level (for the selection);0;0;0;9;[I]
 {
 			key_full();
 }
 
-void hotkey_assign_to_levelToZero() //31;Channels;Level to Zero (for the selection);0;0;0;15;[O]
+void hk_trigger_31_levelToZero() //31;Channels;Level to Zero (for the selection);0;0;0;15;[O]
 {
 			key_at_zero();
 
 }
 
-void hotkey_assign_to_plusPercentForTheSelection() //32;Channels;plus % (for the selection);0;0;0;84;[ARROW UP]
+void hk_trigger_32_plusPercentForTheSelection() //32;Channels;plus % (for the selection);0;0;0;84;[ARROW UP]
 {
             key_up();
 }
 
-void hotkey_assign_to_minusPercentForTheSelection() //33;Channels;minus % (for the selection);0;0;0;85;[ARROW DOWN]
+void hk_trigger_33_minusPercentForTheSelection() //33;Channels;minus % (for the selection);0;0;0;85;[ARROW DOWN]
 {
             key_down();
 }
@@ -418,39 +420,39 @@ void whc_hotkeys_init(std::string user_dir_file, std::string ressources_dir_file
     hk_manager.updateFilter(0); //filtre la liste pour l'affichage dans le panneau de config
 
 
-    hk_manager.connect_fct(1,&hotkey_assign_to_save);
-    hk_manager.connect_fct(2,&hotkey_assign_to_save_and_quit);
-    hk_manager.connect_fct(3,&hotkey_assign_to_quit);
-    hk_manager.connect_fct(4,&hotkey_assign_to_snapshot_close_windows);
-    hk_manager.connect_fct(5,&hotkey_assign_to_snapshot_open_windows);
-    hk_manager.connect_fct(6,&hotkey_assign_to_cycle_forward_open_windows);
-    hk_manager.connect_fct(7,&hotkey_assign_to_cycle_backward_open_windows);
-    hk_manager.connect_fct(8,&hotkey_assign_to_open_forward_solo_windows);
-    hk_manager.connect_fct(9,&hotkey_assign_to_open_backward_solo_windows);
-    hk_manager.connect_fct(10,&hotkey_assign_to_Store_mode);
-    hk_manager.connect_fct(11,&hotkey_assign_to_Modify_mode);
-    hk_manager.connect_fct(12,&hotkey_assign_to_Report_mode);
-    hk_manager.connect_fct(13,&hotkey_assign_to_Clear_mode);
-    hk_manager.connect_fct(14,&hotkey_assign_to_Name);
-    hk_manager.connect_fct(15,&hotkey_assign_to_Time);
-    hk_manager.connect_fct(16,&hotkey_assign_to_Trichromy);
-    hk_manager.connect_fct(17,&hotkey_assign_to_Video_Tracking);
-    hk_manager.connect_fct(18,&hotkey_assign_to_CueList);
-    hk_manager.connect_fct(19,&hotkey_assign_to_Faders);
-    hk_manager.connect_fct(20,&hotkey_assign_to_MiniFaders);
-    hk_manager.connect_fct(21,&hotkey_assign_to_Banger);
-    hk_manager.connect_fct(22,&hotkey_assign_to_Blind_mode);
-    hk_manager.connect_fct(23,&hotkey_assign_to_CFG_Menu);
-    hk_manager.connect_fct(24,&hotkey_assign_to_Chasers);
-    hk_manager.connect_fct(25,&hotkey_assign_to_Mover);
-    hk_manager.connect_fct(26,&hotkey_assign_to_selectedAllChannels);
-	hk_manager.connect_fct(27,&hotkey_assign_to_unselectedChannels);
-	hk_manager.connect_fct(28,&hotkey_assign_to_movingSelectionLeft);
-	hk_manager.connect_fct(29,&hotkey_assign_to_movingSelectionRight);
-	hk_manager.connect_fct(30,&hotkey_assign_to_fullLevel);
-	hk_manager.connect_fct(31,&hotkey_assign_to_levelToZero);
-	hk_manager.connect_fct(32,&hotkey_assign_to_plusPercentForTheSelection); //32;Channels;plus % (for the selection);0;0;0;84;[ARROW UP]
-	hk_manager.connect_fct(33,&hotkey_assign_to_minusPercentForTheSelection); //33;Channels;minus % (for the selection);0;0;0;85;[ARROW DOWN]
+    hk_manager.connect_fct(1,&hk_trigger_01_save);
+    hk_manager.connect_fct(2,&hk_trigger_02_save_and_quit);
+    hk_manager.connect_fct(3,&hk_trigger_03_quit);
+    hk_manager.connect_fct(4,&hk_trigger_04_snapshot_close_windows);
+    hk_manager.connect_fct(5,&hk_trigger_05_snapshot_open_windows);
+    hk_manager.connect_fct(6,&hk_trigger_06_cycle_forward_open_windows);
+    hk_manager.connect_fct(7,&hk_trigger_07_cycle_backward_open_windows);
+    hk_manager.connect_fct(8,&hk_trigger_08_open_forward_solo_windows);
+    hk_manager.connect_fct(9,&hk_trigger_09_open_backward_solo_windows);
+    hk_manager.connect_fct(10,&hk_trigger_10_Store_mode);
+    hk_manager.connect_fct(11,&hk_trigger_11_Modify_mode);
+    hk_manager.connect_fct(12,&hk_trigger_12_Report_mode);
+    hk_manager.connect_fct(13,&hk_trigger_13_Clear_mode);
+    hk_manager.connect_fct(14,&hk_trigger_14_Name);
+    hk_manager.connect_fct(15,&hk_trigger_15_Time);
+    hk_manager.connect_fct(16,&hk_trigger_16_Trichromy);
+    hk_manager.connect_fct(17,&hk_trigger_17_Video_Tracking);
+    hk_manager.connect_fct(18,&hk_trigger_18_CueList);
+    hk_manager.connect_fct(19,&hk_trigger_19_Faders);
+    hk_manager.connect_fct(20,&hk_trigger_20_MiniFaders);
+    hk_manager.connect_fct(21,&hk_trigger_21_Banger);
+    hk_manager.connect_fct(22,&hk_trigger_22_Blind_mode);
+    hk_manager.connect_fct(23,&hk_trigger_23_CFG_Menu);
+    hk_manager.connect_fct(24,&hk_trigger_24_Chasers);
+    hk_manager.connect_fct(25,&hk_trigger_25_Mover);
+    hk_manager.connect_fct(26,&hk_trigger_26_selectedAllChannels);
+	hk_manager.connect_fct(27,&hk_trigger_27_unselectedChannels);
+	hk_manager.connect_fct(28,&hk_trigger_28_movingSelectionLeft);
+	hk_manager.connect_fct(29,&hk_trigger_29_movingSelectionRight);
+	hk_manager.connect_fct(30,&hk_trigger_30_fullLevel);
+	hk_manager.connect_fct(31,&hk_trigger_31_levelToZero);
+	hk_manager.connect_fct(32,&hk_trigger_32_plusPercentForTheSelection); //32;Channels;plus % (for the selection);0;0;0;84;[ARROW UP]
+	hk_manager.connect_fct(33,&hk_trigger_33_minusPercentForTheSelection); //33;Channels;minus % (for the selection);0;0;0;85;[ARROW DOWN]
 
 
 
