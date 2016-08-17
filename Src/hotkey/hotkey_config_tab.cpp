@@ -119,7 +119,7 @@ void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int 
 }
 
 //Définition avec argument supp : la fonction à déclencher - fonction de type void non_fonction (string)
-void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int button_hight, int text_to_border_X, int text_to_border_Y, std::string button_label, bool hasfocus, ptrMthd2 fctToFire, std::string file_name)
+void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int button_hight, int text_to_border_X, int text_to_border_Y, std::string button_label, bool hasfocus, ptrMthd_string fctToFire, std::string file_name)
 {
 
 //appel a la fonction générique qui n'a pas en dernier argument la fonction a déclencher
@@ -388,8 +388,30 @@ void do_hotkey_config_liste (int cfg_X,int cfg_Y)
             }
         }
 
-        petitpetitchiffre.Print(hk_manager.c_catlist[num_ligne].fonctionality().description(),	cfg_X+ 150,	cfg_Y+ 70 + num_ligne_visu * 20, 375, RIGHT);
-        neuromoyen.Print(hk_manager.c_catlist[num_ligne].signature().wording(),				cfg_X+ 555,	cfg_Y+ 70 + num_ligne_visu * 20);
+		//spécial Banger
+
+		std::string triggers_name = hk_manager.c_catlist[num_ligne].fonctionality().description();
+		std::vector<std::string> tokens = whc_toolbox::split_string(triggers_name.substr(0,triggers_name.size()),' ');
+		int banger_num = -1;
+		std::string banger_name ;
+		if (tokens.size()>0)
+		{
+			if (tokens[0]=="Bang")  //dans le fichier de déclaration
+			{
+				banger_num = whc_toolbox::string_to_int(tokens[1]);
+				if (banger_num <=bangers_number_of)
+				{
+					banger_name = triggers_name + " alias " + bangers_name [banger_num-1];
+				}
+			}
+		}
+		if (banger_num > 0)
+		{
+			triggers_name = banger_name ;
+		}
+
+        petitpetitchiffre.Print(triggers_name,									cfg_X+ 150,	cfg_Y+ 70 + num_ligne_visu * 20, 375, RIGHT);
+        neuromoyen.Print(hk_manager.c_catlist[num_ligne].signature().wording(),	cfg_X+ 555,	cfg_Y+ 70 + num_ligne_visu * 20);
 
     }
     //Canvas::DisableClipping();

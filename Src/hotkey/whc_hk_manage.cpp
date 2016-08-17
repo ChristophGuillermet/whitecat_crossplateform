@@ -163,7 +163,7 @@ int whc_hk_manage::shortcutprocess(int isreadkey)
             fctptr();  /* Execution de la méthode */
         }
         whc_hk_input neutre ;
-        c_user_signature = neutre ;
+        //c_user_signature = neutre ;
         return -1 ;
     }
     else

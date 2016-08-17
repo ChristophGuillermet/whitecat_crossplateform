@@ -1208,6 +1208,7 @@ int index_banger_selected=0;
 bool index_enable_edit_banger=0;
 char string_event[72];//debug debordement de tableau 18/12/14 christoph ruiserge
 int Banger_Memoire[10000];//le banger affecté à une mémoire
+int bangers_number_of = 128; // sab 17/08/2016 pour éviter des dépassments de mémoire dans congif des hotkeys
 char bangers_name[128][25];//128 bangers
 int bangers_type[128][6];//128 bangers // 6 events par banger
 int bangers_action[128][6];//num action demandée
@@ -2624,9 +2625,10 @@ bool index_config_tab_hotkeys=false;		/**< le panneau (onglet) des hotkeys est s
 ////// Hotkey management
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include <whc_hk_manage.h>
-whc_hk_manage hk_manager;					/**< une seule instance sera créée pour gérer l'ensemble */
-typedef void (*ptrMthd)(void);				/**< pour définir les fonctions à passer comme argument dan des fonctions - fonctions de type "void nom_fcontion ()" */
-typedef void (*ptrMthd2)(std::string);		/**< pour définir les fonctions à passer comme argument dan des fonctions - fonctions de type "void nom_fcontion (std::string)" */
+whc_hk_manage hk_manager;						/**< une seule instance sera créée pour gérer l'ensemble */
+typedef void (*ptrMthd)(void);					/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction ()" */
+typedef void (*ptrMthd_string)(std::string);	/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (std::string)" */
+typedef void (*ptrMthd_int)(int);				/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (int)" */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // sab 08/2016 - HOT KEYS -- FIN ANCRAGE
