@@ -11,9 +11,15 @@ bool whc_hk_manage::c_hk_user_hasToConfirmChoice=false;
 int whc_hk_manage::c_hk_user_hasSelect_applyId=0 ;
 whc_hk_apply whc_hk_manage::c_user_other_func_allready_link_to_hotkey;
 whc_hk_input whc_hk_manage::c_user_signature ;
-bool* whc_hk_manage::c_inputIsOn;
+bool * whc_hk_manage::c_ptr_inputIsOn;
 bool whc_hk_manage::c_hk_service_isInit=false;
 int whc_hk_manage::c_filter_idx=0;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int whc_hk_manage::c_nbr_category = 7;  // <-- !!! à mettre à jour = dénombrement vrai
+										// idem pour nbr_tab_config_hotkeys
+										// TODO : variable de classe c_hk_c_nbr_category + accès pour initialiser nbr_tab_config_hotkeys=hk_manager.category_nbr()
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // objet non terminé whc_report whc_hk_manage::c_report;
 
@@ -59,9 +65,24 @@ int whc_hk_manage::collect()
 
         bool hotkey_signature_isAllowed = true ;
 
-        // shortcut : pas de signature avec pavé num simple ou shift
-        // ni tab ni backspace ni enter
+        // Liste des touches qui ne peuvent pas être utilisées dans un shortcut :
+        // sans une des deux touches de modification Ctrl ou Alt
+        //-- Une combinaison avec shift seul est interdite (shift tab)
         if (not(c_user_signature.ctrl() || c_user_signature.alt()))
+        {
+            switch (tmp_scancode)
+            {
+            case KEY_TAB:
+                hotkey_signature_isAllowed = false ;
+                break;
+            default:
+                break;
+			}
+        }
+
+        // Liste des touches qui ne peuvent pas être utilisées dans un shortcut
+        // sans une des trois touches de modification
+        if (not(c_user_signature.ctrl() || c_user_signature.shift() || c_user_signature.alt()))
         {
             switch (tmp_scancode)
             {
@@ -101,7 +122,15 @@ int whc_hk_manage::collect()
             }
         }
 
-        if (c_inputIsOn && hotkey_signature_isAllowed && c_hk_service_isInit) //no command language input is on, and not reserve signature an service is proprely initiate
+		bool theInputIsOn;
+		theInputIsOn = *c_ptr_inputIsOn ;
+        if (theInputIsOn // mode de saisie texte activée actuelle fonction NAME
+			&& (not(c_user_signature.ctrl() || c_user_signature.alt()) || c_user_signature.shift() ))
+        {
+        	hotkey_signature_isAllowed = false ;
+        }
+
+        if (hotkey_signature_isAllowed && c_hk_service_isInit) //not reserve signature an service is proprely initiate
         {
             if (not(tmp_scancode == KEY_ESC)) //pas de raccourci clavier si Esc ou si input
             {
@@ -119,7 +148,7 @@ int whc_hk_manage::collect()
                     {
                         link_fct_hk(c_hk_user_hasSelect_applyId,c_user_signature);
                         user_redefine_hk_link_init() ;
-                        updateFilter(c_filter_idx);
+                        updateFilter();
                         c_hk_user_madeChanges=true;   // pour faire apparaître le save button
                     }
                     else   //la hotkey choisie par l'ulisateur est déjà associée à une autre fonction : demander confirmation de l'association
@@ -233,6 +262,9 @@ void whc_hk_manage::init(std::string fic_name)
     {
         load(fic_name);
     }
+
+    c_filter_idx=0;
+    updateFilter();
 }
 
 void whc_hk_manage::load(std::string fic_name)
@@ -467,16 +499,10 @@ int whc_hk_manage::read_db_row(void *NotUsed, int row_nbr_col, char **row_data_c
     return 0;
 }
 
-void whc_hk_manage::updateFilter(int tab_idx)
+void whc_hk_manage::updateFilter()
 {
 	c_catlist.clear();
-	c_filter_idx = tab_idx;
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	int nbr_category = 7;  				// <-- !!! à mettre à jour = dénombrement vrai
-										// idem pour nbr_tab_config_hotkeys
-										// TODO : variable de classe c_hk_nbr_category + accès pour initialiser nbr_tab_config_hotkeys=hk_manager.category_nbr()
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    std::vector <char*> filter (nbr_category);
+    std::vector <char*> filter (c_nbr_category);
     filter[0]= "Global functions";
     filter[1]= "Transverse commands";
     filter[2]= "Channels";
@@ -485,7 +511,7 @@ void whc_hk_manage::updateFilter(int tab_idx)
     filter[5]= "VideoTracking";
     filter[6]= "Bangers";
 
-    if(not(c_filter_idx<nbr_category)){c_filter_idx=0;}
+    if(not(c_filter_idx<c_nbr_category)){c_filter_idx=0;}
 
     int idx_back = c_list.size();
 	while (idx_back>0)

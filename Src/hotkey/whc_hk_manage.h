@@ -70,7 +70,7 @@ public:
     std::vector<whc_hk_manage> static c_catlist;  	/**<  liste limitée à la catégorie sélectionnée */
     whc_hk_input static c_user_signature ;
 
-    bool static * c_inputIsOn; // (variable associée par référence de la variable externe) la zone de saisie texte est ouverte : elle est prioritaire
+    bool static * c_ptr_inputIsOn; // (variable associée par référence de la variable externe) la zone de saisie texte est ouverte : elle est prioritaire
 
 //	objet non terminé	whc_report static c_report;
 
@@ -111,20 +111,50 @@ public:
         return c_hk_user_hasSelect_applyId;
     }
 
-	//static std::string last_hk_wording() ; //{c_user_signature.wording();}
+    //static std::string last_hk_wording() ; //{c_user_signature.wording();}
 
-	static void reset_user_choice(){c_hk_user_hasSelect_applyId=0;}
+	static int filterIdx(){return c_filter_idx;}
+	static void setfilterIdx(int val){c_filter_idx=val;}
 
-	static bool waiting_user_confirmation_on_a_choice (){return c_hk_user_hasToConfirmChoice;}
+    static void reset_user_choice()
+    {
+        c_hk_user_hasSelect_applyId=0;
+    }
+
+    static bool waiting_user_confirmation_on_a_choice ()
+    {
+        return c_hk_user_hasToConfirmChoice;
+    }
 
     static whc_hk_apply user_conflictfunc()
     {
         return c_user_other_func_allready_link_to_hotkey;
     }
 
-	std::string current_choice_fct_description () {return this->c_list[this->user_hasSelectThisFunc()-1].fonctionality().description();}
+    std::string current_choice_fct_description ()
+    {
+        if (c_hk_user_hasSelect_applyId >0)
+        {
+            return this->c_list[this->user_hasSelectThisFunc()-1].fonctionality().description();
+        }
+        else
+        {
+            return " ## none ##";
+        }
+    }
 
-	std::string current_choice_fct_accessible_with () { return this->c_list[this->user_hasSelectThisFunc()-1].signature().wording();}
+    std::string current_choice_fct_accessible_with ()
+    {
+        if (c_hk_user_hasSelect_applyId >0)
+        {
+            return this->c_list[this->user_hasSelectThisFunc()-1].signature().wording();
+        }
+        else
+        {
+            return " ## unset ##";
+        }
+
+    }
 
     static std::string other_func_allready_link_to_hotkey()
     {
@@ -136,24 +166,31 @@ public:
         return c_hk_user_update_isOn ;
     }
 
-	static bool hk_user_madeChanges(){return c_hk_user_madeChanges;}
+    static bool hk_user_madeChanges()
+    {
+        return c_hk_user_madeChanges;
+    }
 
     static void user_redefine_hk_link_init();
+    static int categoryNbr(){return c_nbr_category;}
 
-    static void link_keyFocusIndicator(bool &val)
+    static void link_keyFocusIndicator(bool * ptr_val)
     {
-        c_inputIsOn = &val ;
+        c_ptr_inputIsOn = ptr_val ;
     }
-    // c_inputIsOn devient "synonyme" de la variable passée par référence : elles lisent et modifient le même contenu mémoire
+    // c_ptr_inputIsOn devient "synonyme" de la variable passée par référence : elles lisent et modifient le même contenu mémoire
 
     int collect();
     void user_start_update_link(int val);
 
-    void updateFilter(int tab_idx);
+    void updateFilter();
 
     int shortcutprocess(int isreadkey);
     whc_hk_apply search_fct(whc_hk_input signature);
-    static bool hk_service_isInit() { return c_hk_service_isInit;}
+    static bool hk_service_isInit()
+    {
+        return c_hk_service_isInit;
+    }
     void init(std::string fic_name);
     void load(std::string fic_name);
     void save(std::string fic_name);
@@ -176,6 +213,7 @@ private:
     bool static c_hk_user_hasToConfirmChoice ; // on demande confirmation, si signature déjà attribuée à une autre fonction
     int static c_hk_user_hasSelect_applyId ; // fonctionality->id() = l'utilisateur a sélectionné une fonction pour lui associer une nouvelle hotkey
     int static c_filter_idx;
+    int static c_nbr_category ;
 };
 
 #endif // WHC_HK_MANAGE_H

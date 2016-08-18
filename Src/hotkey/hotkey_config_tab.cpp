@@ -40,6 +40,7 @@ WWWWWWWW           C  WWWWWWWW   |
 *
 */
 
+#include <whc_hk_manage.h>
 
 void loadfile_config_hotkey(std::string file_name)
 {
@@ -58,13 +59,13 @@ void save_config_hotkey()
 void replace_config_hotkey()
 {
     hk_manager.replace_link_fct_hk();
-	hk_manager.updateFilter(config_hotkeys_active_tab_id); // recharge la liste pour l'affichage des fonctions de la catégorie choisie
+	hk_manager.updateFilter(); // recharge la liste pour l'affichage des fonctions de la catégorie choisie
 }
 
 void hotkey_esc_button_press()
 {
-    hk_manager.reset_user_choice();
     simulate_keypress(KEY_ESC);
+    hk_manager.reset_user_choice();
 }
 
 void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int button_hight, int text_to_border_X, int text_to_border_Y, std::string button_label, bool hasfocus)
@@ -388,20 +389,45 @@ void do_hotkey_config_liste (int cfg_X,int cfg_Y)
             }
         }
 
-		//spécial Banger
+		// --- Spécial Banger --- DEB --
+		// La recherche est à chaque boucle graphique
+		//- perte de perf : il faut le faire sur changement du nom et au 1er  (re)affichage
+		// TODO : A traiter au moment où la liste filtrée est établie
+		// implique
+		// - fct de modif du libellé du apply
+		// - mise à jour pilotée par hk_manage
+		// - fournir en entrée du update un lien vers le tableau de nom de Banger et sa dimension
 
-		std::string triggers_name = hk_manager.c_catlist[num_ligne].fonctionality().description();
-		std::vector<std::string> tokens = whc_toolbox::split_string(triggers_name.substr(0,triggers_name.size()),' ');
 		int banger_num = -1;
+		std::string triggers_name = hk_manager.c_catlist[num_ligne].fonctionality().description();
+		std::string triggers_module = hk_manager.c_catlist[num_ligne].fonctionality().module();
 		std::string banger_name ;
-		if (tokens.size()>0)
+		if (triggers_module=="Bangers")
 		{
-			if (tokens[0]=="Bang")  //dans le fichier de déclaration
+			std::vector<std::string> tokens = whc_toolbox::split_string(triggers_name.substr(0,triggers_name.size()),' ');
+			if (tokens.size()>0)
 			{
-				banger_num = whc_toolbox::string_to_int(tokens[1]);
-				if (banger_num <=bangers_number_of)
+				if (tokens[0]=="Bang")  //dans le fichier de déclaration
 				{
-					banger_name = triggers_name + " alias " + bangers_name [banger_num-1];
+					try {
+						banger_num = whc_toolbox::string_to_int(tokens[1]);
+						if (banger_num <=bangers_number_of)
+						{
+							banger_name = triggers_name + " alias " + bangers_name [banger_num-1];
+						}
+					}
+					catch (const std::overflow_error& e) {
+						 std::cout << "hotkey config nom des bangers (1) : "; //
+						 std::cout << e.what();
+					} catch (const std::runtime_error& e) {
+						std::cout << "hotkey config nom des bangers (2) : "; //
+						std::cout << e.what();
+					} catch (const std::exception& e) {
+						std::cout << "hotkey config nom des bangers (3) : "; //
+						std::cout << e.what();
+					} catch (...) {
+						std::cout << "hotkey config nom des bangers (4) : "; //
+					}
 				}
 			}
 		}
@@ -409,6 +435,7 @@ void do_hotkey_config_liste (int cfg_X,int cfg_Y)
 		{
 			triggers_name = banger_name ;
 		}
+		// --- Spécial Banger --- FIN
 
         petitpetitchiffre.Print(triggers_name,									cfg_X+ 150,	cfg_Y+ 70 + num_ligne_visu * 20, 375, RIGHT);
         neuromoyen.Print(hk_manager.c_catlist[num_ligne].signature().wording(),	cfg_X+ 555,	cfg_Y+ 70 + num_ligne_visu * 20);
@@ -465,7 +492,7 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
         Cadre_Onglet.SetLineWidth(epaisseur_ligne_fader/2);
         Cadre_Onglet.DrawOutline(CouleurLigne);//CouleurBlind
 
-        if(tab_idx==config_hotkeys_active_tab_id)
+        if(tab_idx==hk_manager.filterIdx())
         {
             Cadre_Onglet.Draw(CouleurConfig.WithAlpha(0.5));
         }
@@ -477,7 +504,7 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
         if((hk_manager.hk_user_update_isOn()!=true) && // pas de mouse effect si en attente de saisie d'une hotkey pou redefinir le lien avec une fonction
                 mouseOver_hotkey_config_tab(cfg_X, cfg_Y, tab_idx, largeur_espace_onglet_au_bord, largeur_onglet, hauteur_espace_onglet_au_bord, hauteur_onglet, hauteur_espace_entre_onglet))
         {
-            if(tab_idx!=config_hotkeys_active_tab_id)
+            if(tab_idx!=hk_manager.filterIdx())
             {
                 Cadre_Onglet.Draw(CouleurSurvol);
             }
@@ -492,10 +519,10 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
 
                 }
                 index_active_tab_config_hotkeys[tab_idx]=true;
-                config_hotkeys_active_tab_id=tab_idx;
+                hk_manager.setfilterIdx(tab_idx);
 
                 num_page_list_hotkeys=0; // la liste va être rechargée
-                hk_manager.updateFilter(tab_idx); // recharge la liste pour l'affichage des fonctions de la catégorie choisie
+                hk_manager.updateFilter(); // recharge la liste pour l'affichage des fonctions de la catégorie choisie
             }
             mouseClicLeft.SetProcessed();
         }
@@ -516,7 +543,7 @@ void draw_logical_hotkey_config_tab (int cfg_X,int cfg_Y)
     Cadre_List.Draw(CouleurConfig.WithAlpha(1));
 //pour effacer la ligne entre le cadre et l'onglet actif
     Rect CleanLine( Vec2D ( cfg_X + largeur_espace_onglet_au_bord + (largeur_onglet/2),
-							cfg_Y + hauteur_espace_onglet_au_bord + config_hotkeys_active_tab_id * (hauteur_onglet + hauteur_espace_entre_onglet)),
+							cfg_Y + hauteur_espace_onglet_au_bord + hk_manager.filterIdx() * (hauteur_onglet + hauteur_espace_entre_onglet)),
 					Vec2D ( largeur_onglet, hauteur_onglet - epaisseur_ligne_fader/2 ) );
     CleanLine.Draw(CouleurConfig.WithAlpha(1));
 }
