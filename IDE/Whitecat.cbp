@@ -343,6 +343,8 @@
 		<Unit filename="../Src/time_visu_3.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../Src/toolbox/whc_report.cpp" />
+		<Unit filename="../Src/toolbox/whc_report.h" />
 		<Unit filename="../Src/toolbox/whc_toolbox.cpp" />
 		<Unit filename="../Src/toolbox/whc_toolbox.h" />
 		<Unit filename="../Src/trichro_core2.cpp">
@@ -359,8 +361,6 @@
 		</Unit>
 		<Unit filename="../Src/whc_mouse.cpp" />
 		<Unit filename="../Src/whc_mouse.h" />
-		<Unit filename="../Src/whc_report.cpp" />
-		<Unit filename="../Src/whc_report.h" />
 		<Unit filename="../Src/whitecat.h" />
 		<Unit filename="../Src/whitecat_Fct.h" />
 		<Unit filename="../Src/whitecat_opensource.ico">

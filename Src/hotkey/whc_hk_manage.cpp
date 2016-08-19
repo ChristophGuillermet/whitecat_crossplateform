@@ -11,13 +11,14 @@ bool whc_hk_manage::c_hk_user_hasToConfirmChoice=false;
 int whc_hk_manage::c_hk_user_hasSelect_applyId=0 ;
 whc_hk_apply whc_hk_manage::c_user_other_func_allready_link_to_hotkey;
 whc_hk_input whc_hk_manage::c_user_signature ;
+whc_hk_apply whc_hk_manage::c_trigger_fired ;
 bool * whc_hk_manage::c_ptr_inputIsOn;
 bool whc_hk_manage::c_hk_service_isInit=false;
 int whc_hk_manage::c_filter_idx=0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int whc_hk_manage::c_nbr_category = 7;  // <-- !!! à mettre à jour = dénombrement vrai
-										// idem pour nbr_tab_config_hotkeys
-										// TODO : variable de classe c_hk_c_nbr_category + accès pour initialiser nbr_tab_config_hotkeys=hk_manager.category_nbr()
+// idem pour nbr_tab_config_hotkeys
+// TODO : variable de classe c_hk_c_nbr_category + accès pour initialiser nbr_tab_config_hotkeys=hk_manager.category_nbr()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -65,56 +66,35 @@ int whc_hk_manage::collect()
 
         bool hotkey_signature_isAllowed = true ;
 
+//---------------------------------------------------------------------------------------------
         // Liste des touches qui ne peuvent pas être utilisées dans un shortcut :
         // sans une des deux touches de modification Ctrl ou Alt
-        //-- Une combinaison avec shift seul est interdite (shift tab)
-        if (not(c_user_signature.ctrl() || c_user_signature.alt()))
-        {
-            switch (tmp_scancode)
-            {
-            case KEY_TAB:
-                hotkey_signature_isAllowed = false ;
-                break;
-            default:
-                break;
-			}
-        }
-
-        // Liste des touches qui ne peuvent pas être utilisées dans un shortcut
-        // sans une des trois touches de modification
+        //-- Une combinaison avec shift seul est interdite (ex. : shift tab)
+//        if (not(c_user_signature.ctrl() || c_user_signature.alt()))
+//        {
+//            switch (tmp_scancode)
+//            {
+//            case KEY_TAB:
+//                hotkey_signature_isAllowed = false ;
+//                break;
+//            default:
+//                break;
+//			}
+//        }
+//---------------------------------------------------------------------------------------------
+        // Liste des touches qui ne peuvent pas être utilisées dans un shortcut sans modification
+        // (sans une des trois touches de modification)
         if (not(c_user_signature.ctrl() || c_user_signature.shift() || c_user_signature.alt()))
         {
             switch (tmp_scancode)
             {
-            case KEY_TAB:
-            case KEY_BACKSPACE:
+            case KEY_BACKSPACE:		//pour effacer la saisie
+            case KEY_ESC:
             case KEY_ENTER:
             case KEY_ENTER_PAD:
-            case KEY_DEL_PAD: // numeric pad
-            case KEY_PLUS_PAD:
-            case KEY_MINUS_PAD:
-            case KEY_SLASH_PAD:
-            case KEY_ASTERISK:
-            case KEY_0_PAD:
-            case KEY_1_PAD:
-            case KEY_2_PAD:
-            case KEY_3_PAD:
-            case KEY_4_PAD:
-            case KEY_5_PAD:
-            case KEY_6_PAD:
-            case KEY_7_PAD:
-            case KEY_8_PAD:
-            case KEY_9_PAD:
-            case KEY_0:
-            case KEY_1:
-            case KEY_2:
-            case KEY_3:
-            case KEY_4:
-            case KEY_5:
-            case KEY_6:
-            case KEY_7:
-            case KEY_8:
-            case KEY_9:
+            case KEY_DEL_PAD: 		// c'est pris pour = '.'
+            case KEY_0_PAD...KEY_9_PAD:
+            case KEY_0...KEY_9:
                 hotkey_signature_isAllowed = false ;
                 break;
             default:
@@ -122,58 +102,65 @@ int whc_hk_manage::collect()
             }
         }
 
-		bool theInputIsOn;
-		theInputIsOn = *c_ptr_inputIsOn ;
+        bool theInputIsOn;
+        theInputIsOn = *c_ptr_inputIsOn ;
         if (theInputIsOn // mode de saisie texte activée actuelle fonction NAME
-			&& (not(c_user_signature.ctrl() || c_user_signature.alt()) || c_user_signature.shift() ))
+                && (not(c_user_signature.ctrl() || c_user_signature.alt()) || c_user_signature.shift() ))
         {
-        	hotkey_signature_isAllowed = false ;
+            hotkey_signature_isAllowed = false ;
         }
 
-        if (hotkey_signature_isAllowed && c_hk_service_isInit) //not reserve signature an service is proprely initiate
-        {
-            if (not(tmp_scancode == KEY_ESC)) //pas de raccourci clavier si Esc ou si input
-            {
-                if(c_hk_user_hasSelect_applyId >0) // c_hk_user_hasSelect_applyId = l'utilisateur a sélectionné une fonction pour lui associer une nouvelle hotkey
-                {
-                    //search if user_signature is allready associate to a fonctionality
-                    whc_hk_apply fctlink = search_fct(c_user_signature);
+        //ré-init
+        whc_hk_apply neutre ;
+        c_trigger_fired = neutre ;
 
-                    if (fctlink.id()==c_hk_user_hasSelect_applyId) // this signature is allready associated to the aim fonctionnality
-                    {
-                        link_fct_hk(c_hk_user_hasSelect_applyId,c_user_signature);
-                        user_redefine_hk_link_init() ;
-                    }
-                    else if (fctlink.id()==-1) // this signature is not used by any other fonctionnality
-                    {
-                        link_fct_hk(c_hk_user_hasSelect_applyId,c_user_signature);
-                        user_redefine_hk_link_init() ;
-                        updateFilter();
-                        c_hk_user_madeChanges=true;   // pour faire apparaître le save button
-                    }
-                    else   //la hotkey choisie par l'ulisateur est déjà associée à une autre fonction : demander confirmation de l'association
-                    {
-                        c_user_other_func_allready_link_to_hotkey = fctlink ;
-                        c_hk_user_hasToConfirmChoice = true ;
-                    }
-                }
-                else //pas de fonction a asocier à une hotkey
-                {
-                    user_redefine_hk_link_init() ;
-                    return shortcutprocess(isreadkey);
-                }
-            }
-            else //ESC
+        if (hotkey_signature_isAllowed    	// signature de hotkey autorisée
+		&& c_hk_service_isInit) 			// service is proprely initiate (data read)
+        {
+            if(c_hk_user_hasSelect_applyId >0)
+			// c_hk_user_hasSelect_applyId = l'utilisateur a sélectionné une fonction pour lui associer une nouvelle hotkey
             {
-                if(c_hk_user_hasSelect_applyId >0)
+                //search if user_signature is allready associate to a fonctionality
+                whc_hk_apply fctlink = search_fct(c_user_signature);
+
+                if (fctlink.id()==c_hk_user_hasSelect_applyId) // this signature is allready associated to the aim fonctionnality
                 {
-                    //abandon définition
+                    link_fct_hk(c_hk_user_hasSelect_applyId,c_user_signature);
                     user_redefine_hk_link_init() ;
-                    return -1 ; //isreadkey was used - not to be used by command language
+                }
+                else if (fctlink.id()==-1) // this signature is not used by any other fonctionnality
+                {
+                    link_fct_hk(c_hk_user_hasSelect_applyId,c_user_signature);
+                    user_redefine_hk_link_init() ;
+                    updateFilter();
+                    c_hk_user_madeChanges=true;   // pour faire apparaître le save button
+                }
+                else   //la hotkey choisie par l'ulisateur est déjà associée à une autre fonction : demander confirmation de l'association
+                {
+                    c_user_other_func_allready_link_to_hotkey = fctlink ;
+                    c_hk_user_hasToConfirmChoice = true ;
                 }
             }
+            else //pas de fonction a associer à une hotkey dans config
+            {
+                user_redefine_hk_link_init() ;
+                return shortcutprocess(isreadkey);
+            }
+
+
         }
-        return isreadkey ;
+        else if (tmp_scancode == KEY_ESC)
+        {
+            if(c_hk_user_hasSelect_applyId >0)
+            {
+                //abandon définition
+                user_redefine_hk_link_init() ;
+                return -1 ; //isreadkey was used - not to be used by command language
+            }
+            else return isreadkey ;   // ESC d'autre chose --> on passe la main à la saisie de WhiteCat
+        }
+        else return isreadkey ;  // pas de hotkey - pas de définition en cours --> on passe la main à la saisie de texte/chiffre
+
     }
     else return -1 ; //no isreadkey - nothing to be used by command language
 
@@ -185,11 +172,12 @@ int whc_hk_manage::shortcutprocess(int isreadkey)
     whc_hk_apply fctlink = search_fct(c_user_signature);
     if (fctlink.id()>0)
     {
-        void (*fctptr)(void);       /*déclaration du pointeur*/
-        fctptr = fctlink.processOnHotkey();   /*Initialisation*/
+        void (*fctptr)(void);       			/*déclaration du pointeur*/
+        fctptr = fctlink.processOnHotkey();   	/*Initialisation*/
         if (fctptr!=nullptr)
         {
             fctptr();  /* Execution de la méthode */
+            c_trigger_fired = fctlink ;
         }
         whc_hk_input neutre ;
         //c_user_signature = neutre ;
@@ -414,7 +402,7 @@ void whc_hk_manage::replace_link_fct_hk()
         }
     }
 
-	c_hk_user_madeChanges=true;
+    c_hk_user_madeChanges=true;
     user_redefine_hk_link_init();
 }
 
@@ -501,7 +489,7 @@ int whc_hk_manage::read_db_row(void *NotUsed, int row_nbr_col, char **row_data_c
 
 void whc_hk_manage::updateFilter()
 {
-	c_catlist.clear();
+    c_catlist.clear();
     std::vector <char*> filter (c_nbr_category);
     filter[0]= "Global functions";
     filter[1]= "Transverse commands";
@@ -511,24 +499,27 @@ void whc_hk_manage::updateFilter()
     filter[5]= "VideoTracking";
     filter[6]= "Bangers";
 
-    if(not(c_filter_idx<c_nbr_category)){c_filter_idx=0;}
+    if(not(c_filter_idx<c_nbr_category))
+    {
+        c_filter_idx=0;
+    }
 
     int idx_back = c_list.size();
-	while (idx_back>0)
-	{
-		idx_back--;
-		whc_hk_manage* hotkey ;
-		hotkey = &whc_hk_manage::c_list[idx_back] ;
-		whc_hk_apply fonctionality ;
-		fonctionality = hotkey->fonctionality() ;
+    while (idx_back>0)
+    {
+        idx_back--;
+        whc_hk_manage* hotkey ;
+        hotkey = &whc_hk_manage::c_list[idx_back] ;
+        whc_hk_apply fonctionality ;
+        fonctionality = hotkey->fonctionality() ;
 
-		if (fonctionality.module()==filter[c_filter_idx])
-		{
-			c_catlist.push_back(c_list[idx_back]);
-		}
-	}
-	if (c_catlist.size()>0)
-	{
-		std::reverse(c_catlist.begin(),c_catlist.end());
-	}
+        if (fonctionality.module()==filter[c_filter_idx])
+        {
+            c_catlist.push_back(c_list[idx_back]);
+        }
+    }
+    if (c_catlist.size()>0)
+    {
+        std::reverse(c_catlist.begin(),c_catlist.end());
+    }
 }

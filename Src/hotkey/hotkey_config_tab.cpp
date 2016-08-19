@@ -354,6 +354,9 @@ void do_hotkey_config_liste (int cfg_X,int cfg_Y)
     std::string last_keyinput = "Last key input : " + hk_manager.c_user_signature.wording();
     neuromoyen.Print(last_keyinput,	cfg_X+largeurCFGwindow -20 - 14 * last_keyinput.size(),	cfg_Y+ 30, 14 * last_keyinput.size(),	RIGHT);
 
+    std::string trigger_fired = "Trigger fired : " + hk_manager.c_trigger_fired.description();
+    neuromoyen.Print(trigger_fired,	cfg_X+largeurCFGwindow -20 - 14 * trigger_fired.size(),	cfg_Y+ 45, 14 * trigger_fired.size(),	RIGHT);
+
     int nbr_hk = hk_manager.c_catlist.size();
     //Canvas::SetClipping( cfg_X, cfg_Y, largeurCFGwindow, hauteurCFGwindow - 35);
 

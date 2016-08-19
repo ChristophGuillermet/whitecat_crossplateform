@@ -42,6 +42,7 @@ WWWWWWWW           C  WWWWWWWW   |
 
 #include "hotkey_triggers.h"
 #include "whc_toolbox.h"
+#include "hotkey_std_keyboard.cpp"
 #include <windows.h>
 #include <iostream>
 

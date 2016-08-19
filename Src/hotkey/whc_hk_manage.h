@@ -69,6 +69,7 @@ public:
     std::vector<whc_hk_manage> static c_list;		/**<  liste de toutes les fonctions avec leurs hotkeys associées */
     std::vector<whc_hk_manage> static c_catlist;  	/**<  liste limitée à la catégorie sélectionnée */
     whc_hk_input static c_user_signature ;
+    whc_hk_apply static c_trigger_fired ;
 
     bool static * c_ptr_inputIsOn; // (variable associée par référence de la variable externe) la zone de saisie texte est ouverte : elle est prioritaire
 

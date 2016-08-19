@@ -5,7 +5,7 @@ whc_hk_apply::whc_hk_apply()
 	//ctor
 	m_module          = " ";
 	m_id              = -1 ;
-	m_description     = " " ;
+	m_description     = " none " ;
 	m_processOnHotkey = nullptr ;
 
 }
