@@ -1232,6 +1232,12 @@ int index_banger_selected=0;
 bool index_enable_edit_banger=0;
 char string_event[72];//debug debordement de tableau 18/12/14 christoph ruiserge
 int Banger_Memoire[10000];//le banger affecté à une mémoire
+//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// sab 08/2016 - HOT KEYS -- ANCRAGE
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int bangers_number_of = 128; // sab 17/08/2016 pour éviter des dépassments de mémoire dans config des hotkeys
+//
 char bangers_name[128][25];//128 bangers
 int bangers_type[128][6];//128 bangers // 6 events par banger
 int bangers_action[128][6];//num action demandée
@@ -2594,4 +2600,52 @@ int buffer_wave[513]; //le buffer de 512 circuits à rendre dans un fader
 bool there_is_a_previous_wave_higher_level[513];
 bool wave_play_state=0;
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <whc_mouse.h>
+
+//sab 14/12/2014 - Gestion de la souris - DEB
+ /** \brief Gestion de la souris
+  *
+  *
+  */
+//--
+whc_mousePointer mousePtr(mouse_x,mouse_y);
+whc_mouseButton& mouseClicLeft = whc_mouseButton::c_buttonLeft ;
+whc_mouseButton& mouseClicMiddle = whc_mouseButton::c_buttonMiddle ;
+whc_mouseButton& mouseClicRight = whc_mouseButton::c_buttonRight ;
+whc_mouseWheel& mouseScroll = whc_mouseWheel::c_mouseScroll ;
+whc_mouseWheel& mouseRoll = whc_mouseWheel::c_mouseRoll ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////// Pour acrange dans l'existant : CFG_config_panel_8, CORE_6, save_show_13
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool index_config_tab_hotkeys=false;		/**< le panneau (onglet) des hotkeys est sélectionné sur l'écran de Configuration */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////  pour Hotkeys_config_ TAB.cpp ///
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <hotkey_config_tab.h>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////// Hotkey management
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <whc_hk_connector.h>
+whc_hk_connector hk_manager;					/**< une seule instance sera créée pour gérer l'ensemble */
+typedef void (*ptrMthd)(void);					/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction ()" */
+typedef void (*ptrMthd_string)(std::string);	/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (std::string)" */
+typedef void (*ptrMthd_int)(int);				/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (int)" */
+
+//Déclaration de toutes les fonctions globales de whitecat (grosso modo : celles qui ne sont pas dans *.h dédiés / prog. par objets )
+// !!! ATTENTION !!!
+// le fichier n'est pas complet - la moulinette qui extrait les déclarations de fonction ne gère pas tous les cas d'écriture
+// le but était de faire fonctionner l'ancrage hotkeys pas de refaire le pointage des fonctions
+#include <whitecat_global_fct.h>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

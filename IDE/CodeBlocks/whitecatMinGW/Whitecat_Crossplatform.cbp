@@ -9,23 +9,35 @@
 		<Build>
 			<Target title="Debug">
 				<Option platforms="Windows;" />
-				<Option output="../../../whitecatbuild/build/white_cat_for_mingw/Whitecat_0_8_8_alpha" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../../../whitecatbuild/build/white_cat_for_mingw/" />
-				<Option object_output="../../../whitecatbuild" />
+				<Option output="../../../whitecatbuild/appli/whitecat_for_debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../whitecatbuild/" />
+				<Option object_output="../../../whitecatbuild/obj" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wswitch-default" />
+					<Add option="-pedantic" />
+					<Add option="-std=c++11" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
 				<Option platforms="Windows;" />
-				<Option output="../../../whitecatbuild/build/white_cat_for_mingw/Whitecat_08_8_alpha" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../../../whitecatbuild/build/white_cat_for_mingw" />
-				<Option object_output="../../../whitecatbuild" />
+				<Option output="../../../whitecatbuild/appli/Whitecat_version" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../whitecatbuild/" />
+				<Option object_output="../../../whitecatbuild/obj" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="0" />
+				<Compiler>
+					<Add option="-Wswitch-default" />
+					<Add option="-pedantic" />
+					<Add option="-std=c++11" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+				</Compiler>
 				<Linker>
 					<Add library="..\..\..\..\MinGW\lib\libglu32.a" />
 				</Linker>
@@ -33,6 +45,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wswitch-enum" />
+			<Add option="-std=c++11" />
 			<Add directory="../../../whitecatlib/lib/windows/audiere-1.9.4-win32/include" />
 			<Add directory="../../../whitecatlib/lib/windows/Cserial" />
 			<Add directory="../../../whitecatlib/lib/windows/dashard" />
@@ -41,9 +54,11 @@
 			<Add directory="../../../whitecatlib/lib/windows/odmxusb_terry" />
 			<Add directory="C:/MinGW/include" />
 			<Add directory="../../../Src" />
+			<Add directory="../../../Src/hotkey" />
+			<Add directory="../../../Src/mouse" />
+			<Add directory="../../../Src/toolbox" />
 			<Add directory="C:/MinGW/opencv2.4.8/include" />
 			<Add directory="C:/MinGW/include/libharu" />
-			<Add directory="../../../Src/toolbox" />
 		</Compiler>
 		<Linker>
 			<Add option="-lopenlayer -lglyph-agl -lfreetype -llogg -lvorbis -lalleggl -ljpgalleg -lalleg44.dll -luser32 -lgdi32 -lglu32 -lopengl32 -lpthreadGC2 -lwsock32 -liphlpapi -lpng12.dll -lz -lhpdf" />
@@ -213,6 +228,9 @@
 		<Unit filename="../../../Src/grand_master.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../../../Src/graphics_rebuild1.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="../../../Src/grider8.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -228,6 +246,33 @@
 		<Unit filename="../../../Src/help_2.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../../../Src/hotkey/hotkey_config_tab.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/hotkey/hotkey_config_tab.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/hotkey/hotkey_std_keyboard.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/hotkey/hotkey_std_keyboard.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/hotkey/hotkey_triggers.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/hotkey/hotkey_triggers.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/hotkey/sqlite3.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../../Src/hotkey/whc_hk_apply.cpp" />
+		<Unit filename="../../../Src/hotkey/whc_hk_apply.h" />
+		<Unit filename="../../../Src/hotkey/whc_hk_connector.cpp" />
+		<Unit filename="../../../Src/hotkey/whc_hk_connector.h" />
+		<Unit filename="../../../Src/hotkey/whc_hk_input.cpp" />
+		<Unit filename="../../../Src/hotkey/whc_hk_input.h" />
 		<Unit filename="../../../Src/iCat14.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -267,6 +312,8 @@
 		<Unit filename="../../../Src/minifaders_visu.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../../../Src/mouse/whc_mouse.cpp" />
+		<Unit filename="../../../Src/mouse/whc_mouse.h" />
 		<Unit filename="../../../Src/mover_2013.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

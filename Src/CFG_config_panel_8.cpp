@@ -41,6 +41,14 @@ WWWWWWWW           C  WWWWWWWW   |
 *
  **/
 
+//////////////////////////////////////////////////////////////////////////////////////
+/// sab 12/08/2016 - Onglet des Hot Keys ////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+#include <hotkey_config_tab.cpp>
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// FIN sab 12/08/2016 - Onglet des Hot Keys - FIN ////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 int init_kbd_custom()
 {
 for(int i=0;i<256;i++)
@@ -1471,6 +1479,18 @@ do_core_config(cfg_X,cfg_Y,largeurCFGwindow,hauteurCFGwindow);
 sprintf(string_title_panel_config,"CORE CONFIGURATION");
 petitchiffre.Print( string_title_panel_config,cfg_X+20, cfg_Y+20);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    else if(index_config_tab_hotkeys==true)
+    {
+        do_hotkey_config(cfg_X,cfg_Y);
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //BOUTON DE SAUVEGARDE DE CONF
 if( index_config_dmx==1 || index_config_network==1 || index_config_general==1 ||  index_config_core==1)
 {
@@ -1513,128 +1533,277 @@ return(0);
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- DEB ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ici : - REECRITURE DES ONGLETS DE L'ECRAN DE CONFIGURATION POUR AJOUTER PLUS RAPIDEMENT UN NOUVEL ONGLET          ///////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+//int config_general_menu()
+//{
+//Rect CadreGeneralConfig(Vec2D(window_cfgX,window_cfgY),Vec2D(largeurCFGwindow,hauteurCFGwindow+40));
+//CadreGeneralConfig.SetRoundness(15);
+//CadreGeneralConfig.SetLineWidth(triple_epaisseur_ligne_fader);
+//CadreGeneralConfig.Draw(CouleurConfig);
+//if(window_focus_id==920)
+//{CadreGeneralConfig.DrawOutline(CouleurBlind);}
+//else{CadreGeneralConfig.DrawOutline(CouleurLigne);}
+//int mysetupx=window_cfgX+100;
+//for (int choix=0;choix<7;choix++)
+//{
+//Rect MySetup(Vec2D( mysetupx+(choix*100), window_cfgY+5),Vec2D(90,40));
+//MySetup.SetRoundness(7.5);
+//MySetup.Draw(CouleurBleuProcedure.WithAlpha(0.8));
+//switch(choix)
+//{
+//case 0:
+//if(config_page_is==1){MySetup.Draw(CouleurSurvol);}
+//neuromoyen.Print("   dmx cfg",mysetupx+(choix*100)+5,window_cfgY+30);
+//if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
+//{
+//if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
+//{
+//reset_indexes_conf();
+//index_config_dmx=1;
+//config_page_is=1;
+//mouse_released=1;
+//}
+//}
+//break;
+//case 1:
+//if(config_page_is==2){MySetup.Draw(CouleurSurvol);}
+//neuromoyen.Print("  midi cfg",mysetupx+(choix*100)+5,window_cfgY+30);
+//if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
+//{
+//if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
+//{
+//reset_indexes_conf();
+//index_config_midi=1;
+//config_page_is=2;
+//mouse_released=1;
+//}
+//}
+//break;
+//case 2:
+//if(config_page_is==3){MySetup.Draw(CouleurSurvol);}
+//neuromoyen.Print("network cfg",mysetupx+(choix*100)+5,window_cfgY+30);
+//if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
+//{
+//if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
+//{
+//reset_indexes_conf();
+//index_config_network=1;
+//config_page_is=3;
+//mouse_released=1;
+//}
+//}
+//break;
+//case 3:
+//if(config_page_is==4){MySetup.Draw(CouleurSurvol);}
+//neuromoyen.Print("screen cfg",mysetupx+(choix*100)+5,window_cfgY+30);
+//if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
+//{
+//if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
+//{
+//reset_indexes_conf();
+//index_setup_gfx=1;
+//config_page_is=4;
+//mouse_released=1;
+//}
+//}
+//break;
+//case 4:
+//if(config_page_is==5){MySetup.Draw(CouleurSurvol);}
+//neuromoyen.Print("arduino cfg",mysetupx+(choix*100)+5,window_cfgY+30);
+//if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
+//{
+//if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
+//{
+//reset_indexes_conf();
+//index_config_arduino=1;
+//config_page_is=5;
+//mouse_released=1;
+//}
+//}
+//break;
+//case 5:
+//if(config_page_is==6){MySetup.Draw(CouleurSurvol);}
+//neuromoyen.Print(" GENERAL",mysetupx+(choix*100)+5,window_cfgY+30);
+//if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
+//{
+//if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
+//{
+//reset_indexes_conf();
+//index_config_general=1;
+//config_page_is=6;
+//mouse_released=1;
+//}
+//}
+//break;
+//case 6:
+//if(config_page_is==7){MySetup.Draw(CouleurSurvol);}
+//neuromoyen.Print("  core cfg",mysetupx+(choix*100)+5,window_cfgY+30);
+//if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
+//{
+//if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
+//{
+//reset_indexes_conf();
+//index_config_core=1;
+//config_page_is=7;
+//mouse_released=1;
+//}
+//}
+//break;
+//default: break;
+//}
+//}
+//do_panel_config(window_cfgX,window_cfgY+40);
+//
+//return(0);
+//}
+*/
 
+bool mouseOverTab_W_CFGMENU(int tabNum, int espace_au_bord_X, int espace_entre_onglet, int largeur_onglet, int hauteur_onglet, int espace_au_bord_Y)
+{
+    int onglet_zone_X = espace_entre_onglet + largeur_onglet;
+
+    return  (window_focus_id==W_CFGMENU
+			&& mouse_x > (espace_au_bord_X + tabNum * onglet_zone_X)
+			&& mouse_x < (espace_au_bord_X + tabNum * onglet_zone_X + largeur_onglet)
+			&& mouse_y > (window_cfgY + espace_au_bord_Y)
+			&& mouse_y < (window_cfgY + espace_au_bord_Y + hauteur_onglet) );
+}
 
 int config_general_menu()
 {
-Rect CadreGeneralConfig(Vec2D(window_cfgX,window_cfgY),Vec2D(largeurCFGwindow,hauteurCFGwindow+40));
-CadreGeneralConfig.SetRoundness(15);
-CadreGeneralConfig.SetLineWidth(triple_epaisseur_ligne_fader);
-CadreGeneralConfig.Draw(CouleurConfig);
-if(window_focus_id==920)
-{CadreGeneralConfig.DrawOutline(CouleurBlind);}
-else{CadreGeneralConfig.DrawOutline(CouleurLigne);}
-int mysetupx=window_cfgX+100;
-for (int choix=0;choix<7;choix++)
-{
-Rect MySetup(Vec2D( mysetupx+(choix*100), window_cfgY+5),Vec2D(90,40));
-MySetup.SetRoundness(7.5);
-MySetup.Draw(CouleurBleuProcedure.WithAlpha(0.8));
-switch(choix)
-{
-case 0:
-if(config_page_is==1){MySetup.Draw(CouleurSurvol);}
-neuromoyen.Print("   dmx cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-{
-if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
-{
-reset_indexes_conf();
-index_config_dmx=1;
-config_page_is=1;
-mouse_released=1;
-}
-}
-break;
-case 1:
-if(config_page_is==2){MySetup.Draw(CouleurSurvol);}
-neuromoyen.Print("  midi cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-{
-if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
-{
-reset_indexes_conf();
-index_config_midi=1;
-config_page_is=2;
-mouse_released=1;
-}
-}
-break;
-case 2:
-if(config_page_is==3){MySetup.Draw(CouleurSurvol);}
-neuromoyen.Print("network cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-{
-if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
-{
-reset_indexes_conf();
-index_config_network=1;
-config_page_is=3;
-mouse_released=1;
-}
-}
-break;
-case 3:
-if(config_page_is==4){MySetup.Draw(CouleurSurvol);}
-neuromoyen.Print("screen cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-{
-if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
-{
-reset_indexes_conf();
-index_setup_gfx=1;
-config_page_is=4;
-mouse_released=1;
-}
-}
-break;
-case 4:
-if(config_page_is==5){MySetup.Draw(CouleurSurvol);}
-neuromoyen.Print("arduino cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-{
-if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
-{
-reset_indexes_conf();
-index_config_arduino=1;
-config_page_is=5;
-mouse_released=1;
-}
-}
-break;
-case 5:
-if(config_page_is==6){MySetup.Draw(CouleurSurvol);}
-neuromoyen.Print(" GENERAL",mysetupx+(choix*100)+5,window_cfgY+30);
-if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-{
-if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
-{
-reset_indexes_conf();
-index_config_general=1;
-config_page_is=6;
-mouse_released=1;
-}
-}
-break;
-case 6:
-if(config_page_is==7){MySetup.Draw(CouleurSurvol);}
-neuromoyen.Print("  core cfg",mysetupx+(choix*100)+5,window_cfgY+30);
-if(window_focus_id==W_CFGMENU && mouse_x> mysetupx+(choix*100) && mouse_x< mysetupx+(choix*100)+90 && mouse_y>window_cfgY+5 && mouse_y<window_cfgY+5+40)
-{
-if(mouse_button==1 && mouse_released==0 && window_focus_id==920)
-{
-reset_indexes_conf();
-index_config_core=1;
-config_page_is=7;
-mouse_released=1;
-}
-}
-break;
-default: break;
-}
-}
-do_panel_config(window_cfgX,window_cfgY+40);
+    //Dessine le cadre de fond avec couleur du pourtour selon que la fenêtre a le focus ou non
+    Rect CadreGeneralConfig(Vec2D(window_cfgX,window_cfgY),Vec2D(largeurCFGwindow,hauteurCFGwindow+40));
+    CadreGeneralConfig.SetRoundness(15);
+    CadreGeneralConfig.SetLineWidth(triple_epaisseur_ligne_fader);
+    CadreGeneralConfig.Draw(CouleurConfig);
 
-return(0);
+    if(window_focus_id==W_CFGMENU)
+    {
+        CadreGeneralConfig.DrawOutline(CouleurBlind);
+    }
+    else
+    {
+        CadreGeneralConfig.DrawOutline(CouleurLigne);
+    }
+
+    // Groupe d'onglets
+    int nbr_onglets = 8; // sab 12/08/2016 :  nbr_onglets (7 -> 8)
+    std::vector <char*> onglet_libelle (nbr_onglets);
+    onglet_libelle[0]= "DMX cfg";
+    onglet_libelle[1]= "Midi cfg";
+    onglet_libelle[2]= "Network";
+    onglet_libelle[3]= "Screen";
+    onglet_libelle[4]= "Arduino";
+    onglet_libelle[5]= "GENERAL";
+    onglet_libelle[6]= "Core cfg";
+    onglet_libelle[7]= "Hotkeys";
+
+    int grp_tab_espace_bord_left_X  = 90;
+    int grp_tab_espace_bord_right_X = 10;
+    int grp_tab_espace_bord_top_Y   = 5;
+
+    //Dessine les onglets de la fenêtre de configuration et détecte si l'on a cliqué sur l'un d'eux
+	int grp_tab_largeur 	= largeurCFGwindow - grp_tab_espace_bord_left_X - grp_tab_espace_bord_right_X;
+	//
+    int zone_onglet_largeur(floor(grp_tab_largeur / nbr_onglets)) ;  // floor --> arrondi inférieur ; ceil--> arrondi supérieur
+    int espace_entre_onglet = 10 ;
+    //
+    int onglet_largeur 		= zone_onglet_largeur - espace_entre_onglet;
+    int onglet_hauteur		= 40 ;
+	//
+    int grp_tab_X 			= window_cfgX + zone_onglet_largeur;  //position X sur l'écran  du groupe d'onglets
+	//
+	int espace_bord_txt_X 	= 5; //position du texte par rapport au bord ue l'onglet
+	int espace_bord_txt_Y   = 25 ;
+
+    for (int choix=0; choix < nbr_onglets ; choix++)
+    {
+        Rect CadreOnglet(Vec2D( grp_tab_X+(choix * zone_onglet_largeur),
+								window_cfgY + grp_tab_espace_bord_top_Y),
+						 Vec2D( onglet_largeur, onglet_hauteur));
+        CadreOnglet.SetRoundness(7.5);
+        CadreOnglet.Draw(CouleurBleuProcedure.WithAlpha(0.8));
+		//
+        if(config_page_is==choix+1)
+        {
+            CadreOnglet.SetLineWidth(epaisseur_ligne_fader/2);
+            CadreOnglet.DrawOutline(CouleurLigne);
+            CadreOnglet.Draw(CouleurConfig.WithAlpha(1));
+        }
+        // Logical
+        if((hk_manager.hk_user_update_isOn()!=true)  // pas de mouse effect si en attente de saisie d'une hotkey pou redefinir le lien avec une fonction
+			&& mouseOverTab_W_CFGMENU(choix, grp_tab_X, espace_entre_onglet, onglet_largeur, onglet_hauteur, grp_tab_espace_bord_top_Y))
+        {
+            if(config_page_is!=choix+1)
+            {
+                CadreOnglet.Draw(CouleurSurvol);
+            }
+
+            if(mouseClicLeft.isDown() && mouseClicLeft.isToBeProcessed() && window_focus_id==W_CFGMENU)
+            {
+                config_page_is=choix+1;
+
+                reset_indexes_conf();
+                switch(choix)
+                {
+                case 0 :
+                	index_config_dmx=1;
+                    break;
+                case 1 :
+                    index_config_midi=1;
+                    break;
+                case 2 :
+                    index_config_network=1;
+                    break;
+                case 3 :
+                    index_setup_gfx=1;
+                    break;
+                case 4 :
+                    index_config_arduino=1;
+                    break;
+                case 5 :
+                    index_config_general=1;
+                    break;
+                case 6 :
+                    index_config_core=1;
+                    break;
+                case 7 :
+                    index_config_tab_hotkeys = true;
+                    break;
+                }
+                mouseClicLeft.SetProcessed();
+            }
+        }
+        neuromoyen.Print(onglet_libelle[choix],
+						 grp_tab_X + (choix*zone_onglet_largeur) + espace_bord_txt_X,
+						 window_cfgY + grp_tab_espace_bord_top_Y + espace_bord_txt_Y,
+						 onglet_largeur - 2 * espace_bord_txt_X,	//espace dispo en largeur pour le texte
+						 CENTER);
+    }
+
+    //fond panneau de l'onglet
+    Rect ConfigPanel(Vec2D( window_cfgX, window_cfgY + onglet_hauteur), 			//recouvre le bas des onglets
+					 Vec2D( largeurCFGwindow, hauteurCFGwindow));
+    ConfigPanel.SetRoundness(15);
+    ConfigPanel.Draw(CouleurConfig);
+    ConfigPanel.DrawOutline(CouleurLigne);
+    //efface ligne entre onglet actif et son panneau
+    Rect CleanLine( Vec2D( 	grp_tab_X + ((config_page_is-1) * zone_onglet_largeur),
+								window_cfgY + onglet_hauteur - epaisseur_ligne_fader),
+						Vec2D(  onglet_largeur, epaisseur_ligne_fader * 4 ));
+    CleanLine.Draw(CouleurBleuProcedure.WithAlpha(1));
+    CleanLine.Draw(CouleurConfig.WithAlpha(1));
+
+    do_panel_config(window_cfgX, window_cfgY + onglet_hauteur);
+
+    return(0);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// sab 08/2016 - HOT KEYS -- FIN ANCRAGE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
