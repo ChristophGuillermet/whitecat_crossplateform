@@ -30,7 +30,7 @@ WWWWWWWW           C  WWWWWWWW   |
 * \file hotkey_config_tab.h
 * \brief {header file for hotkeys configuration tab pannel }
 * \author Rui Serge Azevedo Brooks
-* \version {0.8.9}
+* \version {1.0.0}
 * \date {14/08/2016}
 
  White Cat - gui - keyboard - hotkeys
@@ -44,9 +44,31 @@ WWWWWWWW           C  WWWWWWWW   |
 #ifndef HOTKEY_CONFIG_TAB_H
 #define HOTKEY_CONFIG_TAB_H
 
-    int nbr_tab_config_hotkeys = 7;												/**< nombre de onglets latéraux dans le panneau de configuration des hotkeys */
-	bool index_active_tab_config_hotkeys[7]; 									/**< état d'activité de chaque onglet latéral dans le panneau de configuration des hotkeys */
-    std::vector <char*> libelle_tab_config_hotkeys (nbr_tab_config_hotkeys);   	/**< libellé des onglets latéraux = nom des catégories dans le fichier */
+    std::vector <bool> index_active_tab_config_hotkeys; 									/**< état d'activité de chaque onglet latéral dans le panneau de configuration des hotkeys */
+    std::vector <char*> libelle_tab_config_hotkeys ;   	/**< libellé des onglets latéraux = nom des catégories dans le fichier */
     int num_page_list_hotkeys=0;
+
+	typedef void (*ptrMthd)(void);					/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction ()" */
+	typedef void (*ptrMthd_string)(std::string);	/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (std::string)" */
+	typedef void (*ptrMthd_int)(int);				/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (int)" */
+
+
+/*
+
+   Déclaration des fonctions implantées dans : hotkey_config_tab.cpp
+
+*/
+
+void loadfile_config_hotkey(std::string file_name) ;
+void save_config_hotkey() ;
+void replace_config_hotkey() ;
+void hotkey_esc_button_press() ;
+void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int button_hight, int text_to_border_X, int text_to_border_Y, std::string button_label, bool hasfocus) ;
+void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int button_hight, int text_to_border_X, int text_to_border_Y, std::string button_label, bool hasfocus, ptrMthd fctToFire) ;
+void draw_logical_button(int insidePox_X, int insidePos_Y, int label_width, int button_hight, int text_to_border_X, int text_to_border_Y, std::string button_label, bool hasfocus, ptrMthd_string fctToFire, std::string file_name) ;
+void draw_logical_hotkey_config_inactive (int cfg_X,int cfg_Y ) ;
+void draw_logical_hotkey_config_update (int cfg_X,int cfg_Y ) ;
+void do_hotkey_config_liste_pagination (int cfg_X,int cfg_Y) ;
+void do_refresh_banger_catlist() ;
 
 #endif // HOTKEY_CONFIG_TAB_H

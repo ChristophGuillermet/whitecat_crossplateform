@@ -27,8 +27,8 @@ WWWWWWWW           C  WWWWWWWW   |
 
 /**
 
-* \file whc_hk_connector.cpp
-* \brief {hotkeys service - object - link apply & input to manage hotkey service}
+* \file hotkey_std_keyboard.cpp
+* \brief {hotkeys service - standards keyboard inputs}
 * \author Rui Serge Azevedo Brooks
 * \version {1.0.0}
 * \date {14/08/2016}
@@ -36,82 +36,15 @@ WWWWWWWW           C  WWWWWWWW   |
  White Cat - gui - keyboard - hotkeys
 
 *
-*	Objet décrivant un raccourcis (sa signature et sa représentation textuelle)
+*	Toutes les saisies non associées à un raccourci clavier (saisie de chiffre, nom ...)
 *
 */
 
-#include "whc_hk_input.h"
+/*
 
-whc_hk_input::whc_hk_input()
-{
+   Déclaration des fonctions implantées dans : hotkey_std_keyboard.cpp
 
-    m_scancode = -1 ;
-    m_shift = false ;
-    m_ctrl  = false ;
-    m_alt   = false ;
+*/
 
-    m_wording = " --unset-- " ;
-}
-
-whc_hk_input::whc_hk_input( bool tmp_shift,
-											bool tmp_ctrl,
-											bool tmp_alt,
-											int tmp_scancode)
-{
-    //ctor
-    m_scancode = tmp_scancode ;
-
-    m_shift    = tmp_shift ;
-    m_ctrl     = tmp_ctrl ;
-    m_alt      = tmp_alt ;
-
-	if (m_scancode>-1)
-	{
-		if (m_shift) m_wording  = "[Shift]+";
-		if (m_ctrl)  m_wording += "[Ctrl]+";
-		if (m_alt)   m_wording += "[Alt]+";
-
-		char const *keyname = scancode_to_name(m_scancode);
-
-		m_wording += "[";
-		m_wording += std::string(keyname);
-		m_wording += "]";
-	}
-	else
-	{
-		m_wording = " --unknow-- ";
-	}
-}
-
-whc_hk_input::~whc_hk_input()
-{
-	//dtor
-//	if (whc_hk_input::c_list.size()>1)
-//	{
-//		whc_hk_input* tmp_it;
-//		std::vector<whc_hk_input>::iterator it;
-//		for (unsigned i=0; i<whc_hk_input::c_list.size(); i++)
-//		{
-//			if (whc_hk_input::c_list.at(i).wording() == this->wording())
-//			{
-//				whc_hk_input::c_list.erase(whc_hk_input::c_list.begin()+i);
-//				i = whc_hk_input::c_list.size()+1;
-//			}
-//		}
-//
-//	}
-//	else
-//	{
-//		whc_hk_input::c_list.clear();
-//	}
-}
-
-whc_hk_input whc_hk_input::c_scan(int tmp_scancode)
-{
-    //ctor
-    bool tmp_shift = (key[KEY_LSHIFT]   || key[KEY_RSHIFT]);
-    bool tmp_ctrl  = (key[KEY_LCONTROL] || key[KEY_RCONTROL]);
-    bool tmp_alt   = (key[KEY_ALT]      || key[KEY_ALTGR]);
-
-    return whc_hk_input(tmp_shift, tmp_ctrl, tmp_alt, tmp_scancode) ;
-}
+void entree_clavier_standard(int isreadkey) ;
+void hotkey_management_hook() ;

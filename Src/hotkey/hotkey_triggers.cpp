@@ -30,7 +30,7 @@ WWWWWWWW           C  WWWWWWWW   |
 * \file hotkey_triggers.cpp
 * \brief {hotkeys service - globals actions that can be trigger if linked to a hotkey}
 * \author Rui Serge Azevedo Brooks
-* \version {0.8.9}
+* \version {0.8.6}
 * \date {14/08/2016}
 
  White Cat - gui - keyboard - hotkeys
@@ -45,6 +45,7 @@ WWWWWWWW           C  WWWWWWWW   |
 #include "hotkey_std_keyboard.cpp"
 #include <windows.h>
 #include <iostream>
+#include <vector>
 
 void do_bang_trigger(int banger_number)
 {
@@ -275,8 +276,13 @@ void hk_trigger_13_Clear_mode() //13;Transverse commands;Clear Mode;0;0;0;50;[F4
 void hk_trigger_14_Name() //14;Transverse commands;Name (key input zone);0;0;0;51;[F5]
 {
     index_type=toggle(index_type);
-    strcpy(numeric,"");
     keyboardStorage_numeric_postext=0;
+    for (int idx=0; idx<sizeof(numeric); idx++)
+	{
+		numeric[idx]=0;
+	}
+    // Mise à jour de la variable d'affichage du contenu de la saisie clavier standard
+    sprintf(string_numeric_entry,"<< %s",numeric);
 }
 
 void hk_trigger_15_Time()  //15;Transverse commands;Time;0;0;0;52;[F6]
@@ -408,9 +414,10 @@ void hk_trigger_25_Mover() //25;Transverse commands;Mover;1;0;0;105;[SHIFT]+[M]
 
 void hk_trigger_26_selectedAllChannels() //26;Channels;selected all channels;0;0;0;25;[Y]
 {
-	//key_select_all();
-	//index_ask_confirm=true;
-	std::cout << "fonction de trigger pas encore traitée : hk_trigger_34_Check_Channel_left " << std::endl;
+
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 
 }
 
@@ -452,222 +459,314 @@ void hk_trigger_33_minusPercentForTheSelection() //33;Channels;minus % (for the 
 //
 void hk_trigger_34_Check_Channel_left()     //34;Channels;Check Channel left;0;1;0;82;[CTRL]+[<-]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_34_Check_Channel_left " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
+
 }
 //
 void hk_trigger_35_Check_Channel_right()     //35;Channels;Check Channel right;0;1;0;83;[CTRL]+[->]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_35_Check_Channel_right " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
+
 }
 //
 void hk_trigger_36_Copy_to_the_Clipboard_Select_channels()     //36;Channels;Copy to the Clipboard Select channels;0;1;0;3;[CTRL]+[C]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_36_Copy_to_the_Clipboard_Select_channels " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
+
 }
 //
 void hk_trigger_37_Paste_channels_from_clipboard()     //37;Channels;Paste channels from clipboard;0;1;0;22;[CTRL]+[V]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_37_Paste_channels_from_clipboard " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
+
 }
 //
 void hk_trigger_38_Get_Import_channels_from_a_memory()     //38;Channels;Get (Import channels from a memory);0;1;0;7;[CTRL]+[G]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_38_Get_Import_channels_from_a_memory " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_39_Memory_recording_deleting___Create_or_over_record_a_memory_number()     //39;CueList and memories;Memory recording/deleting - Create or over record a memory number;1;0;0;47;[SHIFT]+[F1]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_39_Memory_recording_deleting___Create_or_over_record_a_memory_number " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_40_Memory_recording_deleting___Create_memory_adding_the_faders()     //40;CueList and memories;Memory recording/deleting - Create memory adding the faders;1;0;0;49;[SHIFT]+[F3]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_40_Memory_recording_deleting___Create_memory_adding_the_faders " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_41_Memory_recording_deleting___Delete_memory()     //41;CueList and memories;Memory recording/deleting - Delete memory;1;0;0;77;[SHIFT]+[F3]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_41_Memory_recording_deleting___Delete_memory " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_42_Memory_recording_deleting___Over_record_on_stage_or_blind()     //42;CueList and memories;Memory recording/deleting - Over record on stage or blind;0;1;0;47;[CTRL]+[F1]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_42_Memory_recording_deleting___Over_record_on_stage_or_blind " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_43_Memory_recording_deleting___Over_record_on_stage_or_blind_with_faders()     //43;CueList and memories;Memory recording/deleting - Over record on stage or blind with faders;0;1;0;49;[CTRL]+[F3]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_43_Memory_recording_deleting___Over_record_on_stage_or_blind_with_faders " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_44_Memory_recording_deleting___Reload_a_memory()     //44;CueList and memories;Memory recording/deleting - Reload a memory;0;1;0;23;[CTRL]+[Z]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_44_Memory_recording_deleting___Reload_a_memory " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_45_Memory_recording_deleting___Reload_a_deleted_mem()     //45;CueList and memories;Memory recording/deleting - Reload a deleted mem;1;0;0;23;[SHIFT]+[Z]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_45_Memory_recording_deleting___Reload_a_deleted_mem " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_46_GET_level_of_selected_channels_from_memory()     //46;CueList and memories;GET level of selected channels from memory;0;1;0;7;[CTRL]+[G]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_46_GET_level_of_selected_channels_from_memory " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_47_Navigating_thru_memories___Previous_mem_on_stage()     //47;CueList and memories;Navigating thru memories - Previous mem on stage;0;1;0;26;[CTRL]+[W]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_47_Navigating_thru_memories___Previous_mem_on_stage " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_48_Navigating_thru_memories___Next_mem_on_stage()     //48;CueList and memories;Navigating thru memories - Next mem on stage;0;1;0;24;[CTRL]+[X]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_48_Navigating_thru_memories___Next_mem_on_stage " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_49_Navigating_thru_memories___Previous_mem_on_preset()     //49;CueList and memories;Navigating thru memories - Previous mem on preset;1;0;0;26;[SHIFT]+[W]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_49_Navigating_thru_memories___Previous_mem_on_preset " << std::endl;
+///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_50_Navigating_thru_memories___Next_mem_on_preset()     //50;CueList and memories;Navigating thru memories - Next mem on preset;1;0;0;24;[SHIFT]+[X]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_50_Navigating_thru_memories___Next_mem_on_preset " << std::endl;
+      ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_51_Crossfade_GO_PAUSE()     //51;CueList and memories;Crossfade GO/PAUSE;0;0;0;75;[SPACE]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_51_Crossfade_GO_PAUSE " << std::endl;
+      ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_52_Crossfade_GO_BACK()     //52;CueList and memories;Crossfade GO BACK;0;1;0;75;[CTRL]+[SPACE]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_52_Crossfade_GO_BACK " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_53_Crossfade_DOUBLE_GO()     //53;CueList and memories;Crossfade DOUBLE GO;1;0;0;75;[SHIFT]+[SPACE]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_53_Crossfade_DOUBLE_GO " << std::endl;
+  ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_54_Patch()     //54;Transverse commands;Patch;1;0;0;16;[SHIFT]+[P]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_54_Patch " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_55_Numpad()     //55;Transverse commands;Numpad;0;0;0;16;[P]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_55_Numpad " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_56_Dimmers_selection___select_all_dimmers()     //56;Patch;Dimmers selection - select all dimmers;1;0;0;25;[SHIFT]+[Y]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_56_Dimmers_selection___select_all_dimmers " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_57_Dimmers_selection___unselect_all_dimmers()     //57;Patch;Dimmers selection - unselect all dimmers;1;0;0;21;[SHIFT]+[U]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_57_Dimmers_selection___unselect_all_dimmers " << std::endl;
+   ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_58_Check_Dimmer___left()     //58;Patch;Check Dimmer - (left);1;0;0;82;[SHIFT]+[<-]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_58_Check_Dimmer___left " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_59_Check_Dimmer___right()     //59;Patch;Check Dimmer - (right);1;0;0;83;[SHIFT]+[->]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_59_Check_Dimmer___right " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_60_Select_Presets_1()     //60;VideoTracking;Select Presets 1;0;0;0;26;[W]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_60_Select_Presets_1 " << std::endl;
+  ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_61_Select_Presets_2()     //61;VideoTracking;Select Presets 2;0;0;0;24;[X]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_61_Select_Presets_2 " << std::endl;
+   ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_62_Select_Presets_3()     //62;VideoTracking;Select Presets 3;0;0;0;3;[C]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_62_Select_Presets_3 " << std::endl;
+  ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_63_Select_Presets_4()     //63;VideoTracking;Select Presets 4;0;0;0;22;[V]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_63_Select_Presets_4 " << std::endl;
+    ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_64_Select_Presets_5()     //64;VideoTracking;Select Presets 5;0;0;0;2;[B]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_64_Select_Presets_5 " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_65_Select_Presets_6()     //65;VideoTracking;Select Presets 6;0;0;0;14;[N]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_65_Select_Presets_6 " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_66_Select_roi_1()     //66;VideoTracking;Select roi 1;0;0;0;17;[A]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_66_Select_roi_1 " << std::endl;
+   ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_67_Select_roi_2()     //67;VideoTracking;Select roi 2;0;0;0;23;[Z]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_67_Select_roi_2 " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_68_Select_roi_3()     //68;VideoTracking;Select roi 3;0;0;0;5;[E]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_68_Select_roi_3 " << std::endl;
+  ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_69_Select_roi_4()     //69;VideoTracking;Select roi 4;0;0;0;18;[R]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_69_Select_roi_4 " << std::endl;
+  ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_70_Select_roi_5()     //70;VideoTracking;Select roi 5;0;0;0;20;[T]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_70_Select_roi_5 " << std::endl;
+      ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_71_Select_roi_6()     //71;VideoTracking;Select roi 6;0;0;0;25;[Y]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_71_Select_roi_6 " << std::endl;
+   ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_72_Select_roi_7()     //72;VideoTracking;Select roi 7;0;0;0;1;[Q]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_72_Select_roi_7 " << std::endl;
+  ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_73_Select_roi_8()     //73;VideoTracking;Select roi 8;0;0;0;19;[S]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_73_Select_roi_8 " << std::endl;
+ ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_74_Select_roi_9()     //74;VideoTracking;Select roi 9;0;0;0;4;[D]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_74_Select_roi_9 " << std::endl;
+    ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_75_Select_roi_10()     //75;VideoTracking;Select roi 10;0;0;0;6;[F]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_75_Select_roi_10 " << std::endl;
+  ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_76_Select_roi_11()     //76;VideoTracking;Select roi 11;0;0;0;7;[G]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_76_Select_roi_11 " << std::endl;
+   ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_77_Select_roi_12()     //77;VideoTracking;Select roi 12;0;0;0;8;[H]
 {
-      std::cout << "fonction de trigger pas encore traitée : hk_trigger_77_Select_roi_12 " << std::endl;
+    ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   /// --- ///  TODO   ///
+	sprintf(string_numeric_entry,"<< %s","HOTKEY TRIGGER A IMPLANTER");
+	keyboardStorage_numeric_postext=25;
 }
 //
 void hk_trigger_78_Bang_01()     //78;Bangers;Bang 01;0;0;0;0;--unset--
@@ -1949,24 +2048,55 @@ void hk_trigger_332_Bang_255()     //332;Bangers;Bang 255;0;0;0;0;--unset--
 void whc_hotkeys_init(std::string user_dir_file, std::string ressources_dir_file)
 {
 
+
+	// allegro specific
+	//override_config_data ("keyboard=FR"); -- TODO définir le mappage des claviers US et FR dans des data
+
+    // ATTENTION si la déclaration de index_type change il faut en faire de même avec son homonyme c_inputIsOn
+    hk_manager.link_keyFocusIndicator(&index_type); // lie c_inputIsOn à index_type via l'adresses mémoire : pour connaitre l'état de index_type sans qu'il soit dans l'objet
+    // index_type = la saisie numérique / NAME est active
+
+	// Initilisation des filtres = catégories de la 2d colonne du fichier lu pour définir les hotkeys
+	// doit être fait avant chargement du fichier pour permettre l'intialisation du filtrage de la liste
+	hk_manager.c_filter.clear();
+	hk_manager.c_filter.push_back("Global functions");
+    hk_manager.c_filter.push_back("Transverse commands");
+    hk_manager.c_filter.push_back("Channels");
+    hk_manager.c_filter.push_back("CueList and memories");
+    hk_manager.c_filter.push_back("Patch");
+	hk_manager.c_filter.push_back("VideoTracking");
+	hk_manager.c_filter.push_back("Bangers");
+	//--- test --- on peut rajouter facilement une catégorie & onglet : hk_manager.c_filter.push_back("Bidon");
+
+	// Limite double emplois - permet d'avoir des libellés plus courts pour l'affichage et d'autres plus "parlant" dans le fichier
+	libelle_tab_config_hotkeys.push_back("Global");
+    libelle_tab_config_hotkeys.push_back("Transverse");
+    libelle_tab_config_hotkeys.push_back("Channels");
+    libelle_tab_config_hotkeys.push_back("CueList");
+    libelle_tab_config_hotkeys.push_back("Patch");
+    libelle_tab_config_hotkeys.push_back("Video");
+    libelle_tab_config_hotkeys.push_back("Banger");
+    //--- test --- on peut rajouter facilement une catégorie & onglet : libelle_tab_config_hotkeys.push_back("bidon");
+    //
+    // tableau (vecteur) d'index qui permet de savoir quel onglet est affiché, tous init à faux
+    index_active_tab_config_hotkeys.resize(libelle_tab_config_hotkeys.size(),false);
+    index_active_tab_config_hotkeys.at(0)=true;  // 1er onglet à vrai pour qu'il s'affiche.
+	//
     whc_toolbox tool;
     std::string path = tool.executablePath();
     std::string user_file  = path + "\\user\\" + user_dir_file; // ou .db si sqlite3 implanté
     std::string strd_file  = path + "\\ressources\\" + ressources_dir_file;
-
+	// le fichier utilisateur est prioritaire
+	// (le fichier spectacle le sera  plus )
+	// TODO : possibilité de charger un fichier spécifique à un spectacle pour le maping des bangers
+	// 			--> pb à la sauvegarde : il faut savoir si on enregistre pour le spectacle ou pour profil génrique utilisateur :
+	//				passera par ajout d'un indicteur pour connaitre son chox  / case à cocher dans config à ajouter / suvegarde de ce choix
     if (tool.fileexist(user_file))
     {
         hk_manager.init(user_file) ;
     }
     else hk_manager.init(strd_file) ;
-
-    // ATTENTION si la déclaration de index_type change il faut en faire de même avec son homonyme c_inputIsOn
-    hk_manager.link_keyFocusIndicator(&index_type); // lie c_inputIsOn à index_type via l'adresses mémoire : pour connaitre l'état de index_type sans qu'il soit dans l'objet
-    // index_type = la saisie NAME est active
-
-    hk_manager.updateFilter(); //filtre la liste pour l'affichage dans le panneau de config
-    nbr_tab_config_hotkeys = hk_manager.categoryNbr();  // TODO : rendre dynamique nombre d'onglets et libellés des onglets (selon lecture du fichier de déclaration)
-
+	//
     hk_manager.connect_fct(1,&hk_trigger_01_save);
     hk_manager.connect_fct(2,&hk_trigger_02_save_and_quit);
     hk_manager.connect_fct(3,&hk_trigger_03_quit);

@@ -2624,8 +2624,8 @@ bool index_config_tab_hotkeys=false;		/**< le panneau (onglet) des hotkeys est s
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////// Hotkey management
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#include <whc_hk_manage.h>
-whc_hk_manage hk_manager;						/**< une seule instance sera créée pour gérer l'ensemble */
+#include <whc_hk_connector.h>
+whc_hk_connector hk_manager;						/**< une seule instance sera créée pour gérer l'ensemble */
 typedef void (*ptrMthd)(void);					/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction ()" */
 typedef void (*ptrMthd_string)(std::string);	/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (std::string)" */
 typedef void (*ptrMthd_int)(int);				/**< pour définir les fonctions à passer comme argument dans des fonctions - fonctions de type "void nom_fonction (int)" */

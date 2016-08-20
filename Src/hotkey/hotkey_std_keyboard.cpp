@@ -30,7 +30,7 @@ WWWWWWWW           C  WWWWWWWW   |
 * \file hotkey_std_keyboard.cpp
 * \brief {hotkeys service - standards keyboard inputs}
 * \author Rui Serge Azevedo Brooks
-* \version {0.8.9}
+* \version {1.0.0}
 * \date {14/08/2016}
 
  White Cat - gui - keyboard - hotkeys
@@ -43,6 +43,7 @@ WWWWWWWW           C  WWWWWWWW   |
 
 void entree_clavier_standard(int isreadkey)
 {
+    //
     int key_scancode=(isreadkey >> 8);
     if (key_scancode>26 && key_scancode<37) // 0 à 9 du haut de clavier
     {
@@ -58,12 +59,62 @@ void entree_clavier_standard(int isreadkey)
 
     switch (key_scancode)
     {
+
+    // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // TODO : Mapping clavier US --> FR
+    // TODO : voir doc Allegro override_config_data : reste à faire et charger le bon mapping selon clavier US, FR, DE ...
+    // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    case KEY_SEMICOLON:  	// ';' sur le clavier US = 'M' sur le clavier FR
+        if (index_type==1)
+        {
+            numeric[keyboardStorage_numeric_postext]='M';
+            keyboardStorage_numeric_postext++;
+        }
+        break;
+        // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // TODO
+        // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     case KEY_A...KEY_Z:
         if (index_type==1)
         {
-            numeric[keyboardStorage_numeric_postext]=keyboardStorage_char[0];
+            // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // TODO Mapping clavier US --> FR
+            // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            switch (key_scancode)
+            {
+            case KEY_M:   			// virgule sur le clavier FR
+                numeric[keyboardStorage_numeric_postext]='.';
+                break;
+
+            case KEY_Q:
+                numeric[keyboardStorage_numeric_postext]='A';
+                break;
+
+            case KEY_A:
+                numeric[keyboardStorage_numeric_postext]='Q';
+                break;
+
+            case KEY_W:
+                numeric[keyboardStorage_numeric_postext]='Z';
+                break;
+
+            case KEY_Z:
+                numeric[keyboardStorage_numeric_postext]='W';
+                break;
+            default:
+                // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // TODO
+                // TODO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                numeric[keyboardStorage_numeric_postext]=keyboardStorage_char[0];
+                break;
+            } // Fin switch pour rattraper le mapping clavier US -> FR
+            // si mapping US->FR, DE, etc ... par override_config_data
+            // une seule ligne à la place du switch : numeric[keyboardStorage_numeric_postext]=keyboardStorage_char[0];
             keyboardStorage_numeric_postext++;
         }
+        break;
 
     case KEY_0...KEY_9:
     case KEY_0_PAD...KEY_9_PAD:
@@ -86,13 +137,13 @@ void entree_clavier_standard(int isreadkey)
         }
         break;
 
-	case KEY_ENTER:
-		key_affectation();
-		break;
+    case KEY_ENTER:
+        key_affectation();
+        break;
 
-	case KEY_ENTER_PAD:
-		key_affectation();
-		break;
+    case KEY_ENTER_PAD:
+        key_affectation();
+        break;
 
     case KEY_ESC:					//nettoyage chaine de caractères et désélection totale
 
@@ -122,6 +173,8 @@ void entree_clavier_standard(int isreadkey)
         numeric[keyboardStorage_numeric_postext]=0;
         keyboardStorage_numeric_postext=maxchar_numeric-1;
     }
+    // Mise à jour de la variable d'affichage du contenu de la saisie clavier standard
+    sprintf(string_numeric_entry,"<< %s",numeric);
 }
 
 void hotkey_management_hook()

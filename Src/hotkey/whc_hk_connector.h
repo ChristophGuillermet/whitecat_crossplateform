@@ -27,22 +27,22 @@ WWWWWWWW           C  WWWWWWWW   |
 
 /**
 
-* \file wh_hk_manage.h
+* \file whc_hk_connector.h
 * \brief {header file for hotkeys service }
 * \author Rui Serge Azevedo Brooks
-* \version {0.8.9}
+* \version {1.0.0}
 * \date {14/08/2016}
 
  White Cat - gui - keyboard - hotkeys
 
 *   Variables et fonctions gérant les liens entre hotkeys et fonctions à déclencher
-*   Fonctions de gestion d'initialisation, mises à jour sur demande de l'utiliateur
+*   Fonctions de gestion d'initialisation, mises à jour sur demande de l'utilisateur
 *
 *
 */
 
-#ifndef WHC_HK_MANAGE_H
-#define WHC_HK_MANAGE_H
+#ifndef whc_hk_connector_H
+#define whc_hk_connector_H
 
 //Allegro
 #include <allegro/keyboard.h>
@@ -60,26 +60,27 @@ WWWWWWWW           C  WWWWWWWW   |
 
 #include <whc_toolbox.h>
 
-class whc_hk_manage
+class whc_hk_connector
 {
     typedef void (*ptrMthd)(void);  // les fonctions à fournir pour la connection doivent être du type "void nom_fct ()"
 
 public:
-    int static c_nbr;
-    std::vector<whc_hk_manage> static c_list;		/**<  liste de toutes les fonctions avec leurs hotkeys associées */
-    std::vector<whc_hk_manage> static c_catlist;  	/**<  liste limitée à la catégorie sélectionnée */
-    whc_hk_input static c_user_signature ;
-    whc_hk_apply static c_trigger_fired ;
+    int 						static c_nbr;
+    std::vector<whc_hk_connector> 	static c_list;		/**<  liste de toutes les fonctions avec leurs hotkeys associées */
+    std::vector<whc_hk_connector> 	static c_catlist;  	/**<  liste limitée à la catégorie sélectionnée */
+    std::vector <char*> 		static c_filter ;	/**<  liste des catégories - TODO : à initialiser à la lecture du fichier de déclaration des hotkeys */
+    whc_hk_input 				static c_user_signature ; /**<  dernière touche lue et interprétée */
+    whc_hk_apply 				static c_trigger_fired ; /**< fonction correspondant à la dernière touche lue et interprétée */
 
-    bool static * c_ptr_inputIsOn; // (variable associée par référence de la variable externe) la zone de saisie texte est ouverte : elle est prioritaire
+    bool 						static * c_ptr_inputIsOn; /**< (variable associée par référence de la variable externe) la zone de saisie texte est ouverte : elle est prioritaire */
 
 //	objet non terminé	whc_report static c_report;
 
     /** Default constructor */
-    whc_hk_manage();
-    whc_hk_manage(whc_hk_apply fonctionality, whc_hk_input signature);
+    whc_hk_connector();
+    whc_hk_connector(whc_hk_apply fonctionality, whc_hk_input signature);
     /** Default destructor */
-    virtual ~whc_hk_manage();
+    virtual ~whc_hk_connector();
 
     whc_hk_apply fonctionality()
     {
@@ -113,7 +114,7 @@ public:
     }
 
     //static std::string last_hk_wording() ; //{c_user_signature.wording();}
-
+	static void changeDescription(whc_hk_connector * ptr_hk_manage, std::string newdescription );
 	static int filterIdx(){return c_filter_idx;}
 	static void setfilterIdx(int val){c_filter_idx=val;}
 
@@ -173,7 +174,6 @@ public:
     }
 
     static void user_redefine_hk_link_init();
-    static int categoryNbr(){return c_nbr_category;}
 
     static void link_keyFocusIndicator(bool * ptr_val)
     {
@@ -217,4 +217,4 @@ private:
     int static c_nbr_category ;
 };
 
-#endif // WHC_HK_MANAGE_H
+#endif // whc_hk_connector_H

@@ -30,7 +30,7 @@ WWWWWWWW           C  WWWWWWWW   |
 * \file whc_hk_apply.h
 * \brief {header file for hotkeys service  }
 * \author Rui Serge Azevedo Brooks
-* \version {0.8.9}
+* \version {1.0.0}
 * \date {14/08/2016}
 
  White Cat - gui - keyboard - hotkeys
