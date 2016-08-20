@@ -888,7 +888,7 @@ void command_button_logical( int xcom, int ycom, int isstate, const std::string 
                 }
                 break;
             //sab 07/08/2016 deb -
-            case 5://hotkey
+            case 5:
 
                 if(wrkspc_dir_window_isListening==false)
                 {

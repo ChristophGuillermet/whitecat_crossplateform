@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Whitecat_Crossplatform" />
+		<Option title="Whitecat_dev_ruiserge" />
 		<Option platforms="Windows;" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
@@ -47,6 +47,7 @@
 			<Add directory="../Src/hotkey" />
 			<Add directory="../Src/toolbox" />
 			<Add directory="../Src/window" />
+			<Add directory="../Src/mouse" />
 			<Add directory="C:/MinGW/opencv2.4.8/include" />
 			<Add directory="C:/MinGW/include/libharu" />
 			<Add directory="../whitecatlib/" />
@@ -218,26 +219,26 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/hotkey/hotkey_config_tab.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/hotkey/hotkey_config_tab.h">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/hotkey/hotkey_std_keyboard.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/hotkey/hotkey_triggers.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/hotkey/hotkey_triggers.h">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/hotkey/whc_hk_apply.cpp" />
 		<Unit filename="../Src/hotkey/whc_hk_apply.h" />
+		<Unit filename="../Src/hotkey/whc_hk_connector.cpp" />
+		<Unit filename="../Src/hotkey/whc_hk_connector.h" />
 		<Unit filename="../Src/hotkey/whc_hk_input.cpp" />
 		<Unit filename="../Src/hotkey/whc_hk_input.h" />
-		<Unit filename="../Src/hotkey/whc_hk_manage.cpp" />
-		<Unit filename="../Src/hotkey/whc_hk_manage.h" />
 		<Unit filename="../Src/iCat14.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -274,6 +275,8 @@
 		<Unit filename="../Src/minifaders_visu.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../Src/mouse/whc_mouse.cpp" />
+		<Unit filename="../Src/mouse/whc_mouse.h" />
 		<Unit filename="../Src/mover_2013.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -362,8 +365,6 @@
 		<Unit filename="../Src/video_tracking_visu.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="../Src/whc_mouse.cpp" />
-		<Unit filename="../Src/whc_mouse.h" />
 		<Unit filename="../Src/whitecat.h" />
 		<Unit filename="../Src/whitecat_Fct.h" />
 		<Unit filename="../Src/whitecat_opensource.ico">
@@ -380,10 +381,10 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/wrkspc_dir.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../Src/wrkspc_dir.h">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../whitecatlib/lib/windows/odmxusb_terry/FTD2XX.H" />
 		<Extensions>

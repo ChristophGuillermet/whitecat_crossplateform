@@ -381,7 +381,8 @@ void do_refresh_banger_catlist()
 							banger_num = whc_toolbox::string_to_int(tokens[1]);
 							if (banger_num <=bangers_number_of)
 							{
-								banger_name = triggers_name + " ( " + bangers_name [banger_num-1] + ")";
+								std::string tmp (bangers_name [banger_num-1]) ;
+								banger_name = triggers_name + " ( " + whc_toolbox::trim(tmp) + ")";
 							}
 //						}
 //						catch (const std::overflow_error& e) {
@@ -401,7 +402,6 @@ void do_refresh_banger_catlist()
 
 				if (banger_num > 0)
 				{
-					whc_toolbox::trim(banger_name);
 					hk_manager.changeDescription(&hk_manager.c_catlist.at(num_ligne), banger_name);
 				}
 			}

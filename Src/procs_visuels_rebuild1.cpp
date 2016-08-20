@@ -923,11 +923,11 @@ int check_graphics_mouse_handling()
             do_logical_my_window_Box(my_window_x, my_window_y);
             do_logical_MoveCloseBox( my_window_x+20,my_window_y+20,W_MY_WINDOW);
             break;
-		//sab 07/08/2016 deb - Hotkeys-window
+		//sab 07/08/2016 deb - window
 		case W_ID_WRKSPC_DIR_WINDOW:
             wrkspc_dir_window_mouseLeftHandle();
             break;
-		//sab 07/08/2016 fin - Hotkeys-window
+		//sab 07/08/2016 fin - window
         case W_BAZOOKAT:
             do_logical_fenetre_bazookat_menus(position_x_bazoocat_menus, position_y_bazoocat_menus);
             do_logical_MoveCloseBox( position_x_bazoocat_menus+20,position_y_bazoocat_menus+20,W_BAZOOKAT);

@@ -571,13 +571,13 @@ int Menus( int xmenu, int ymenu)
             strcpy(raccourci_commande,"");
             stae=index_menu_save;
             break;
-		//sab - 07/08/2016 DEB - Hotkeys-window
+		//sab - 07/08/2016 DEB - -window
         case 5://test sab <-- 5 = 0 + 5 = (menu_window_addbutton_wrkspc_dir_GridCol -1 ) + menu_window_addbutton_wrkspc_dir_GridLig
             IDmidi=menu_window_addbutton_wrkspc_dir_IDmidi; // +1 par rapport dernière commande ! n° de commande midi à ajouter dans le tableau affectations midi
             strcpy(nom_commande,menu_window_addbutton_wrkspc_dir_Name);
             strcpy(raccourci_commande,menu_window_addbutton_wrkspc_dir_Shortcut);
             stae= wrkspc_dir_window_isListening;
-		//sab - 07/08/2016 FIN - Hotkeys-window
+		//sab - 07/08/2016 FIN - -window
 
         default:
             break;
