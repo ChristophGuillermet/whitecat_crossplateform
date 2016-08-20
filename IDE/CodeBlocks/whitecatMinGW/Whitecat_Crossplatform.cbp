@@ -43,6 +43,7 @@
 			<Add directory="../../../Src" />
 			<Add directory="C:/MinGW/opencv2.4.8/include" />
 			<Add directory="C:/MinGW/include/libharu" />
+			<Add directory="../../../Src/toolbox" />
 		</Compiler>
 		<Linker>
 			<Add option="-lopenlayer -lglyph-agl -lfreetype -llogg -lvorbis -lalleggl -ljpgalleg -lalleg44.dll -luser32 -lgdi32 -lglu32 -lopengl32 -lpthreadGC2 -lwsock32 -liphlpapi -lpng12.dll -lz -lhpdf" />
@@ -335,6 +336,10 @@
 		<Unit filename="../../../Src/time_visu_3.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="../../../Src/toolbox/whc_report.cpp" />
+		<Unit filename="../../../Src/toolbox/whc_report.h" />
+		<Unit filename="../../../Src/toolbox/whc_toolbox.cpp" />
+		<Unit filename="../../../Src/toolbox/whc_toolbox.h" />
 		<Unit filename="../../../Src/tracker_main14nov.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

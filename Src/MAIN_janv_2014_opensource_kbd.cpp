@@ -67,7 +67,7 @@ WWWWWWWW           C  WWWWWWWW   |
 
 #include <vector>
 
-#include "whc_toolbox.cpp"//data utility RuiSerge nom de fichiers sans espace et key mapping
+#include "whc_toolbox.h"//data utility RuiSerge nom de fichiers sans espace et key mapping
 
 #include <SmoothData.cpp>
 //création du damper sur les faders

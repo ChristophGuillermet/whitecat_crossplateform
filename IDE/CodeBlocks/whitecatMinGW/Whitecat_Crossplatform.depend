@@ -181,7 +181,7 @@
 1379886124 c:\mingw\include\dir.h
 	<io.h>
 
-1379886122 c:\mingw\include\io.h
+1422375604 c:\mingw\include\io.h
 	<_mingw.h>
 	<sys/types.h>
 	<string.h>
@@ -463,7 +463,7 @@
 	<afxwin.h>
 	<windows.h>
 
-1379886998 c:\mingw\include\windows.h
+1379886997 c:\mingw\include\windows.h
 	<_mingw.h>
 	<winresrc.h>
 	<stdarg.h>
@@ -760,7 +760,7 @@
 	"allegrogl/gl_ext.h"
 	"allegrogl/alleggl_config.h"
 
-1419242496 c:\mingw\include\gl\gl.h
+1379887010 c:\mingw\include\gl\gl.h
 
 1177754758 c:\mingw\include\allegrogl\gl_ext.h
 	"allegrogl/gl_header_detect.h"
@@ -851,7 +851,7 @@
 	"General.hpp"
 	"Declspec.hpp"
 
-1392016040 c:\mingw\include\openlayer\general.hpp
+1393163826 c:\mingw\include\openlayer\general.hpp
 	<sstream>
 	"Declspec.hpp"
 
@@ -1337,7 +1337,7 @@
 	<bits/atomicity.h>
 	<limits>
 
-1437298171 c:\mingw\opencv2.4.8\include\opencv2\core\mat.hpp
+1388135358 c:\mingw\opencv2.4.8\include\opencv2\core\mat.hpp
 	<limits.h>
 	<string.h>
 
@@ -2407,5 +2407,318 @@
 	<fstream>
 	<sstream>
 	<cstdlib>
+	<windows.h>
+
+1471716000 source:d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\main_janv_2014_opensource_kbd.cpp
+	<iostream>
+	<fstream>
+	<allegro.h>
+	<winalleg.h>
+	<OpenLayer.hpp>
+	<stdio.h>
+	<loadpng.h>
+	<assert.h>
+	<Iphlpapi.h>
+	<audiere.h>
+	<jpgalleg.h>
+	<vector>
+	"whc_toolbox.h"
+	<SmoothData.cpp>
+	<hpdf.h>
+	<MidiShare.h>
+	<whitecat.h>
+	<Kalman.cpp>
+	<my_window_file_sample.h>
+	<patch_splines_2.cpp>
+	<grider_calculs8.cpp>
+	<midi_CORE.cpp>
+	<CORE_6.cpp>
+	<saves_export_pdf2.cpp>
+	<saves_export_import.cpp>
+	<saves_menu_8.cpp>
+	<gestionaire_fenetres2.cpp>
+	<gui_boutons_rebuild1.cpp>
+	<grider_core8.cpp>
+	<wizard_operations.cpp>
+	<faders_operations.cpp>
+	<chasers_core_5.cpp>
+	"mover_spline6.cpp"
+	"mover_2013.cpp"
+	"plot_core9.cpp"
+	"plot9.cpp"
+	<audio_core5.cpp>
+	<save_show_13.cpp>
+	<network_artnet_3.cpp>
+	<logicals_intres.cpp>
+	<channels_9_core.cpp>
+	<wizard.cpp>
+	<grand_master.cpp>
+	<faders_core_24.cpp>
+	<audio_visu4.cpp>
+	<icat_core14.cpp>
+	<arduino_device_core.cpp>
+	<banger_core_8.cpp>
+	<banger_visu_8.cpp>
+	<Call_everybody_5.cpp>
+	<patch_core.cpp>
+	<patch_visu.cpp>
+	<time_core_3.cpp>
+	<time_visu_3.cpp>
+	<trichro_core2.cpp>
+	<trichro_visu2.cpp>
+	<numpad_core.cpp>
+	<numpad_visuel.cpp>
+	<keyboard_functions2.cpp>
+	<keyboard_routines2.cpp>
+	<minifaders_core.cpp>
+	<minifaders_visu.cpp>
+	<faders_visuels_26.cpp>
+	<channels_10_visu.cpp>
+	<video_tracking_core.cpp>
+	<video_tracking_visu.cpp>
+	<list_proj_core.cpp>
+	<list_proj_visu.cpp>
+	<sequentiel_6_core.cpp>
+	<iCat14.cpp>
+	<network_MAC_adress_3.cpp>
+	<midi_launchpad.cpp>
+	<wave.cpp>
+	<grider8.cpp>
+	<sequentiel_7_visu.cpp>
+	<Draw3.cpp>
+	<echo3.cpp>
+	<my_window_file_sample.cpp>
+	<procs_visuels_rebuild1.cpp>
+	<dmx_functions_14.cpp>
+	<midi_13.cpp>
+	<CFG_screen.cpp>
+	<arduino_core_6_UNO.cpp>
+	<arduino_6_UNO.cpp>
+	<CFG_config_panel_8.cpp>
+	<chasers_visu.cpp>
+	<graphics_rebuild1.cpp>
+
+1393702438 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\whitecatlib\lib\windows\audiere-1.9.4-win32\include\audiere.h
+	<vector>
+	<string>
+
+1471711270 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\toolbox\whc_toolbox.h
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+	<sstream>
+	<cstdlib>
+	<windows.h>
+	<algorithm>
+	<functional>
+	<cctype>
+	<locale>
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\smoothdata.cpp
+	<SmoothData.h>
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\smoothdata.h
+
+1393702453 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\whitecatlib\lib\windows\midishare\include\midishare.h
+	"windows.h"
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\whitecat.h
+	"Crossplateform.h"
+
+1471714708 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\crossplateform.h
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\kalman.cpp
+	<Kalman.h>
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\kalman.h
+
+1471714709 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\my_window_file_sample.h
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\patch_splines_2.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\grider_calculs8.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\midi_core.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\core_6.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\saves_export_pdf2.cpp
+	<setjmp.h>
+	"hpdf.h"
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\saves_export_import.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\saves_menu_8.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\gestionaire_fenetres2.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\gui_boutons_rebuild1.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\grider_core8.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\wizard_operations.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\faders_operations.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\chasers_core_5.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\mover_spline6.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\mover_2013.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\plot_core9.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\plot9.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\audio_core5.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\save_show_13.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\network_artnet_3.cpp
+	<winsock2.h>
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\logicals_intres.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\channels_9_core.cpp
+	<allegro.h>
+	<OpenLayer.hpp>
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\wizard.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\grand_master.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\faders_core_24.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\audio_visu4.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\icat_core14.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\arduino_device_core.cpp
+	"serial.cpp"
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\serial.cpp
+	"Serial.h"
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\serial.h
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\banger_core_8.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\banger_visu_8.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\call_everybody_5.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\patch_core.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\patch_visu.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\time_core_3.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\time_visu_3.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\trichro_core2.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\trichro_visu2.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\numpad_core.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\numpad_visuel.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\keyboard_functions2.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\keyboard_routines2.cpp
+	<allegro.h>
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\minifaders_core.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\minifaders_visu.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\faders_visuels_26.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\channels_10_visu.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\video_tracking_core.cpp
+	"opencv2/opencv.hpp"
+	"opencv2/cv/cv.h"
+	"opencv2/highui/highgui.h"
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\video_tracking_visu.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\list_proj_core.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\list_proj_visu.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\sequentiel_6_core.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\icat14.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\network_mac_adress_3.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\midi_launchpad.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\wave.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\grider8.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\sequentiel_7_visu.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\draw3.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\echo3.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\my_window_file_sample.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\procs_visuels_rebuild1.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\dmx_functions_14.cpp
+	<odmxusb.cpp>
+	<odmxusb.h>
+	<dmx_enttec_pro.cpp>
+	<dmx_sunlite.cpp>
+
+1393702453 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\whitecatlib\lib\windows\odmxusb_terry\odmxusb.cpp
+	"odmxusb.h"
+
+1393702453 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\whitecatlib\lib\windows\odmxusb_terry\odmxusb.h
+	<windows.h>
+	"FTD2XX.H"
+
+1393702453 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\whitecatlib\lib\windows\odmxusb_terry\ftd2xx.h
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\dmx_enttec_pro.cpp
+	<process.h>
+	<assert.h>
+	<tchar.h>
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\dmx_sunlite.cpp
+	<_DasHard.h>
+
+1393702448 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\whitecatlib\lib\windows\dashard\_dashard.h
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\midi_13.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\cfg_screen.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\arduino_core_6_uno.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\arduino_6_uno.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\cfg_config_panel_8.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\chasers_visu.cpp
+
+1471715734 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\graphics_rebuild1.cpp
+
+1471711263 source:d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\toolbox\whc_report.cpp
+	"whc_report.h"
+
+1471465858 d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\toolbox\whc_report.h
+	<list>
+	<string>
+
+1471711109 source:d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\toolbox\whc_toolbox.cpp
+	"whc_toolbox.h"
+
+1471715734 source:d:\dev\c++\sourceapplication\whitecat_versionning_8_9\src\whitecat_private.rc
 	<windows.h>
 
